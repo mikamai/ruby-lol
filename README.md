@@ -1,4 +1,5 @@
 # ruby-lol
+[![Coverage Status](https://coveralls.io/repos/mikamai/ruby-lol/badge.png)](https://coveralls.io/r/mikamai/ruby-lol) [![Build Status](https://travis-ci.org/mikamai/ruby-lol.png?branch=master)](https://travis-ci.org/mikamai/ruby-lol)
 
 ruby-lol is a wrapper to the Riot Games API.
 
