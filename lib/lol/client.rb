@@ -28,7 +28,7 @@ module Lol
     # Returns a list of all champions, v1.1
     # @return [Array] an array of champions
     def champion11
-      [Champion.new]
+      self.class.get(api_url("v1.1", "champion"))["champions"].map {|c| Champion.new(c)}
     end
 
     # Initializes a Lol::Client

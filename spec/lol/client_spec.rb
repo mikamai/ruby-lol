@@ -32,7 +32,7 @@ describe Client do
     let(:client) { Client.new "foo" }
 
     subject do
-      expect(client).to receive(:get).with(client.api_url("v1.1", "champion")).and_return(load_fixture("champion", "v1.1", "get"))
+      expect(Client).to receive(:get).with(client.api_url("v1.1", "champion")).and_return(load_fixture("champion", "v1.1", "get"))
 
       client.champion11
     end
@@ -46,7 +46,7 @@ describe Client do
     end
 
     it "fetches champions from the API" do
-      expect(subject.size).to eq(108)
+      expect(subject.size).to eq(load_fixture("champion", "v1.1", "get")["champions"].size)
     end
   end
 
