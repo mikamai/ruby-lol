@@ -31,10 +31,14 @@ module Lol
       self.class.get(api_url("v1.1", "champion"))["champions"].map {|c| Champion.new(c)}
     end
 
+    # Calls the latest API version of game
     def game summoner_id
       game11 summoner_id
     end
 
+    # Returns a list of the recent games played by a summoner
+    # @param summoner_id [Fixnum] Summoner id
+    # @return [Array] an array of games
     def game11 summoner_id
       path = "game/by-summoner/#{summoner_id}"
       self.class.get(api_url("v1.1", path))["games"].map do |game_data|
