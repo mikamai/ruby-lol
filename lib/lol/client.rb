@@ -1,6 +1,8 @@
 require 'httparty'
 
 module Lol
+  class InvalidAPIResponse < StandardError; end
+
   class Client
     include HTTParty
 
@@ -17,7 +19,19 @@ module Lol
     # @param path [String] API path to call
     # @return [String] full fledged url
     def api_url version, path
-      File.join "http://prod.api.pvp.net/api/lol/#{region}/#{version}/", "#{path}?api_key=#{api_key}"
+      lol = version == "v1.1" ? "lol" : ""
+      File.join "http://prod.api.pvp.net/api/", lol, "/#{region}/#{version}/", "#{path}?api_key=#{api_key}"
+    end
+
+    # Calls the API via HTTParty and handles errors
+    #
+    def get url
+      response = self.class.get(url)
+      if response["status"]
+        raise InvalidAPIResponse.new(response["status"]["message"])
+      else
+        response
+      end
     end
 
     # Calls the latest API version of champion
@@ -25,10 +39,10 @@ module Lol
       champion11
     end
 
-    # Returns a list of all champions, v1.1
+    # Retrieve all champions, v1.1
     # @return [Array] an array of champions
     def champion11
-      self.class.get(api_url("v1.1", "champion"))["champions"].map {|c| Champion.new(c)}
+      get(api_url("v1.1", "champion"))["champions"].map {|c| Champion.new(c)}
     end
 
     # Calls the latest API version of game
@@ -45,6 +59,18 @@ module Lol
         Game.new game_data
       end
     end
+
+    # Calls the latest API version of league
+    def league summoner_id
+      league21 summoner_id
+    end
+
+    # Retrieves leagues data for summoner, including leagues for all of summoner's teams, v2.1
+    # @return [Array] an array of champions
+    def league21 summoner_id
+      get(api_url("v2.1", "league/by-summoner/#{summoner_id}"))[summoner_id].map {|l| League.new}
+    end
+
 
     # Initializes a Lol::Client
     # @param api_key [String]

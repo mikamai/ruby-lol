@@ -21,7 +21,21 @@ Or install it yourself as:
 
     require 'lol'
 
+    # defaults to euw
+    client = Lol::Client.new "my_api_key"
+    #<Lol::Client:0x007fd09d1abb00 @api_key="my_api_key", @region="euw">
 
+    # na
+    na_client = Lol::Client.new "my_api_key", :region => "na"
+    # => <Lol::Client:0x007fd09d1abb00 @api_key="my_api_key", @region="na">
+
+    # gets all champions
+    champions = client.champion
+    # => Array of Lol::Champion
+
+    # let's play a bit, who is free to play?
+    client.champion.select {|c| c.free_to_play }.map {|c| c.name}
+    # => %w(Aatrox Cassiopeia Lux Malphite MissFortune MonkeyKing Nautilus Sivir Talon Taric)
 ## Contributing
 
 1. Fork it
