@@ -31,6 +31,17 @@ module Lol
       self.class.get(api_url("v1.1", "champion"))["champions"].map {|c| Champion.new(c)}
     end
 
+    def game summoner_id
+      game11 summoner_id
+    end
+
+    def game11 summoner_id
+      path = "game/by-summoner/#{summoner_id}"
+      self.class.get(api_url("v1.1", path))["games"].map do |game_data|
+        Game.new game_data
+      end
+    end
+
     # Initializes a Lol::Client
     # @param api_key [String]
     # @param options [Hash]
