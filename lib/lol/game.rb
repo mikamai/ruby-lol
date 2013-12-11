@@ -7,7 +7,7 @@ module Lol
     attr_reader :raw
 
     # @!attribute [r] id
-    # @return [Fixnum] Game Id
+    #   @return [Fixnum] Game Id
     attr_reader :game_id
 
     # @!attribute [r] champion_id
