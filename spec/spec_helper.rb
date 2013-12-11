@@ -17,3 +17,7 @@ VCR.configure do |c|
   c.ignore_hosts 'codeclimate.com'
   c.configure_rspec_metadata!
 end
+
+def load_fixture subject, version, method
+  JSON.parse(File.read(__dir__ + "/fixtures/#{version}/#{method}-#{subject}.json"))
+end

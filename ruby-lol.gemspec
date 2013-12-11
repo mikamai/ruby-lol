@@ -30,6 +30,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "coveralls"
   spec.add_development_dependency "vcr"
   spec.add_development_dependency "webmock", ">= 1.8.0", "< 1.16"
+  spec.add_development_dependency "awesome_print"
 
   spec.add_runtime_dependency "httparty"
 end
