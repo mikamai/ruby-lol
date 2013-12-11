@@ -14,5 +14,6 @@ SimpleCov.start
 VCR.configure do |c|
   c.cassette_library_dir = __dir__ + '/../fixtures/vcr_cassettes'
   c.hook_into :webmock
+  c.ignore_hosts 'codeclimate.com'
   c.configure_rspec_metadata!
 end
