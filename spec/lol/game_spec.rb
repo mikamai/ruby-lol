@@ -10,6 +10,15 @@ describe Game do
       expect { Game.new({ :game_id => 1 }) }.not_to raise_error
     end
 
+    it 'raises an error if an attribute is not allowed' do
+      expect { Game.new({ :foo => :bar }) }.to raise_error NoMethodError
+    end
+
+    it 'sets the given option hash as #raw' do
+      options = { :game_id => 1 }
+      expect(Game.new(options).raw).to eq options
+    end
+
     %w(champion_id create_date_str game_id game_mode game_type invalid level map_id spell1 spell2 sub_type team_id).each do |attribute|
       it "sets #{attribute} if the hash contains #{attribute}" do
         game = Game.new({ attribute => 'foo' })

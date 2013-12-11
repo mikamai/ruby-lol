@@ -60,17 +60,15 @@ module Lol
     # @return [Lol::Champion]
     def initialize options = {}
       @raw = options
-      @id = options.delete "id"
-      @name = options.delete "name"
-      @active = options.delete "active"
-      @attack_rank = options.delete "attackRank"
-      @defense_rank = options.delete "defenseRank"
-      @magic_rank = options.delete "magicRank"
-      @difficulty_rank = options.delete "difficultyRank"
-      @bot_enabled = options.delete "botEnabled"
-      @free_to_play = options.delete "freeToPlay"
-      @bot_mm_enabled = options.delete "botMmEnabled"
-      @ranked_play_enabled = options.delete "rankedPlayEnabled"
+      options.each do |attribute_name, value|
+        send "#{attribute_name.to_s.underscore}=", value
+      end
     end
+
+    private
+
+    attr_writer :id, :name, :active, :attack_rank, :defense_rank, :magic_rank,
+                :difficulty_rank, :bot_enabled, :free_to_play, :bot_mm_enabled,
+                :ranked_play_enabled
   end
 end

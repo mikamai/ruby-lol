@@ -71,6 +71,7 @@ module Lol
     # @param options [Hash]
     # @return [Lol::Game]
     def initialize options = {}
+      @raw = options
       options.each do |attribute_name, value|
         send "#{attribute_name.to_s.underscore}=", value
       end

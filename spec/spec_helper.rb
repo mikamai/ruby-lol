@@ -30,10 +30,5 @@ def load_fixture subject, version, method
 end
 
 def expect_init_attribute subject, attribute
-  puts camelize(attribute)
   expect(subject.new(camelize(attribute) => "foo").send(attribute)).to eq("foo")
-end
-
-def expect_read_only_attribute subject, attribute
-  expect { subject.new.send("#{attribute}=".to_sym, "bar") }.to raise_error(NoMethodError)
 end
