@@ -20,4 +20,16 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
+  spec.add_development_dependency "yard"
+  spec.add_development_dependency "redcarpet"
+  spec.add_development_dependency "rspec"
+  spec.add_development_dependency "ZenTest"
+  spec.add_development_dependency "autotest-growl"
+  spec.add_development_dependency "autotest-fsevent"
+  spec.add_development_dependency "codeclimate-test-reporter"
+  spec.add_development_dependency "coveralls"
+  spec.add_development_dependency "vcr"
+  spec.add_development_dependency "webmock"
+
+  spec.add_runtime_dependency "httparty"
 end

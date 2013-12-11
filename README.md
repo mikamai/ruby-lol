@@ -1,6 +1,6 @@
-# Ruby::Lol
+# ruby-lol
 
-TODO: Write a gem description
+ruby-lol is a wrapper to the Riot Games API.
 
 ## Installation
 
@@ -18,7 +18,8 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+require 'lol'
+
 
 ## Contributing
 
