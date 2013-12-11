@@ -19,7 +19,7 @@ Or install it yourself as:
 
 ## Usage
 
-require 'lol'
+    require 'lol'
 
 
 ## Contributing
