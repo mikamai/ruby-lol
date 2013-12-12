@@ -3,7 +3,7 @@ require "spec_helper"
 
 include Lol
 
-describe Statistic do
+describe RawStatistic do
   it_behaves_like 'Lol model' do
     let(:valid_attributes) { { id: 1 } }
   end

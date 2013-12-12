@@ -85,7 +85,7 @@ module Lol
 
     def statistics= collection
       @statistics = collection.map do |c|
-        c.respond_to?(:[]) && Statistic.new(c) || c
+        c.respond_to?(:[]) && RawStatistic.new(c) || c
       end
     end
   end

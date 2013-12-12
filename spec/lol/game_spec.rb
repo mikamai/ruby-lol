@@ -27,7 +27,7 @@ describe Game do
   describe 'statistics attribute' do
     it_behaves_like 'collection attribute' do
       let(:attribute) { 'statistics' }
-      let(:attribute_class) { Statistic }
+      let(:attribute_class) { RawStatistic }
     end
   end
 
