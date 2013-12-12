@@ -1,4 +1,5 @@
 require 'httparty'
+require 'uri'
 
 module Lol
   class InvalidAPIResponse < StandardError; end
@@ -18,9 +19,10 @@ module Lol
     # @param version [String] API version to call
     # @param path [String] API path to call
     # @return [String] full fledged url
-    def api_url version, path
+    def api_url version, path, params = {}
       lol = version == "v1.1" ? "lol" : ""
-      File.join "http://prod.api.pvp.net/api/", lol, "/#{region}/#{version}/", "#{path}?api_key=#{api_key}"
+      query_string = URI.encode_www_form params.merge api_key: api_key
+      File.join "http://prod.api.pvp.net/api/", lol, "/#{region}/#{version}/", "#{path}?#{query_string}"
     end
 
     # Calls the API via HTTParty and handles errors
@@ -72,6 +74,19 @@ module Lol
       get(api_url("v2.1", "league/by-summoner/#{summoner_id}"))[summoner_id].map {|l| League.new}
     end
 
+    def stats *args
+      stats11 *args
+    end
+
+    def stats11 summoner_id, extra = {}
+      if extra.keys.select { |k| k.to_sym != :season }.any?
+        raise ArgumentError, 'Only :season is allowed as extra parameter'
+      end
+      stats_api_path = "stats/by-summoner/#{summoner_id}/summary"
+      get(api_url('v1.1', stats_api_path, extra))['playerStatSummaries'].map do |player_stat_data|
+        PlayerStatistic.new player_stat_data
+      end
+    end
 
     # Initializes a Lol::Client
     # @param api_key [String]
