@@ -84,7 +84,7 @@ module Lol
                 :create_date_str
 
     def create_date= value
-      @create_date = DateTime.strptime value.to_s, '%s'
+      @create_date = value.is_a?(DateTime) && value || DateTime.strptime(value.to_s, '%s')
     end
 
     def fellow_players= collection
