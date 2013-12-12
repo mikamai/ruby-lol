@@ -62,6 +62,38 @@ describe Client do
     end
   end
 
+  describe '#game' do
+    it 'requires a summoner id' do
+      expect { subject.game }.to raise_error ArgumentError
+    end
+
+    it 'defaults to v1.1' do
+      expect(subject).to receive(:game11).with 'foo'
+      subject.game 'foo'
+    end
+  end
+
+  describe '#game11' do
+    let(:client) { Client.new 'foo' }
+
+    subject do
+      expect(Client).to receive(:get).with(client.api_url('v1.1', "game/by-summoner/1")).and_return load_fixture('game', 'v1.1', 'get')
+      client.game11 1
+    end
+
+    it 'returns an array' do
+      expect(subject).to be_a Array
+    end
+
+    it 'returns an array of Games' do
+      expect(subject.map(&:class).uniq).to eq [Game]
+    end
+
+    it 'fetches games from the API' do
+      expect(subject.size).to eq load_fixture('game', 'v1.1', 'get')['games'].size
+    end
+  end
+
   describe "#region" do
     it "returns current region" do
       expect(subject.region).to eq("euw")

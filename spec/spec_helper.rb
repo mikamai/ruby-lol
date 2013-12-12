@@ -30,7 +30,6 @@ def load_fixture subject, version, method
 end
 
 def expect_init_attribute subject, attribute
-  puts camelize(attribute)
   expect(subject.new(camelize(attribute) => "foo").send(attribute)).to eq("foo")
 end
 
