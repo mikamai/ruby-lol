@@ -1,7 +1,7 @@
-require 'active_support/core_ext/string/inflections'
+require 'lol/model'
 
 module Lol
-  class Game
+  class Game < Lol::Model
     # @!attribute [r] raw
     #   @return [Hash] raw version of options Hash used to initialize Game
     attr_reader :raw
@@ -66,16 +66,6 @@ module Lol
     # @!attribute [r] team_id
     #   @return [Fixnum] Team Id associated with game
     attr_reader :team_id
-
-    # Initializes a Lol::Game
-    # @param options [Hash]
-    # @return [Lol::Game]
-    def initialize options = {}
-      @raw = options
-      options.each do |attribute_name, value|
-        send "#{attribute_name.to_s.underscore}=", value
-      end
-    end
 
     private
 

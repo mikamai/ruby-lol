@@ -1,5 +1,7 @@
+require 'lol/model'
+
 module Lol
-  class Player
+  class Player < Lol::Model
     # @!attribute [r] raw
     #   @return [Hash] raw version of options Hash used to initialize Player
     attr_reader :raw
@@ -15,16 +17,6 @@ module Lol
     # @!attribute [r] team_id
     #   @return [Fixnum] Team Id associated with player
     attr_reader :team_id
-
-    # Initializes a Lol::Player
-    # @param options [Hash]
-    # @return [Lol::Player]
-    def initialize options = {}
-      @raw = options
-      options.each do |attribute_name, value|
-        send "#{attribute_name.to_s.underscore}=", value
-      end
-    end
 
     private
 
