@@ -1,6 +1,5 @@
 require "spec_helper"
 require "lol"
-require "json"
 
 include Lol
 

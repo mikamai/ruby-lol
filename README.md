@@ -1,7 +1,7 @@
 # ruby-lol
 [![Coverage Status](https://coveralls.io/repos/mikamai/ruby-lol/badge.png)](https://coveralls.io/r/mikamai/ruby-lol) [![Build Status](https://travis-ci.org/mikamai/ruby-lol.png?branch=master)](https://travis-ci.org/mikamai/ruby-lol) [![Code Climate](https://codeclimate.com/repos/52a9908c56b102320a0166a4/badges/7e5d4ea4fe9e562f8e4d/gpa.png)](https://codeclimate.com/repos/52a9908c56b102320a0166a4/feed)
 
-ruby-lol is a wrapper to the Riot Games API.
+ruby-lol is a wrapper to the [Riot Games API](https://developer.riotgames.com).
 
 ## Installation
 
