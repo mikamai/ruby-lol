@@ -25,12 +25,11 @@ describe Game do
     end
   end
 
-  pending 'statistics attribute' do
+  describe 'statistics attribute' do
     it_behaves_like 'collection attribute' do
       let(:attribute) { 'statistics' }
+      let(:attribute_class) { Statistic }
     end
-
-    pending 'parses the collection converting each value in an object'
   end
 
   describe 'create_date attribute' do

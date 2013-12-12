@@ -94,7 +94,9 @@ module Lol
     end
 
     def statistics= collection
-      @statistics = collection.map { |c| c }
+      @statistics = collection.map do |c|
+        c.respond_to?(:[]) && Statistic.new(c) || c
+      end
     end
   end
 end
