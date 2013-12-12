@@ -31,19 +31,41 @@ describe Game do
       end
     end
 
-    %w(fellow_players statistics).each do |attribute|
-      it "sets #{attribute} if the hash contains #{attribute}" do
-        game = Game.new({ attribute => ['foo', 'bar'] })
+    shared_examples 'collection attribute' do
+      it "is sets if the hash contains the attribute name in underscore case" do
+        game = Game.new({ attribute => [{}, {}] })
         expect(game.send(attribute).size).to eq 2
       end
 
-      it "sets #{attribute} if the hash contains #{camelize attribute}" do
-        game = Game.new({ camelize(attribute) => ['foo', 'bar'] })
+      it "is set if the hash contains the attribute name in camel case" do
+        game = Game.new({ camelize(attribute) => [{}, {}] })
         expect(game.send(attribute).size).to eq 2
       end
 
-      it 'raises an error if the value is not enumerable' do
+      it 'raise an error if the value is not enumerable' do
         expect { Game.new({ attribute => 'asd' }) }.to raise_error NoMethodError
+      end
+    end
+
+    describe 'fellow_players attribute' do
+      it_behaves_like 'collection attribute' do
+        let(:attribute) { 'fellow_players' }
+      end
+
+      it "parses the collection converting each value in a Player" do
+        game = Game.new :fellow_players => [{:team_id => 1}]
+        expect(game.fellow_players.map(&:class).uniq).to eq [Player]
+      end
+
+      it 'ignores the parsing if the collection value is not an hash' do
+        game = Game.new :fellow_players => [Player.new, Object.new]
+        expect(game.fellow_players.map(&:class).uniq).to eq [Player, Object]
+      end
+    end
+
+    describe 'statistics attribute' do
+      it_behaves_like 'collection attribute' do
+        let(:attribute) { 'statistics' }
       end
 
       pending 'parses the collection converting each value in an object'

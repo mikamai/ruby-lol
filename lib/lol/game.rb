@@ -88,7 +88,9 @@ module Lol
     end
 
     def fellow_players= collection
-      @fellow_players = collection.map { |c| c }
+      @fellow_players = collection.map do |c|
+        c.respond_to?(:[]) && Player.new(c) || c
+      end
     end
 
     def statistics= collection
