@@ -77,7 +77,7 @@ describe Client do
     let(:client) { Client.new 'foo' }
 
     subject do
-      expect(Client).to receive(:get).with(client.api_url('v1.1', "game/by-summoner/1")).and_return load_fixture('game', 'v1.1', 'get')
+      expect(Client).to receive(:get).with(client.api_url('v1.1', "game/by-summoner/1/recent")).and_return load_fixture('game', 'v1.1', 'get')
       client.game11 1
     end
 
