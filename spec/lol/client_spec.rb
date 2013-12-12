@@ -153,7 +153,7 @@ describe Client do
     end
 
     it "returns an array of Leagues" do
-      expect(subject).to be_a(Array)
+      expect(subject.map(&:class).uniq).to eq([League])
     end
   end
 end
