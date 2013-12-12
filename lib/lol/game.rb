@@ -1,7 +1,7 @@
-require 'active_support/core_ext/string/inflections'
+require 'lol/model'
 
 module Lol
-  class Game
+  class Game < Lol::Model
     # @!attribute [r] raw
     #   @return [Hash] raw version of options Hash used to initialize Game
     attr_reader :raw
@@ -67,16 +67,6 @@ module Lol
     #   @return [Fixnum] Team Id associated with game
     attr_reader :team_id
 
-    # Initializes a Lol::Game
-    # @param options [Hash]
-    # @return [Lol::Game]
-    def initialize options = {}
-      @raw = options
-      options.each do |attribute_name, value|
-        send "#{attribute_name.to_s.underscore}=", value
-      end
-    end
-
     private
 
     attr_writer :champion_id, :game_id, :game_mode, :game_type, :invalid,
@@ -84,15 +74,19 @@ module Lol
                 :create_date_str
 
     def create_date= value
-      @create_date = DateTime.strptime value.to_s, '%s'
+      @create_date = value.is_a?(DateTime) && value || DateTime.strptime(value.to_s, '%s')
     end
 
     def fellow_players= collection
-      @fellow_players = collection.map { |c| c }
+      @fellow_players = collection.map do |c|
+        c.respond_to?(:[]) && Player.new(c) || c
+      end
     end
 
     def statistics= collection
-      @statistics = collection.map { |c| c }
+      @statistics = collection.map do |c|
+        c.respond_to?(:[]) && Statistic.new(c) || c
+      end
     end
   end
 end

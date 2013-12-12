@@ -55,7 +55,7 @@ module Lol
     # @param summoner_id [Fixnum] Summoner id
     # @return [Array] an array of games
     def game11 summoner_id
-      summoner_api_path = "game/by-summoner/#{summoner_id}"
+      summoner_api_path = "game/by-summoner/#{summoner_id}/recent"
       get(api_url("v1.1", summoner_api_path))["games"].map do |game_data|
         Game.new game_data
       end

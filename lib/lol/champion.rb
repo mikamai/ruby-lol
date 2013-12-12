@@ -1,7 +1,7 @@
+require 'lol/model'
+
 module Lol
-  class Champion
-
-
+  class Champion < Lol::Model
     # @!attribute [r] raw
     #   @return [String] raw version of options Hash used to initialize Champion
     attr_reader :raw
@@ -54,16 +54,6 @@ module Lol
     #   @return [true] if the Champion is enabled in ranked play
     #   @return [false] if the Champion is disabled in ranked play
     attr_reader :ranked_play_enabled
-
-    # Initializes a Lol::Champion
-    # @param options [Hash]
-    # @return [Lol::Champion]
-    def initialize options = {}
-      @raw = options
-      options.each do |attribute_name, value|
-        send "#{attribute_name.to_s.underscore}=", value
-      end
-    end
 
     private
 
