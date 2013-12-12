@@ -1,5 +1,5 @@
-require "lol"
 require "spec_helper"
+require "lol"
 
 include Lol
 
