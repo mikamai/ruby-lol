@@ -63,7 +63,7 @@ module Lol
     #   @return [String] Game sub-type
     attr_reader :sub_type
 
-    # @!attribute [r] team_it
+    # @!attribute [r] team_id
     #   @return [Fixnum] Team Id associated with game
     attr_reader :team_id
 
@@ -79,9 +79,9 @@ module Lol
 
     private
 
-    attr_writer :champion_id, :fellow_players, :game_id, :game_mode,
-                :game_type, :invalid, :level, :map_id, :spell1, :spell2,
-                :statistics, :sub_type, :team_id, :create_date_str
+    attr_writer :champion_id, :game_id, :game_mode, :game_type, :invalid,
+                :level, :map_id, :spell1, :spell2, :sub_type, :team_id,
+                :create_date_str
 
     def create_date= value
       @create_date = DateTime.strptime value.to_s, '%s'

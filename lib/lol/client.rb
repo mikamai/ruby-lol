@@ -45,17 +45,18 @@ module Lol
       get(api_url("v1.1", "champion"))["champions"].map {|c| Champion.new(c)}
     end
 
-    # Calls the latest API version of game
-    def game summoner_id
-      game11 summoner_id
+    # Calls the latest API version of game returning the list of
+    # recent games played by a summoner
+    def game *args
+      game11 *args
     end
 
     # Returns a list of the recent games played by a summoner
     # @param summoner_id [Fixnum] Summoner id
     # @return [Array] an array of games
     def game11 summoner_id
-      path = "game/by-summoner/#{summoner_id}"
-      self.class.get(api_url("v1.1", path))["games"].map do |game_data|
+      summoner_api_path = "game/by-summoner/#{summoner_id}"
+      get(api_url("v1.1", summoner_api_path))["games"].map do |game_data|
         Game.new game_data
       end
     end
