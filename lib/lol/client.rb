@@ -91,6 +91,22 @@ module Lol
       end
     end
 
+    # Calls the latest API version of ranked_stats
+    def ranked_stats *args
+      ranked_stats11 *args
+    end
+
+    # Retrieves ranked statistics summary for the given summoner
+    # @return [RankedStatisticsSummary] Ranked Stats.
+    #   Includes stats for Twisted Treeline and Summoner's Rift
+    def ranked_stats11 summoner_id, extra = {}
+      if extra.keys.select { |k| k.to_sym != :season }.any?
+        raise ArgumentError, 'Only :season is allowed as extra parameter'
+      end
+      stats_api_path = "stats/by-summoner/#{summoner_id}/ranked"
+      RankedStatisticsSummary.new get api_url 'v1.1', stats_api_path, extra
+    end
+
     # Initializes a Lol::Client
     # @param api_key [String]
     # @param options [Hash]
