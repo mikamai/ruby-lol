@@ -74,10 +74,13 @@ module Lol
       get(api_url("v2.1", "league/by-summoner/#{summoner_id}"))[summoner_id].map {|l| League.new}
     end
 
+    # Calls the latest API version of stats
     def stats *args
       stats11 *args
     end
 
+    # Retrieves player statistics summaries for the given summoner
+    # @return [Array] an array of player statistics, one per queue type
     def stats11 summoner_id, extra = {}
       if extra.keys.select { |k| k.to_sym != :season }.any?
         raise ArgumentError, 'Only :season is allowed as extra parameter'
