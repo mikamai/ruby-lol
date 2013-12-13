@@ -75,12 +75,14 @@ shared_examples 'collection attribute' do
   it_behaves_like 'attribute'
 
   it 'is sets if the hash contains the attribute name "underscored"' do
-    model = subject_class.new({ attribute => [{}, {}] })
+    value = respond_to?(:attribute_value) && attribute_value || [{}, {}]
+    model = subject_class.new({ attribute => value })
     expect(model.send(attribute).size).to eq 2
   end
 
   it 'is set if the hash contains the attribute name "camelized"' do
-    model = subject_class.new({ camelize(attribute) => [{}, {}] })
+    value = respond_to?(:attribute_value) && attribute_value || [{}, {}]
+    model = subject_class.new({ camelize(attribute) => value })
     expect(model.send(attribute).size).to eq 2
   end
 
@@ -95,7 +97,8 @@ shared_examples 'collection attribute' do
   context 'if the value is enumerable' do
     context 'and contains items as Hash' do
       it 'parses the item' do
-        model = subject_class.new attribute => [{}]
+        value = respond_to?(:attribute_value) && attribute_value || [{}, {}]
+        model = subject_class.new attribute => value
         expect(model.send(attribute).map(&:class).uniq).to eq [attribute_class]
       end
     end
