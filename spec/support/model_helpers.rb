@@ -49,6 +49,25 @@ shared_examples 'plain attribute' do
   end
 end
 
+shared_examples 'time attribute' do
+  let(:subject_class) { subject.class }
+  let(:setter) { "#{attribute}=" }
+
+  it_behaves_like 'plain attribute' do
+    let(:attribute_value) { Time.now }
+  end
+
+  it "does not parse the value is it isn't a Numeric value" do
+    model = subject_class.new(attribute => Date.today)
+    expect(model.send attribute).to be_a Date
+  end
+
+  it "works with LoL format" do
+    model = subject_class.new(attribute => 1386804971247)
+    expect(model.send(attribute).year).to eq 2013
+  end
+end
+
 shared_examples 'collection attribute' do
   let(:subject_class) { subject.class }
   let(:setter) { "#{attribute}=" }

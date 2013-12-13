@@ -32,17 +32,8 @@ describe Game do
   end
 
   describe 'create_date attribute' do
-    it_behaves_like 'plain attribute' do
+    it_behaves_like 'time attribute' do
       let(:attribute) { 'create_date' }
-      let(:attribute_value) { Time.now }
-    end
-
-    it "does not parse the value is it isn't a Numeric value" do
-      expect(Game.new(:create_date => Date.today).create_date).to be_a Date
-    end
-
-    it "works with LoL format" do
-      expect(Game.new(:create_date => 1386804971247).create_date.year).to eq 2013
     end
   end
 end
