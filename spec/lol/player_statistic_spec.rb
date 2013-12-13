@@ -27,11 +27,15 @@ describe PlayerStatistic do
   describe 'modify_date attribute' do
     it_behaves_like 'plain attribute' do
       let(:attribute) { 'modify_date' }
-      let(:attribute_value) { DateTime.now }
+      let(:attribute_value) { Time.now }
     end
 
-    it "parses the value is it's not a DateTime object" do
-      expect(PlayerStatistic.new(:modify_date => Time.now.to_i).modify_date).to be_a DateTime
+    it "does not parse the value is it isn't a Numeric value" do
+      expect(PlayerStatistic.new(:modify_date => Date.today).modify_date).to be_a Date
+    end
+
+    it "works with LoL format" do
+      expect(PlayerStatistic.new(:modify_date => 1386804971247).modify_date.year).to eq 2013
     end
   end
 end

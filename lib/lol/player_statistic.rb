@@ -35,7 +35,7 @@ module Lol
     attr_writer :id, :losses, :modify_date_str, :player_stat_summary_type, :wins
 
     def modify_date= value
-      @modify_date = value.is_a?(DateTime) && value || DateTime.strptime(value.to_s, '%s')
+      @modify_date = value.is_a?(Numeric) && Time.at(value / 1000) || value
     end
 
     def aggregated_stats= collection
