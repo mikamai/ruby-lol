@@ -173,6 +173,39 @@ describe Client do
     end
   end
 
+  describe '#team' do
+    it 'defaults to v2.1' do
+      expect(subject).to receive(:team21).with 'foo'
+      subject.team 'foo'
+    end
+  end
+
+  describe '#team21' do
+    let(:client) { Client.new 'foo' }
+    let(:fixture) { load_fixture 'team', 'v2.1', 'get' }
+
+    subject do
+      expect(Client).to receive(:get).with(client.api_url('v2.1', "team/by-summoner/1")).and_return fixture
+      client.team21 1
+    end
+
+    it 'requires a summoner' do
+      expect { client.team21 }.to raise_error ArgumentError
+    end
+
+    it 'returns an array' do
+      expect(subject).to be_a Array
+    end
+
+    it 'returns an array of Team' do
+      expect(subject.map(&:class).uniq).to eq [Team]
+    end
+
+    it 'fetches Team from the API' do
+      expect(subject.size).to eq fixture.size
+    end
+  end
+
   describe "#region" do
     it "returns current region" do
       expect(subject.region).to eq("euw")

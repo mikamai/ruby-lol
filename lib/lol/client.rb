@@ -29,7 +29,7 @@ module Lol
     #
     def get url
       response = self.class.get(url)
-      if response["status"]
+      if response.is_a?(Hash) && response["status"]
         raise InvalidAPIResponse.new(response["status"]["message"])
       else
         response
@@ -105,6 +105,19 @@ module Lol
       end
       stats_api_path = "stats/by-summoner/#{summoner_id}/ranked"
       RankedStatisticsSummary.new get api_url 'v1.1', stats_api_path, extra
+    end
+
+    # Calls the latest API version of team returning the list of teams for the given summoner
+    def team *args
+      team21 *args
+    end
+
+    # Retrieves the list of Teams for the given summoner
+    # @return [Array] List of Team
+    def team21 summoner_id
+      get(api_url 'v2.1', "team/by-summoner/#{summoner_id}").map do |team_data|
+        Team.new team_data
+      end
     end
 
     # Initializes a Lol::Client
