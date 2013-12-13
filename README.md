@@ -7,6 +7,7 @@ ruby-lol is a wrapper to the [Riot Games API](https://developer.riotgames.com).
 
 Add this line to your application's Gemfile:
 
+```ruby
     gem 'ruby-lol'
 
 And then execute:
@@ -19,6 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
+```ruby
     require 'lol'
 
     # defaults to euw
