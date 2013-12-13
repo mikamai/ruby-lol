@@ -27,18 +27,13 @@ describe Game do
   describe 'statistics attribute' do
     it_behaves_like 'collection attribute' do
       let(:attribute) { 'statistics' }
-      let(:attribute_class) { Statistic }
+      let(:attribute_class) { RawStatistic }
     end
   end
 
   describe 'create_date attribute' do
-    it_behaves_like 'plain attribute' do
+    it_behaves_like 'time attribute' do
       let(:attribute) { 'create_date' }
-      let(:attribute_value) { DateTime.now }
-    end
-
-    it "parses the value is it's not a DateTime object" do
-      expect(Game.new(:create_date => Time.now.to_i).create_date).to be_a DateTime
     end
   end
 end

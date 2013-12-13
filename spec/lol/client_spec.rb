@@ -93,6 +93,86 @@ describe Client do
     end
   end
 
+  describe '#stats' do
+    it 'defaults to v1.1' do
+      expect(subject).to receive(:stats11).with 'foo'
+      subject.stats 'foo'
+    end
+  end
+
+  describe '#stats11' do
+    let(:client) { Client.new 'foo' }
+    let(:fixture) { load_fixture 'stats', 'v1.1', 'get' }
+
+    subject do
+      expect(Client).to receive(:get).with(client.api_url('v1.1', "stats/by-summoner/1/summary")).and_return fixture
+      client.stats11 1
+    end
+
+    it 'requires a summoner' do
+      expect { client.stats }.to raise_error ArgumentError
+    end
+
+    it 'returns an array' do
+      expect(subject).to be_a Array
+    end
+
+    it 'returns an array of PlayerStatistic' do
+      expect(subject.map(&:class).uniq).to eq [PlayerStatistic]
+    end
+
+    it 'fetches PlayerStatistics from the API' do
+      expect(subject.size).to eq load_fixture('stats', 'v1.1', 'get')['playerStatSummaries'].size
+    end
+
+    it 'optionally accepts a season' do
+      expect(Client).to receive(:get).with(client.api_url('v1.1', 'stats/by-summoner/1/summary', season: '1')).and_return fixture
+      client.stats11 '1', season: '1'
+    end
+
+    it 'raises an error when unexpected parameter is received' do
+      expect { client.stats11 '1', asd: 'foo' }.to raise_error ArgumentError
+    end
+  end
+
+  describe '#ranked_stats' do
+    it 'defaults to v1.1' do
+      expect(subject).to receive(:ranked_stats11).with 'foo'
+      subject.ranked_stats 'foo'
+    end
+  end
+
+  describe '#ranked_stats11' do
+    let(:client) { Client.new 'foo' }
+    let(:fixture) { load_fixture 'ranked_stats', 'v1.1', 'get' }
+
+    subject do
+      expect(Client).to receive(:get).with(client.api_url('v1.1', "stats/by-summoner/1/ranked")).and_return fixture
+      client.ranked_stats11 1
+    end
+
+    it 'requires a summoner' do
+      expect { client.ranked_stats }.to raise_error ArgumentError
+    end
+
+    it 'returns a RankedStatisticsSummary' do
+      expect(subject).to be_a RankedStatisticsSummary
+    end
+
+    it 'fetches RankedStatisticsSummary from the API' do
+      expect(subject.champions.size).to eq load_fixture('ranked_stats', 'v1.1', 'get')['champions'].size
+    end
+
+    it 'optionally accepts a season' do
+      expect(Client).to receive(:get).with(client.api_url('v1.1', 'stats/by-summoner/1/ranked', season: '1')).and_return fixture
+      client.ranked_stats11 '1', season: '1'
+    end
+
+    it 'raises an error when unexpected parameter is received' do
+      expect { client.ranked_stats11 '1', asd: 'foo' }.to raise_error ArgumentError
+    end
+  end
+
   describe "#region" do
     it "returns current region" do
       expect(subject.region).to eq("euw")
@@ -133,6 +213,10 @@ describe Client do
 
     it "does not have lol if url is v2.1 or greater" do
       expect(subject.api_url("v2.1", "foo")).to eq("http://prod.api.pvp.net/api/euw/v2.1/foo?api_key=foo")
+    end
+
+    it "optionally accept query string parameters" do
+      expect(subject.api_url("v2.1", "foo", a: 'b')).to eq("http://prod.api.pvp.net/api/euw/v2.1/foo?a=b&api_key=foo")
     end
   end
 

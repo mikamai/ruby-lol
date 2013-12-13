@@ -15,7 +15,7 @@ module Lol
     attr_reader :champion_id
 
     # @!attribute [r] create_date
-    #   @return [DateTime] Date game was played
+    #   @return [Time] Date game was played
     attr_reader :create_date
 
     # @!attribute [r] create_date_str
@@ -74,7 +74,7 @@ module Lol
                 :create_date_str
 
     def create_date= value
-      @create_date = value.is_a?(DateTime) && value || DateTime.strptime(value.to_s, '%s')
+      @create_date = value.is_a?(Numeric) && Time.at(value / 1000) || value
     end
 
     def fellow_players= collection
@@ -85,7 +85,7 @@ module Lol
 
     def statistics= collection
       @statistics = collection.map do |c|
-        c.respond_to?(:[]) && Statistic.new(c) || c
+        c.respond_to?(:[]) && RawStatistic.new(c) || c
       end
     end
   end
