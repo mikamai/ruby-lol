@@ -15,7 +15,7 @@ module Lol
     attr_reader :losses
 
     # @!attribute [r] modify_date
-    #   @return [DateTime] Date stat was last modified
+    #   @return [Time] Date stat was last modified
     attr_reader :modify_date
 
     # @!attribute [r] modify_date_str

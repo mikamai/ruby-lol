@@ -15,7 +15,7 @@ module Lol
     attr_reader :champion_id
 
     # @!attribute [r] create_date
-    #   @return [DateTime] Date game was played
+    #   @return [Time] Date game was played
     attr_reader :create_date
 
     # @!attribute [r] create_date_str
