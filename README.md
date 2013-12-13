@@ -9,6 +9,7 @@ Add this line to your application's Gemfile:
 
 ```ruby
     gem 'ruby-lol'
+```
 
 And then execute:
 
@@ -38,6 +39,8 @@ Or install it yourself as:
     # let's play a bit, who is free to play?
     client.champion.select {|c| c.free_to_play }.map {|c| c.name}
     # => %w(Aatrox Cassiopeia Lux Malphite MissFortune MonkeyKing Nautilus Sivir Talon Taric)
+```
+
 ## Contributing
 
 1. Fork it
