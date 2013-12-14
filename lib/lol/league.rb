@@ -26,7 +26,8 @@ module Lol
     attr_writer :timestamp, :name, :tier, :queue
 
     def entries= list
-      "foo"
+      @entries = []
+      list.each {|entry| @entries << LeagueEntry.new(entry)}
     end
   end
 end

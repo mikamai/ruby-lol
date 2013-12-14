@@ -71,7 +71,8 @@ module Lol
     # Retrieves leagues data for summoner, including leagues for all of summoner's teams, v2.1
     # @return [Array] an array of champions
     def league21 summoner_id
-      get(api_url("v2.1", "league/by-summoner/#{summoner_id}"))[summoner_id].map {|l| League.new}
+      response = get(api_url("v2.1", "league/by-summoner/#{summoner_id}"))[summoner_id]
+      response.is_a?(Hash) ? [League.new(response)] : response.map {|l| League.new l}
     end
 
     # Calls the latest API version of stats
