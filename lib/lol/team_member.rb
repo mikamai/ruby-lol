@@ -2,10 +2,6 @@ require 'lol/model'
 
 module Lol
   class TeamMember < Lol::Model
-    # @!attribute [r] raw
-    #   @return [Hash] raw version of options Hash used to initialize TeamMember
-    attr_reader :raw
-
     # @!attribute [r] invite_date
     #   @return [Time] Invite date
     attr_reader :invite_date

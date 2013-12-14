@@ -2,10 +2,6 @@ require 'lol/model'
 
 module Lol
   class Roster < Lol::Model
-    # @!attribute [r] raw
-    #   @return [Hash] raw version of options Hash used to initialize Roster
-    attr_reader :raw
-
     # @!attribute [r] owner_id
     #   @return [Fixnum] Team Owner Id
     attr_reader :owner_id

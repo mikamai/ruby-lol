@@ -2,10 +2,6 @@ require 'lol/model'
 
 module Lol
   class ChampionStatisticsSummary < Lol::Model
-    # @!attribute [r] raw
-    #   @return [Hash] raw version of options Hash used to initialize ChampionStatisticsSummary
-    attr_reader :raw
-
     # @!attribute [r] id
     #   @return [Fixnum] Champion Id
     attr_reader :id

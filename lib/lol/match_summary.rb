@@ -2,10 +2,6 @@ require 'lol/model'
 
 module Lol
   class MatchSummary < Lol::Model
-    # @!attribute [r] raw
-    #   @return [Hash] raw version of options Hash used to initialize MatchSummary
-    attr_reader :raw
-
     # @!attribute [r] assists
     #   @return [Fixnum] Number of assists
     attr_reader :assists

@@ -2,10 +2,6 @@ require 'lol/model'
 
 module Lol
   class Player < Lol::Model
-    # @!attribute [r] raw
-    #   @return [Hash] raw version of options Hash used to initialize Player
-    attr_reader :raw
-
     # @!attribute [r] champion_id
     #   @return [Fixnum] Champion Id associated with player
     attr_reader :champion_id

@@ -2,10 +2,6 @@ require 'lol/model'
 
 module Lol
   class RankedStatisticsSummary < Lol::Model
-    # @!attribute [r] raw
-    #   @return [Hash] raw version of options Hash used to initialize RankedStatisticsSummary
-    attr_reader :raw
-
     # @!attribute [r] champions
     #   @return [Array] List of player stats summarized by champion
     attr_reader :champions

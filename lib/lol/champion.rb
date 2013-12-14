@@ -2,10 +2,6 @@ require 'lol/model'
 
 module Lol
   class Champion < Lol::Model
-    # @!attribute [r] raw
-    #   @return [String] raw version of options Hash used to initialize Champion
-    attr_reader :raw
-
     # @!attribute [r] id
     #   @return [Fixnum] id of Champion
     attr_reader :id

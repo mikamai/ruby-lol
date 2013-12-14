@@ -2,10 +2,6 @@ require 'lol/model'
 
 module Lol
   class TeamStatistic < Lol::Model
-    # @!attribute [r] raw
-    #   @return [Hash] raw version of options Hash used to initialize TeamStatistic
-    attr_reader :raw
-
     # @!attribute [r] average_games_played
     #   @return [Fixnum] Average games played
     attr_reader :average_games_played

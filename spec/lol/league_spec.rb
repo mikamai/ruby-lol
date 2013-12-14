@@ -22,6 +22,8 @@ describe League do
       end
     end
 
-    pending "fills entries with LeagueEntry objects"
+    it "fills entries with LeagueEntry objects" do
+
+    end
   end
 end

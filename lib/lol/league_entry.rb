@@ -1,6 +1,6 @@
 module Lol
   # Holds the representation of a League
-  class League < Model
+  class LeagueEntry < Model
     # @!attribute [r] timestamp
     #   @return [String] timestamp of league snapshot
     attr_reader :timestamp

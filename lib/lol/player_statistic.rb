@@ -2,10 +2,6 @@ require 'lol/model'
 
 module Lol
   class PlayerStatistic < Lol::Model
-    # @!attribute [r] raw
-    #   @return [Hash] raw version of options Hash used to initialize AggregatedStatistic
-    attr_reader :raw
-
     # @!attribute [r] aggregated_stats
     #   @return [Array] List of aggregated statistics
     attr_reader :aggregated_stats

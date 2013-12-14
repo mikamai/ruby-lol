@@ -2,10 +2,6 @@ require 'lol/model'
 
 module Lol
   class RawStatistic < Lol::Model
-    # @!attribute [r] raw
-    #   @return [Hash] raw version of options Hash used to initialize Statistic
-    attr_reader :raw
-
     # @!attribute [r] id
     #   @return [Fixnum] Raw Statistic Id
     attr_reader :id
