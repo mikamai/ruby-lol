@@ -39,6 +39,25 @@ Or install it yourself as:
     # let's play a bit, who is free to play?
     client.champion.select {|c| c.free_to_play }.map {|c| c.name}
     # => %w(Aatrox Cassiopeia Lux Malphite MissFortune MonkeyKing Nautilus Sivir Talon Taric)
+
+    # it's time to fetch some of my games, isn't it?
+    games = client.game my_summoner_id
+    # => Array of Lol::Game
+
+    # let's get one game and look into it
+    game = games.first
+
+    # who was I playing with?
+    game.fellow_players
+    # => Array of Lol::Player
+
+    # gimme some stats!
+    game.statistics
+    # => Array of Lol::RawStatistic
+
+    # let's get some info about my Leagues now
+    leagues = client.league my_summoner_id
+    # => Array of Lol::League
 ```
 
 ## Contributing
