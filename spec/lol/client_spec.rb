@@ -33,8 +33,13 @@ describe Client do
   end
 
   describe "#champion" do
-    it "defaults to v1.1" do
-      expect(subject).to receive(:champion11)
+    it "returns an instance of ChampionRequest" do
+      expect(subject.champion).to be_a(ChampionRequest)
+    end
+
+    it "initializes the ChampionRequest with the current API key" do
+      expect(ChampionRequest).to receive(:new).with(subject.api_key)
+
       subject.champion
     end
   end

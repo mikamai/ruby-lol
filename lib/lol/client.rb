@@ -38,7 +38,7 @@ module Lol
 
     # Calls the latest API version of champion
     def champion
-      champion11
+      @champion_request ||= ChampionRequest.new(api_key)
     end
 
     # Retrieve all champions, v1.1
