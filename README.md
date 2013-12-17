@@ -36,32 +36,48 @@ Or install it yourself as:
     na_client = Lol::Client.new "my_api_key", :region => "na"
     # => <Lol::Client:0x007fd09d1abb00 @api_key="my_api_key", @region="na">
 
-    # gets all champions
-    champions = client.champion
-    # => Array of Lol::Champion
+    # Available Requests
+    client.champion
+    # => Lol::ChampionRequest
+    client.game
+    # => Lol::GameRequest
+    client.league
+    # => Lol::LeagueRequest
+    client.stats
+    # => Lol::StatsRequest
+    client.summoner
+    # => Lol::SummonerRequest
+    client.team
+    # => Lol::TeamRequest
 
-    # let's play a bit, who is free to play?
-    client.champion.select {|c| c.free_to_play }.map {|c| c.name}
-    # => %w(Aatrox Cassiopeia Lux Malphite MissFortune MonkeyKing Nautilus Sivir Talon Taric)
+    # Available methods for each request type
+    client.champion.get
+    # => Lol::Champion
 
-    # it's time to fetch some of my games, isn't it?
-    games = client.game my_summoner_id
-    # => Array of Lol::Game
+    client.game.recent(summoner_id)
+    # => Lol::Game
 
-    # let's get one game and look into it
-    game = games.first
+    client.league.get(summoner_id)
+    # => Lol::League
 
-    # who was I playing with?
-    game.fellow_players
-    # => Array of Lol::Player
+    client.stats.summary(summoner_id)
+    # => Lol::SummaryStats
+    client.stats.ranked(summoner_id)
+    # => Lol::RankedStats
 
-    # gimme some stats!
-    game.statistics
-    # => Array of Lol::RawStatistic
+    client.summoner.masteries(summoner_id)
+    # => Lol::Masteries
+    client.summoner.runes(summoner_id)
+    # => Lol::Runes
+    client.summoner.by_name(name)
+    # => Lol::Summoner
+    client.summoner.get(summoner_id)
+    # => Lol::Summoner
+    client.summoner.name(summoner_ids)
+    # => Array
 
-    # let's get some info about my Leagues now
-    leagues = client.league my_summoner_id
-    # => Array of Lol::League
+    client.team.get(summoner_id)
+    # => Array
 ```
 
 ## Contributing

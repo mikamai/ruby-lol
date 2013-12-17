@@ -20,189 +20,74 @@ describe Client do
     end
   end
 
-  describe "#get" do
-    it "calls HTTParty get" do
-      expect(Client).to receive(:get).and_return(error_401)
-      expect { subject.get "foo"}.to raise_error(InvalidAPIResponse)
-    end
-
-    it "handles 401" do
-      expect(Client).to receive(:get).and_return(error_401)
-      expect { subject.champion }.to raise_error(InvalidAPIResponse)
-    end
-  end
 
   describe "#champion" do
-    it "defaults to v1.1" do
-      expect(subject).to receive(:champion11)
+    it "returns an instance of ChampionRequest" do
+      expect(subject.champion).to be_a(ChampionRequest)
+    end
+
+    it "initializes the ChampionRequest with the current API key and region" do
+      expect(ChampionRequest).to receive(:new).with(subject.api_key, subject.region)
+
       subject.champion
     end
   end
 
-  describe "#champion11" do
-    let(:client) { Client.new "foo" }
-
-    subject do
-      expect(client).to receive(:get).with(client.api_url("v1.1", "champion")).and_return(load_fixture("champion", "v1.1", "get"))
-
-      client.champion11
-    end
-
-    it "returns an array" do
-      expect(subject).to be_a(Array)
-    end
-
-    it "returns an array of champions" do
-      expect(subject.map {|e| e.class}.uniq).to eq([Champion])
-    end
-
-    it "fetches champions from the API" do
-      expect(subject.size).to eq(load_fixture("champion", "v1.1", "get")["champions"].size)
-    end
-  end
-
   describe '#game' do
-    it 'requires a summoner id' do
-      expect { subject.game }.to raise_error ArgumentError
+    it "returns an instance of GameRequest" do
+      expect(subject.game).to be_a(GameRequest)
     end
 
-    it 'defaults to v1.1' do
-      expect(subject).to receive(:game11).with 'foo'
-      subject.game 'foo'
-    end
-  end
+    it "initializes the GameRequest with the current API key and region" do
+      expect(GameRequest).to receive(:new).with(subject.api_key, subject.region)
 
-  describe '#game11' do
-    let(:client) { Client.new 'foo' }
-
-    subject do
-      expect(Client).to receive(:get).with(client.api_url('v1.1', "game/by-summoner/1/recent")).and_return load_fixture('game', 'v1.1', 'get')
-      client.game11 1
-    end
-
-    it 'returns an array' do
-      expect(subject).to be_a Array
-    end
-
-    it 'returns an array of Games' do
-      expect(subject.map(&:class).uniq).to eq [Game]
-    end
-
-    it 'fetches games from the API' do
-      expect(subject.size).to eq load_fixture('game', 'v1.1', 'get')['games'].size
+      subject.game
     end
   end
 
   describe '#stats' do
-    it 'defaults to v1.1' do
-      expect(subject).to receive(:stats11).with 'foo'
-      subject.stats 'foo'
-    end
-  end
-
-  describe '#stats11' do
-    let(:client) { Client.new 'foo' }
-    let(:fixture) { load_fixture 'stats', 'v1.1', 'get' }
-
-    subject do
-      expect(Client).to receive(:get).with(client.api_url('v1.1', "stats/by-summoner/1/summary")).and_return fixture
-      client.stats11 1
+    it "returns an instance of StatsRequest" do
+      expect(subject.stats).to be_a(StatsRequest)
     end
 
-    it 'requires a summoner' do
-      expect { client.stats }.to raise_error ArgumentError
-    end
+    it "initializes the StatsRequest with the current API key and region" do
+      expect(StatsRequest).to receive(:new).with(subject.api_key, subject.region)
 
-    it 'returns an array' do
-      expect(subject).to be_a Array
-    end
-
-    it 'returns an array of PlayerStatistic' do
-      expect(subject.map(&:class).uniq).to eq [PlayerStatistic]
-    end
-
-    it 'fetches PlayerStatistics from the API' do
-      expect(subject.size).to eq load_fixture('stats', 'v1.1', 'get')['playerStatSummaries'].size
-    end
-
-    it 'optionally accepts a season' do
-      expect(Client).to receive(:get).with(client.api_url('v1.1', 'stats/by-summoner/1/summary', season: '1')).and_return fixture
-      client.stats11 '1', season: '1'
-    end
-
-    it 'raises an error when unexpected parameter is received' do
-      expect { client.stats11 '1', asd: 'foo' }.to raise_error ArgumentError
-    end
-  end
-
-  describe '#ranked_stats' do
-    it 'defaults to v1.1' do
-      expect(subject).to receive(:ranked_stats11).with 'foo'
-      subject.ranked_stats 'foo'
-    end
-  end
-
-  describe '#ranked_stats11' do
-    let(:client) { Client.new 'foo' }
-    let(:fixture) { load_fixture 'ranked_stats', 'v1.1', 'get' }
-
-    subject do
-      expect(Client).to receive(:get).with(client.api_url('v1.1', "stats/by-summoner/1/ranked")).and_return fixture
-      client.ranked_stats11 1
-    end
-
-    it 'requires a summoner' do
-      expect { client.ranked_stats }.to raise_error ArgumentError
-    end
-
-    it 'returns a RankedStatisticsSummary' do
-      expect(subject).to be_a RankedStatisticsSummary
-    end
-
-    it 'fetches RankedStatisticsSummary from the API' do
-      expect(subject.champions.size).to eq load_fixture('ranked_stats', 'v1.1', 'get')['champions'].size
-    end
-
-    it 'optionally accepts a season' do
-      expect(Client).to receive(:get).with(client.api_url('v1.1', 'stats/by-summoner/1/ranked', season: '1')).and_return fixture
-      client.ranked_stats11 '1', season: '1'
-    end
-
-    it 'raises an error when unexpected parameter is received' do
-      expect { client.ranked_stats11 '1', asd: 'foo' }.to raise_error ArgumentError
+      subject.stats
     end
   end
 
   describe '#team' do
-    it 'defaults to v2.1' do
-      expect(subject).to receive(:team21).with 'foo'
-      subject.team 'foo'
+    it "returns an instance of TeamRequest" do
+      expect(subject.team).to be_a(TeamRequest)
+    end
+
+    it "initializes the TeamRequest with the current API key and region" do
+      expect(TeamRequest).to receive(:new).with(subject.api_key, subject.region)
+
+      subject.team
     end
   end
 
-  describe '#team21' do
-    let(:client) { Client.new 'foo' }
-    let(:fixture) { load_fixture 'team', 'v2.1', 'get' }
-
-    subject do
-      expect(Client).to receive(:get).with(client.api_url('v2.1', "team/by-summoner/1")).and_return fixture
-      client.team21 1
+  describe "#league" do
+    it "returns an instance of LeagueRequest" do
+      expect(subject.league).to be_a(LeagueRequest)
     end
 
-    it 'requires a summoner' do
-      expect { client.team21 }.to raise_error ArgumentError
+    it "initializes the LeagueRequest with the current API key and region" do
+      expect(LeagueRequest).to receive(:new).with(subject.api_key, subject.region)
+
+      subject.league
+    end
+  end
+
+  describe "#api_key" do
+    it "returns an api key" do
+      expect(subject.api_key).to eq("foo")
     end
 
-    it 'returns an array' do
-      expect(subject).to be_a Array
-    end
-
-    it 'returns an array of Team' do
-      expect(subject.map(&:class).uniq).to eq [Team]
-    end
-
-    it 'fetches Team from the API' do
-      expect(subject.size).to eq fixture.size
+    it "is read_only" do
+      expect { subject.api_key = "bar" }.to raise_error(NoMethodError)
     end
   end
 
@@ -217,60 +102,4 @@ describe Client do
     end
   end
 
-  describe "#api_key" do
-    it "returns an api key" do
-      expect(subject.api_key).to eq("foo")
-    end
-
-    it "is read_only" do
-      expect { subject.api_key = "bar" }.to raise_error(NoMethodError)
-    end
-  end
-
-  describe "api_url" do
-    it "defaults on Client#region" do
-      expect(subject.api_url("foo", "bar")).to match(/\/euw\//)
-    end
-
-    it "requires a version and a path" do
-      expect { subject.api_url("foo") }.to raise_error(ArgumentError)
-    end
-
-    it "returns a full fledged api url" do
-      expect(subject.api_url("foo", "bar")).to eq("http://prod.api.pvp.net/api/euw/foo/bar?api_key=foo")
-    end
-
-    it "has lol if url is v1.1" do
-      expect(subject.api_url("v1.1", "foo")).to eq("http://prod.api.pvp.net/api/lol/euw/v1.1/foo?api_key=foo")
-    end
-
-    it "does not have lol if url is v2.1 or greater" do
-      expect(subject.api_url("v2.1", "foo")).to eq("http://prod.api.pvp.net/api/euw/v2.1/foo?api_key=foo")
-    end
-
-    it "optionally accept query string parameters" do
-      expect(subject.api_url("v2.1", "foo", a: 'b')).to eq("http://prod.api.pvp.net/api/euw/v2.1/foo?a=b&api_key=foo")
-    end
-  end
-
-  describe "league" do
-    it "calls latest version of league" do
-      expect(subject).to receive(:league21)
-      subject.league("foo")
-    end
-  end
-
-  describe "league21" do
-    let(:client) { Client.new "foo" }
-
-    subject do
-      expect(client).to receive(:get).with(client.api_url("v2.1", "league/by-summoner/foo")).and_return(load_fixture("league", "v2.1", "get"))
-
-      client.league21("foo")
-    end
-
-    it "returns an array of Leagues" do
-      expect(subject.map(&:class).uniq).to eq([League])
-    end
-  end
 end
