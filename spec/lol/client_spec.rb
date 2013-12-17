@@ -57,74 +57,25 @@ describe Client do
     end
   end
 
-  describe '#ranked_stats' do
-    it 'defaults to v1.1' do
-      expect(subject).to receive(:ranked_stats11).with 'foo'
-      subject.ranked_stats 'foo'
-    end
-  end
-
-  describe '#ranked_stats11' do
-    let(:client) { Client.new 'foo' }
-    let(:fixture) { load_fixture 'ranked_stats', 'v1.1', 'get' }
-
-    subject do
-      expect(Client).to receive(:get).with(client.api_url('v1.1', "stats/by-summoner/1/ranked")).and_return fixture
-      client.ranked_stats11 1
-    end
-
-    it 'requires a summoner' do
-      expect { client.ranked_stats }.to raise_error ArgumentError
-    end
-
-    it 'returns a RankedStatisticsSummary' do
-      expect(subject).to be_a RankedStatisticsSummary
-    end
-
-    it 'fetches RankedStatisticsSummary from the API' do
-      expect(subject.champions.size).to eq load_fixture('ranked_stats', 'v1.1', 'get')['champions'].size
-    end
-
-    it 'optionally accepts a season' do
-      expect(Client).to receive(:get).with(client.api_url('v1.1', 'stats/by-summoner/1/ranked', season: '1')).and_return fixture
-      client.ranked_stats11 '1', season: '1'
-    end
-
-    it 'raises an error when unexpected parameter is received' do
-      expect { client.ranked_stats11 '1', asd: 'foo' }.to raise_error ArgumentError
-    end
-  end
-
   describe '#team' do
-    it 'defaults to v2.1' do
-      expect(subject).to receive(:team21).with 'foo'
-      subject.team 'foo'
+    it "returns an instance of TeamRequest" do
+      expect(subject.team).to be_a(TeamRequest)
+    end
+
+    it "initializes the TeamRequest with the current API key and region" do
+      expect(TeamRequest).to receive(:new).with(subject.api_key, subject.region)
+
+      subject.team
     end
   end
 
-  describe '#team21' do
-    let(:client) { Client.new 'foo' }
-    let(:fixture) { load_fixture 'team', 'v2.1', 'get' }
-
-    subject do
-      expect(Client).to receive(:get).with(client.api_url('v2.1', "team/by-summoner/1")).and_return fixture
-      client.team21 1
+  describe "#api_key" do
+    it "returns an api key" do
+      expect(subject.api_key).to eq("foo")
     end
 
-    it 'requires a summoner' do
-      expect { client.team21 }.to raise_error ArgumentError
-    end
-
-    it 'returns an array' do
-      expect(subject).to be_a Array
-    end
-
-    it 'returns an array of Team' do
-      expect(subject.map(&:class).uniq).to eq [Team]
-    end
-
-    it 'fetches Team from the API' do
-      expect(subject.size).to eq fixture.size
+    it "is read_only" do
+      expect { subject.api_key = "bar" }.to raise_error(NoMethodError)
     end
   end
 
@@ -136,16 +87,6 @@ describe Client do
     it "can be set to a new region" do
       subject.region = "NA"
       expect(subject.region).to eq("NA")
-    end
-  end
-
-  describe "#api_key" do
-    it "returns an api key" do
-      expect(subject.api_key).to eq("foo")
-    end
-
-    it "is read_only" do
-      expect { subject.api_key = "bar" }.to raise_error(NoMethodError)
     end
   end
 

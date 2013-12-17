@@ -43,6 +43,8 @@ Or install it yourself as:
     # => Lol::StatsRequest
     client.summoner
     # => Lol::SummonerRequest
+    client.team
+    # => Lol::TeamRequest
 
     # Available methods for each request type
     client.champion.get
@@ -70,6 +72,8 @@ Or install it yourself as:
     client.summoner.name(summoner_ids)
     # => Array
 
+    client.team.get(summoner_id)
+    # => Array
 ```
 
 ## Contributing

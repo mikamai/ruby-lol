@@ -4,6 +4,7 @@ require "lol/request"
 require "lol/champion_request"
 require "lol/game_request"
 require "lol/stats_request"
+require "lol/team_request"
 
 require "lol/model"
 require "lol/champion"

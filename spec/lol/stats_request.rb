@@ -12,5 +12,18 @@ module Lol
         PlayerStatistic.new player_stat_data
       end
     end
+
+    # Retrieves ranked statistics summary for the given summoner
+    # @param [String] summoner_id
+    # @return [RankedStatisticsSummary] Ranked Stats.
+    #   Includes stats for Twisted Treeline and Summoner's Rift
+    def ranked summoner_id, extra = {}
+      if extra.keys.select { |k| k.to_sym != :season }.any?
+        raise ArgumentError, 'Only :season is allowed as extra parameter'
+      end
+      stats_api_path = "stats/by-summoner/#{summoner_id}/ranked"
+      RankedStatisticsSummary.new perform_request api_url 'v1.1', stats_api_path, extra
+    end
+
   end
 end
