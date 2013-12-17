@@ -5,7 +5,6 @@ module Lol
   class InvalidAPIResponse < StandardError; end
 
   class Client
-    include HTTParty
 
     # @!attribute [rw] region
     #   @return [String] name of region
@@ -15,36 +14,9 @@ module Lol
     #   @return [String] the API key that has been used
     attr_reader :api_key
 
-    # Returns a full url for an API call
-    # @param version [String] API version to call
-    # @param path [String] API path to call
-    # @return [String] full fledged url
-    def api_url version, path, params = {}
-      lol = version == "v1.1" ? "lol" : ""
-      query_string = URI.encode_www_form params.merge api_key: api_key
-      File.join "http://prod.api.pvp.net/api/", lol, "/#{region}/#{version}/", "#{path}?#{query_string}"
-    end
-
-    # Calls the API via HTTParty and handles errors
-    #
-    def get url
-      response = self.class.get(url)
-      if response.is_a?(Hash) && response["status"]
-        raise InvalidAPIResponse.new(response["status"]["message"])
-      else
-        response
-      end
-    end
-
     # Calls the latest API version of champion
     def champion
       @champion_request ||= ChampionRequest.new(api_key)
-    end
-
-    # Retrieve all champions, v1.1
-    # @return [Array] an array of champions
-    def champion11
-      get(api_url("v1.1", "champion"))["champions"].map {|c| Champion.new(c)}
     end
 
     # Calls the latest API version of game returning the list of

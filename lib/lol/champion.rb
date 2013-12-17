@@ -1,5 +1,3 @@
-require 'lol/model'
-
 module Lol
   class Champion < Lol::Model
     # @!attribute [r] id

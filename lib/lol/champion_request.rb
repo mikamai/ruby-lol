@@ -1,22 +1,11 @@
 module Lol
-  class ChampionRequest
-    # @!attribute [r] api_key
-    #   @return [String] api_key
-    attr_accessor :region
+  class ChampionRequest < Request
 
-    # @paramt
-    def initialize api_key
-      @api_key = api_key
+    # Retrieve all champions, v1.1
+    # @return [Array] an array of champions
+    def get
+      perform_request(api_url("v1.1", "champion"))["champions"].map {|c| Champion.new(c)}
     end
 
-
-    private
-
-    # Sets api_key to new_key
-    # @param new_key [String] a Riot Games API key
-    # @return [String] new_key
-    def api_key= new_key
-      @api_key = new_key
-    end
   end
 end

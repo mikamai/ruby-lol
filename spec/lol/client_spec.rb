@@ -20,17 +20,6 @@ describe Client do
     end
   end
 
-  describe "#get" do
-    it "calls HTTParty get" do
-      expect(Client).to receive(:get).and_return(error_401)
-      expect { subject.get "foo"}.to raise_error(InvalidAPIResponse)
-    end
-
-    it "handles 401" do
-      expect(Client).to receive(:get).and_return(error_401)
-      expect { subject.champion }.to raise_error(InvalidAPIResponse)
-    end
-  end
 
   describe "#champion" do
     it "returns an instance of ChampionRequest" do
@@ -229,32 +218,6 @@ describe Client do
 
     it "is read_only" do
       expect { subject.api_key = "bar" }.to raise_error(NoMethodError)
-    end
-  end
-
-  describe "api_url" do
-    it "defaults on Client#region" do
-      expect(subject.api_url("foo", "bar")).to match(/\/euw\//)
-    end
-
-    it "requires a version and a path" do
-      expect { subject.api_url("foo") }.to raise_error(ArgumentError)
-    end
-
-    it "returns a full fledged api url" do
-      expect(subject.api_url("foo", "bar")).to eq("http://prod.api.pvp.net/api/euw/foo/bar?api_key=foo")
-    end
-
-    it "has lol if url is v1.1" do
-      expect(subject.api_url("v1.1", "foo")).to eq("http://prod.api.pvp.net/api/lol/euw/v1.1/foo?api_key=foo")
-    end
-
-    it "does not have lol if url is v2.1 or greater" do
-      expect(subject.api_url("v2.1", "foo")).to eq("http://prod.api.pvp.net/api/euw/v2.1/foo?api_key=foo")
-    end
-
-    it "optionally accept query string parameters" do
-      expect(subject.api_url("v2.1", "foo", a: 'b')).to eq("http://prod.api.pvp.net/api/euw/v2.1/foo?a=b&api_key=foo")
     end
   end
 
