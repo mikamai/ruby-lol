@@ -16,23 +16,13 @@ module Lol
 
     # Calls the latest API version of champion
     def champion
-      @champion_request ||= ChampionRequest.new(api_key)
+      @champion_request ||= ChampionRequest.new(api_key, region)
     end
 
     # Calls the latest API version of game returning the list of
     # recent games played by a summoner
-    def game *args
-      game11 *args
-    end
-
-    # Returns a list of the recent games played by a summoner
-    # @param summoner_id [Fixnum] Summoner id
-    # @return [Array] an array of games
-    def game11 summoner_id
-      summoner_api_path = "game/by-summoner/#{summoner_id}/recent"
-      get(api_url("v1.1", summoner_api_path))["games"].map do |game_data|
-        Game.new game_data
-      end
+    def game
+      @game_request ||= GameRequest.new(api_key, region)
     end
 
     # Calls the latest API version of league

@@ -43,3 +43,7 @@ end
 def error_401
   {"status" => {"message" => "Foo", "status_code" => 401}}
 end
+
+RSpec.configure do |c|
+  c.fail_fast = true
+end

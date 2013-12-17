@@ -26,64 +26,22 @@ describe Client do
       expect(subject.champion).to be_a(ChampionRequest)
     end
 
-    it "initializes the ChampionRequest with the current API key" do
-      expect(ChampionRequest).to receive(:new).with(subject.api_key)
+    it "initializes the ChampionRequest with the current API key and region" do
+      expect(ChampionRequest).to receive(:new).with(subject.api_key, subject.region)
 
       subject.champion
     end
   end
 
-  describe "#champion11" do
-    let(:client) { Client.new "foo" }
-
-    subject do
-      expect(client).to receive(:get).with(client.api_url("v1.1", "champion")).and_return(load_fixture("champion", "v1.1", "get"))
-
-      client.champion11
-    end
-
-    it "returns an array" do
-      expect(subject).to be_a(Array)
-    end
-
-    it "returns an array of champions" do
-      expect(subject.map {|e| e.class}.uniq).to eq([Champion])
-    end
-
-    it "fetches champions from the API" do
-      expect(subject.size).to eq(load_fixture("champion", "v1.1", "get")["champions"].size)
-    end
-  end
-
   describe '#game' do
-    it 'requires a summoner id' do
-      expect { subject.game }.to raise_error ArgumentError
+    it "returns an instance of GameRequest" do
+      expect(subject.game).to be_a(GameRequest)
     end
 
-    it 'defaults to v1.1' do
-      expect(subject).to receive(:game11).with 'foo'
-      subject.game 'foo'
-    end
-  end
+    it "initializes the GameRequest with the current API key and region" do
+      expect(GameRequest).to receive(:new).with(subject.api_key, subject.region)
 
-  describe '#game11' do
-    let(:client) { Client.new 'foo' }
-
-    subject do
-      expect(Client).to receive(:get).with(client.api_url('v1.1', "game/by-summoner/1/recent")).and_return load_fixture('game', 'v1.1', 'get')
-      client.game11 1
-    end
-
-    it 'returns an array' do
-      expect(subject).to be_a Array
-    end
-
-    it 'returns an array of Games' do
-      expect(subject.map(&:class).uniq).to eq [Game]
-    end
-
-    it 'fetches games from the API' do
-      expect(subject.size).to eq load_fixture('game', 'v1.1', 'get')['games'].size
+      subject.game
     end
   end
 
