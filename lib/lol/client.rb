@@ -14,20 +14,24 @@ module Lol
     #   @return [String] the API key that has been used
     attr_reader :api_key
 
-    # Calls the latest API version of champion
+    # @return [ChampionRequest]
     def champion
       @champion_request ||= ChampionRequest.new(api_key, region)
     end
 
-    # Calls the latest API version of game returning the list of
-    # recent games played by a summoner
+    # @return [GameRequest]
     def game
       @game_request ||= GameRequest.new(api_key, region)
     end
 
-    # Calls the latest API version of league
-    def league summoner_id
-      league21 summoner_id
+    # @return [StatsRequest]
+    def stats
+      @stats_request ||= StatsRequest.new(api_key, region)
+    end
+
+    # @return [LeagueRequest]
+    def league
+      @league_request ||= LeagueRequest.new(api_key, region)
     end
 
     # Retrieves leagues data for summoner, including leagues for all of summoner's teams, v2.1
@@ -37,22 +41,7 @@ module Lol
       response.is_a?(Hash) ? [League.new(response)] : response.map {|l| League.new l}
     end
 
-    # Calls the latest API version of stats
-    def stats *args
-      stats11 *args
-    end
 
-    # Retrieves player statistics summaries for the given summoner
-    # @return [Array] an array of player statistics, one per queue type
-    def stats11 summoner_id, extra = {}
-      if extra.keys.select { |k| k.to_sym != :season }.any?
-        raise ArgumentError, 'Only :season is allowed as extra parameter'
-      end
-      stats_api_path = "stats/by-summoner/#{summoner_id}/summary"
-      get(api_url('v1.1', stats_api_path, extra))['playerStatSummaries'].map do |player_stat_data|
-        PlayerStatistic.new player_stat_data
-      end
-    end
 
     # Calls the latest API version of ranked_stats
     def ranked_stats *args

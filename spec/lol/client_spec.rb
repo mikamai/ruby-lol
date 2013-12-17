@@ -46,44 +46,14 @@ describe Client do
   end
 
   describe '#stats' do
-    it 'defaults to v1.1' do
-      expect(subject).to receive(:stats11).with 'foo'
-      subject.stats 'foo'
-    end
-  end
-
-  describe '#stats11' do
-    let(:client) { Client.new 'foo' }
-    let(:fixture) { load_fixture 'stats', 'v1.1', 'get' }
-
-    subject do
-      expect(Client).to receive(:get).with(client.api_url('v1.1', "stats/by-summoner/1/summary")).and_return fixture
-      client.stats11 1
+    it "returns an instance of StatsRequest" do
+      expect(subject.stats).to be_a(StatsRequest)
     end
 
-    it 'requires a summoner' do
-      expect { client.stats }.to raise_error ArgumentError
-    end
+    it "initializes the StatsRequest with the current API key and region" do
+      expect(StatsRequest).to receive(:new).with(subject.api_key, subject.region)
 
-    it 'returns an array' do
-      expect(subject).to be_a Array
-    end
-
-    it 'returns an array of PlayerStatistic' do
-      expect(subject.map(&:class).uniq).to eq [PlayerStatistic]
-    end
-
-    it 'fetches PlayerStatistics from the API' do
-      expect(subject.size).to eq load_fixture('stats', 'v1.1', 'get')['playerStatSummaries'].size
-    end
-
-    it 'optionally accepts a season' do
-      expect(Client).to receive(:get).with(client.api_url('v1.1', 'stats/by-summoner/1/summary', season: '1')).and_return fixture
-      client.stats11 '1', season: '1'
-    end
-
-    it 'raises an error when unexpected parameter is received' do
-      expect { client.stats11 '1', asd: 'foo' }.to raise_error ArgumentError
+      subject.stats
     end
   end
 
