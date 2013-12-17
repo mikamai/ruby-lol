@@ -69,6 +69,18 @@ describe Client do
     end
   end
 
+  describe "#league" do
+    it "returns an instance of LeagueRequest" do
+      expect(subject.league).to be_a(LeagueRequest)
+    end
+
+    it "initializes the LeagueRequest with the current API key and region" do
+      expect(LeagueRequest).to receive(:new).with(subject.api_key, subject.region)
+
+      subject.league
+    end
+  end
+
   describe "#api_key" do
     it "returns an api key" do
       expect(subject.api_key).to eq("foo")
@@ -90,24 +102,4 @@ describe Client do
     end
   end
 
-  describe "league" do
-    it "calls latest version of league" do
-      expect(subject).to receive(:league21)
-      subject.league("foo")
-    end
-  end
-
-  describe "league21" do
-    let(:client) { Client.new "foo" }
-
-    subject do
-      expect(client).to receive(:get).with(client.api_url("v2.1", "league/by-summoner/foo")).and_return(load_fixture("league", "v2.1", "get"))
-
-      client.league21("foo")
-    end
-
-    it "returns an array of Leagues" do
-      expect(subject.map(&:class).uniq).to eq([League])
-    end
-  end
 end

@@ -39,13 +39,6 @@ module Lol
       @team_request ||= TeamRequest.new(api_key, region)
     end
 
-    # Retrieves leagues data for summoner, including leagues for all of summoner's teams, v2.1
-    # @return [Array] an array of champions
-    def league21 summoner_id
-      response = get(api_url("v2.1", "league/by-summoner/#{summoner_id}"))[summoner_id]
-      response.is_a?(Hash) ? [League.new(response)] : response.map {|l| League.new l}
-    end
-
     # Initializes a Lol::Client
     # @param api_key [String]
     # @param options [Hash]
