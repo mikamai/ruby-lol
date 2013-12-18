@@ -2,8 +2,6 @@ require 'httparty'
 require 'uri'
 
 module Lol
-  class InvalidAPIResponse < StandardError; end
-
   class Client
 
     # @!attribute [rw] region
@@ -37,6 +35,11 @@ module Lol
     # @return [TeamRequest]
     def team
       @team_request ||= TeamRequest.new(api_key, region)
+    end
+
+    # @return [SummonerRequest]
+    def summoner
+      @summoner_request ||= SummonerRequest.new(api_key, region)
     end
 
     # Initializes a Lol::Client

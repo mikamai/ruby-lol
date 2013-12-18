@@ -1,4 +1,7 @@
 module Lol
+  class InvalidAPIResponse < StandardError; end
+  class NotFound < StandardError; end
+
   # Encapsulates common methods for all requests
   # Request classes inherit from this
   class Request
@@ -28,11 +31,10 @@ module Lol
     # @return [String] raw response of the call
     def perform_request url
       response = self.class.get(url)
-      if response.is_a?(Hash) && response["status"]
-        raise InvalidAPIResponse.new(response["status"]["message"])
-      else
-        response
-      end
+      raise NotFound.new("404 Not Found") if response.respond_to?(:code) && response.not_found?
+      raise InvalidAPIResponse.new(response["status"]["message"]) if response.is_a?(Hash) && response["status"]
+
+      response
     end
 
     def initialize api_key, region

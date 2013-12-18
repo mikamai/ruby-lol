@@ -81,6 +81,18 @@ describe Client do
     end
   end
 
+  describe "#summoner" do
+    it "returns an instance of SummonerRequest" do
+      expect(subject.summoner).to be_a(SummonerRequest)
+    end
+
+    it "initializes the SummonerRequest with the current API key and region" do
+      expect(SummonerRequest).to receive(:new).with(subject.api_key, subject.region)
+
+      subject.summoner
+    end
+  end
+
   describe "#api_key" do
     it "returns an api key" do
       expect(subject.api_key).to eq("foo")

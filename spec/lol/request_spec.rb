@@ -17,14 +17,24 @@ describe Request do
   subject { Request.new "api_key", "euw"}
 
   describe "#perform_request" do
+
+    let(:error401) { error_401 }
+
     it "calls HTTParty get" do
-      expect(subject.class).to receive(:get).and_return(error_401)
+      expect(subject.class).to receive(:get).and_return(error401)
       expect { subject.perform_request "foo"}.to raise_error(InvalidAPIResponse)
     end
 
     it "handles 401" do
-      expect(subject.class).to receive(:get).and_return(error_401)
+      expect(subject.class).to receive(:get).and_return(error401)
       expect { subject.perform_request "foo" }.to raise_error(InvalidAPIResponse)
+    end
+
+    it "handles 404" do
+      expect(error401).to receive(:respond_to?).and_return(true)
+      expect(error401).to receive(:not_found?).and_return(true)
+      expect(subject.class).to receive(:get).and_return(error401)
+      expect { subject.perform_request "foo"}.to raise_error(NotFound)
     end
   end
 

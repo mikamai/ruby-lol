@@ -74,7 +74,7 @@ Or install it yourself as:
     client.summoner.get(summoner_id)
     # => Lol::Summoner
     client.summoner.name(summoner_ids)
-    # => Array
+    # => Array of Hash
 
     client.team.get(summoner_id)
     # => Array
