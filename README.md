@@ -66,15 +66,15 @@ Or install it yourself as:
     # => Lol::RankedStats
 
     client.summoner.masteries(summoner_id)
-    # => Lol::Masteries
+    # => [Lol::Masterypage]
     client.summoner.runes(summoner_id)
-    # => Lol::Runes
+    # => [Lol::Runepage]
     client.summoner.by_name(name)
     # => Lol::Summoner
     client.summoner.get(summoner_id)
     # => Lol::Summoner
     client.summoner.name(summoner_ids)
-    # => Array of Hash
+    # => [Hash]
 
     client.team.get(summoner_id)
     # => Array

@@ -22,5 +22,15 @@ module Lol
     def get summoner_id
       Summoner.new perform_request(api_url("v1.1", "summoner/#{summoner_id}"))
     end
+
+    # Get rune pages by summoner ID
+    # @param [String] summoner_id
+    # @return [Array] array of Lol::Runepage
+    def runes summoner_id
+      perform_request(api_url("v1.1", "summoner/#{summoner_id}/runes"))["pages"].map do |runepage|
+        RunePage.new runepage
+      end
+    end
+
   end
 end

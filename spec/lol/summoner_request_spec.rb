@@ -12,6 +12,7 @@ describe SummonerRequest do
   let(:by_name)     { load_fixture("summoner-by-name", "v1.1", "get") }
   let(:name)        { load_fixture("summoner-name", "v1.1", "get") }
   let(:summoner)    { load_fixture("summoner", "v1.1", "get") }
+  let(:runes)       { load_fixture("summoner-runes", "v1.1", "get") }
 
   describe "#by_name" do
     subject do
@@ -50,7 +51,15 @@ describe SummonerRequest do
   end
 
   describe "#runes" do
-    pending
+    subject do
+      expect(request.class).to receive(:get).with(request.api_url("v1.1", "summoner/foo/runes")).and_return(runes)
+
+      request.runes "foo"
+    end
+
+    it "returns an array of RunePage" do
+      expect(subject.map(&:class).uniq).to eq([RunePage])
+    end
   end
 
   describe "#masteries" do
