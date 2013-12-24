@@ -33,10 +33,6 @@ module Lol
     #   @return [String] wins
     attr_reader :wins
 
-    # @!attribute [r] losses
-    #   @return [String] losses
-    attr_reader :losses
-
     # @!attribute [r] is_hot_streak
     #   @return [Boolean] is currently on hot streak
     attr_reader :is_hot_streak
