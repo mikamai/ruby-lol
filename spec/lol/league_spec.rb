@@ -10,10 +10,10 @@ describe League do
 
   context "initialization" do
     it_behaves_like 'Lol model' do
-      let(:valid_attributes) { { timestamp: 123456 } }
+      let(:valid_attributes) { { name: 'foo' } }
     end
 
-    %w(timestamp name tier queue).each do |attribute|
+    %w(name tier queue).each do |attribute|
       describe "#{attribute} attribute" do
         it_behaves_like 'plain attribute' do
           let(:attribute) { attribute }
@@ -23,7 +23,7 @@ describe League do
     end
 
     it "fills entries with LeagueEntry objects" do
-      league = League.new(load_fixture("league", "v2.1", "get")["123"])
+      league = League.new(load_fixture("league", "v2.2", "get")["123"])
       expect(league.entries.map(&:class).uniq).to eq([LeagueEntry])
     end
   end
