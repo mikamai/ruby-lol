@@ -41,13 +41,6 @@ module Lol
       @api_key = api_key
       @region = region
     end
-    private
 
-    # Sets api_key to new_key
-    # @param new_key [String] a Riot Games API key
-    # @return [String] new_key
-    def api_key= new_key
-      @api_key = new_key
-    end
   end
 end

@@ -12,6 +12,10 @@ describe Request do
     it "accepts a region parameter" do
       expect { ChampionRequest.new "foo" }.to raise_error(ArgumentError)
     end
+
+    it "correctly sets api key" do
+      expect(ChampionRequest.new("api_key", "euw").api_key).to eq("api_key")
+    end
   end
 
   subject { Request.new "api_key", "euw"}
