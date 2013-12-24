@@ -23,7 +23,7 @@ describe League do
     end
 
     it "fills entries with LeagueEntry objects" do
-      league = League.new(load_fixture("league", "v2.1", "get")["foo"])
+      league = League.new(load_fixture("league", "v2.1", "get")["123"])
       expect(league.entries.map(&:class).uniq).to eq([LeagueEntry])
     end
   end
