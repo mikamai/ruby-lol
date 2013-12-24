@@ -25,10 +25,19 @@ module Lol
 
     # Get rune pages by summoner ID
     # @param [String] summoner_id
-    # @return [Array] array of Lol::Runepage
+    # @return [Array] array of Lol::RunePage
     def runes summoner_id
       perform_request(api_url("v1.1", "summoner/#{summoner_id}/runes"))["pages"].map do |runepage|
         RunePage.new runepage
+      end
+    end
+
+    # Get mastery pages by summoner ID
+    # @param [String] summoner_id
+    # @return [Array] array of Lol::MasteryPage
+    def masteries summoner_id
+      perform_request(api_url("v1.1", "summoner/#{summoner_id}/masteries"))["pages"].map do |masterypage|
+        MasteryPage.new masterypage
       end
     end
 

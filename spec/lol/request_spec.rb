@@ -48,14 +48,14 @@ describe Request do
     end
 
     it "returns a full fledged api url" do
-      expect(subject.api_url("foo", "bar")).to eq("http://prod.api.pvp.net/api/euw/foo/bar?api_key=api_key")
+      expect(subject.api_url("foo", "bar")).to eq("http://prod.api.pvp.net/api/lol/euw/foo/bar?api_key=api_key")
     end
 
-    it "has lol if url is v1.1" do
-      expect(subject.api_url("v1.1", "foo")).to eq("http://prod.api.pvp.net/api/lol/euw/v1.1/foo?api_key=api_key")
+    it "has lol if url is different from v2.1" do
+      expect(subject.api_url("v1.2", "foo")).to eq("http://prod.api.pvp.net/api/lol/euw/v1.2/foo?api_key=api_key")
     end
 
-    it "does not have lol if url is v2.1 or greater" do
+    it "does not have lol only url is v2.1" do
       expect(subject.api_url("v2.1", "foo")).to eq("http://prod.api.pvp.net/api/euw/v2.1/foo?api_key=api_key")
     end
 

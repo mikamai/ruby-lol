@@ -21,7 +21,7 @@ module Lol
     # @param path [String] API path to call
     # @return [String] full fledged url
     def api_url version, path, params = {}
-      lol = version == "v1.1" ? "lol" : ""
+      lol = version == "v2.1" ? "" : "lol"
       query_string = URI.encode_www_form params.merge api_key: api_key
       File.join "http://prod.api.pvp.net/api/", lol, "/#{region}/#{version}/", "#{path}?#{query_string}"
     end

@@ -8,11 +8,12 @@ describe SummonerRequest do
     expect(SummonerRequest.ancestors[1]).to eq(Request)
   end
 
-  let(:request)     { SummonerRequest.new "api_key", "euw" }
-  let(:by_name)     { load_fixture("summoner-by-name", "v1.1", "get") }
-  let(:name)        { load_fixture("summoner-name", "v1.1", "get") }
-  let(:summoner)    { load_fixture("summoner", "v1.1", "get") }
-  let(:runes)       { load_fixture("summoner-runes", "v1.1", "get") }
+  let(:request)   { SummonerRequest.new "api_key", "euw" }
+  let(:by_name)   { load_fixture("summoner-by-name", "v1.1", "get") }
+  let(:name)      { load_fixture("summoner-name", "v1.1", "get") }
+  let(:summoner)  { load_fixture("summoner", "v1.1", "get") }
+  let(:runes)     { load_fixture("summoner-runes", "v1.1", "get") }
+  let(:masteries) { load_fixture("summoner-masteries", "v1.1", "get") }
 
   describe "#by_name" do
     subject do
@@ -63,6 +64,14 @@ describe SummonerRequest do
   end
 
   describe "#masteries" do
-    pending
+    subject do
+      expect(request.class).to receive(:get).with(request.api_url("v1.1", "summoner/foo/masteries")).and_return(masteries)
+
+      request.masteries "foo"
+    end
+
+    it "returns an array of MasteryPage" do
+      expect(subject.map(&:class).uniq).to eq([MasteryPage])
+    end
   end
 end

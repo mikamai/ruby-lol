@@ -5,7 +5,7 @@ module Lol
     # @return [Array] an array of games
     def recent summoner_id
       summoner_api_path = "game/by-summoner/#{summoner_id}/recent"
-      perform_request(api_url("v1.1", summoner_api_path))["games"].map do |game_data|
+      perform_request(api_url("v1.2", summoner_api_path))["games"].map do |game_data|
         Game.new game_data
       end
     end

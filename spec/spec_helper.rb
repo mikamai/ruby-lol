@@ -44,6 +44,15 @@ def error_401
   {"status" => {"message" => "Foo", "status_code" => 401}}
 end
 
+def summoners
+  {
+    "euw" => "30743211",
+    "na" => "5908",
+    "eune" => "35778105"
+  }
+end
+
 RSpec.configure do |c|
   c.fail_fast = true
+  c.filter_run_excluding :remote => true
 end

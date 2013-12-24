@@ -3,10 +3,6 @@
 
 ruby-lol is a wrapper to the [Riot Games API](https://developer.riotgames.com).
 
-## IMPORTANT NOTICE
-
-An important piece of refactoring is happening in the *refactoring* branch. Check it out for updated docs. I plan to merge it in this week.
-
 ## Installation
 
 Add this line to your application's Gemfile:

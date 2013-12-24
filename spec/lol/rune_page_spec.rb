@@ -22,8 +22,6 @@ describe RunePage do
     subject { RunePage.new fixture["pages"].first }
 
     it "is populated by all slots" do
-      puts fixture["pages"].first.keys.inspect
-
       expect(subject.slots.size).to eq(slots.size)
     end
   end
