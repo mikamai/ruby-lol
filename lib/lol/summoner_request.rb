@@ -8,7 +8,7 @@ module Lol
     end
 
     # Get list of summoner names by summoner IDs
-    # @param [Array] array of summoner ids
+    # @param [Array] summoner_ids array of summoner ids
     # @return [Array] array of Hash { "id" => "foo", "name" => "bar" }
     def name *summoner_ids
       perform_request(api_url("v1.1", "summoner/#{summoner_ids.join(",")}/name"))["summoners"].map do |summoner|
