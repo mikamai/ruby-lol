@@ -11,10 +11,10 @@ describe StatsRequest do
   end
 
   describe "#summary" do
-    let(:fixture) { load_fixture 'stats', 'v1.1', 'get' }
+    let(:fixture) { load_fixture 'stats', 'v1.2', 'get' }
 
     subject do
-      expect(request.class).to receive(:get).with(request.api_url('v1.1', "stats/by-summoner/1/summary")).and_return fixture
+      expect(request.class).to receive(:get).with(request.api_url('v1.2', "stats/by-summoner/1/summary")).and_return fixture
 
       request.summary 1
     end
@@ -32,11 +32,11 @@ describe StatsRequest do
     end
 
     it 'fetches PlayerStatistics from the API' do
-      expect(subject.size).to eq load_fixture('stats', 'v1.1', 'get')['playerStatSummaries'].size
+      expect(subject.size).to eq load_fixture('stats', 'v1.2', 'get')['playerStatSummaries'].size
     end
 
     it 'optionally accepts a season' do
-      expect(request.class).to receive(:get).with(request.api_url('v1.1', 'stats/by-summoner/1/summary', season: '1')).and_return fixture
+      expect(request.class).to receive(:get).with(request.api_url('v1.2', 'stats/by-summoner/1/summary', season: '1')).and_return fixture
       request.summary '1', season: '1'
     end
 

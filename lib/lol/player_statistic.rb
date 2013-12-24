@@ -28,16 +28,11 @@ module Lol
 
     private
 
-    attr_writer :id, :losses, :modify_date_str, :player_stat_summary_type, :wins
+    attr_writer :id, :losses, :modify_date_str, :player_stat_summary_type,
+                :wins, :aggregated_stats
 
     def modify_date= value
       @modify_date = value.is_a?(Numeric) && Time.at(value / 1000) || value
-    end
-
-    def aggregated_stats= collection
-      @aggregated_stats = collection.map do |c|
-        c.respond_to?(:[]) && AggregatedStatistic.new(c) || c
-      end
     end
   end
 end
