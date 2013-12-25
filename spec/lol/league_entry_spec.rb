@@ -13,7 +13,7 @@ describe LeagueEntry do
       let(:valid_attributes) { { player_or_team_id: 123456 } }
     end
 
-    %w(player_or_team_id player_or_team_name league_name queue_type tier rank league_points wins losses is_hot_streak is_veteran is_fresh_blood is_inactive last_played time_until_decay).each do |attribute|
+    %w(player_or_team_id player_or_team_name league_name queue_type tier rank league_points wins is_hot_streak is_veteran is_fresh_blood is_inactive last_played time_until_decay).each do |attribute|
       describe "#{attribute} attribute" do
         it_behaves_like 'plain attribute' do
           let(:attribute) { attribute }
@@ -33,7 +33,6 @@ describe LeagueEntry do
       "rank" : "II",
       "leaguePoints" : 84,
       "wins" : 35,
-      "losses" : 0,
       "isHotStreak" : false,
       "isVeteran" : false,
       "isFreshBlood" : false,

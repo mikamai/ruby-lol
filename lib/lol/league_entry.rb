@@ -33,10 +33,6 @@ module Lol
     #   @return [String] wins
     attr_reader :wins
 
-    # @!attribute [r] losses
-    #   @return [String] losses
-    attr_reader :losses
-
     # @!attribute [r] is_hot_streak
     #   @return [Boolean] is currently on hot streak
     attr_reader :is_hot_streak
@@ -71,7 +67,7 @@ module Lol
     private
 
     attr_writer :player_or_team_id, :player_or_team_name, :league_name, :queue_type, :tier,
-                :league_points, :wins, :losses, :is_hot_streak, :is_veteran, :is_fresh_blood,
+                :league_points, :wins, :is_hot_streak, :is_veteran, :is_fresh_blood,
                 :is_inactive, :time_until_decay, :rank
 
     def last_played= date

@@ -12,7 +12,7 @@ describe LeagueRequest do
     let(:request) { LeagueRequest.new "api_key", "euw" }
 
     subject do
-      expect(request.class).to receive(:get).with(request.api_url("v2.1", "league/by-summoner/123")).and_return(load_fixture("league", "v2.1", "get"))
+      expect(request.class).to receive(:get).with(request.api_url("v2.2", "league/by-summoner/123")).and_return(load_fixture("league", "v2.2", "get"))
 
       request.get(123)
     end
