@@ -29,10 +29,18 @@ module Lol
     private
 
     attr_writer :id, :losses, :modify_date_str, :player_stat_summary_type,
-                :wins, :aggregated_stats
+                :wins
 
     def modify_date= value
       @modify_date = value.is_a?(Numeric) && Time.at(value / 1000) || value
+    end
+
+    def aggregated_stats= value
+      @aggregated_stats = value.is_a?(Hash) && OpenStruct.new(underscore_hash_keys value) || value
+    end
+
+    def underscore_hash_keys hash
+      hash.inject({}) { |memo, (key, value)| memo.update key.to_s.underscore => value }
     end
   end
 end
