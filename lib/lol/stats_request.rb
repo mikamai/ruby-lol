@@ -22,7 +22,7 @@ module Lol
         raise ArgumentError, 'Only :season is allowed as extra parameter'
       end
       stats_api_path = "stats/by-summoner/#{summoner_id}/ranked"
-      RankedStatisticsSummary.new perform_request api_url 'v1.1', stats_api_path, extra
+      RankedStatisticsSummary.new perform_request api_url 'v1.2', stats_api_path, extra
     end
 
   end

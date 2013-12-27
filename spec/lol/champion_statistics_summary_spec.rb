@@ -18,9 +18,21 @@ describe ChampionStatisticsSummary do
   end
 
   describe 'stats attribute' do
-    it_behaves_like 'collection attribute' do
+    it_behaves_like 'plain attribute' do
       let(:attribute) { 'stats' }
-      let(:attribute_class) { ChampionStatistic }
+      let(:attribute_value) { 'asd' }
+    end
+
+    context 'when is passed as an hash' do
+      subject { ChampionStatisticsSummary.new stats: { 'FooBar' => 'baz' } }
+
+      it 'will convert the hash in an openstruct object' do
+        expect(subject.stats).to be_a OpenStruct
+      end
+
+      it 'will convert each hash key in underscore' do
+        expect(subject.stats.foo_bar).to eq 'baz'
+      end
     end
   end
 end

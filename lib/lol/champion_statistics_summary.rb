@@ -18,10 +18,12 @@ module Lol
 
     attr_writer :id, :name
 
-    def stats= collection
-      @stats = collection.map do |c|
-        c.respond_to?(:[]) && ChampionStatistic.new(c) || c
-      end
+    def stats= value
+      @stats = value.is_a?(Hash) && OpenStruct.new(underscore_hash_keys value) || value
+    end
+
+    def underscore_hash_keys hash
+      hash.inject({}) { |memo, (key, value)| memo.update key.to_s.underscore => value }
     end
   end
 end
