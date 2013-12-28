@@ -9,15 +9,15 @@ describe SummonerRequest do
   end
 
   let(:request)   { SummonerRequest.new "api_key", "euw" }
-  let(:by_name)   { load_fixture("summoner-by-name", "v1.1", "get") }
-  let(:name)      { load_fixture("summoner-name", "v1.1", "get") }
-  let(:summoner)  { load_fixture("summoner", "v1.1", "get") }
-  let(:runes)     { load_fixture("summoner-runes", "v1.1", "get") }
-  let(:masteries) { load_fixture("summoner-masteries", "v1.1", "get") }
+  let(:by_name)   { load_fixture("summoner-by-name", SummonerRequest.api_version, "get") }
+  let(:name)      { load_fixture("summoner-name", SummonerRequest.api_version, "get") }
+  let(:summoner)  { load_fixture("summoner", SummonerRequest.api_version, "get") }
+  let(:runes)     { load_fixture("summoner-runes", SummonerRequest.api_version, "get") }
+  let(:masteries) { load_fixture("summoner-masteries", SummonerRequest.api_version, "get") }
 
   describe "#by_name" do
     subject do
-      expect(request.class).to receive(:get).with(request.api_url("v1.1", "summoner/by-name/foo")).and_return(by_name)
+      expect(request.class).to receive(:get).with(request.api_url("summoner/by-name/foo")).and_return(by_name)
 
       request.by_name "foo"
     end
@@ -29,7 +29,7 @@ describe SummonerRequest do
 
   describe "#name" do
     subject do
-      expect(request.class).to receive(:get).with(request.api_url("v1.1", "summoner/foo,bar/name")).and_return(name)
+      expect(request.class).to receive(:get).with(request.api_url("summoner/foo,bar/name")).and_return(name)
 
       request.name "foo", "bar"
     end
@@ -41,7 +41,7 @@ describe SummonerRequest do
 
   describe "#get" do
     subject do
-      expect(request.class).to receive(:get).with(request.api_url("v1.1", "summoner/foo")).and_return(summoner)
+      expect(request.class).to receive(:get).with(request.api_url("summoner/foo")).and_return(summoner)
 
       request.get "foo"
     end
@@ -53,7 +53,7 @@ describe SummonerRequest do
 
   describe "#runes" do
     subject do
-      expect(request.class).to receive(:get).with(request.api_url("v1.1", "summoner/foo/runes")).and_return(runes)
+      expect(request.class).to receive(:get).with(request.api_url("summoner/foo/runes")).and_return(runes)
 
       request.runes "foo"
     end
@@ -65,7 +65,7 @@ describe SummonerRequest do
 
   describe "#masteries" do
     subject do
-      expect(request.class).to receive(:get).with(request.api_url("v1.1", "summoner/foo/masteries")).and_return(masteries)
+      expect(request.class).to receive(:get).with(request.api_url("summoner/foo/masteries")).and_return(masteries)
 
       request.masteries "foo"
     end

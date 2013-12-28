@@ -12,7 +12,7 @@ describe GameRequest do
     let(:request) { GameRequest.new "api_key", "euw" }
 
     subject do
-      expect(request.class).to receive(:get).with(request.api_url('v1.2', "game/by-summoner/1/recent")).and_return load_fixture('game', 'v1.2', 'get')
+      expect(request.class).to receive(:get).with(request.api_url("game/by-summoner/1/recent")).and_return load_fixture('game', GameRequest.api_version, 'get')
 
       request.recent 1
     end
@@ -26,7 +26,7 @@ describe GameRequest do
     end
 
     it 'fetches games from the API' do
-      expect(subject.size).to eq load_fixture('game', 'v1.1', 'get')['games'].size
+      expect(subject.size).to eq load_fixture('game', GameRequest.api_version, 'get')['games'].size
     end
   end
 

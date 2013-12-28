@@ -53,6 +53,6 @@ def summoners
 end
 
 RSpec.configure do |c|
-  c.fail_fast = true
+#  c.fail_fast = true
   c.filter_run_excluding :remote => true
 end

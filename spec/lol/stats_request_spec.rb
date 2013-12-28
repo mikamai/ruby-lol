@@ -11,10 +11,10 @@ describe StatsRequest do
   end
 
   describe "#summary" do
-    let(:fixture) { load_fixture 'stats', 'v1.2', 'get' }
+    let(:fixture) { load_fixture 'stats', StatsRequest.api_version, 'get' }
 
     subject do
-      expect(request.class).to receive(:get).with(request.api_url('v1.2', "stats/by-summoner/1/summary")).and_return fixture
+      expect(request.class).to receive(:get).with(request.api_url("stats/by-summoner/1/summary")).and_return fixture
 
       request.summary 1
     end
@@ -32,11 +32,11 @@ describe StatsRequest do
     end
 
     it 'fetches PlayerStatistics from the API' do
-      expect(subject.size).to eq load_fixture('stats', 'v1.2', 'get')['playerStatSummaries'].size
+      expect(subject.size).to eq load_fixture('stats', StatsRequest.api_version, 'get')['playerStatSummaries'].size
     end
 
     it 'optionally accepts a season' do
-      expect(request.class).to receive(:get).with(request.api_url('v1.2', 'stats/by-summoner/1/summary', season: '1')).and_return fixture
+      expect(request.class).to receive(:get).with(request.api_url('stats/by-summoner/1/summary', season: '1')).and_return fixture
       request.summary '1', season: '1'
     end
 
@@ -46,10 +46,10 @@ describe StatsRequest do
   end
 
   describe "#ranked" do
-    let(:fixture) { load_fixture 'ranked_stats', 'v1.2', 'get' }
+    let(:fixture) { load_fixture 'ranked_stats', StatsRequest.api_version, 'get' }
 
     subject do
-      expect(request.class).to receive(:get).with(request.api_url('v1.2', "stats/by-summoner/1/ranked")).and_return fixture
+      expect(request.class).to receive(:get).with(request.api_url("stats/by-summoner/1/ranked")).and_return fixture
       request.ranked 1
     end
 
@@ -62,11 +62,11 @@ describe StatsRequest do
     end
 
     it 'fetches RankedStatisticsSummary from the API' do
-      expect(subject.champions.size).to eq load_fixture('ranked_stats', 'v1.2', 'get')['champions'].size
+      expect(subject.champions.size).to eq load_fixture('ranked_stats', StatsRequest.api_version, 'get')['champions'].size
     end
 
     it 'optionally accepts a season' do
-      expect(request.class).to receive(:get).with(request.api_url('v1.2', 'stats/by-summoner/1/ranked', season: '1')).and_return fixture
+      expect(request.class).to receive(:get).with(request.api_url('stats/by-summoner/1/ranked', season: '1')).and_return fixture
 
       request.ranked '1', season: '1'
     end

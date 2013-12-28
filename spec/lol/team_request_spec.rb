@@ -12,10 +12,10 @@ describe TeamRequest do
 
   describe "get" do
     let(:request) { TeamRequest.new "api_key", "euw" }
-    let(:fixture) { load_fixture 'team', 'v2.1', 'get' }
+    let(:fixture) { load_fixture 'team', TeamRequest.api_version, 'get' }
 
     subject do
-      expect(request.class).to receive(:get).with(request.api_url('v2.1', "team/by-summoner/1")).and_return fixture
+      expect(request.class).to receive(:get).with(request.api_url("team/by-summoner/1")).and_return fixture
       request.get 1
     end
 

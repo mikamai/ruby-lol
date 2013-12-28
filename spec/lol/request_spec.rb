@@ -44,27 +44,32 @@ describe Request do
 
   describe "api_url" do
     it "defaults on Request#region" do
-      expect(subject.api_url("foo", "bar")).to match(/\/euw\//)
+      expect(subject.api_url("bar")).to match(/\/euw\//)
     end
 
-    it "requires an api_key a version and a path" do
-      expect { subject.api_url "foo" }.to raise_error(ArgumentError)
+    it "defaults on Reques.api_version" do
+      expect(subject.api_url("bar")).to match(/\/v1.1\//)
+    end
+
+    it "a path" do
+      expect { subject.api_url }.to raise_error(ArgumentError)
     end
 
     it "returns a full fledged api url" do
-      expect(subject.api_url("foo", "bar")).to eq("http://prod.api.pvp.net/api/lol/euw/foo/bar?api_key=api_key")
+      expect(subject.api_url("bar")).to eq("http://prod.api.pvp.net/api/lol/euw/v1.1/bar?api_key=api_key")
     end
 
     it "has lol if url is different from v2.1" do
-      expect(subject.api_url("v1.2", "foo")).to eq("http://prod.api.pvp.net/api/lol/euw/v1.2/foo?api_key=api_key")
+      expect(subject.api_url("foo")).to eq("http://prod.api.pvp.net/api/lol/euw/v1.1/foo?api_key=api_key")
     end
 
     it "does not have lol only url is v2.1" do
-      expect(subject.api_url("v2.1", "foo")).to eq("http://prod.api.pvp.net/api/euw/v2.1/foo?api_key=api_key")
+      expect(Request).to receive(:api_version).at_least(:once).and_return("v2.1")
+      expect(subject.api_url("foo")).to eq("http://prod.api.pvp.net/api/euw/v2.1/foo?api_key=api_key")
     end
 
     it "optionally accept query string parameters" do
-      expect(subject.api_url("v2.1", "foo", a: 'b')).to eq("http://prod.api.pvp.net/api/euw/v2.1/foo?a=b&api_key=api_key")
+      expect(subject.api_url("foo", a: 'b')).to eq("http://prod.api.pvp.net/api/lol/euw/v1.1/foo?a=b&api_key=api_key")
     end
   end
 end

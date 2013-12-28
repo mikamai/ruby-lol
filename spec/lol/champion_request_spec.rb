@@ -12,7 +12,7 @@ describe ChampionRequest do
     let(:request) { ChampionRequest.new "api_key", "euw" }
 
     subject do
-      expect(request).to receive(:perform_request).with(request.api_url("v1.1", "champion")).and_return(load_fixture("champion", "v1.1", "get"))
+      expect(request).to receive(:perform_request).with(request.api_url("champion")).and_return(load_fixture("champion", ChampionRequest.api_version, "get"))
 
       request.get
     end
@@ -26,7 +26,7 @@ describe ChampionRequest do
     end
 
     it "fetches champions from the API" do
-      expect(subject.size).to eq(load_fixture("champion", "v1.1", "get")["champions"].size)
+      expect(subject.size).to eq(load_fixture("champion", ChampionRequest.api_version, "get")["champions"].size)
     end
   end
 end

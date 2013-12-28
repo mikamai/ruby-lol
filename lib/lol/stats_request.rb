@@ -1,5 +1,11 @@
 module Lol
   class StatsRequest < Request
+    # Returns the supported API Version
+    # @return [String] the supported api version
+    def self.api_version
+      "v1.2"
+    end
+
     # Retrieves player statistics summaries for the given summoner
     # @param [String] summoner_id
     # @return [Array] an array of player statistics, one per queue type
@@ -8,7 +14,7 @@ module Lol
         raise ArgumentError, 'Only :season is allowed as extra parameter'
       end
       stats_api_path = "stats/by-summoner/#{summoner_id}/summary"
-      perform_request(api_url('v1.2', stats_api_path, extra))['playerStatSummaries'].map do |player_stat_data|
+      perform_request(api_url(stats_api_path, extra))['playerStatSummaries'].map do |player_stat_data|
         PlayerStatistic.new player_stat_data
       end
     end
@@ -22,7 +28,7 @@ module Lol
         raise ArgumentError, 'Only :season is allowed as extra parameter'
       end
       stats_api_path = "stats/by-summoner/#{summoner_id}/ranked"
-      RankedStatisticsSummary.new perform_request api_url 'v1.2', stats_api_path, extra
+      RankedStatisticsSummary.new perform_request api_url stats_api_path, extra
     end
 
   end

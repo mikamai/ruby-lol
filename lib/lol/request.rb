@@ -16,14 +16,20 @@ module Lol
     #   @return [String] region
     attr_accessor :region
 
+
+    # Stub method. Each subclass should have its own api version
+    # @return [String] api version
+    def self.api_version
+      "v1.1"
+    end
+
     # Returns a full url for an API call
-    # @param version [String] API version to call
     # @param path [String] API path to call
     # @return [String] full fledged url
-    def api_url version, path, params = {}
-      lol = version == "v2.1" ? "" : "lol"
+    def api_url path, params = {}
+      lol = self.class.api_version == "v2.1" ? "" : "lol"
       query_string = URI.encode_www_form params.merge api_key: api_key
-      File.join "http://prod.api.pvp.net/api/", lol, "/#{region}/#{version}/", "#{path}?#{query_string}"
+      File.join "http://prod.api.pvp.net/api/", lol, "/#{region}/#{self.class.api_version}/", "#{path}?#{query_string}"
     end
 
     # Calls the API via HTTParty and handles errors
