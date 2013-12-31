@@ -1,7 +1,7 @@
 module Lol
   class TeamRequest < Request
     def self.api_version
-      "v2.1"
+      "v2.2"
     end
 
     # Retrieves the list of Teams for the given summoner

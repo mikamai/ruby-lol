@@ -8,7 +8,7 @@ describe Team do
     let(:valid_attributes) { { timestamp: 1 } }
   end
 
-  %w(message_of_day name status tag timestamp).each do |attribute|
+  %w(full_id message_of_day name status tag timestamp).each do |attribute|
     describe "#{attribute} attribute" do
       it_behaves_like 'plain attribute' do
         let(:attribute) { attribute }

@@ -2,6 +2,10 @@ require 'lol/model'
 
 module Lol
   class Team < Lol::Model
+    # @!attribute [r] full_id
+    #   @return [String] Full Team ID
+    attr_reader :full_id
+
     # @!attribute [r] create_date
     #   @return [Time] Create Date
     attr_reader :create_date
@@ -68,7 +72,7 @@ module Lol
 
     private
 
-    attr_writer :message_of_day, :name, :status, :tag, :timestamp
+    attr_writer :message_of_day, :name, :status, :tag, :timestamp, :full_id
 
     def create_date= value
       @create_date = value.is_a?(Numeric) && Time.at(value / 1000) || value

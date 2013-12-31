@@ -2,6 +2,14 @@ require 'lol/model'
 
 module Lol
   class TeamStatistic < Lol::Model
+    # @!attribute [r] full_id
+    #   @return [String] Full Team ID
+    attr_reader :full_id
+
+    # @!attribute [r] average_games_played
+    #   @return [Fixnum] Average games played
+    attr_reader :average_games_played
+
     # @!attribute [r] average_games_played
     #   @return [Fixnum] Average games played
     attr_reader :average_games_played
@@ -36,7 +44,7 @@ module Lol
 
     private
 
-    attr_writer :average_games_played, :losses, :max_rating, :rating, :seed_rating, :team_stat_type, :wins
+    attr_writer :average_games_played, :losses, :max_rating, :rating, :seed_rating, :team_stat_type, :wins, :full_id
 
     def team_id= value
       @team_id = value.is_a?(Hash) && value['fullId'] || value
