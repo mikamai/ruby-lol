@@ -17,6 +17,6 @@ describe "API Versions" do
   check_api_version(GameRequest, "v1.2")
   check_api_version(LeagueRequest, "v2.2")
   check_api_version(StatsRequest, "v1.2")
-  check_api_version(SummonerRequest, "v1.1") # current: v1.2
-  check_api_version(TeamRequest, "v2.1") # curent: v2.2
+  check_api_version(SummonerRequest, "v1.2")
+  check_api_version(TeamRequest, "v2.2")
 end

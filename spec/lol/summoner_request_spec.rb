@@ -46,7 +46,7 @@ describe SummonerRequest do
       request.get "foo"
     end
 
-    it "returns a summoners" do
+    it "returns a summoner" do
       expect(subject).to be_a(Summoner)
     end
   end

@@ -16,7 +16,7 @@ describe "Live API testing", :remote => true do
   let(:br)   { Lol::Client.new ENV['RIOT_GAMES_API_KEY'], :region => "br"}
   let(:tr)   { Lol::Client.new ENV['RIOT_GAMES_API_KEY'], :region => "tr"}
 
-  describe "champion-v1.1" do
+  describe "champion" do
     context "working realms" do
       %w(euw na eune).each do |realm|
         it "works on #{realm}" do
@@ -27,7 +27,7 @@ describe "Live API testing", :remote => true do
     end
   end
 
-  describe "game-v1.2" do
+  describe "game" do
     context "working realms" do
       %w(euw na eune).each do |realm|
         it "works on #{realm}" do

@@ -3,7 +3,7 @@ module Lol
     # Returns the supported API Version
     # @return [String] the supported api version
     def self.api_version
-      "v1.1"
+      "v1.2"
     end
 
     # Looks for a summoner name and returns the associated summoner
