@@ -15,5 +15,14 @@ module Lol
         send "#{attribute_name.to_s.underscore}=", value
       end
     end
+
+    # Re-written Object#inspect to skip the @raw instance variable
+    # @return [String] representation of object
+    def inspect
+      vars = self.instance_variables.
+        select {|v| v != :@raw}.
+        map{|v| "#{v}=#{instance_variable_get(v).inspect}"}.join(", ")
+      "<#{self.class}: #{vars}>"
+    end
   end
 end
