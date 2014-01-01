@@ -3,11 +3,11 @@ require 'lol/model'
 module Lol
   class Roster < Lol::Model
     # @!attribute [r] owner_id
-    #   @return [Fixnum] Team Owner Id
+    # @return [Fixnum] Team Owner Id
     attr_reader :owner_id
 
     # @!attribute [r] member_list
-    #   @return [Array] List of members
+    # @return [Array] List of members
     attr_reader :member_list
 
     private

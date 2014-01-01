@@ -8,12 +8,12 @@ module Lol
     include HTTParty
 
     # @!attribute [r] api_key
-    #   @return [String] api_key
+    # @return [String] api_key
     attr_reader :api_key
 
 
     # @!attribute [rw] region
-    #   @return [String] region
+    # @return [String] region
     attr_accessor :region
 
 

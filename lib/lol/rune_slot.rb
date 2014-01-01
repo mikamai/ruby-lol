@@ -1,7 +1,7 @@
 module Lol
   class RuneSlot < Model
     # @!attribute [r] id
-    #   @return [Fixnum] id of RuneSlot
+    # @return [Fixnum] id of RuneSlot
     def id
       @rune_slot_id
     end

@@ -3,7 +3,7 @@ require 'active_support/core_ext/string/inflections'
 module Lol
   class Model
     # @!attribute [r] raw
-    #   @return [Hash] raw version of options Hash used to initialize Model
+    # @return [Hash] raw version of options Hash used to initialize Model
     attr_reader :raw
 
     # Initializes a Lol::Model

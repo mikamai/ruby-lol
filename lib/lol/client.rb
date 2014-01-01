@@ -5,11 +5,11 @@ module Lol
   class Client
 
     # @!attribute [rw] region
-    #   @return [String] name of region
+    # @return [String] name of region
     attr_accessor :region
 
     # @!attribute [r] api_key
-    #   @return [String] the API key that has been used
+    # @return [String] the API key that has been used
     attr_reader :api_key
 
     # @return [ChampionRequest]

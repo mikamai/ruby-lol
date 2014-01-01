@@ -3,19 +3,19 @@ require 'lol/model'
 module Lol
   class RankedStatisticsSummary < Lol::Model
     # @!attribute [r] champions
-    #   @return [Array] List of player stats summarized by champion
+    # @return [Array] List of player stats summarized by champion
     attr_reader :champions
 
     # @!attribute [r] modify_date
-    #   @return [Time] Time stats were last updated
+    # @return [Time] Time stats were last updated
     attr_reader :modify_date
 
     # @!attribute [r] modify_date_str
-    #   @return [String] Human readable string representing date stats were last updated
+    # @return [String] Human readable string representing date stats were last updated
     attr_reader :modify_date_str
 
     # @!attribute [r] summoner_id
-    #   @return [Fixnum] Summoner Id
+    # @return [Fixnum] Summoner Id
     attr_reader :summoner_id
 
     private

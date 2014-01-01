@@ -1,5 +1,7 @@
 module Lol
   class TeamRequest < Request
+    # Returns the supported API version
+    # @return [String] supported api version
     def self.api_version
       "v2.2"
     end

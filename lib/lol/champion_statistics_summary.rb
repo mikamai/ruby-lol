@@ -3,15 +3,15 @@ require 'lol/model'
 module Lol
   class ChampionStatisticsSummary < Lol::Model
     # @!attribute [r] id
-    #   @return [Fixnum] Champion Id
+    # @return [Fixnum] Champion Id
     attr_reader :id
 
     # @!attribute [r] name
-    #   @return [String] Champion Name
+    # @return [String] Champion Name
     attr_reader :name
 
     # @!attribute [r] stats
-    #   @return [Array] List of stats associated with this champion
+    # @return [Array] List of stats associated with this champion
     attr_reader :stats
 
     private

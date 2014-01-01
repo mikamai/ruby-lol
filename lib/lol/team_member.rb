@@ -3,19 +3,19 @@ require 'lol/model'
 module Lol
   class TeamMember < Lol::Model
     # @!attribute [r] invite_date
-    #   @return [Time] Invite date
+    # @return [Time] Invite date
     attr_reader :invite_date
 
     # @!attribute [r] join_date
-    #   @return [Time] Join date
+    # @return [Time] Join date
     attr_reader :join_date
 
     # @!attribute [r] player_id
-    #   @return [Fixnum] Player Id
+    # @return [Fixnum] Player Id
     attr_reader :player_id
 
     # @!attribute [r] status
-    #   @return [String] Status
+    # @return [String] Status
     attr_reader :status
 
     private

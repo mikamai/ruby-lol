@@ -3,47 +3,47 @@ require 'lol/model'
 module Lol
   class Team < Lol::Model
     # @!attribute [r] full_id
-    #   @return [String] Full Team ID
+    # @return [String] Full Team ID
     attr_reader :full_id
 
     # @!attribute [r] create_date
-    #   @return [Time] Create Date
+    # @return [Time] Create Date
     attr_reader :create_date
 
     # @!attribute [r] last_game_date
-    #   @return [Time] Last Game Date
+    # @return [Time] Last Game Date
     attr_reader :last_game_date
 
     # @!attribute [r] last_join_date
-    #   @return [Time] Last Join Date
+    # @return [Time] Last Join Date
     attr_reader :last_join_date
 
     # @!attribute [r] last_joined_ranked_team_queue_date
-    #   @return [Time] Last Joined Ranked Team Queue Date
+    # @return [Time] Last Joined Ranked Team Queue Date
     attr_reader :last_joined_ranked_team_queue_date
 
     # @!attribute [r] match_history
-    #   @return [Array] List of played matches
+    # @return [Array] List of played matches
     attr_reader :match_history
 
     # @!attribute [r] message_of_day
-    #   @return [MessageOfDay] Message of Day
+    # @return [MessageOfDay] Message of Day
     attr_reader :message_of_day
 
     # @!attribute [r] modify_date
-    #   @return [Time] Modified Date
+    # @return [Time] Modified Date
     attr_reader :modify_date
 
     # @!attribute [r] name
-    #   @return [String] Team name
+    # @return [String] Team name
     attr_reader :name
 
     # @!attribute [r] roster
-    #   @return [Roster] Roster
+    # @return [Roster] Roster
     attr_reader :roster
 
     # @!attribute [r] second_last_join_date
-    #   @return [Time] Second Last Join Date
+    # @return [Time] Second Last Join Date
     attr_reader :second_last_join_date
 
     # @!attribute [r] status
@@ -55,19 +55,19 @@ module Lol
     attr_reader :tag
 
     # @!attribute [r] team_id
-    #   @return [String] Team Id
+    # @return [String] Team Id
     attr_reader :team_id
 
     # @!attribute [r] team_stat_summary
-    #   @return [Array] List of Team Statistics
+    # @return [Array] List of Team Statistics
     attr_reader :team_stat_summary
 
     # @!attribute [r] third_last_join_date
-    #   @return [Time] Third Last Join Date
+    # @return [Time] Third Last Join Date
     attr_reader :third_last_join_date
 
     # @!attribute [r] Timestamp
-    #   @return [Fixnum] Timestamp
+    # @return [Fixnum] Timestamp
     attr_reader :timestamp
 
     private

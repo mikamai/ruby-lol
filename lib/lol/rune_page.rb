@@ -1,20 +1,20 @@
 module Lol
   class RunePage < Model
     # @!attribute [r] id
-    #   @return [Fixnum] id of Runepage
+    # @return [Fixnum] id of Runepage
     attr_reader :id
 
     # @!attribute [r] name
-    #   @return [String] name of Runepage
+    # @return [String] name of Runepage
     attr_reader :name
 
     # @!attribute [r] current
-    #   @return [Boolean] is the Runepage currently active?
+    # @return [Boolean] is the Runepage currently active?
     attr_reader :current
 
 
     # @!attribute [r] current
-    #   @return [Array] array of Lol::RuneSlot
+    # @return [Array] array of Lol::RuneSlot
     attr_reader :slots
   end
 

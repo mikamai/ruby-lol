@@ -4,12 +4,6 @@
 
 ruby-lol is a wrapper to the [Riot Games API](https://developer.riotgames.com).
 
-## NEWS
-
-Riot recently release a new version of the API. The old API calls will be available for the next six months. We are in the process of migrating all the API calls to the new versions.
-
-You can safely use the library, it will still work for the next six months, but we plan to complete the migration before 2014 ;)
-
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -90,3 +84,8 @@ Or install it yourself as:
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+## Changelog
+
+ - 0.9.5 Fixed documentation
+ - 0.9.4 Completed support for updated API
