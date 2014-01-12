@@ -1,6 +1,3 @@
-require 'httparty'
-require 'uri'
-
 module Lol
   class Client
 
