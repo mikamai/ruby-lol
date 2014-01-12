@@ -23,6 +23,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "yard"
   spec.add_development_dependency "redcarpet"
   spec.add_development_dependency "rspec"
+  spec.add_development_dependency "guard-rspec"
   spec.add_development_dependency "ZenTest"
   spec.add_development_dependency "autotest-growl"
   spec.add_development_dependency "autotest-fsevent"
