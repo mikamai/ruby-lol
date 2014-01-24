@@ -35,21 +35,27 @@ module Lol
     # @param [Array] summoner_ids
     # @return [Array] array of Lol::RunePage
     def runes *summoner_ids
-      perform_request(api_url("summoner/#{summoner_ids.join(",")}/runes")).inject({}) do |ack, data|
-        ack[data.first] = data.last["pages"].map {|m| RunePage.new m}
-        ack
-      end
+      extract_pages RunePage, "runes", summoner_ids
     end
 
     # Get mastery pages by summoner ID
     # @param [Array] summoner_ids
     # @return [Array] array of Lol::MasteryPage
     def masteries *summoner_ids
-      perform_request(api_url("summoner/#{summoner_ids.join(",")}/masteries")).inject({}) do |ack, data|
-        ack[data.first] = data.last["pages"].map {|m| MasteryPage.new m}
+      extract_pages MasteryPage, "masteries", summoner_ids
+    end
+
+    private
+
+    # Extract pages by summoner ID
+    # @param klass [Class] class used to instance objects in arrays
+    # @param page_type [String] path of the request
+    # @param *summoner_ids [Array] array of summoner_ids
+    def extract_pages klass, page_type, *summoner_ids
+      perform_request(api_url("summoner/#{summoner_ids.join(",")}/#{page_type}")).inject({}) do |ack, data|
+        ack[data.first] = data.last["pages"].map {|m| klass.new m}
         ack
       end
     end
-
   end
 end
