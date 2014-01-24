@@ -3,47 +3,51 @@ module Lol
     # Returns the supported API Version
     # @return [String] the supported api version
     def self.api_version
-      "v1.2"
+      "v1.3"
     end
 
     # Looks for a summoner name and returns the associated summoner
-    # @param [String] name Summoner name
-    # @return [Summoner] matching summoner
-    def by_name name
-      Summoner.new perform_request(api_url("summoner/by-name/#{name}"))
-    end
-
-    # Get list of summoner names by summoner IDs
-    # @param [Array] summoner_ids array of summoner ids
-    # @return [Array] array of Hash { "id" => "foo", "name" => "bar" }
-    def name *summoner_ids
-      perform_request(api_url("summoner/#{summoner_ids.join(",")}/name"))["summoners"].map do |summoner|
-        summoner
+    # @param [Array] summoner names
+    # @return [Array] matching summoners
+    def by_name *names
+      perform_request(api_url("summoner/by-name/#{names.join(",")}")).map do |key, data|
+        Summoner.new data
       end
     end
 
-    # Get summoner by summoner ID
-    # @param [String] summoner_id
-    # @return [Lol::Summoner]
-    def get summoner_id
-      Summoner.new perform_request(api_url("summoner/#{summoner_id}"))
+    # Get list of summoner names by summoner IDs
+    # @param [Array] summoner_ids
+    # @return [Hash] Hash in the form { "id" => "name" }
+    def name *summoner_ids
+      perform_request(api_url("summoner/#{summoner_ids.join(",")}/name"))
+    end
+
+    # Get a list of summoners by summoner ID
+    # @param [Array] summoner_ids
+    # @return [Array] matching summoners
+    def get *summoner_ids
+      perform_request(api_url("summoner/#{summoner_ids.join(",")}")).map do |key, data|
+        Summoner.new data
+      end
     end
 
     # Get rune pages by summoner ID
-    # @param [String] summoner_id
+    # @param [Array] summoner_ids
     # @return [Array] array of Lol::RunePage
-    def runes summoner_id
-      perform_request(api_url("summoner/#{summoner_id}/runes"))["pages"].map do |runepage|
-        RunePage.new runepage
+    def runes *summoner_ids
+      perform_request(api_url("summoner/#{summoner_ids.join(",")}/runes")).inject({}) do |ack, data|
+        ack[data.first] = data.last["pages"].map {|m| RunePage.new m}
+        ack
       end
     end
 
     # Get mastery pages by summoner ID
-    # @param [String] summoner_id
+    # @param [Array] summoner_ids
     # @return [Array] array of Lol::MasteryPage
-    def masteries summoner_id
-      perform_request(api_url("summoner/#{summoner_id}/masteries"))["pages"].map do |masterypage|
-        MasteryPage.new masterypage
+    def masteries *summoner_ids
+      perform_request(api_url("summoner/#{summoner_ids.join(",")}/masteries")).inject({}) do |ack, data|
+        ack[data.first] = data.last["pages"].map {|m| MasteryPage.new m}
+        ack
       end
     end
 

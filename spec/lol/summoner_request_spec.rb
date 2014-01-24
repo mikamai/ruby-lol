@@ -17,13 +17,17 @@ describe SummonerRequest do
 
   describe "#by_name" do
     subject do
-      expect(request.class).to receive(:get).with(request.api_url("summoner/by-name/foo")).and_return(by_name)
+      expect(request.class).to receive(:get).with(request.api_url("summoner/by-name/foo,bar")).and_return(by_name)
 
-      request.by_name "foo"
+      request.by_name ["foo", "bar"]
     end
 
-    it "returns a summoner" do
-      expect(subject).to be_a(Summoner)
+    it "returns an array" do
+      expect(subject).to be_a(Array)
+    end
+
+    it "returns an array of summoners" do
+      expect(subject.map(&:class).uniq).to eq([Summoner])
     end
   end
 
@@ -34,44 +38,52 @@ describe SummonerRequest do
       request.name "foo", "bar"
     end
 
-    it "returns an array of hashes" do
-      expect(subject.map(&:class).uniq).to eq([Hash])
+    it "returns an hash" do
+      expect(subject).to be_a(Hash)
     end
   end
 
   describe "#get" do
     subject do
-      expect(request.class).to receive(:get).with(request.api_url("summoner/foo")).and_return(summoner)
+      expect(request.class).to receive(:get).with(request.api_url("summoner/foo,bar")).and_return(summoner)
 
-      request.get "foo"
+      request.get ["foo", "bar"]
     end
 
-    it "returns a summoner" do
-      expect(subject).to be_a(Summoner)
+    it "returns an array summoners" do
+      expect(subject.map(&:class).uniq).to eq([Summoner])
     end
   end
 
   describe "#runes" do
     subject do
-      expect(request.class).to receive(:get).with(request.api_url("summoner/foo/runes")).and_return(runes)
+      expect(request.class).to receive(:get).with(request.api_url("summoner/foo,bar/runes")).and_return(runes)
 
-      request.runes "foo"
+      request.runes ["foo", "bar"]
     end
 
-    it "returns an array of RunePage" do
-      expect(subject.map(&:class).uniq).to eq([RunePage])
+    it "returns an array of Hash" do
+      expect(subject).to be_a(Hash)
+    end
+
+    it "returns an array of RunePages for each summoner in the hash" do
+      expect(subject.map {|k,v| v}.flatten.map(&:class).uniq).to eq([RunePage])
     end
   end
 
   describe "#masteries" do
     subject do
-      expect(request.class).to receive(:get).with(request.api_url("summoner/foo/masteries")).and_return(masteries)
+      expect(request.class).to receive(:get).with(request.api_url("summoner/foo,bar/masteries")).and_return(masteries)
 
-      request.masteries "foo"
+      request.masteries ["foo", "bar"]
     end
 
-    it "returns an array of MasteryPage" do
-      expect(subject.map(&:class).uniq).to eq([MasteryPage])
+    it "returns an array of Hash" do
+      expect(subject).to be_a(Hash)
+    end
+
+    it "returns an array of MasteryPage for each summoner in the hash" do
+      expect(subject.map {|k,v| v}.flatten.map(&:class).uniq).to eq([MasteryPage])
     end
   end
 end
