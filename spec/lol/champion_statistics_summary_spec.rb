@@ -23,7 +23,7 @@ describe ChampionStatisticsSummary do
       let(:attribute_value) { 'asd' }
     end
 
-    context 'when is passed as an hash' do
+    context 'when it is passed as an hash' do
       subject { ChampionStatisticsSummary.new stats: { 'FooBar' => 'baz' } }
 
       it 'will convert the hash in an openstruct object' do

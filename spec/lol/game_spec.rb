@@ -8,7 +8,7 @@ describe Game do
     let(:valid_attributes) { { game_id: 1 } }
   end
 
-  %w(champion_id create_date_str game_id game_mode game_type invalid level map_id spell1 spell2 sub_type team_id).each do |attribute|
+  %w(champion_id game_id game_mode game_type invalid level map_id spell1 spell2 sub_type team_id).each do |attribute|
     describe "#{attribute} attribute" do
       it_behaves_like 'plain attribute' do
         let(:attribute) { attribute }
@@ -24,10 +24,22 @@ describe Game do
     end
   end
 
-  describe 'statistics attribute' do
-    it_behaves_like 'collection attribute' do
-      let(:attribute) { 'statistics' }
-      let(:attribute_class) { RawStatistic }
+  describe 'stats attribute' do
+    it_behaves_like 'plain attribute' do
+      let(:attribute) { 'stats' }
+      let(:attribute_value) { 'asd' }
+    end
+
+    context 'when it is passed as an hash' do
+      subject { Game.new stats: { 'FooBar' => 'baz' } }
+
+      it 'will convert the hash in an openstruct object' do
+        expect(subject.stats).to be_a OpenStruct
+      end
+
+      it 'will convert each hash key in underscore' do
+        expect(subject.stats.foo_bar).to eq 'baz'
+      end
     end
   end
 

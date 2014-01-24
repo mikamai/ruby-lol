@@ -19,11 +19,7 @@ module Lol
     attr_writer :id, :name
 
     def stats= value
-      @stats = value.is_a?(Hash) && OpenStruct.new(underscore_hash_keys value) || value
-    end
-
-    def underscore_hash_keys hash
-      hash.inject({}) { |memo, (key, value)| memo.update key.to_s.underscore => value }
+      @stats = value.is_a?(Hash) && OpenStruct.new(Lol.underscore_hash_keys value) || value
     end
   end
 end
