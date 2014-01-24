@@ -87,5 +87,6 @@ Or install it yourself as:
 
 ## Changelog
 
+ - 0.9.6 Updated SummonerRequest and GameRequest to API v1.3
  - 0.9.5 Fixed documentation
  - 0.9.4 Completed support for updated API
