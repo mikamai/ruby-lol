@@ -16,10 +16,10 @@ describe RunePage do
   end
 
   describe "#slots" do
-    let(:fixture) { load_fixture("summoner-runes", "v1.1", "get") }
-    let(:slots) { fixture["pages"].first["slots"] }
+    let(:fixture) { load_fixture("summoner-runes", "v1.3", "get") }
+    let(:slots) { fixture["30743211"]["pages"].first["slots"] }
 
-    subject { RunePage.new fixture["pages"].first }
+    subject { RunePage.new fixture["30743211"]["pages"].first }
 
     it "is populated by all slots" do
       expect(subject.slots.size).to eq(slots.size)

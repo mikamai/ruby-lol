@@ -14,10 +14,10 @@ describe RuneSlot do
   end
 
   describe "#rune" do
-    let(:fixture) { load_fixture("summoner-runes", "v1.1", "get") }
-    let(:rune) { fixture["pages"].first["slots"].first["rune"] }
+    let(:fixture) { load_fixture("summoner-runes", "v1.3", "get") }
+    let(:rune) { fixture["30743211"]["pages"].first["slots"].first["rune"] }
 
-    subject { RuneSlot.new fixture["pages"].first["slots"].first }
+    subject { RuneSlot.new fixture["30743211"]["pages"].first["slots"].first }
 
     it "is a Rune object" do
       expect(subject.rune).to be_a(Rune)
