@@ -17,9 +17,13 @@ module Lol
     # @return [String] summoners / teams in queue
     attr_reader :entries
 
+    # @!attribute [r] participant_id
+    # @return [String] summoner id of league participant
+    attr_reader :participant_id
+
     private
 
-    attr_writer :timestamp, :name, :tier, :queue
+    attr_writer :timestamp, :name, :tier, :queue, :participant_id
 
     def entries= list
       @entries = []

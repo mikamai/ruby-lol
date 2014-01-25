@@ -13,7 +13,7 @@ describe League do
       let(:valid_attributes) { { name: 'foo' } }
     end
 
-    %w(name tier queue).each do |attribute|
+    %w(name tier queue participant_id).each do |attribute|
       describe "#{attribute} attribute" do
         it_behaves_like 'plain attribute' do
           let(:attribute) { attribute }
@@ -23,7 +23,7 @@ describe League do
     end
 
     it "fills entries with LeagueEntry objects" do
-      league = League.new(load_fixture("league", "v2.2", "get")["123"])
+      league = League.new(load_fixture("league", "v2.3", "get").first)
       expect(league.entries.map(&:class).uniq).to eq([LeagueEntry])
     end
   end

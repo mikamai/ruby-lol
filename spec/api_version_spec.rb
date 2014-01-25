@@ -15,7 +15,7 @@ end
 describe "API Versions" do
   check_api_version(ChampionRequest, "v1.1")
   check_api_version(GameRequest, "v1.3")
-  check_api_version(LeagueRequest, "v2.2")
+  check_api_version(LeagueRequest, "v2.3")
   check_api_version(StatsRequest, "v1.2")
   check_api_version(SummonerRequest, "v1.3")
   check_api_version(TeamRequest, "v2.2")
