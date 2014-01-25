@@ -2,8 +2,8 @@ module Lol
   class MasteryPage < Model
 
     # @!attribute [r] id
-    # @return [Fixnum] id of summoner
-    attr_reader :summoner_id
+    # @return [Fixnum] mastery page id
+    attr_reader :id
 
     # @!attribute [r] talents
     # @return [Array] array of Lol::Talent
@@ -19,7 +19,7 @@ module Lol
 
     private
 
-    attr_writer :summoner_id, :name, :current
+    attr_writer :id, :name, :current
 
     def talents= new_talents
       @talents = new_talents.map {|t| Talent.new t}

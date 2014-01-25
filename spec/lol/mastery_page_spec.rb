@@ -8,7 +8,7 @@ describe MasteryPage do
     let(:valid_attributes) { { id: 1 } }
   end
 
-  %w(summoner_id name current).each do |attribute|
+  %w(id name current).each do |attribute|
     it_behaves_like "plain attribute" do
       let(:attribute) { attribute }
       let(:attribute_value) { "asd" }
