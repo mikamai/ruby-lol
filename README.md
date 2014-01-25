@@ -9,7 +9,7 @@ ruby-lol is a wrapper to the [Riot Games API](https://developer.riotgames.com).
 Add this line to your application's Gemfile:
 
 ```ruby
-    gem 'ruby-lol'
+gem 'ruby-lol'
 ```
 
 And then execute:
@@ -23,58 +23,58 @@ Or install it yourself as:
 ## Usage
 
 ```ruby
-    require 'lol'
+require 'lol'
 
-    # defaults to euw
-    client = Lol::Client.new "my_api_key"
-    # => <Lol::Client:0x007fd09d1abb00 @api_key="my_api_key", @region="euw">
+# defaults to euw
+client = Lol::Client.new "my_api_key"
+# => <Lol::Client:0x007fd09d1abb00 @api_key="my_api_key", @region="euw">
 
-    # na
-    na_client = Lol::Client.new "my_api_key", :region => "na"
-    # => <Lol::Client:0x007fd09d1abb00 @api_key="my_api_key", @region="na">
+# na
+na_client = Lol::Client.new "my_api_key", :region => "na"
+# => <Lol::Client:0x007fd09d1abb00 @api_key="my_api_key", @region="na">
 
-    # Available Requests
-    client.champion
-    # => Lol::ChampionRequest
-    client.game
-    # => Lol::GameRequest
-    client.league
-    # => Lol::LeagueRequest
-    client.stats
-    # => Lol::StatsRequest
-    client.summoner
-    # => Lol::SummonerRequest
-    client.team
-    # => Lol::TeamRequest
+# Available Requests
+client.champion
+# => Lol::ChampionRequest
+client.game
+# => Lol::GameRequest
+client.league
+# => Lol::LeagueRequest
+client.stats
+# => Lol::StatsRequest
+client.summoner
+# => Lol::SummonerRequest
+client.team
+# => Lol::TeamRequest
 
-    # Available methods for each request type
-    client.champion.get
-    # => Lol::Champion
+# Available methods for each request type
+client.champion.get
+# => Lol::Champion
 
-    client.game.recent(summoner_id)
-    # => Lol::Game
+client.game.recent(summoner_id)
+# => Lol::Game
 
-    client.league.get(summoner_id)
-    # => Lol::League
+client.league.get(summoner_id)
+# => Lol::League
 
-    client.stats.summary(summoner_id)
-    # => Lol::SummaryStats
-    client.stats.ranked(summoner_id)
-    # => Lol::RankedStats
+client.stats.summary(summoner_id)
+# => Lol::SummaryStats
+client.stats.ranked(summoner_id)
+# => Lol::RankedStats
 
-    client.summoner.masteries(summoner_id)
-    # => [Lol::Masterypage]
-    client.summoner.runes(summoner_id)
-    # => [Lol::Runepage]
-    client.summoner.by_name(name)
-    # => Lol::Summoner
-    client.summoner.get(summoner_id)
-    # => Lol::Summoner
-    client.summoner.name(summoner_ids)
-    # => [Hash]
+client.summoner.masteries(summoner_id)
+# => [Lol::Masterypage]
+client.summoner.runes(summoner_id)
+# => [Lol::Runepage]
+client.summoner.by_name(name)
+# => Lol::Summoner
+client.summoner.get(summoner_id)
+# => Lol::Summoner
+client.summoner.name(summoner_ids)
+# => [Hash]
 
-    client.team.get(summoner_id)
-    # => Array
+client.team.get(summoner_id)
+# => Array
 ```
 
 ## Contributing
