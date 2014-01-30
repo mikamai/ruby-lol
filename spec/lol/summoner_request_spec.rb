@@ -34,6 +34,10 @@ describe SummonerRequest do
       expect(request.class).to receive(:get).with(request.api_url("summoner/by-name/f%C3%B2%C3%A5,f%C3%B9%C3%AE")).and_return(by_name)
       request.by_name ['fòå', 'fùî']
     end
+
+    it 'raises an error if no name is given' do
+      expect { request.by_name }.to raise_error ArgumentError
+    end
   end
 
   describe "#name" do
@@ -46,6 +50,10 @@ describe SummonerRequest do
     it "returns an hash" do
       expect(subject).to be_a(Hash)
     end
+
+    it 'raises an error if no summoner id is given' do
+      expect { request.name }.to raise_error ArgumentError
+    end
   end
 
   describe "#get" do
@@ -57,6 +65,10 @@ describe SummonerRequest do
 
     it "returns an array summoners" do
       expect(subject.map(&:class).uniq).to eq([Summoner])
+    end
+
+    it 'raises an error if no id is given' do
+      expect { request.get }.to raise_error ArgumentError
     end
   end
 
@@ -74,6 +86,10 @@ describe SummonerRequest do
     it "returns an array of RunePages for each summoner in the hash" do
       expect(subject.map {|k,v| v}.flatten.map(&:class).uniq).to eq([RunePage])
     end
+
+    it 'raises an error if no id is given' do
+      expect { request.runes }.to raise_error ArgumentError
+    end
   end
 
   describe "#masteries" do
@@ -89,6 +105,10 @@ describe SummonerRequest do
 
     it "returns an array of MasteryPage for each summoner in the hash" do
       expect(subject.map {|k,v| v}.flatten.map(&:class).uniq).to eq([MasteryPage])
+    end
+
+    it 'raises an error if no id is given' do
+      expect { request.masteries }.to raise_error ArgumentError
     end
   end
 end
