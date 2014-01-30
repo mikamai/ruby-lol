@@ -10,7 +10,8 @@ module Lol
     # @param [Array] summoner names
     # @return [Array] matching summoners
     def by_name *names
-      perform_request(api_url("summoner/by-name/#{names.join(",")}")).map do |key, data|
+      escaped_names = names.flatten.map { |name| CGI.escape name }
+      perform_request(api_url("summoner/by-name/#{escaped_names.join(",")}")).map do |key, data|
         Summoner.new data
       end
     end
