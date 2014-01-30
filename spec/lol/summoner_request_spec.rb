@@ -29,6 +29,11 @@ describe SummonerRequest do
     it "returns an array of summoners" do
       expect(subject.map(&:class).uniq).to eq([Summoner])
     end
+
+    it 'escapes the given names' do
+      expect(request.class).to receive(:get).with(request.api_url("summoner/by-name/f%C3%B2%C3%A5,f%C3%B9%C3%AE")).and_return(by_name)
+      request.by_name ['fòå', 'fùî']
+    end
   end
 
   describe "#name" do
