@@ -10,6 +10,7 @@ module Lol
     # @param [Array] summoner names
     # @return [Array] matching summoners
     def by_name *names
+      raise ArgumentError, 'wrong number of arguments (0 of 1+)' if names.empty?
       escaped_names = names.flatten.map { |name| CGI.escape name }
       perform_request(api_url("summoner/by-name/#{escaped_names.join(",")}")).map do |key, data|
         Summoner.new data
@@ -20,6 +21,7 @@ module Lol
     # @param [Array] summoner_ids
     # @return [Hash] Hash in the form { "id" => "name" }
     def name *summoner_ids
+      raise ArgumentError, 'wrong number of arguments (0 of 1+)' if summoner_ids.empty?
       perform_request(api_url("summoner/#{summoner_ids.join(",")}/name"))
     end
 
@@ -27,6 +29,7 @@ module Lol
     # @param [Array] summoner_ids
     # @return [Array] matching summoners
     def get *summoner_ids
+      raise ArgumentError, 'wrong number of arguments (0 of 1+)' if summoner_ids.empty?
       perform_request(api_url("summoner/#{summoner_ids.join(",")}")).map do |key, data|
         Summoner.new data
       end
@@ -36,6 +39,7 @@ module Lol
     # @param [Array] summoner_ids
     # @return [Array] array of Lol::RunePage
     def runes *summoner_ids
+      raise ArgumentError, 'wrong number of arguments (0 of 1+)' if summoner_ids.empty?
       extract_pages RunePage, "runes", summoner_ids
     end
 
@@ -43,6 +47,7 @@ module Lol
     # @param [Array] summoner_ids
     # @return [Array] array of Lol::MasteryPage
     def masteries *summoner_ids
+      raise ArgumentError, 'wrong number of arguments (0 of 1+)' if summoner_ids.empty?
       extract_pages MasteryPage, "masteries", summoner_ids
     end
 
