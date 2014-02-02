@@ -59,15 +59,6 @@ describe Request do
       expect(subject.api_url("bar")).to eq("http://prod.api.pvp.net/api/lol/euw/v1.1/bar?api_key=api_key")
     end
 
-    it "has lol if url is different from v2.1" do
-      expect(subject.api_url("foo")).to eq("http://prod.api.pvp.net/api/lol/euw/v1.1/foo?api_key=api_key")
-    end
-
-    it "does not have lol only url is v2.1" do
-      expect(Request).to receive(:api_version).at_least(:once).and_return("v2.1")
-      expect(subject.api_url("foo")).to eq("http://prod.api.pvp.net/api/euw/v2.1/foo?api_key=api_key")
-    end
-
     it "optionally accept query string parameters" do
       expect(subject.api_url("foo", a: 'b')).to eq("http://prod.api.pvp.net/api/lol/euw/v1.1/foo?a=b&api_key=api_key")
     end

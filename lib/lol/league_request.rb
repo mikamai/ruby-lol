@@ -6,7 +6,7 @@ module Lol
       "v2.3"
     end
 
-    # Retrieves leagues data for summoner, including leagues for all of summoner's teams, v2.1
+    # Retrieves leagues data for summoner, including leagues for all of summoner's teams
     # @param [String]
     # @return [Array]
     def get summoner_id
