@@ -34,6 +34,16 @@ describe SummonerRequest do
       expect(request.class).to receive(:get).with(request.api_url("summoner/by-name/f%C3%B2%C3%A5,f%C3%B9%C3%AE")).and_return(by_name)
       request.by_name ['fòå', 'fùî']
     end
+
+    it 'downcase the given names' do
+      expect(request.class).to receive(:get).with(request.api_url("summoner/by-name/foo,bar")).and_return(by_name)
+      request.by_name 'FoO', 'BAR'
+    end
+
+    it 'strips spaces from names' do
+      expect(request.class).to receive(:get).with(request.api_url("summoner/by-name/foo,bar")).and_return(by_name)
+      request.by_name 'Fo o', 'b a r'
+    end
   end
 
   describe "#name" do
