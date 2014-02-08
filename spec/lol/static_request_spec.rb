@@ -19,14 +19,14 @@ describe StaticRequest do
   end
 
   StaticRequest::ENDPOINTS.each do |endpoint|
-    describe endpoint do
+    describe "##{endpoint}" do
       it "returns a Proxy" do
         expect(request.send(endpoint).class).to eq(StaticRequest::Proxy)
       end
 
-      describe "get" do
+      describe "#get" do
         it "proxies get to StaticRequest with the correct endpoint" do
-          expect(request).to receive(:get).with(endpoint, anything)
+          expect(request).to receive(:get).with(endpoint, anything, anything)
 
           request.send(endpoint).get
         end
