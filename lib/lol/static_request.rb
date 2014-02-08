@@ -19,12 +19,19 @@ module Lol
       define_method(endpoint) { Proxy.new self, endpoint }
     end
 
+    def get(endpoint)
+    end
+
     private
 
     class Proxy
       def initialize(request, endpoint)
         @request = request
         @endpoint = endpoint
+      end
+
+      def get
+        @request.get @endpoint
       end
     end
   end
