@@ -17,4 +17,12 @@ describe StaticRequest do
       expect(subject.api_url("foo")).to eq("http://prod.api.pvp.net/api/lol/static-data/euw/v1/foo?api_key=api_key")
     end
   end
+
+  describe "endpoints" do
+    it "returns a Proxy for each endpoint" do
+      StaticRequest::ENDPOINTS.each do |endpoint|
+        expect(subject.send(endpoint).class).to eq(StaticRequest::Proxy)
+      end
+    end
+  end
 end
