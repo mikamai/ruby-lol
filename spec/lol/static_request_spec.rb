@@ -18,7 +18,7 @@ describe StaticRequest do
     end
   end
 
-  StaticRequest::ENDPOINTS.each do |endpoint|
+  StaticRequest::STANDARD_ENDPOINTS.each do |endpoint|
     describe "##{endpoint}" do
       it "returns a Proxy" do
         expect(request.send(endpoint).class).to eq(StaticRequest::Proxy)
@@ -57,11 +57,12 @@ describe StaticRequest do
 
         context "with_id" do
           let(:id) { 1 }
+          let(:fixtures) { load_fixture("#{endpoint.dasherize}-by-id", StaticRequest.api_version, "get") }
 
           subject do
             expect(request).to receive(:perform_request)
               .with(request.api_url("#{endpoint.dasherize}/#{id}"))
-              .and_return(load_fixture("#{endpoint.dasherize}-by-id", StaticRequest.api_version, "get"))
+              .and_return(fixtures)
 
             request.send(endpoint).get(id)
           end
@@ -71,6 +72,22 @@ describe StaticRequest do
           end
         end
       end
+    end
+  end
+
+  describe "realm" do
+    let(:fixtures) { load_fixture("realm", StaticRequest.api_version, "get") }
+
+    subject do
+      expect(request).to receive(:perform_request)
+        .with(request.api_url("realm"))
+        .and_return(fixtures)
+
+      request.send("realm").get
+    end
+
+    it "returns an OpenStruct" do
+      expect(subject).to be_an(OpenStruct)
     end
   end
 end

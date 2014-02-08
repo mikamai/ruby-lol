@@ -1,6 +1,6 @@
 module Lol
   class StaticRequest < Request
-    ENDPOINTS = %w(champion item mastery rune summoner_spell)
+    STANDARD_ENDPOINTS = %w(champion item mastery rune summoner_spell)
 
     def self.api_version
       "v1"
@@ -15,8 +15,11 @@ module Lol
       File.join "http://prod.api.pvp.net/api/lol/static-data/#{region}/#{self.class.api_version}/", "#{path}?#{query_string}"
     end
 
-    ENDPOINTS.each do |endpoint|
+    STANDARD_ENDPOINTS.each do |endpoint|
       define_method(endpoint) { Proxy.new self, endpoint }
+    end
+    def realm
+      Proxy.new self, 'realm'
     end
 
     def get(endpoint, id=nil, params={})
@@ -31,8 +34,12 @@ module Lol
     end
 
     def all(endpoint, params={})
-      perform_request(api_url(endpoint.dasherize, params))["data"].map do |id, values|
-        model_class(endpoint).new(values.merge(id: id))
+      if endpoint == "realm"
+        model_class(endpoint).new perform_request(api_url(endpoint.dasherize, params)).to_hash
+      else
+        perform_request(api_url(endpoint.dasherize, params))["data"].map do |id, values|
+          model_class(endpoint).new(values.merge(id: id))
+        end
       end
     end
 
