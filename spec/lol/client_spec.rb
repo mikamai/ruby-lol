@@ -93,6 +93,18 @@ describe Client do
     end
   end
 
+  describe "#static" do
+    it "returns an instance of StaticRequest" do
+      expect(subject.static).to be_a(StaticRequest)
+    end
+
+    it "initializes the StaticRequest with the current API key and region" do
+      expect(StaticRequest).to receive(:new).with(subject.api_key, subject.region)
+
+      subject.static
+    end
+  end
+
   describe "#api_key" do
     it "returns an api key" do
       expect(subject.api_key).to eq("foo")
