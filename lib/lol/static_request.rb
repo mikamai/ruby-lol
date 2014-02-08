@@ -19,10 +19,26 @@ module Lol
       define_method(endpoint) { Proxy.new self, endpoint }
     end
 
-    def get(endpoint)
+    def get(endpoint, id=nil, params={})
+      id ? find(endpoint, id, params) : all(endpoint, params)
     end
 
     private
+
+    def find(endpoint, id, params={})
+      model_class(endpoint).new \
+        perform_request(api_url("#{endpoint.dasherize}/#{id}", params)).to_hash
+    end
+
+    def all(endpoint, params={})
+      perform_request(api_url(endpoint.dasherize, params))["data"].map do |id, values|
+        model_class(endpoint).new(values.merge(id: id))
+      end
+    end
+
+    def model_class(endpoint)
+      OpenStruct
+    end
 
     class Proxy
       def initialize(request, endpoint)
@@ -30,8 +46,13 @@ module Lol
         @endpoint = endpoint
       end
 
-      def get
-        @request.get @endpoint
+      def get(id=nil, params={})
+        if id.is_a?(Hash)
+          params = id
+          id = nil
+        end
+
+        @request.get @endpoint, id, params
       end
     end
   end

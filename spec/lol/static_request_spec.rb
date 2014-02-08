@@ -18,17 +18,58 @@ describe StaticRequest do
     end
   end
 
-  describe "endpoints" do
-
-    StaticRequest::ENDPOINTS.each do |endpoint|
-      it "returns a Proxy for each endpoint" do
+  StaticRequest::ENDPOINTS.each do |endpoint|
+    describe endpoint do
+      it "returns a Proxy" do
         expect(request.send(endpoint).class).to eq(StaticRequest::Proxy)
       end
 
-      it "proxies get to StaticRequest with the correct endpoint" do
-        expect(request).to receive(:get).with(endpoint)
+      describe "get" do
+        it "proxies get to StaticRequest with the correct endpoint" do
+          expect(request).to receive(:get).with(endpoint, anything)
 
-        request.send(endpoint).get
+          request.send(endpoint).get
+        end
+
+        context "without_id" do
+          let(:fixtures) { load_fixture("#{endpoint.dasherize}", StaticRequest.api_version, "get") }
+
+          subject do
+            expect(request).to receive(:perform_request)
+              .with(request.api_url("#{endpoint.dasherize}"))
+              .and_return(fixtures)
+
+            request.send(endpoint).get
+          end
+
+          it "returns an Array" do
+            expect(subject).to be_an(Array)
+          end
+
+          it "returns an Array of OpenStructs" do
+            expect(subject.map(&:class).uniq).to eq([OpenStruct])
+          end
+
+          it "fetches #{endpoint} from the API" do
+            expect(subject.size).to eq(fixtures["data"].size)
+          end
+        end
+
+        context "with_id" do
+          let(:id) { 1 }
+
+          subject do
+            expect(request).to receive(:perform_request)
+              .with(request.api_url("#{endpoint.dasherize}/#{id}"))
+              .and_return(load_fixture("#{endpoint.dasherize}-by-id", StaticRequest.api_version, "get"))
+
+            request.send(endpoint).get(id)
+          end
+
+          it "returns an OpenStruct" do
+            expect(subject).to be_an(OpenStruct)
+          end
+        end
       end
     end
   end
