@@ -39,6 +39,11 @@ module Lol
       @summoner_request ||= SummonerRequest.new(api_key, region)
     end
 
+    # @return [StaticRequest]
+    def static
+      @static_request ||= StaticRequest.new(api_key, region)
+    end
+
     # Initializes a Lol::Client
     # @param api_key [String]
     # @param options [Hash]

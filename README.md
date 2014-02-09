@@ -77,6 +77,39 @@ client.team.get(summoner_id)
 # => Array
 ```
 
+# Making Static Requests
+The Riot API has a [section](http://developer.riotgames.com/api/methods#!/378) carved out for static-data. These requests don't count against your rate limit. The mechanism for using them is similar to the standard requests above.
+
+Each static endpoint has two possible requests: `get` and `get(id)`. `get` returns an array of OpenStructs representing the data from Riot's API, and `get(id)` returns an OpenStruct with a single record. Here are some examples:
+
+```ruby
+client.static
+# => Lol::StaticRequest
+**NOTE**: StaticRequest is not meant to be used directly, but can be!
+
+client.static.champion
+# => Lol::StaticRequest (for endpoint /static-data/champion)
+
+client.static.champion.get
+# => [OpenStruct] (with keys from http://developer.riotgames.com/api/methods#!/378/1349)
+
+client.static.champion.get(id)
+# => OpenStruct (with keys from http://developer.riotgames.com/api/methods#!/378/1349)
+```
+
+You can also pass query parameters as listed in the Riot API documentation. For example:
+
+```ruby
+
+# returns all attributes
+client.static.champion.get(champData: 'all')
+
+# returns only lore information
+client.static.champion.get(champData: 'lore')
+```
+
+**NOTE**: The realm endpoint is not implemented. Let us know if you need it, but it seemed somewhat unnecessary.
+
 ## Contributing
 
 1. Fork it

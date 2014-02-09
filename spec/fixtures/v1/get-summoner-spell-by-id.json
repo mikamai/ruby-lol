@@ -1,0 +1,64 @@
+{
+  "id": "SummonerMana",
+  "summonerLevel": 1,
+  "name": "Clarity",
+  "description": "Restores 40% of your champion's maximum Mana. Also restores allies for 40% of their maximum Mana",
+  "key": "13",
+  "image": {
+    "full": "SummonerMana.png",
+    "sprite": "spell0.png",
+    "group": "spell",
+    "x": 0,
+    "y": 48,
+    "w": 48,
+    "h": 48
+  },
+  "tooltip": "Restores {{ f1 }}% maximum Mana to your Champion and nearby allies.",
+  "resource": "No Cost",
+  "maxrank": 1,
+  "modes": [
+    "CLASSIC",
+    "ODIN",
+    "TUTORIAL",
+    "ARAM"
+  ],
+  "costType": "NoCost",
+  "cost": [
+    0
+  ],
+  "costBurn": "0",
+  "range": [
+    600
+  ],
+  "rangeBurn": "600",
+  "cooldown": [
+    180
+  ],
+  "cooldownBurn": "180",
+  "vars": [
+    {
+      "key": "f1",
+      "link": "@player.level",
+      "coeff": [
+        190.0,
+        220.0,
+        250.0,
+        280.0,
+        310.0,
+        340.0,
+        370.0,
+        400.0,
+        430.0,
+        460.0,
+        490.0,
+        520.0,
+        550.0,
+        580.0,
+        610.0,
+        640.0,
+        670.0,
+        700.0
+      ]
+    }
+  ]
+}
