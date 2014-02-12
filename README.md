@@ -124,3 +124,7 @@ client.static.champion.get(champData: 'lore')
  - 0.9.6 Updated SummonerRequest and GameRequest to API v1.3
  - 0.9.5 Fixed documentation
  - 0.9.4 Completed support for updated API
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/mikamai/ruby-lol/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
