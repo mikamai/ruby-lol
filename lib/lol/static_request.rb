@@ -11,8 +11,7 @@ module Lol
     # @param path [String] API path to call
     # @return [String] full fledged url
     def api_url path, params = {}
-      query_string = URI.encode_www_form params.merge api_key: api_key
-      File.join "http://prod.api.pvp.net/api/lol/static-data/#{region}/#{self.class.api_version}/", "#{path}?#{query_string}"
+      super(path,params).gsub(/api\/lol/, "api/lol/static-data")
     end
 
     STANDARD_ENDPOINTS.each do |endpoint|
