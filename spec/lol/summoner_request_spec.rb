@@ -30,9 +30,9 @@ describe SummonerRequest do
       expect(subject.map(&:class).uniq).to eq([Summoner])
     end
 
-    it 'escapes the given names' do
-      expect(request.class).to receive(:get).with(request.api_url("summoner/by-name/f%C3%B2%C3%A5,f%C3%B9%C3%AE")).and_return(by_name)
-      request.by_name ['fòå', 'fùî']
+    it 'escapes the given names with escapeHTML' do
+      expect(request.class).to receive(:get).with(request.api_url("summoner/by-name/fòå,fùî&lt;")).and_return(by_name)
+      request.by_name ['fòå', 'fùî<']
     end
 
     it 'downcase the given names' do
