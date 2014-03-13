@@ -13,5 +13,12 @@ module Lol
         Team.new team_data
       end
     end
+
+    # Retrieves the Teams for the given Team ID
+    # @return [Team]
+    def getbyid team_id
+      result = perform_request(api_url "team/#{team_id}")
+      Team.new result[team_id]
+    end
   end
 end
