@@ -16,13 +16,13 @@ module Lol
     # @!attribute [r] current
     # @return [Array] array of Lol::RuneSlot
     attr_reader :slots
-  end
 
-  private
+    private
 
-  attr_writer :id, :name, :current
+    attr_writer :id, :name, :current
 
-  def slots= *runeslots
-    @slots = runeslots.flatten.map {|slot| RuneSlot.new slot}
+    def slots= *runeslots
+      @slots = runeslots.flatten.map {|slot| RuneSlot.new slot}
+    end
   end
 end
