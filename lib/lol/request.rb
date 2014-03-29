@@ -55,14 +55,17 @@ module Lol
       response
     end
 
+    # @return [Redis] returns the cache store
     def store
       cache_store[:redis]
     end
 
+    # @return [Boolean] true if the request should be cached
     def cached?
       cache_store[:cached]
     end
 
+    # @return [Fixnum] the ttl to apply to cached keys
     def ttl
       cache_store[:ttl]
     end
@@ -70,7 +73,10 @@ module Lol
     # Initializes a new Request
     # @param api_key [String] the Riot Games API key
     # @param region [String] the region you want to use in API calls
-    # @param cache_store [Redis] the Redis store we want to use
+    # @param cache_store [Hash]
+    # @option cache_store [Redis] :redis Redis instance to use
+    # @option cache_store [Boolean] :cached should the request be cached
+    # @option cacche_store [Fixnum] :ttl ttl for cache keys
     # @return [Request]
     def initialize api_key, region, cache_store = {}
       @cache_store = cache_store
