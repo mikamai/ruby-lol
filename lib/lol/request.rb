@@ -39,11 +39,30 @@ module Lol
     # @param url [String] the url to call
     # @return [String] raw response of the call
     def perform_request url
+      return result if cached? && result = store.get(url)
+
       response = self.class.get(url)
       raise NotFound.new("404 Not Found") if response.respond_to?(:code) && response.not_found?
       raise InvalidAPIResponse.new(response["status"]["message"]) if response.is_a?(Hash) && response["status"]
 
+      if cached?
+        store.set url, response
+        store.expire url, ttl
+      end
+
       response
+    end
+
+    def store
+      cache_store[:redis]
+    end
+
+    def cached?
+      cache_store[:cached]
+    end
+
+    def ttl
+      cache_store[:ttl]
     end
 
     # Initializes a new Request
@@ -51,11 +70,11 @@ module Lol
     # @param region [String] the region you want to use in API calls
     # @param cache_store [Redis] the Redis store we want to use
     # @return [Request]
-    def initialize api_key, region, cache_store = nil
-      raise InvalidCacheStore if cache_store && !cache_store.is_a?(Redis)
+    def initialize api_key, region, cache_store = {}
+      @cache_store = cache_store
+      raise InvalidCacheStore if cached? && !store.is_a?(Redis)
       @api_key = api_key
       @region = region
-      @cache_store = cache_store
     end
   end
 end

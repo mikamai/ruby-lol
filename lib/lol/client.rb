@@ -15,37 +15,37 @@ module Lol
 
     # @return [ChampionRequest]
     def champion
-      @champion_request ||= ChampionRequest.new(api_key, region, redis)
+      @champion_request ||= ChampionRequest.new(api_key, region, cache_store)
     end
 
     # @return [GameRequest]
     def game
-      @game_request ||= GameRequest.new(api_key, region, redis)
+      @game_request ||= GameRequest.new(api_key, region, cache_store)
     end
 
     # @return [StatsRequest]
     def stats
-      @stats_request ||= StatsRequest.new(api_key, region, redis)
+      @stats_request ||= StatsRequest.new(api_key, region, cache_store)
     end
 
     # @return [LeagueRequest]
     def league
-      @league_request ||= LeagueRequest.new(api_key, region, redis)
+      @league_request ||= LeagueRequest.new(api_key, region, cache_store)
     end
 
     # @return [TeamRequest]
     def team
-      @team_request ||= TeamRequest.new(api_key, region, redis)
+      @team_request ||= TeamRequest.new(api_key, region, cache_store)
     end
 
     # @return [SummonerRequest]
     def summoner
-      @summoner_request ||= SummonerRequest.new(api_key, region, redis)
+      @summoner_request ||= SummonerRequest.new(api_key, region, cache_store)
     end
 
     # @return [StaticRequest]
     def static
-      @static_request ||= StaticRequest.new(api_key, region, redis)
+      @static_request ||= StaticRequest.new(api_key, region, cache_store)
     end
 
     # Initializes a Lol::Client
@@ -65,6 +65,16 @@ module Lol
       @ttl = 900
       @cached = true
       @redis = Redis.new :url => redis_url
+    end
+
+    # Returns an options hash with cache keys
+    # @return [Hash]
+    def cache_store
+      {
+        redis:  @redis,
+        ttl:    @ttl,
+        cached: @cached,
+      }
     end
 
     # @return [Boolean] true if requests are cached

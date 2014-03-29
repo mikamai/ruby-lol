@@ -24,7 +24,7 @@ describe Request do
     end
 
     it "returns an error if the cache store is not supported" do
-      expect { ChampionRequest.new "api_key", "euw", "FOO" }.to raise_error(InvalidCacheStore)
+      expect { ChampionRequest.new "api_key", "euw", {cached: true, redis: "FOO"}}.to raise_error(InvalidCacheStore)
     end
   end
 
