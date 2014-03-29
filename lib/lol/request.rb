@@ -39,7 +39,9 @@ module Lol
     # @param url [String] the url to call
     # @return [String] raw response of the call
     def perform_request url
-      return result if cached? && result = store.get(url)
+      if cached? && result = store.get(url)
+        return result
+      end
 
       response = self.class.get(url)
       raise NotFound.new("404 Not Found") if response.respond_to?(:code) && response.not_found?

@@ -50,6 +50,36 @@ describe Request do
       expect(subject.class).to receive(:get).and_return(error401)
       expect { subject.perform_request "foo"}.to raise_error(NotFound)
     end
+
+    it "is cached" do
+      class FakeRedis < Redis
+        def initialize options = {}
+          @store = {}
+        end
+
+        def get key
+          @store[key]
+        end
+
+        def set key, val
+          @store[key] = val
+        end
+
+        def expire key, ttl
+          @store["#{key}:ttl"] = ttl
+        end
+      end
+
+      fake_redis = FakeRedis.new
+      request = Request.new "api_key", "euw", {redis: fake_redis, ttl: 60, cached: true}
+      expect(request.class).to receive(:get).with("/foo").and_return("foo")
+      first_result = request.perform_request "/foo"
+
+      expect(request.class).not_to receive(:get)
+      request.perform_request "/foo"
+
+      expect(fake_redis.get("/foo:ttl")).to eq(60)
+    end
   end
 
   describe "api_url" do
