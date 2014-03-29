@@ -1,3 +1,5 @@
+require "uri"
+
 module Lol
   class InvalidAPIResponse < StandardError; end
   class NotFound < StandardError; end
@@ -35,11 +37,17 @@ module Lol
       File.join "http://prod.api.pvp.net/api/lol/#{region}/#{self.class.api_version}/", "#{path}?#{query_string}"
     end
 
+    # Returns just a path from a full api url
+    # @return [String]
+    def clean_url(url)
+      URI.parse(url).path
+    end
+
     # Calls the API via HTTParty and handles errors
     # @param url [String] the url to call
     # @return [String] raw response of the call
     def perform_request url
-      if cached? && result = store.get(url)
+      if cached? && result = store.get(clean_url(url))
         return JSON.parse(result)
       end
 
@@ -48,7 +56,7 @@ module Lol
       raise InvalidAPIResponse.new(response["status"]["message"]) if response.is_a?(Hash) && response["status"]
 
       if cached?
-        store.set url, response.to_json
+        store.set clean_url(url), response.to_json
         store.expire url, ttl
       end
 

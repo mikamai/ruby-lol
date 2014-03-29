@@ -75,7 +75,7 @@ describe Request do
       let(:fake_redis) { FakeRedis.new }
       let(:request) { Request.new "api_key", "euw", {redis: fake_redis, ttl: 60, cached: true }}
       before :each do
-        expect(request.class).to receive(:get).with("/foo").and_return({foo: "bar"})
+        expect(request.class).to receive(:get).with("/foo").and_return({foo: "bar"}).at_least(:once)
         first_result = request.perform_request "/foo"
       end
 
@@ -92,6 +92,11 @@ describe Request do
 
       it "sets ttl" do
         expect(fake_redis.get("/foo:ttl")).to eq(60)
+      end
+
+      it "uses clean urls" do
+        expect(request).to receive(:clean_url).at_least(:once)
+        request.perform_request "/foo"
       end
     end
   end
