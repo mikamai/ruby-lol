@@ -29,6 +29,11 @@ describe Client do
       expect(client.ttl).to eq(15*60)
     end
 
+    it "accepts a custom ttl" do
+      client = Client.new "foo", redis: "redis://dummy-url", ttl: 10
+      expect(client.ttl).to eq(10)
+    end
+
     it "instantiates a redis client if redis is in the options" do
       client = Client.new "foo", redis: "redis://localhost:6379"
       expect(client.instance_variable_get(:@redis)).to be_a(Redis)

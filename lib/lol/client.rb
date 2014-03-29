@@ -56,13 +56,13 @@ module Lol
     def initialize api_key, options = {}
       @api_key = api_key
       @region = options.delete(:region) || "euw"
-      set_up_cache(options.delete(:redis))
+      set_up_cache(options.delete(:redis), options.delete(:ttl))
     end
 
-    def set_up_cache(redis_url)
+    def set_up_cache(redis_url, ttl)
       return @cached = false unless redis_url
 
-      @ttl = 900
+      @ttl = ttl || 900
       @cached = true
       @redis = Redis.new :url => redis_url
     end

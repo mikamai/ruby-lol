@@ -25,13 +25,12 @@ Or install it yourself as:
 ```ruby
 require 'lol'
 
-# defaults to euw
-client = Lol::Client.new "my_api_key"
+client = Lol::Client.new "my_api_key", "euw"
 # => <Lol::Client:0x007fd09d1abb00 @api_key="my_api_key", @region="euw">
 
-# na
-na_client = Lol::Client.new "my_api_key", :region => "na"
-# => <Lol::Client:0x007fd09d1abb00 @api_key="my_api_key", @region="na">
+# NEW! You can cache requests using Redis now
+# ttl defaults to 900
+client = Lol::Client.new "my_api_key", "euw", {redis: "redis://localhost:6379", ttl: 900}
 
 # Available Requests
 client.champion
@@ -119,8 +118,8 @@ client.static.champion.get(champData: 'lore')
 5. Create new Pull Request
 
 ## Changelog
-
- - 0.9.7 Updated LeagueReqeust to API v2.3
+ - 0.9.11 Added caching support via REDIS
+ - 0.9.7 Updated LeagueRequest to API v2.3
  - 0.9.6 Updated SummonerRequest and GameRequest to API v1.3
  - 0.9.5 Fixed documentation
  - 0.9.4 Completed support for updated API
