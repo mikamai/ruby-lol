@@ -51,56 +51,70 @@ describe Request do
       expect { subject.perform_request "foo"}.to raise_error(NotFound)
     end
 
-    it "is cached" do
-      class FakeRedis < Redis
-        def initialize options = {}
-          @store = {}
-        end
+    context "caching" do
+      before :all do
+        class FakeRedis < Redis
+          def initialize options = {}
+            @store = {}
+          end
 
-        def get key
-          @store[key]
-        end
+          def get key
+            @store[key]
+          end
 
-        def set key, val
-          @store[key] = val
-        end
+          def set key, val
+            @store[key] = val
+          end
 
-        def expire key, ttl
-          @store["#{key}:ttl"] = ttl
+          def expire key, ttl
+            @store["#{key}:ttl"] = ttl
+          end
         end
       end
 
-      fake_redis = FakeRedis.new
-      request = Request.new "api_key", "euw", {redis: fake_redis, ttl: 60, cached: true}
-      expect(request.class).to receive(:get).with("/foo").and_return("foo")
-      first_result = request.perform_request "/foo"
+      let(:fake_redis) { FakeRedis.new }
+      let(:request) { Request.new "api_key", "euw", {redis: fake_redis, ttl: 60, cached: true }}
+      before :each do
+        expect(request.class).to receive(:get).with("/foo").and_return({foo: "bar"})
+        first_result = request.perform_request "/foo"
+      end
 
-      expect(request.class).not_to receive(:get)
-      request.perform_request "/foo"
+      it "is cached" do
+        expect(request.class).not_to receive(:get)
+        request.perform_request "/foo"
 
-      expect(fake_redis.get("/foo:ttl")).to eq(60)
+      end
+
+      it "serializes cached responses" do
+        expect(JSON).to receive(:parse)
+        request.perform_request "/foo"
+      end
+
+      it "sets ttl" do
+        expect(fake_redis.get("/foo:ttl")).to eq(60)
+      end
     end
   end
 
-  describe "api_url" do
-    it "defaults on Request#region" do
-      expect(subject.api_url("bar")).to match(/\/euw\//)
-    end
+    describe "api_url" do
+      it "defaults on Request#region" do
+        expect(subject.api_url("bar")).to match(/\/euw\//)
+      end
 
-    it "defaults on Reques.api_version" do
-      expect(subject.api_url("bar")).to match(/\/v1.1\//)
-    end
+      it "defaults on Reques.api_version" do
+        expect(subject.api_url("bar")).to match(/\/v1.1\//)
+      end
 
-    it "a path" do
-      expect { subject.api_url }.to raise_error(ArgumentError)
-    end
+      it "a path" do
+        expect { subject.api_url }.to raise_error(ArgumentError)
+      end
 
-    it "returns a full fledged api url" do
-      expect(subject.api_url("bar")).to eq("http://prod.api.pvp.net/api/lol/euw/v1.1/bar?api_key=api_key")
-    end
+      it "returns a full fledged api url" do
+        expect(subject.api_url("bar")).to eq("http://prod.api.pvp.net/api/lol/euw/v1.1/bar?api_key=api_key")
+      end
 
-    it "optionally accept query string parameters" do
-      expect(subject.api_url("foo", a: 'b')).to eq("http://prod.api.pvp.net/api/lol/euw/v1.1/foo?a=b&api_key=api_key")
+      it "optionally accept query string parameters" do
+        expect(subject.api_url("foo", a: 'b')).to eq("http://prod.api.pvp.net/api/lol/euw/v1.1/foo?a=b&api_key=api_key")
+      end
     end
   end
-end

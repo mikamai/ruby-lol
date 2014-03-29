@@ -40,7 +40,7 @@ module Lol
     # @return [String] raw response of the call
     def perform_request url
       if cached? && result = store.get(url)
-        return result
+        return JSON.parse(result)
       end
 
       response = self.class.get(url)
@@ -48,7 +48,7 @@ module Lol
       raise InvalidAPIResponse.new(response["status"]["message"]) if response.is_a?(Hash) && response["status"]
 
       if cached?
-        store.set url, response
+        store.set url, response.to_json
         store.expire url, ttl
       end
 
