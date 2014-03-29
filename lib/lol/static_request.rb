@@ -17,6 +17,7 @@ module Lol
     STANDARD_ENDPOINTS.each do |endpoint|
       define_method(endpoint) { Proxy.new self, endpoint }
     end
+
     def realm
       Proxy.new self, 'realm'
     end
