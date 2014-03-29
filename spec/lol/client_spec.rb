@@ -19,30 +19,54 @@ describe Client do
       expect(subject.region).to eq("euw")
     end
 
-    it "sets caching if redis is specified in the options" do
-      client = Client.new "foo", redis: "redis://dummy-url"
-      expect(client.cached?).to be_true
+    context "rate_limits" do
+      subject { Client.new "foo", redis: "redis://localhost:6379/0/test", rate_limits: {10 => 10, 600 => 500} }
+
+      it "honors rate limits" do
+        champions = {"champions" => []}
+        expect(subject.champion.class).to receive(:get).at_least(:once).and_return(champions)
+        expect { 1000.times { subject.champion.get } }.to raise_error(RateLimit)
+      end
+
+      it "does not work if you are not cached" do
+        c = Client.new "foo", {rate_limits: { 10 => 10 }}
+        expect(c.limited?).to be_false
+      end
+
+      it "rate_limits if you specify rate_limits and are cached" do
+        expect(subject.limited?).to be_true
+      end
+
+      it "sets the limits" do
+        expect(subject.redis.smembers("rates")).to match_array(["10", "600"])
+      end
     end
 
-    it "sets a default ttl of 15 * 60s" do
-      client = Client.new "foo", redis: "redis://dummy-url"
-      expect(client.ttl).to eq(15*60)
-    end
+    context "caching" do
+      let(:client) { Client.new "foo", redis: "redis://dummy-url" }
+      let(:real_redis) { Client.new "foo", redis: "redis://localhost:6379" }
 
-    it "accepts a custom ttl" do
-      client = Client.new "foo", redis: "redis://dummy-url", ttl: 10
-      expect(client.ttl).to eq(10)
-    end
+      it "sets caching if redis is specified in the options" do
+        expect(client.cached?).to be_true
+      end
 
-    it "instantiates a redis client if redis is in the options" do
-      client = Client.new "foo", redis: "redis://localhost:6379"
-      expect(client.instance_variable_get(:@redis)).to be_a(Redis)
-    end
+      it "sets a default ttl of 15 * 60s" do
+        expect(client.ttl).to eq(15*60)
+      end
 
-    it "passes the redis_store to the request" do
-      client = Client.new "foo", redis: "redis://localhost:6379"
-      champion_request = client.champion
-      expect(champion_request.cache_store).to eq(client.cache_store)
+      it "accepts a custom ttl" do
+        client = Client.new "foo", redis: "redis://dummy-url", ttl: 10
+        expect(client.ttl).to eq(10)
+      end
+
+      it "instantiates a redis client if redis is in the options" do
+        expect(real_redis.instance_variable_get(:@redis)).to be_a(Redis)
+      end
+
+      it "passes the redis_store to the request" do
+        champion_request = real_redis.champion
+        expect(champion_request.cache_store).to eq(real_redis.cache_store)
+      end
     end
   end
 
