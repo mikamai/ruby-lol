@@ -1,4 +1,5 @@
 rvm: 2.0.0
+services: redis-server
 addons:
     code_climate:
         repo_token: c98576197ae22bdd3bede9cd3cdfdad33fac26bfdddb1e5f2bbc4fb535812185
