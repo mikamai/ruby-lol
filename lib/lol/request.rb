@@ -1,6 +1,7 @@
 module Lol
   class InvalidAPIResponse < StandardError; end
   class NotFound < StandardError; end
+  class InvalidCacheStore < StandardError; end
 
   # Encapsulates common methods for all requests
   # Request classes inherit from this
@@ -16,6 +17,9 @@ module Lol
     # @return [String] region
     attr_accessor :region
 
+    # @!attribute[r] cache_store
+    # @return [Object] the cache_store
+    attr_reader :cache_store
 
     # Stub method. Each subclass should have its own api version
     # @return [String] api version
@@ -42,10 +46,16 @@ module Lol
       response
     end
 
-    def initialize api_key, region
+    # Initializes a new Request
+    # @param api_key [String] the Riot Games API key
+    # @param region [String] the region you want to use in API calls
+    # @param cache_store [Redis] the Redis store we want to use
+    # @return [Request]
+    def initialize api_key, region, cache_store = nil
+      raise InvalidCacheStore if cache_store && !cache_store.is_a?(Redis)
       @api_key = api_key
       @region = region
+      @cache_store = cache_store
     end
-
   end
 end

@@ -9,39 +9,43 @@ module Lol
     # @return [String] the API key that has been used
     attr_reader :api_key
 
+    # @!attribute [r] ttl
+    # @return [Fixnum] the ttl on cached requests
+    attr_reader :ttl
+
     # @return [ChampionRequest]
     def champion
-      @champion_request ||= ChampionRequest.new(api_key, region)
+      @champion_request ||= ChampionRequest.new(api_key, region, redis)
     end
 
     # @return [GameRequest]
     def game
-      @game_request ||= GameRequest.new(api_key, region)
+      @game_request ||= GameRequest.new(api_key, region, redis)
     end
 
     # @return [StatsRequest]
     def stats
-      @stats_request ||= StatsRequest.new(api_key, region)
+      @stats_request ||= StatsRequest.new(api_key, region, redis)
     end
 
     # @return [LeagueRequest]
     def league
-      @league_request ||= LeagueRequest.new(api_key, region)
+      @league_request ||= LeagueRequest.new(api_key, region, redis)
     end
 
     # @return [TeamRequest]
     def team
-      @team_request ||= TeamRequest.new(api_key, region)
+      @team_request ||= TeamRequest.new(api_key, region, redis)
     end
 
     # @return [SummonerRequest]
     def summoner
-      @summoner_request ||= SummonerRequest.new(api_key, region)
+      @summoner_request ||= SummonerRequest.new(api_key, region, redis)
     end
 
     # @return [StaticRequest]
     def static
-      @static_request ||= StaticRequest.new(api_key, region)
+      @static_request ||= StaticRequest.new(api_key, region, redis)
     end
 
     # Initializes a Lol::Client
@@ -52,7 +56,25 @@ module Lol
     def initialize api_key, options = {}
       @api_key = api_key
       @region = options.delete(:region) || "euw"
+      set_up_cache(options.delete(:redis))
     end
 
+    def set_up_cache(redis_url)
+      return @cached = false unless redis_url
+
+      @ttl = 900
+      @cached = true
+      @redis = Redis.new :url => redis_url
+    end
+
+    # @return [Boolean] true if requests are cached
+    def cached?
+      @cached
+    end
+
+    # @return [Redis] the cache store (if available)
+    def redis
+      @redis
+    end
   end
 end

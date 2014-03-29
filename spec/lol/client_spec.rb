@@ -18,8 +18,40 @@ describe Client do
     it "defaults on EUW as a region" do
       expect(subject.region).to eq("euw")
     end
+
+    it "sets caching if redis is specified in the options" do
+      client = Client.new "foo", redis: "redis://dummy-url"
+      expect(client.cached?).to be_true
+    end
+
+    it "sets a default ttl of 15 * 60s" do
+      client = Client.new "foo", redis: "redis://dummy-url"
+      expect(client.ttl).to eq(15*60)
+    end
+
+    it "instantiates a redis client if redis is in the options" do
+      client = Client.new "foo", redis: "redis://localhost:6379"
+      expect(client.instance_variable_get(:@redis)).to be_a(Redis)
+    end
+
+    it "passes the redis_store to the request" do
+      client = Client.new "foo", redis: "redis://localhost:6379"
+      champion_request = client.champion
+      expect(champion_request.cache_store).to be_a(Redis)
+    end
   end
 
+  describe "#cached?" do
+    it "is true if @cached is true" do
+      subject.instance_variable_set(:@cached, true)
+      expect(subject.cached?).to be_true
+    end
+
+    it "is false if @cached is false" do
+      subject.instance_variable_set(:@cached, false)
+      expect(subject.cached?).to be_false
+    end
+  end
 
   describe "#champion" do
     it "returns an instance of ChampionRequest" do
@@ -27,7 +59,7 @@ describe Client do
     end
 
     it "initializes the ChampionRequest with the current API key and region" do
-      expect(ChampionRequest).to receive(:new).with(subject.api_key, subject.region)
+      expect(ChampionRequest).to receive(:new).with(subject.api_key, subject.region, nil)
 
       subject.champion
     end
@@ -39,7 +71,7 @@ describe Client do
     end
 
     it "initializes the GameRequest with the current API key and region" do
-      expect(GameRequest).to receive(:new).with(subject.api_key, subject.region)
+      expect(GameRequest).to receive(:new).with(subject.api_key, subject.region, nil)
 
       subject.game
     end
@@ -51,7 +83,7 @@ describe Client do
     end
 
     it "initializes the StatsRequest with the current API key and region" do
-      expect(StatsRequest).to receive(:new).with(subject.api_key, subject.region)
+      expect(StatsRequest).to receive(:new).with(subject.api_key, subject.region, nil)
 
       subject.stats
     end
@@ -63,7 +95,7 @@ describe Client do
     end
 
     it "initializes the TeamRequest with the current API key and region" do
-      expect(TeamRequest).to receive(:new).with(subject.api_key, subject.region)
+      expect(TeamRequest).to receive(:new).with(subject.api_key, subject.region, nil)
 
       subject.team
     end
@@ -75,7 +107,7 @@ describe Client do
     end
 
     it "initializes the LeagueRequest with the current API key and region" do
-      expect(LeagueRequest).to receive(:new).with(subject.api_key, subject.region)
+      expect(LeagueRequest).to receive(:new).with(subject.api_key, subject.region, nil)
 
       subject.league
     end
@@ -87,7 +119,7 @@ describe Client do
     end
 
     it "initializes the SummonerRequest with the current API key and region" do
-      expect(SummonerRequest).to receive(:new).with(subject.api_key, subject.region)
+      expect(SummonerRequest).to receive(:new).with(subject.api_key, subject.region, nil)
 
       subject.summoner
     end
@@ -99,7 +131,7 @@ describe Client do
     end
 
     it "initializes the StaticRequest with the current API key and region" do
-      expect(StaticRequest).to receive(:new).with(subject.api_key, subject.region)
+      expect(StaticRequest).to receive(:new).with(subject.api_key, subject.region, nil)
 
       subject.static
     end

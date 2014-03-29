@@ -16,6 +16,16 @@ describe Request do
     it "correctly sets api key" do
       expect(ChampionRequest.new("api_key", "euw").api_key).to eq("api_key")
     end
+
+    it "sets the cache store" do
+      redis_store = Redis.new
+      c = ChampionRequest.new("api_key", "euw", redis_store)
+      expect(c.cache_store).to eq(redis_store)
+    end
+
+    it "returns an error if the cache store is not supported" do
+      expect { ChampionRequest.new "api_key", "euw", "FOO" }.to raise_error(InvalidCacheStore)
+    end
   end
 
   subject { Request.new "api_key", "euw"}

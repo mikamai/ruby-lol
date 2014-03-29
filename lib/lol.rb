@@ -1,6 +1,7 @@
 require 'active_support/core_ext/string/inflections'
 require 'httparty'
 require 'uri'
+require 'redis'
 
 module Lol
   # Takes a hash and returns a copy of it with the keys that have been underscored
