@@ -31,6 +31,10 @@ module Lol
     # @return [false] if the game is valid
     attr_reader :invalid
 
+    # @!attribute [r] ip_earned
+    # @return [Fixnum] IP Earned
+    attr_reader :ip_earned
+    
     # @!attribute [r] level
     # @return [Fixnum] Level
     attr_reader :level
@@ -61,7 +65,7 @@ module Lol
 
     private
 
-    attr_writer :champion_id, :game_id, :game_mode, :game_type, :invalid,
+    attr_writer :champion_id, :game_id, :game_mode, :game_type, :invalid, :ip_earned,
                 :level, :map_id, :spell1, :spell2, :sub_type, :team_id
 
     def create_date= value
