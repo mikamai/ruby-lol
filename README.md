@@ -22,6 +22,8 @@ Or install it yourself as:
 
 ## Usage
 
+[ Outdated, anyone who wants to contribute to this please do it :) ]
+
 ```ruby
 require 'lol'
 
@@ -118,6 +120,8 @@ client.static.champion.get(champData: 'lore')
 5. Create new Pull Request
 
 ## Changelog
+ - 0.9.13 Updated to latest API versions
+ - 0.9.12 Fixed a caching bug
  - 0.9.11 Added caching support via REDIS
  - 0.9.7 Updated LeagueRequest to API v2.3
  - 0.9.6 Updated SummonerRequest and GameRequest to API v1.3
