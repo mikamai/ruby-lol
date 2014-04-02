@@ -4,30 +4,10 @@ module Lol
     # @return [Fixnum] id of Champion
     attr_reader :id
 
-    # @!attribute [r] name
-    # @return [String] name of Champion
-    attr_reader :name
-
     # @!attribute [r] active
     # @return [true] if the Champion is active
     # @return [false] if the Champion is disabled
     attr_reader :active
-
-    # @!attribute [r] attack_rank
-    # @return [Fixnum] attack rank of Champion
-    attr_reader :attack_rank
-
-    # @!attribute [r] defense_rank
-    # @return [Fixnum] defense rank of Champion
-    attr_reader :defense_rank
-
-    # @!attribute [r] magic_rank
-    # @return [Fixnum] magic rank of Champion
-    attr_reader :magic_rank
-
-    # @!attribute [r] difficulty_rank
-    # @return [Fixnum] difficulty rank of Champion
-    attr_reader :difficulty_rank
 
     # @!attribute [r] bot_enabled
     # @return [true] if the Champion is enabled in custom bot games
@@ -51,8 +31,7 @@ module Lol
 
     private
 
-    attr_writer :id, :name, :active, :attack_rank, :defense_rank, :magic_rank,
-                :difficulty_rank, :bot_enabled, :free_to_play, :bot_mm_enabled,
+    attr_writer :id, :active, :bot_enabled, :free_to_play, :bot_mm_enabled,
                 :ranked_play_enabled
   end
 end

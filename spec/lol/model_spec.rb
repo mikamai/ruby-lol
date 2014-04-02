@@ -5,7 +5,7 @@ include Lol
 
 describe Model do
   describe "#inspect" do
-    subject { Champion.new "name" => 'intinig' }
+    subject { Champion.new "id" => 212 }
     it "skips @raw" do
       expect(subject.inspect).not_to match(/@raw/)
     end

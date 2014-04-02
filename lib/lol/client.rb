@@ -52,6 +52,8 @@ module Lol
     # @param api_key [String]
     # @param options [Hash]
     # @option options [String] :region ("EUW") The region on which the requests will be made
+    # @option options [String] :redis the redis url to use for caching
+    # @option options [Fixnum] :ttl (900) the cache ttl
     # @return [Lol::Client]
     def initialize api_key, options = {}
       @api_key = api_key

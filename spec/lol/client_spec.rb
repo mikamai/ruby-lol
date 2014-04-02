@@ -19,29 +19,6 @@ describe Client do
       expect(subject.region).to eq("euw")
     end
 
-    context "rate_limits" do
-      subject { Client.new "foo", redis: "redis://localhost:6379/0/test", rate_limits: {10 => 10, 600 => 500} }
-
-      it "honors rate limits" do
-        champions = {"champions" => []}
-        expect(subject.champion.class).to receive(:get).at_least(:once).and_return(champions)
-        expect { 1000.times { subject.champion.get } }.to raise_error(RateLimit)
-      end
-
-      it "does not work if you are not cached" do
-        c = Client.new "foo", {rate_limits: { 10 => 10 }}
-        expect(c.limited?).to be_false
-      end
-
-      it "rate_limits if you specify rate_limits and are cached" do
-        expect(subject.limited?).to be_true
-      end
-
-      it "sets the limits" do
-        expect(subject.redis.smembers("rates")).to match_array(["10", "600"])
-      end
-    end
-
     context "caching" do
       let(:client) { Client.new "foo", redis: "redis://dummy-url" }
       let(:real_redis) { Client.new "foo", redis: "redis://localhost:6379" }
