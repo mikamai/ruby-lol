@@ -1,13 +1,9 @@
 module Lol
-  class Talent < Model
+  class Mastery < Model
 
     # @!attribute [r] id
     # @return [Fixnum] id of talent
     attr_reader :id
-
-    # @!attribute [r] name
-    # @return [String] name of talent
-    attr_reader :name
 
     # @!attribute [r] rank
     # @return [Fixnum] rank of talent
@@ -15,6 +11,6 @@ module Lol
 
     private
 
-    attr_writer :id, :name, :rank
+    attr_writer :id, :rank
   end
 end

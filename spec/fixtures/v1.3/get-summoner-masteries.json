@@ -1,2316 +1,2316 @@
 {
-  "30743211": {
-    "summonerId": 30743211,
-    "pages": [
-      {
-        "id": 34170136,
-        "name": "AD (more atk)",
-        "current": false,
-        "talents": [
-          {
-            "id": 4212,
-            "name": "Recovery",
-            "rank": 2
-          },
-          {
-            "id": 4211,
-            "name": "Block",
-            "rank": 2
-          },
-          {
-            "id": 4134,
-            "name": "Executioner",
-            "rank": 3
-          },
-          {
-            "id": 4124,
-            "name": "Feast",
-            "rank": 1
-          },
-          {
-            "id": 4114,
-            "name": "Butcher",
-            "rank": 1
-          },
-          {
-            "id": 4151,
-            "name": "Frenzy",
-            "rank": 1
-          },
-          {
-            "id": 4222,
-            "name": "Veteran's Scars",
-            "rank": 3
-          },
-          {
-            "id": 4221,
-            "name": "Unyielding",
-            "rank": 1
-          },
-          {
-            "id": 4152,
-            "name": "Devastating Strikes",
-            "rank": 3
-          },
-          {
-            "id": 4122,
-            "name": "Brute Force",
-            "rank": 3
-          },
-          {
-            "id": 4111,
-            "name": "Double-Edged Sword",
-            "rank": 1
-          },
-          {
-            "id": 4132,
-            "name": "Martial Mastery",
-            "rank": 1
-          },
-          {
-            "id": 4142,
-            "name": "Warlord",
-            "rank": 3
-          },
-          {
-            "id": 4232,
-            "name": "Juggernaut",
-            "rank": 1
-          },
-          {
-            "id": 4162,
-            "name": "Havoc",
-            "rank": 1
-          },
-          {
-            "id": 4112,
-            "name": "Fury",
-            "rank": 3
-          }
-        ]
-      },
-      {
-        "id": 34170137,
-        "name": "AD (more def)",
-        "current": false,
-        "talents": [
-          {
-            "id": 4212,
-            "name": "Recovery",
-            "rank": 2
-          },
-          {
-            "id": 4242,
-            "name": "Swiftness",
-            "rank": 1
-          },
-          {
-            "id": 4211,
-            "name": "Block",
-            "rank": 2
-          },
-          {
-            "id": 4213,
-            "name": "Enchanted Armor",
-            "rank": 2
-          },
-          {
-            "id": 4124,
-            "name": "Feast",
-            "rank": 1
-          },
-          {
-            "id": 4251,
-            "name": "Second Wind",
-            "rank": 1
-          },
-          {
-            "id": 4114,
-            "name": "Butcher",
-            "rank": 1
-          },
-          {
-            "id": 4222,
-            "name": "Veteran's Scars",
-            "rank": 3
-          },
-          {
-            "id": 4113,
-            "name": "Sorcery",
-            "rank": 4
-          },
-          {
-            "id": 4221,
-            "name": "Unyielding",
-            "rank": 1
-          },
-          {
-            "id": 4252,
-            "name": "Legendary Guardian",
-            "rank": 4
-          },
-          {
-            "id": 4262,
-            "name": "Tenacious",
-            "rank": 1
-          },
-          {
-            "id": 4231,
-            "name": "Oppression",
-            "rank": 1
-          },
-          {
-            "id": 4241,
-            "name": "Perseverance",
-            "rank": 3
-          },
-          {
-            "id": 4234,
-            "name": "Resistance",
-            "rank": 1
-          },
-          {
-            "id": 4233,
-            "name": "Hardiness",
-            "rank": 1
-          },
-          {
-            "id": 4232,
-            "name": "Juggernaut",
-            "rank": 1
-          }
-        ]
-      },
-      {
-        "id": 34170138,
-        "name": "AD (more atk, cdr)",
-        "current": false,
-        "talents": [
-          {
-            "id": 4211,
-            "name": "Block",
-            "rank": 2
-          },
-          {
-            "id": 4134,
-            "name": "Executioner",
-            "rank": 3
-          },
-          {
-            "id": 4213,
-            "name": "Enchanted Armor",
-            "rank": 2
-          },
-          {
-            "id": 4222,
-            "name": "Veteran's Scars",
-            "rank": 3
-          },
-          {
-            "id": 4113,
-            "name": "Sorcery",
-            "rank": 4
-          },
-          {
-            "id": 4221,
-            "name": "Unyielding",
-            "rank": 1
-          },
-          {
-            "id": 4122,
-            "name": "Brute Force",
-            "rank": 3
-          },
-          {
-            "id": 4152,
-            "name": "Devastating Strikes",
-            "rank": 3
-          },
-          {
-            "id": 4141,
-            "name": "Blade Weaving",
-            "rank": 1
-          },
-          {
-            "id": 4111,
-            "name": "Double-Edged Sword",
-            "rank": 1
-          },
-          {
-            "id": 4132,
-            "name": "Martial Mastery",
-            "rank": 1
-          },
-          {
-            "id": 4142,
-            "name": "Warlord",
-            "rank": 3
-          },
-          {
-            "id": 4232,
-            "name": "Juggernaut",
-            "rank": 1
-          },
-          {
-            "id": 4162,
-            "name": "Havoc",
-            "rank": 1
-          },
-          {
-            "id": 4131,
-            "name": "Spell Weaving",
-            "rank": 1
-          }
-        ]
-      },
-      {
-        "id": 34170139,
-        "name": "AD (more def, cdr)",
-        "current": false,
-        "talents": [
-          {
-            "id": 4212,
-            "name": "Recovery",
-            "rank": 2
-          },
-          {
-            "id": 4242,
-            "name": "Swiftness",
-            "rank": 1
-          },
-          {
-            "id": 4211,
-            "name": "Block",
-            "rank": 2
-          },
-          {
-            "id": 4214,
-            "name": "Tough Skin",
-            "rank": 2
-          },
-          {
-            "id": 4213,
-            "name": "Enchanted Armor",
-            "rank": 2
-          },
-          {
-            "id": 4234,
-            "name": "Resistance",
-            "rank": 3
-          },
-          {
-            "id": 4114,
-            "name": "Butcher",
-            "rank": 1
-          },
-          {
-            "id": 4112,
-            "name": "Fury",
-            "rank": 4
-          },
-          {
-            "id": 4113,
-            "name": "Sorcery",
-            "rank": 4
-          },
-          {
-            "id": 4221,
-            "name": "Unyielding",
-            "rank": 1
-          },
-          {
-            "id": 4252,
-            "name": "Legendary Guardian",
-            "rank": 4
-          },
-          {
-            "id": 4262,
-            "name": "Tenacious",
-            "rank": 1
-          },
-          {
-            "id": 4241,
-            "name": "Perseverance",
-            "rank": 3
-          }
-        ]
-      },
-      {
-        "id": 34170140,
-        "name": "Jungle AD (more atk)",
-        "current": false,
-        "talents": [
-          {
-            "id": 4211,
-            "name": "Block",
-            "rank": 2
-          },
-          {
-            "id": 4214,
-            "name": "Tough Skin",
-            "rank": 2
-          },
-          {
-            "id": 4134,
-            "name": "Executioner",
-            "rank": 3
-          },
-          {
-            "id": 4212,
-            "name": "Recovery",
-            "rank": 1
-          },
-          {
-            "id": 4124,
-            "name": "Feast",
-            "rank": 1
-          },
-          {
-            "id": 4114,
-            "name": "Butcher",
-            "rank": 1
-          },
-          {
-            "id": 4222,
-            "name": "Veteran's Scars",
-            "rank": 3
-          },
-          {
-            "id": 4221,
-            "name": "Unyielding",
-            "rank": 1
-          },
-          {
-            "id": 4152,
-            "name": "Devastating Strikes",
-            "rank": 3
-          },
-          {
-            "id": 4122,
-            "name": "Brute Force",
-            "rank": 3
-          },
-          {
-            "id": 4111,
-            "name": "Double-Edged Sword",
-            "rank": 1
-          },
-          {
-            "id": 4132,
-            "name": "Martial Mastery",
-            "rank": 1
-          },
-          {
-            "id": 4142,
-            "name": "Warlord",
-            "rank": 3
-          },
-          {
-            "id": 4162,
-            "name": "Havoc",
-            "rank": 1
-          },
-          {
-            "id": 4112,
-            "name": "Fury",
-            "rank": 3
-          },
-          {
-            "id": 4131,
-            "name": "Spell Weaving",
-            "rank": 1
-          }
-        ]
-      },
-      {
-        "id": 34170141,
-        "name": "Jungle AD (more def)",
-        "current": false,
-        "talents": [
-          {
-            "id": 4242,
-            "name": "Swiftness",
-            "rank": 1
-          },
-          {
-            "id": 4211,
-            "name": "Block",
-            "rank": 2
-          },
-          {
-            "id": 4214,
-            "name": "Tough Skin",
-            "rank": 2
-          },
-          {
-            "id": 4213,
-            "name": "Enchanted Armor",
-            "rank": 2
-          },
-          {
-            "id": 4124,
-            "name": "Feast",
-            "rank": 1
-          },
-          {
-            "id": 4114,
-            "name": "Butcher",
-            "rank": 1
-          },
-          {
-            "id": 4251,
-            "name": "Second Wind",
-            "rank": 1
-          },
-          {
-            "id": 4222,
-            "name": "Veteran's Scars",
-            "rank": 3
-          },
-          {
-            "id": 4221,
-            "name": "Unyielding",
-            "rank": 1
-          },
-          {
-            "id": 4122,
-            "name": "Brute Force",
-            "rank": 3
-          },
-          {
-            "id": 4262,
-            "name": "Tenacious",
-            "rank": 1
-          },
-          {
-            "id": 4231,
-            "name": "Oppression",
-            "rank": 1
-          },
-          {
-            "id": 4252,
-            "name": "Legendary Guardian",
-            "rank": 3
-          },
-          {
-            "id": 4132,
-            "name": "Martial Mastery",
-            "rank": 1
-          },
-          {
-            "id": 4241,
-            "name": "Perseverance",
-            "rank": 3
-          },
-          {
-            "id": 4232,
-            "name": "Juggernaut",
-            "rank": 1
-          },
-          {
-            "id": 4112,
-            "name": "Fury",
-            "rank": 3
-          }
-        ]
-      },
-      {
-        "id": 34170142,
-        "name": "Jungle AD (more atk, cdr)",
-        "current": false,
-        "talents": [
-          {
-            "id": 4212,
-            "name": "Recovery",
-            "rank": 2
-          },
-          {
-            "id": 4211,
-            "name": "Block",
-            "rank": 2
-          },
-          {
-            "id": 4214,
-            "name": "Tough Skin",
-            "rank": 2
-          },
-          {
-            "id": 4134,
-            "name": "Executioner",
-            "rank": 3
-          },
-          {
-            "id": 4124,
-            "name": "Feast",
-            "rank": 1
-          },
-          {
-            "id": 4114,
-            "name": "Butcher",
-            "rank": 1
-          },
-          {
-            "id": 4222,
-            "name": "Veteran's Scars",
-            "rank": 3
-          },
-          {
-            "id": 4113,
-            "name": "Sorcery",
-            "rank": 4
-          },
-          {
-            "id": 4144,
-            "name": "Dangerous Game",
-            "rank": 1
-          },
-          {
-            "id": 4122,
-            "name": "Brute Force",
-            "rank": 3
-          },
-          {
-            "id": 4152,
-            "name": "Devastating Strikes",
-            "rank": 3
-          },
-          {
-            "id": 4132,
-            "name": "Martial Mastery",
-            "rank": 1
-          },
-          {
-            "id": 4142,
-            "name": "Warlord",
-            "rank": 3
-          },
-          {
-            "id": 4162,
-            "name": "Havoc",
-            "rank": 1
-          }
-        ]
-      },
-      {
-        "id": 34170143,
-        "name": "Jungle AD (more def, cdr)",
-        "current": false,
-        "talents": [
-          {
-            "id": 4212,
-            "name": "Recovery",
-            "rank": 2
-          },
-          {
-            "id": 4242,
-            "name": "Swiftness",
-            "rank": 1
-          },
-          {
-            "id": 4211,
-            "name": "Block",
-            "rank": 2
-          },
-          {
-            "id": 4214,
-            "name": "Tough Skin",
-            "rank": 2
-          },
-          {
-            "id": 4124,
-            "name": "Feast",
-            "rank": 1
-          },
-          {
-            "id": 4251,
-            "name": "Second Wind",
-            "rank": 1
-          },
-          {
-            "id": 4114,
-            "name": "Butcher",
-            "rank": 1
-          },
-          {
-            "id": 4112,
-            "name": "Fury",
-            "rank": 4
-          },
-          {
-            "id": 4222,
-            "name": "Veteran's Scars",
-            "rank": 3
-          },
-          {
-            "id": 4221,
-            "name": "Unyielding",
-            "rank": 1
-          },
-          {
-            "id": 4262,
-            "name": "Tenacious",
-            "rank": 1
-          },
-          {
-            "id": 4252,
-            "name": "Legendary Guardian",
-            "rank": 3
-          },
-          {
-            "id": 4231,
-            "name": "Oppression",
-            "rank": 1
-          },
-          {
-            "id": 4241,
-            "name": "Perseverance",
-            "rank": 3
-          },
-          {
-            "id": 4232,
-            "name": "Juggernaut",
-            "rank": 1
-          },
-          {
-            "id": 4113,
-            "name": "Sorcery",
-            "rank": 3
-          }
-        ]
-      },
-      {
-        "id": 34170144,
-        "name": "Support",
-        "current": false,
-        "talents": [
-          {
-            "id": 4212,
-            "name": "Recovery",
-            "rank": 2
-          },
-          {
-            "id": 4211,
-            "name": "Block",
-            "rank": 2
-          },
-          {
-            "id": 4311,
-            "name": "Phasewalker",
-            "rank": 1
-          },
-          {
-            "id": 4353,
-            "name": "Intelligence",
-            "rank": 3
-          },
-          {
-            "id": 4362,
-            "name": "Wanderer",
-            "rank": 1
-          },
-          {
-            "id": 4344,
-            "name": "Inspiration",
-            "rank": 2
-          },
-          {
-            "id": 4352,
-            "name": "Bandit",
-            "rank": 1
-          },
-          {
-            "id": 4323,
-            "name": "Strength of Spirit",
-            "rank": 1
-          },
-          {
-            "id": 4222,
-            "name": "Veteran's Scars",
-            "rank": 3
-          },
-          {
-            "id": 4314,
-            "name": "Scout",
-            "rank": 1
-          },
-          {
-            "id": 4221,
-            "name": "Unyielding",
-            "rank": 1
-          },
-          {
-            "id": 4331,
-            "name": "Greed",
-            "rank": 3
-          },
-          {
-            "id": 4312,
-            "name": "Fleet of Foot",
-            "rank": 3
-          },
-          {
-            "id": 4313,
-            "name": "Meditation",
-            "rank": 3
-          },
-          {
-            "id": 4232,
-            "name": "Juggernaut",
-            "rank": 1
-          },
-          {
-            "id": 4342,
-            "name": "Wealth",
-            "rank": 1
-          },
-          {
-            "id": 4341,
-            "name": "Scavenger",
-            "rank": 1
-          }
-        ]
-      },
-      {
-        "id": 34170145,
-        "name": "Tank Sup",
-        "current": false,
-        "talents": [
-          {
-            "id": 4233,
-            "name": "Hardiness",
-            "rank": 3
-          },
-          {
-            "id": 4211,
-            "name": "Block",
-            "rank": 2
-          },
-          {
-            "id": 4243,
-            "name": "Reinforced Armor",
-            "rank": 1
-          },
-          {
-            "id": 4213,
-            "name": "Enchanted Armor",
-            "rank": 2
-          },
-          {
-            "id": 4334,
-            "name": "Culinary Master",
-            "rank": 1
-          },
-          {
-            "id": 4323,
-            "name": "Strength of Spirit",
-            "rank": 1
-          },
-          {
-            "id": 4222,
-            "name": "Veteran's Scars",
-            "rank": 3
-          },
-          {
-            "id": 4221,
-            "name": "Unyielding",
-            "rank": 1
-          },
-          {
-            "id": 4324,
-            "name": "Alchemist",
-            "rank": 1
-          },
-          {
-            "id": 4252,
-            "name": "Legendary Guardian",
-            "rank": 4
-          },
-          {
-            "id": 4262,
-            "name": "Tenacious",
-            "rank": 1
-          },
-          {
-            "id": 4312,
-            "name": "Fleet of Foot",
-            "rank": 3
-          },
-          {
-            "id": 4313,
-            "name": "Meditation",
-            "rank": 3
-          },
-          {
-            "id": 4241,
-            "name": "Perseverance",
-            "rank": 3
-          },
-          {
-            "id": 4232,
-            "name": "Juggernaut",
-            "rank": 1
-          }
-        ]
-      },
-      {
-        "id": 34170146,
-        "name": "Cho Gath",
-        "current": false,
-        "talents": [
-          {
-            "id": 4212,
-            "name": "Recovery",
-            "rank": 2
-          },
-          {
-            "id": 4233,
-            "name": "Hardiness",
-            "rank": 3
-          },
-          {
-            "id": 4242,
-            "name": "Swiftness",
-            "rank": 1
-          },
-          {
-            "id": 4243,
-            "name": "Reinforced Armor",
-            "rank": 1
-          },
-          {
-            "id": 4214,
-            "name": "Tough Skin",
-            "rank": 2
-          },
-          {
-            "id": 4124,
-            "name": "Feast",
-            "rank": 1
-          },
-          {
-            "id": 4251,
-            "name": "Second Wind",
-            "rank": 1
-          },
-          {
-            "id": 4114,
-            "name": "Butcher",
-            "rank": 1
-          },
-          {
-            "id": 4252,
-            "name": "Legendary Guardian",
-            "rank": 2
-          },
-          {
-            "id": 4222,
-            "name": "Veteran's Scars",
-            "rank": 3
-          },
-          {
-            "id": 4123,
-            "name": "Mental Force",
-            "rank": 3
-          },
-          {
-            "id": 4262,
-            "name": "Tenacious",
-            "rank": 1
-          },
-          {
-            "id": 4224,
-            "name": "Bladed Armor",
-            "rank": 1
-          },
-          {
-            "id": 4133,
-            "name": "Arcane Mastery",
-            "rank": 1
-          },
-          {
-            "id": 4241,
-            "name": "Perseverance",
-            "rank": 3
-          },
-          {
-            "id": 4232,
-            "name": "Juggernaut",
-            "rank": 1
-          },
-          {
-            "id": 4112,
-            "name": "Fury",
-            "rank": 3
-          }
-        ]
-      },
-      {
-        "id": 34170147,
-        "name": "Jungle AP Gragas",
-        "current": true,
-        "talents": [
-          {
-            "id": 4212,
-            "name": "Recovery",
-            "rank": 2
-          },
-          {
-            "id": 4211,
-            "name": "Block",
-            "rank": 2
-          },
-          {
-            "id": 4214,
-            "name": "Tough Skin",
-            "rank": 2
-          },
-          {
-            "id": 4121,
-            "name": "Expose Weakness",
-            "rank": 1
-          },
-          {
-            "id": 4213,
-            "name": "Enchanted Armor",
-            "rank": 2
-          },
-          {
-            "id": 4134,
-            "name": "Executioner",
-            "rank": 3
-          },
-          {
-            "id": 4124,
-            "name": "Feast",
-            "rank": 1
-          },
-          {
-            "id": 4114,
-            "name": "Butcher",
-            "rank": 1
-          },
-          {
-            "id": 4221,
-            "name": "Unyielding",
-            "rank": 1
-          },
-          {
-            "id": 4144,
-            "name": "Dangerous Game",
-            "rank": 1
-          },
-          {
-            "id": 4152,
-            "name": "Devastating Strikes",
-            "rank": 3
-          },
-          {
-            "id": 4123,
-            "name": "Mental Force",
-            "rank": 3
-          },
-          {
-            "id": 4133,
-            "name": "Arcane Mastery",
-            "rank": 1
-          },
-          {
-            "id": 4143,
-            "name": "Archmage",
-            "rank": 3
-          },
-          {
-            "id": 4162,
-            "name": "Havoc",
-            "rank": 1
-          },
-          {
-            "id": 4113,
-            "name": "Sorcery",
-            "rank": 3
-          }
-        ]
-      },
-      {
-        "id": 34170148,
-        "name": "AP Jungle 21/6/3",
-        "current": false,
-        "talents": [
-          {
-            "id": 4211,
-            "name": "Block",
-            "rank": 2
-          },
-          {
-            "id": 4214,
-            "name": "Tough Skin",
-            "rank": 2
-          },
-          {
-            "id": 4134,
-            "name": "Executioner",
-            "rank": 3
-          },
-          {
-            "id": 4124,
-            "name": "Feast",
-            "rank": 1
-          },
-          {
-            "id": 4154,
-            "name": "Arcane Blade",
-            "rank": 1
-          },
-          {
-            "id": 4114,
-            "name": "Butcher",
-            "rank": 1
-          },
-          {
-            "id": 4221,
-            "name": "Unyielding",
-            "rank": 1
-          },
-          {
-            "id": 4152,
-            "name": "Devastating Strikes",
-            "rank": 3
-          },
-          {
-            "id": 4123,
-            "name": "Mental Force",
-            "rank": 3
-          },
-          {
-            "id": 4224,
-            "name": "Bladed Armor",
-            "rank": 1
-          },
-          {
-            "id": 4312,
-            "name": "Fleet of Foot",
-            "rank": 3
-          },
-          {
-            "id": 4111,
-            "name": "Double-Edged Sword",
-            "rank": 1
-          },
-          {
-            "id": 4133,
-            "name": "Arcane Mastery",
-            "rank": 1
-          },
-          {
-            "id": 4143,
-            "name": "Archmage",
-            "rank": 3
-          },
-          {
-            "id": 4162,
-            "name": "Havoc",
-            "rank": 1
-          },
-          {
-            "id": 4113,
-            "name": "Sorcery",
-            "rank": 3
-          }
-        ]
-      },
-      {
-        "id": 34170149,
-        "name": "ADC",
-        "current": false,
-        "talents": [
-          {
-            "id": 4212,
-            "name": "Recovery",
-            "rank": 2
-          },
-          {
-            "id": 4211,
-            "name": "Block",
-            "rank": 2
-          },
-          {
-            "id": 4134,
-            "name": "Executioner",
-            "rank": 3
-          },
-          {
-            "id": 4124,
-            "name": "Feast",
-            "rank": 1
-          },
-          {
-            "id": 4114,
-            "name": "Butcher",
-            "rank": 1
-          },
-          {
-            "id": 4222,
-            "name": "Veteran's Scars",
-            "rank": 3
-          },
-          {
-            "id": 4221,
-            "name": "Unyielding",
-            "rank": 1
-          },
-          {
-            "id": 4122,
-            "name": "Brute Force",
-            "rank": 3
-          },
-          {
-            "id": 4152,
-            "name": "Devastating Strikes",
-            "rank": 3
-          },
-          {
-            "id": 4112,
-            "name": "Fury",
-            "rank": 2
-          },
-          {
-            "id": 4141,
-            "name": "Blade Weaving",
-            "rank": 1
-          },
-          {
-            "id": 4111,
-            "name": "Double-Edged Sword",
-            "rank": 1
-          },
-          {
-            "id": 4132,
-            "name": "Martial Mastery",
-            "rank": 1
-          },
-          {
-            "id": 4142,
-            "name": "Warlord",
-            "rank": 3
-          },
-          {
-            "id": 4232,
-            "name": "Juggernaut",
-            "rank": 1
-          },
-          {
-            "id": 4162,
-            "name": "Havoc",
-            "rank": 1
-          },
-          {
-            "id": 4131,
-            "name": "Spell Weaving",
-            "rank": 1
-          }
-        ]
-      },
-      {
-        "id": 34170150,
-        "name": "Random",
-        "current": false,
-        "talents": [
-          {
-            "id": 4242,
-            "name": "Swiftness",
-            "rank": 1
-          },
-          {
-            "id": 4212,
-            "name": "Recovery",
-            "rank": 2
-          },
-          {
-            "id": 4211,
-            "name": "Block",
-            "rank": 2
-          },
-          {
-            "id": 4214,
-            "name": "Tough Skin",
-            "rank": 2
-          },
-          {
-            "id": 4332,
-            "name": "Runic Affinity",
-            "rank": 1
-          },
-          {
-            "id": 4323,
-            "name": "Strength of Spirit",
-            "rank": 1
-          },
-          {
-            "id": 4222,
-            "name": "Veteran's Scars",
-            "rank": 3
-          },
-          {
-            "id": 4221,
-            "name": "Unyielding",
-            "rank": 1
-          },
-          {
-            "id": 4252,
-            "name": "Legendary Guardian",
-            "rank": 4
-          },
-          {
-            "id": 4324,
-            "name": "Alchemist",
-            "rank": 1
-          },
-          {
-            "id": 4262,
-            "name": "Tenacious",
-            "rank": 1
-          },
-          {
-            "id": 4312,
-            "name": "Fleet of Foot",
-            "rank": 3
-          },
-          {
-            "id": 4231,
-            "name": "Oppression",
-            "rank": 1
-          },
-          {
-            "id": 4313,
-            "name": "Meditation",
-            "rank": 3
-          },
-          {
-            "id": 4241,
-            "name": "Perseverance",
-            "rank": 3
-          },
-          {
-            "id": 4232,
-            "name": "Juggernaut",
-            "rank": 1
-          }
-        ]
-      },
-      {
-        "id": 34170151,
-        "name": "Vlad",
-        "current": false,
-        "talents": [
-          {
-            "id": 4212,
-            "name": "Recovery",
-            "rank": 2
-          },
-          {
-            "id": 4211,
-            "name": "Block",
-            "rank": 2
-          },
-          {
-            "id": 4134,
-            "name": "Executioner",
-            "rank": 3
-          },
-          {
-            "id": 4154,
-            "name": "Arcane Blade",
-            "rank": 1
-          },
-          {
-            "id": 4124,
-            "name": "Feast",
-            "rank": 1
-          },
-          {
-            "id": 4114,
-            "name": "Butcher",
-            "rank": 1
-          },
-          {
-            "id": 4222,
-            "name": "Veteran's Scars",
-            "rank": 3
-          },
-          {
-            "id": 4113,
-            "name": "Sorcery",
-            "rank": 4
-          },
-          {
-            "id": 4221,
-            "name": "Unyielding",
-            "rank": 1
-          },
-          {
-            "id": 4152,
-            "name": "Devastating Strikes",
-            "rank": 3
-          },
-          {
-            "id": 4123,
-            "name": "Mental Force",
-            "rank": 3
-          },
-          {
-            "id": 4133,
-            "name": "Arcane Mastery",
-            "rank": 1
-          },
-          {
-            "id": 4232,
-            "name": "Juggernaut",
-            "rank": 1
-          },
-          {
-            "id": 4143,
-            "name": "Archmage",
-            "rank": 3
-          },
-          {
-            "id": 4162,
-            "name": "Havoc",
-            "rank": 1
-          }
-        ]
-      },
-      {
-        "id": 34170152,
-        "name": "Eve Jungle",
-        "current": false,
-        "talents": [
-          {
-            "id": 4214,
-            "name": "Tough Skin",
-            "rank": 2
-          },
-          {
-            "id": 4312,
-            "name": "Fleet of Foot",
-            "rank": 2
-          },
-          {
-            "id": 4134,
-            "name": "Executioner",
-            "rank": 3
-          },
-          {
-            "id": 4154,
-            "name": "Arcane Blade",
-            "rank": 1
-          },
-          {
-            "id": 4113,
-            "name": "Sorcery",
-            "rank": 4
-          },
-          {
-            "id": 4144,
-            "name": "Dangerous Game",
-            "rank": 1
-          },
-          {
-            "id": 4122,
-            "name": "Brute Force",
-            "rank": 3
-          },
-          {
-            "id": 4152,
-            "name": "Devastating Strikes",
-            "rank": 3
-          },
-          {
-            "id": 4123,
-            "name": "Mental Force",
-            "rank": 3
-          },
-          {
-            "id": 4111,
-            "name": "Double-Edged Sword",
-            "rank": 1
-          },
-          {
-            "id": 4132,
-            "name": "Martial Mastery",
-            "rank": 1
-          },
-          {
-            "id": 4133,
-            "name": "Arcane Mastery",
-            "rank": 1
-          },
-          {
-            "id": 4143,
-            "name": "Archmage",
-            "rank": 3
-          },
-          {
-            "id": 4162,
-            "name": "Havoc",
-            "rank": 1
-          },
-          {
-            "id": 4131,
-            "name": "Spell Weaving",
-            "rank": 1
-          }
-        ]
-      },
-      {
-        "id": 34170153,
-        "name": "Mundo Giungla",
-        "current": false,
-        "talents": [
-          {
-            "id": 4212,
-            "name": "Recovery",
-            "rank": 2
-          },
-          {
-            "id": 4242,
-            "name": "Swiftness",
-            "rank": 1
-          },
-          {
-            "id": 4233,
-            "name": "Hardiness",
-            "rank": 3
-          },
-          {
-            "id": 4243,
-            "name": "Reinforced Armor",
-            "rank": 1
-          },
-          {
-            "id": 4211,
-            "name": "Block",
-            "rank": 2
-          },
-          {
-            "id": 4214,
-            "name": "Tough Skin",
-            "rank": 2
-          },
-          {
-            "id": 4114,
-            "name": "Butcher",
-            "rank": 1
-          },
-          {
-            "id": 4251,
-            "name": "Second Wind",
-            "rank": 1
-          },
-          {
-            "id": 4222,
-            "name": "Veteran's Scars",
-            "rank": 3
-          },
-          {
-            "id": 4221,
-            "name": "Unyielding",
-            "rank": 1
-          },
-          {
-            "id": 4252,
-            "name": "Legendary Guardian",
-            "rank": 4
-          },
-          {
-            "id": 4224,
-            "name": "Bladed Armor",
-            "rank": 1
-          },
-          {
-            "id": 4262,
-            "name": "Tenacious",
-            "rank": 1
-          },
-          {
-            "id": 4312,
-            "name": "Fleet of Foot",
-            "rank": 3
-          },
-          {
-            "id": 4241,
-            "name": "Perseverance",
-            "rank": 3
-          },
-          {
-            "id": 4232,
-            "name": "Juggernaut",
-            "rank": 1
-          }
-        ]
-      },
-      {
-        "id": 34170154,
-        "name": "9/21 AP Jungle",
-        "current": false,
-        "talents": [
-          {
-            "id": 4212,
-            "name": "Recovery",
-            "rank": 2
-          },
-          {
-            "id": 4242,
-            "name": "Swiftness",
-            "rank": 1
-          },
-          {
-            "id": 4211,
-            "name": "Block",
-            "rank": 2
-          },
-          {
-            "id": 4214,
-            "name": "Tough Skin",
-            "rank": 2
-          },
-          {
-            "id": 4124,
-            "name": "Feast",
-            "rank": 1
-          },
-          {
-            "id": 4114,
-            "name": "Butcher",
-            "rank": 1
-          },
-          {
-            "id": 4222,
-            "name": "Veteran's Scars",
-            "rank": 3
-          },
-          {
-            "id": 4113,
-            "name": "Sorcery",
-            "rank": 4
-          },
-          {
-            "id": 4221,
-            "name": "Unyielding",
-            "rank": 1
-          },
-          {
-            "id": 4252,
-            "name": "Legendary Guardian",
-            "rank": 4
-          },
-          {
-            "id": 4123,
-            "name": "Mental Force",
-            "rank": 3
-          },
-          {
-            "id": 4262,
-            "name": "Tenacious",
-            "rank": 1
-          },
-          {
-            "id": 4231,
-            "name": "Oppression",
-            "rank": 1
-          },
-          {
-            "id": 4241,
-            "name": "Perseverance",
-            "rank": 3
-          },
-          {
-            "id": 4232,
-            "name": "Juggernaut",
-            "rank": 1
-          }
-        ]
-      },
-      {
-        "id": 34170155,
-        "name": "AP Support",
-        "current": false,
-        "talents": [
-          {
-            "id": 4212,
-            "name": "Recovery",
-            "rank": 2
-          },
-          {
-            "id": 4211,
-            "name": "Block",
-            "rank": 2
-          },
-          {
-            "id": 4134,
-            "name": "Executioner",
-            "rank": 3
-          },
-          {
-            "id": 4154,
-            "name": "Arcane Blade",
-            "rank": 1
-          },
-          {
-            "id": 4222,
-            "name": "Veteran's Scars",
-            "rank": 3
-          },
-          {
-            "id": 4113,
-            "name": "Sorcery",
-            "rank": 4
-          },
-          {
-            "id": 4144,
-            "name": "Dangerous Game",
-            "rank": 1
-          },
-          {
-            "id": 4221,
-            "name": "Unyielding",
-            "rank": 1
-          },
-          {
-            "id": 4152,
-            "name": "Devastating Strikes",
-            "rank": 3
-          },
-          {
-            "id": 4123,
-            "name": "Mental Force",
-            "rank": 3
-          },
-          {
-            "id": 4231,
-            "name": "Oppression",
-            "rank": 1
-          },
-          {
-            "id": 4111,
-            "name": "Double-Edged Sword",
-            "rank": 1
-          },
-          {
-            "id": 4133,
-            "name": "Arcane Mastery",
-            "rank": 1
-          },
-          {
-            "id": 4143,
-            "name": "Archmage",
-            "rank": 3
-          },
-          {
-            "id": 4162,
-            "name": "Havoc",
-            "rank": 1
-          }
-        ]
-      }
-    ]
-  },
   "33249714": {
-    "summonerId": 33249714,
     "pages": [
       {
-        "id": 36928738,
-        "name": "tank",
-        "current": true,
         "talents": [
           {
-            "id": 4233,
+            "rank": 3,
             "name": "Hardiness",
-            "rank": 3
+            "id": 4233
           },
           {
-            "id": 4242,
+            "rank": 1,
             "name": "Swiftness",
-            "rank": 1
+            "id": 4242
           },
           {
-            "id": 4211,
+            "rank": 2,
             "name": "Block",
-            "rank": 2
+            "id": 4211
           },
           {
-            "id": 4213,
+            "rank": 2,
             "name": "Enchanted Armor",
-            "rank": 2
+            "id": 4213
           },
           {
-            "id": 4124,
+            "rank": 1,
             "name": "Feast",
-            "rank": 1
+            "id": 4124
           },
           {
-            "id": 4114,
+            "rank": 1,
             "name": "Butcher",
-            "rank": 1
+            "id": 4114
           },
           {
-            "id": 4251,
+            "rank": 1,
             "name": "Second Wind",
-            "rank": 1
+            "id": 4251
           },
           {
-            "id": 4222,
+            "rank": 3,
             "name": "Veteran's Scars",
-            "rank": 3
+            "id": 4222
           },
           {
-            "id": 4221,
+            "rank": 1,
             "name": "Unyielding",
-            "rank": 1
+            "id": 4221
           },
           {
-            "id": 4253,
+            "rank": 1,
             "name": "Runic Blessing",
-            "rank": 1
+            "id": 4253
           },
           {
-            "id": 4262,
+            "rank": 1,
             "name": "Tenacious",
-            "rank": 1
+            "id": 4262
           },
           {
-            "id": 4231,
+            "rank": 1,
             "name": "Oppression",
-            "rank": 1
+            "id": 4231
           },
           {
-            "id": 4111,
+            "rank": 1,
             "name": "Double-Edged Sword",
-            "rank": 1
+            "id": 4111
           },
           {
-            "id": 4241,
+            "rank": 3,
             "name": "Perseverance",
-            "rank": 3
+            "id": 4241
           },
           {
-            "id": 4234,
+            "rank": 1,
             "name": "Resistance",
-            "rank": 1
+            "id": 4234
           },
           {
-            "id": 4232,
+            "rank": 1,
             "name": "Juggernaut",
-            "rank": 1
+            "id": 4232
           },
           {
-            "id": 4122,
+            "rank": 2,
             "name": "Brute Force",
-            "rank": 2
+            "id": 4122
           },
           {
-            "id": 4112,
+            "rank": 3,
             "name": "Fury",
-            "rank": 3
+            "id": 4112
           },
           {
-            "id": 4131,
+            "rank": 1,
             "name": "Spell Weaving",
-            "rank": 1
+            "id": 4131
           }
-        ]
+        ],
+        "current": true,
+        "name": "tank",
+        "id": 36928738
       },
       {
-        "id": 36928739,
-        "name": "jungler",
-        "current": false,
         "talents": [
           {
-            "id": 4233,
+            "rank": 3,
             "name": "Hardiness",
-            "rank": 3
+            "id": 4233
           },
           {
-            "id": 4211,
+            "rank": 2,
             "name": "Block",
-            "rank": 2
+            "id": 4211
           },
           {
-            "id": 4243,
+            "rank": 1,
             "name": "Reinforced Armor",
-            "rank": 1
+            "id": 4243
           },
           {
-            "id": 4214,
+            "rank": 2,
             "name": "Tough Skin",
-            "rank": 2
+            "id": 4214
           },
           {
-            "id": 4213,
+            "rank": 2,
             "name": "Enchanted Armor",
-            "rank": 2
+            "id": 4213
           },
           {
-            "id": 4124,
+            "rank": 1,
             "name": "Feast",
-            "rank": 1
+            "id": 4124
           },
           {
-            "id": 4114,
+            "rank": 1,
             "name": "Butcher",
-            "rank": 1
+            "id": 4114
           },
           {
-            "id": 4222,
+            "rank": 3,
             "name": "Veteran's Scars",
-            "rank": 3
+            "id": 4222
           },
           {
-            "id": 4113,
+            "rank": 4,
             "name": "Sorcery",
-            "rank": 4
+            "id": 4113
           },
           {
-            "id": 4221,
+            "rank": 1,
             "name": "Unyielding",
-            "rank": 1
+            "id": 4221
           },
           {
-            "id": 4252,
+            "rank": 4,
             "name": "Legendary Guardian",
-            "rank": 4
+            "id": 4252
           },
           {
-            "id": 4262,
+            "rank": 1,
             "name": "Tenacious",
-            "rank": 1
+            "id": 4262
           },
           {
-            "id": 4234,
+            "rank": 1,
             "name": "Resistance",
-            "rank": 1
+            "id": 4234
           },
           {
-            "id": 4232,
+            "rank": 1,
             "name": "Juggernaut",
-            "rank": 1
+            "id": 4232
           },
           {
-            "id": 4122,
+            "rank": 2,
             "name": "Brute Force",
-            "rank": 2
+            "id": 4122
           }
-        ]
+        ],
+        "current": false,
+        "name": "jungler",
+        "id": 36928739
       },
       {
-        "id": 36928740,
-        "name": "AD",
-        "current": false,
         "talents": [
           {
-            "id": 4233,
+            "rank": 3,
             "name": "Hardiness",
-            "rank": 3
+            "id": 4233
           },
           {
-            "id": 4242,
+            "rank": 1,
             "name": "Swiftness",
-            "rank": 1
+            "id": 4242
           },
           {
-            "id": 4123,
+            "rank": 1,
             "name": "Mental Force",
-            "rank": 1
+            "id": 4123
           },
           {
-            "id": 4211,
+            "rank": 2,
             "name": "Block",
-            "rank": 2
+            "id": 4211
           },
           {
-            "id": 4213,
+            "rank": 2,
             "name": "Enchanted Armor",
-            "rank": 2
+            "id": 4213
           },
           {
-            "id": 4222,
+            "rank": 3,
             "name": "Veteran's Scars",
-            "rank": 3
+            "id": 4222
           },
           {
-            "id": 4112,
+            "rank": 4,
             "name": "Fury",
-            "rank": 4
+            "id": 4112
           },
           {
-            "id": 4221,
+            "rank": 1,
             "name": "Unyielding",
-            "rank": 1
+            "id": 4221
           },
           {
-            "id": 4252,
+            "rank": 4,
             "name": "Legendary Guardian",
-            "rank": 4
+            "id": 4252
           },
           {
-            "id": 4122,
+            "rank": 3,
             "name": "Brute Force",
-            "rank": 3
+            "id": 4122
           },
           {
-            "id": 4262,
+            "rank": 1,
             "name": "Tenacious",
-            "rank": 1
+            "id": 4262
           },
           {
-            "id": 4241,
+            "rank": 3,
             "name": "Perseverance",
-            "rank": 3
+            "id": 4241
           },
           {
-            "id": 4134,
+            "rank": 1,
             "name": "Executioner",
-            "rank": 1
+            "id": 4134
           },
           {
-            "id": 4232,
+            "rank": 1,
             "name": "Juggernaut",
-            "rank": 1
+            "id": 4232
           }
-        ]
+        ],
+        "current": false,
+        "name": "AD",
+        "id": 36928740
       },
       {
-        "id": 36928741,
+        "talents": [
+          {
+            "rank": 2,
+            "name": "Recovery",
+            "id": 4212
+          },
+          {
+            "rank": 2,
+            "name": "Tough Skin",
+            "id": 4214
+          },
+          {
+            "rank": 1,
+            "name": "Block",
+            "id": 4211
+          },
+          {
+            "rank": 3,
+            "name": "Executioner",
+            "id": 4134
+          },
+          {
+            "rank": 1,
+            "name": "Feast",
+            "id": 4124
+          },
+          {
+            "rank": 1,
+            "name": "Butcher",
+            "id": 4114
+          },
+          {
+            "rank": 3,
+            "name": "Veteran's Scars",
+            "id": 4222
+          },
+          {
+            "rank": 4,
+            "name": "Sorcery",
+            "id": 4113
+          },
+          {
+            "rank": 1,
+            "name": "Dangerous Game",
+            "id": 4144
+          },
+          {
+            "rank": 3,
+            "name": "Devastating Strikes",
+            "id": 4152
+          },
+          {
+            "rank": 3,
+            "name": "Mental Force",
+            "id": 4123
+          },
+          {
+            "rank": 1,
+            "name": "Arcane Mastery",
+            "id": 4133
+          },
+          {
+            "rank": 3,
+            "name": "Archmage",
+            "id": 4143
+          },
+          {
+            "rank": 1,
+            "name": "Havoc",
+            "id": 4162
+          }
+        ],
+        "current": false,
         "name": "AP",
-        "current": false,
-        "talents": [
-          {
-            "id": 4212,
-            "name": "Recovery",
-            "rank": 2
-          },
-          {
-            "id": 4214,
-            "name": "Tough Skin",
-            "rank": 2
-          },
-          {
-            "id": 4211,
-            "name": "Block",
-            "rank": 1
-          },
-          {
-            "id": 4134,
-            "name": "Executioner",
-            "rank": 3
-          },
-          {
-            "id": 4124,
-            "name": "Feast",
-            "rank": 1
-          },
-          {
-            "id": 4114,
-            "name": "Butcher",
-            "rank": 1
-          },
-          {
-            "id": 4222,
-            "name": "Veteran's Scars",
-            "rank": 3
-          },
-          {
-            "id": 4113,
-            "name": "Sorcery",
-            "rank": 4
-          },
-          {
-            "id": 4144,
-            "name": "Dangerous Game",
-            "rank": 1
-          },
-          {
-            "id": 4152,
-            "name": "Devastating Strikes",
-            "rank": 3
-          },
-          {
-            "id": 4123,
-            "name": "Mental Force",
-            "rank": 3
-          },
-          {
-            "id": 4133,
-            "name": "Arcane Mastery",
-            "rank": 1
-          },
-          {
-            "id": 4143,
-            "name": "Archmage",
-            "rank": 3
-          },
-          {
-            "id": 4162,
-            "name": "Havoc",
-            "rank": 1
-          }
-        ]
+        "id": 36928741
       },
       {
-        "id": 36928742,
-        "name": "ADC",
-        "current": false,
         "talents": [
           {
-            "id": 4212,
+            "rank": 2,
             "name": "Recovery",
-            "rank": 2
+            "id": 4212
           },
           {
-            "id": 4211,
+            "rank": 2,
             "name": "Block",
-            "rank": 2
+            "id": 4211
           },
           {
-            "id": 4134,
+            "rank": 3,
             "name": "Executioner",
-            "rank": 3
+            "id": 4134
           },
           {
-            "id": 4124,
+            "rank": 1,
             "name": "Feast",
-            "rank": 1
+            "id": 4124
           },
           {
-            "id": 4114,
+            "rank": 1,
             "name": "Butcher",
-            "rank": 1
+            "id": 4114
           },
           {
-            "id": 4151,
+            "rank": 1,
             "name": "Frenzy",
-            "rank": 1
+            "id": 4151
           },
           {
-            "id": 4222,
+            "rank": 3,
             "name": "Veteran's Scars",
-            "rank": 3
+            "id": 4222
           },
           {
-            "id": 4221,
+            "rank": 1,
             "name": "Unyielding",
-            "rank": 1
+            "id": 4221
           },
           {
-            "id": 4144,
+            "rank": 1,
             "name": "Dangerous Game",
-            "rank": 1
+            "id": 4144
           },
           {
-            "id": 4122,
+            "rank": 3,
             "name": "Brute Force",
-            "rank": 3
+            "id": 4122
           },
           {
-            "id": 4152,
+            "rank": 3,
             "name": "Devastating Strikes",
-            "rank": 3
+            "id": 4152
           },
           {
-            "id": 4231,
+            "rank": 1,
             "name": "Oppression",
-            "rank": 1
+            "id": 4231
           },
           {
-            "id": 4132,
+            "rank": 1,
             "name": "Martial Mastery",
-            "rank": 1
+            "id": 4132
           },
           {
-            "id": 4142,
+            "rank": 3,
             "name": "Warlord",
-            "rank": 3
+            "id": 4142
           },
           {
-            "id": 4162,
+            "rank": 1,
             "name": "Havoc",
-            "rank": 1
+            "id": 4162
           },
           {
-            "id": 4112,
+            "rank": 3,
             "name": "Fury",
-            "rank": 3
+            "id": 4112
           }
-        ]
+        ],
+        "current": false,
+        "name": "ADC",
+        "id": 36928742
       },
       {
-        "id": 36928743,
-        "name": "Sivir",
-        "current": false,
         "talents": [
           {
-            "id": 4212,
+            "rank": 2,
             "name": "Recovery",
-            "rank": 2
+            "id": 4212
           },
           {
-            "id": 4211,
+            "rank": 2,
             "name": "Block",
-            "rank": 2
+            "id": 4211
           },
           {
-            "id": 4134,
+            "rank": 3,
             "name": "Executioner",
-            "rank": 3
+            "id": 4134
           },
           {
-            "id": 4151,
+            "rank": 1,
             "name": "Frenzy",
-            "rank": 1
+            "id": 4151
           },
           {
-            "id": 4222,
+            "rank": 3,
             "name": "Veteran's Scars",
-            "rank": 3
+            "id": 4222
           },
           {
-            "id": 4112,
+            "rank": 4,
             "name": "Fury",
-            "rank": 4
+            "id": 4112
           },
           {
-            "id": 4144,
+            "rank": 1,
             "name": "Dangerous Game",
-            "rank": 1
+            "id": 4144
           },
           {
-            "id": 4221,
+            "rank": 1,
             "name": "Unyielding",
-            "rank": 1
+            "id": 4221
           },
           {
-            "id": 4122,
+            "rank": 3,
             "name": "Brute Force",
-            "rank": 3
+            "id": 4122
           },
           {
-            "id": 4152,
+            "rank": 3,
             "name": "Devastating Strikes",
-            "rank": 3
+            "id": 4152
           },
           {
-            "id": 4111,
+            "rank": 1,
             "name": "Double-Edged Sword",
-            "rank": 1
+            "id": 4111
           },
           {
-            "id": 4132,
+            "rank": 1,
             "name": "Martial Mastery",
-            "rank": 1
+            "id": 4132
           },
           {
-            "id": 4142,
+            "rank": 3,
             "name": "Warlord",
-            "rank": 3
+            "id": 4142
           },
           {
-            "id": 4232,
+            "rank": 1,
             "name": "Juggernaut",
-            "rank": 1
+            "id": 4232
           },
           {
-            "id": 4162,
+            "rank": 1,
             "name": "Havoc",
-            "rank": 1
+            "id": 4162
           }
-        ]
+        ],
+        "current": false,
+        "name": "Sivir",
+        "id": 36928743
       },
       {
-        "id": 36928744,
-        "name": "Eve",
-        "current": false,
         "talents": [
           {
-            "id": 4211,
+            "rank": 2,
             "name": "Block",
-            "rank": 2
+            "id": 4211
           },
           {
-            "id": 4214,
+            "rank": 2,
             "name": "Tough Skin",
-            "rank": 2
+            "id": 4214
           },
           {
-            "id": 4134,
+            "rank": 3,
             "name": "Executioner",
-            "rank": 3
+            "id": 4134
           },
           {
-            "id": 4154,
+            "rank": 1,
             "name": "Arcane Blade",
-            "rank": 1
+            "id": 4154
           },
           {
-            "id": 4124,
+            "rank": 1,
             "name": "Feast",
-            "rank": 1
+            "id": 4124
           },
           {
-            "id": 4114,
+            "rank": 1,
             "name": "Butcher",
-            "rank": 1
+            "id": 4114
           },
           {
-            "id": 4222,
+            "rank": 3,
             "name": "Veteran's Scars",
-            "rank": 3
+            "id": 4222
           },
           {
-            "id": 4113,
+            "rank": 4,
             "name": "Sorcery",
-            "rank": 4
+            "id": 4113
           },
           {
-            "id": 4221,
+            "rank": 1,
             "name": "Unyielding",
-            "rank": 1
+            "id": 4221
           },
           {
-            "id": 4152,
+            "rank": 3,
             "name": "Devastating Strikes",
-            "rank": 3
+            "id": 4152
           },
           {
-            "id": 4123,
+            "rank": 3,
             "name": "Mental Force",
-            "rank": 3
+            "id": 4123
           },
           {
-            "id": 4133,
+            "rank": 1,
             "name": "Arcane Mastery",
-            "rank": 1
+            "id": 4133
           },
           {
-            "id": 4143,
+            "rank": 3,
             "name": "Archmage",
-            "rank": 3
+            "id": 4143
           },
           {
-            "id": 4232,
+            "rank": 1,
             "name": "Juggernaut",
-            "rank": 1
+            "id": 4232
           },
           {
-            "id": 4162,
+            "rank": 1,
             "name": "Havoc",
-            "rank": 1
+            "id": 4162
           }
-        ]
+        ],
+        "current": false,
+        "name": "Eve",
+        "id": 36928744
       },
       {
-        "id": 36928745,
+        "current": false,
         "name": "@@!PaG3!@@36928745",
-        "current": false
+        "id": 36928745
       }
-    ]
+    ],
+    "summonerId": 33249714
+  },
+  "30743211": {
+    "pages": [
+      {
+        "talents": [
+          {
+            "rank": 2,
+            "name": "Recovery",
+            "id": 4212
+          },
+          {
+            "rank": 2,
+            "name": "Block",
+            "id": 4211
+          },
+          {
+            "rank": 3,
+            "name": "Executioner",
+            "id": 4134
+          },
+          {
+            "rank": 1,
+            "name": "Feast",
+            "id": 4124
+          },
+          {
+            "rank": 1,
+            "name": "Butcher",
+            "id": 4114
+          },
+          {
+            "rank": 1,
+            "name": "Frenzy",
+            "id": 4151
+          },
+          {
+            "rank": 3,
+            "name": "Veteran's Scars",
+            "id": 4222
+          },
+          {
+            "rank": 1,
+            "name": "Unyielding",
+            "id": 4221
+          },
+          {
+            "rank": 3,
+            "name": "Devastating Strikes",
+            "id": 4152
+          },
+          {
+            "rank": 3,
+            "name": "Brute Force",
+            "id": 4122
+          },
+          {
+            "rank": 1,
+            "name": "Double-Edged Sword",
+            "id": 4111
+          },
+          {
+            "rank": 1,
+            "name": "Martial Mastery",
+            "id": 4132
+          },
+          {
+            "rank": 3,
+            "name": "Warlord",
+            "id": 4142
+          },
+          {
+            "rank": 1,
+            "name": "Juggernaut",
+            "id": 4232
+          },
+          {
+            "rank": 1,
+            "name": "Havoc",
+            "id": 4162
+          },
+          {
+            "rank": 3,
+            "name": "Fury",
+            "id": 4112
+          }
+        ],
+        "current": false,
+        "name": "AD (more atk)",
+        "id": 34170136
+      },
+      {
+        "talents": [
+          {
+            "rank": 2,
+            "name": "Recovery",
+            "id": 4212
+          },
+          {
+            "rank": 1,
+            "name": "Swiftness",
+            "id": 4242
+          },
+          {
+            "rank": 2,
+            "name": "Block",
+            "id": 4211
+          },
+          {
+            "rank": 2,
+            "name": "Enchanted Armor",
+            "id": 4213
+          },
+          {
+            "rank": 1,
+            "name": "Feast",
+            "id": 4124
+          },
+          {
+            "rank": 1,
+            "name": "Second Wind",
+            "id": 4251
+          },
+          {
+            "rank": 1,
+            "name": "Butcher",
+            "id": 4114
+          },
+          {
+            "rank": 3,
+            "name": "Veteran's Scars",
+            "id": 4222
+          },
+          {
+            "rank": 4,
+            "name": "Sorcery",
+            "id": 4113
+          },
+          {
+            "rank": 1,
+            "name": "Unyielding",
+            "id": 4221
+          },
+          {
+            "rank": 4,
+            "name": "Legendary Guardian",
+            "id": 4252
+          },
+          {
+            "rank": 1,
+            "name": "Tenacious",
+            "id": 4262
+          },
+          {
+            "rank": 1,
+            "name": "Oppression",
+            "id": 4231
+          },
+          {
+            "rank": 3,
+            "name": "Perseverance",
+            "id": 4241
+          },
+          {
+            "rank": 1,
+            "name": "Resistance",
+            "id": 4234
+          },
+          {
+            "rank": 1,
+            "name": "Hardiness",
+            "id": 4233
+          },
+          {
+            "rank": 1,
+            "name": "Juggernaut",
+            "id": 4232
+          }
+        ],
+        "current": false,
+        "name": "AD (more def)",
+        "id": 34170137
+      },
+      {
+        "talents": [
+          {
+            "rank": 2,
+            "name": "Block",
+            "id": 4211
+          },
+          {
+            "rank": 3,
+            "name": "Executioner",
+            "id": 4134
+          },
+          {
+            "rank": 2,
+            "name": "Enchanted Armor",
+            "id": 4213
+          },
+          {
+            "rank": 3,
+            "name": "Veteran's Scars",
+            "id": 4222
+          },
+          {
+            "rank": 4,
+            "name": "Sorcery",
+            "id": 4113
+          },
+          {
+            "rank": 1,
+            "name": "Unyielding",
+            "id": 4221
+          },
+          {
+            "rank": 3,
+            "name": "Brute Force",
+            "id": 4122
+          },
+          {
+            "rank": 3,
+            "name": "Devastating Strikes",
+            "id": 4152
+          },
+          {
+            "rank": 1,
+            "name": "Blade Weaving",
+            "id": 4141
+          },
+          {
+            "rank": 1,
+            "name": "Double-Edged Sword",
+            "id": 4111
+          },
+          {
+            "rank": 1,
+            "name": "Martial Mastery",
+            "id": 4132
+          },
+          {
+            "rank": 3,
+            "name": "Warlord",
+            "id": 4142
+          },
+          {
+            "rank": 1,
+            "name": "Juggernaut",
+            "id": 4232
+          },
+          {
+            "rank": 1,
+            "name": "Havoc",
+            "id": 4162
+          },
+          {
+            "rank": 1,
+            "name": "Spell Weaving",
+            "id": 4131
+          }
+        ],
+        "current": false,
+        "name": "AD (more atk, cdr)",
+        "id": 34170138
+      },
+      {
+        "talents": [
+          {
+            "rank": 2,
+            "name": "Recovery",
+            "id": 4212
+          },
+          {
+            "rank": 1,
+            "name": "Swiftness",
+            "id": 4242
+          },
+          {
+            "rank": 2,
+            "name": "Block",
+            "id": 4211
+          },
+          {
+            "rank": 2,
+            "name": "Tough Skin",
+            "id": 4214
+          },
+          {
+            "rank": 2,
+            "name": "Enchanted Armor",
+            "id": 4213
+          },
+          {
+            "rank": 3,
+            "name": "Resistance",
+            "id": 4234
+          },
+          {
+            "rank": 1,
+            "name": "Butcher",
+            "id": 4114
+          },
+          {
+            "rank": 4,
+            "name": "Fury",
+            "id": 4112
+          },
+          {
+            "rank": 4,
+            "name": "Sorcery",
+            "id": 4113
+          },
+          {
+            "rank": 1,
+            "name": "Unyielding",
+            "id": 4221
+          },
+          {
+            "rank": 4,
+            "name": "Legendary Guardian",
+            "id": 4252
+          },
+          {
+            "rank": 1,
+            "name": "Tenacious",
+            "id": 4262
+          },
+          {
+            "rank": 3,
+            "name": "Perseverance",
+            "id": 4241
+          }
+        ],
+        "current": false,
+        "name": "AD (more def, cdr)",
+        "id": 34170139
+      },
+      {
+        "talents": [
+          {
+            "rank": 2,
+            "name": "Block",
+            "id": 4211
+          },
+          {
+            "rank": 2,
+            "name": "Tough Skin",
+            "id": 4214
+          },
+          {
+            "rank": 3,
+            "name": "Executioner",
+            "id": 4134
+          },
+          {
+            "rank": 1,
+            "name": "Recovery",
+            "id": 4212
+          },
+          {
+            "rank": 1,
+            "name": "Feast",
+            "id": 4124
+          },
+          {
+            "rank": 1,
+            "name": "Butcher",
+            "id": 4114
+          },
+          {
+            "rank": 3,
+            "name": "Veteran's Scars",
+            "id": 4222
+          },
+          {
+            "rank": 1,
+            "name": "Unyielding",
+            "id": 4221
+          },
+          {
+            "rank": 3,
+            "name": "Devastating Strikes",
+            "id": 4152
+          },
+          {
+            "rank": 3,
+            "name": "Brute Force",
+            "id": 4122
+          },
+          {
+            "rank": 1,
+            "name": "Double-Edged Sword",
+            "id": 4111
+          },
+          {
+            "rank": 1,
+            "name": "Martial Mastery",
+            "id": 4132
+          },
+          {
+            "rank": 3,
+            "name": "Warlord",
+            "id": 4142
+          },
+          {
+            "rank": 1,
+            "name": "Havoc",
+            "id": 4162
+          },
+          {
+            "rank": 3,
+            "name": "Fury",
+            "id": 4112
+          },
+          {
+            "rank": 1,
+            "name": "Spell Weaving",
+            "id": 4131
+          }
+        ],
+        "current": false,
+        "name": "Jungle AD (more atk)",
+        "id": 34170140
+      },
+      {
+        "talents": [
+          {
+            "rank": 1,
+            "name": "Swiftness",
+            "id": 4242
+          },
+          {
+            "rank": 2,
+            "name": "Block",
+            "id": 4211
+          },
+          {
+            "rank": 2,
+            "name": "Tough Skin",
+            "id": 4214
+          },
+          {
+            "rank": 2,
+            "name": "Enchanted Armor",
+            "id": 4213
+          },
+          {
+            "rank": 1,
+            "name": "Feast",
+            "id": 4124
+          },
+          {
+            "rank": 1,
+            "name": "Butcher",
+            "id": 4114
+          },
+          {
+            "rank": 1,
+            "name": "Second Wind",
+            "id": 4251
+          },
+          {
+            "rank": 3,
+            "name": "Veteran's Scars",
+            "id": 4222
+          },
+          {
+            "rank": 1,
+            "name": "Unyielding",
+            "id": 4221
+          },
+          {
+            "rank": 3,
+            "name": "Brute Force",
+            "id": 4122
+          },
+          {
+            "rank": 1,
+            "name": "Tenacious",
+            "id": 4262
+          },
+          {
+            "rank": 1,
+            "name": "Oppression",
+            "id": 4231
+          },
+          {
+            "rank": 3,
+            "name": "Legendary Guardian",
+            "id": 4252
+          },
+          {
+            "rank": 1,
+            "name": "Martial Mastery",
+            "id": 4132
+          },
+          {
+            "rank": 3,
+            "name": "Perseverance",
+            "id": 4241
+          },
+          {
+            "rank": 1,
+            "name": "Juggernaut",
+            "id": 4232
+          },
+          {
+            "rank": 3,
+            "name": "Fury",
+            "id": 4112
+          }
+        ],
+        "current": false,
+        "name": "Jungle AD (more def)",
+        "id": 34170141
+      },
+      {
+        "talents": [
+          {
+            "rank": 2,
+            "name": "Recovery",
+            "id": 4212
+          },
+          {
+            "rank": 2,
+            "name": "Block",
+            "id": 4211
+          },
+          {
+            "rank": 2,
+            "name": "Tough Skin",
+            "id": 4214
+          },
+          {
+            "rank": 3,
+            "name": "Executioner",
+            "id": 4134
+          },
+          {
+            "rank": 1,
+            "name": "Feast",
+            "id": 4124
+          },
+          {
+            "rank": 1,
+            "name": "Butcher",
+            "id": 4114
+          },
+          {
+            "rank": 3,
+            "name": "Veteran's Scars",
+            "id": 4222
+          },
+          {
+            "rank": 4,
+            "name": "Sorcery",
+            "id": 4113
+          },
+          {
+            "rank": 1,
+            "name": "Dangerous Game",
+            "id": 4144
+          },
+          {
+            "rank": 3,
+            "name": "Brute Force",
+            "id": 4122
+          },
+          {
+            "rank": 3,
+            "name": "Devastating Strikes",
+            "id": 4152
+          },
+          {
+            "rank": 1,
+            "name": "Martial Mastery",
+            "id": 4132
+          },
+          {
+            "rank": 3,
+            "name": "Warlord",
+            "id": 4142
+          },
+          {
+            "rank": 1,
+            "name": "Havoc",
+            "id": 4162
+          }
+        ],
+        "current": false,
+        "name": "Jungle AD (more atk, cdr)",
+        "id": 34170142
+      },
+      {
+        "talents": [
+          {
+            "rank": 2,
+            "name": "Recovery",
+            "id": 4212
+          },
+          {
+            "rank": 1,
+            "name": "Swiftness",
+            "id": 4242
+          },
+          {
+            "rank": 2,
+            "name": "Block",
+            "id": 4211
+          },
+          {
+            "rank": 2,
+            "name": "Tough Skin",
+            "id": 4214
+          },
+          {
+            "rank": 1,
+            "name": "Feast",
+            "id": 4124
+          },
+          {
+            "rank": 1,
+            "name": "Second Wind",
+            "id": 4251
+          },
+          {
+            "rank": 1,
+            "name": "Butcher",
+            "id": 4114
+          },
+          {
+            "rank": 4,
+            "name": "Fury",
+            "id": 4112
+          },
+          {
+            "rank": 3,
+            "name": "Veteran's Scars",
+            "id": 4222
+          },
+          {
+            "rank": 1,
+            "name": "Unyielding",
+            "id": 4221
+          },
+          {
+            "rank": 1,
+            "name": "Tenacious",
+            "id": 4262
+          },
+          {
+            "rank": 3,
+            "name": "Legendary Guardian",
+            "id": 4252
+          },
+          {
+            "rank": 1,
+            "name": "Oppression",
+            "id": 4231
+          },
+          {
+            "rank": 3,
+            "name": "Perseverance",
+            "id": 4241
+          },
+          {
+            "rank": 1,
+            "name": "Juggernaut",
+            "id": 4232
+          },
+          {
+            "rank": 3,
+            "name": "Sorcery",
+            "id": 4113
+          }
+        ],
+        "current": false,
+        "name": "Jungle AD (more def, cdr)",
+        "id": 34170143
+      },
+      {
+        "talents": [
+          {
+            "rank": 2,
+            "name": "Recovery",
+            "id": 4212
+          },
+          {
+            "rank": 2,
+            "name": "Block",
+            "id": 4211
+          },
+          {
+            "rank": 1,
+            "name": "Phasewalker",
+            "id": 4311
+          },
+          {
+            "rank": 3,
+            "name": "Intelligence",
+            "id": 4353
+          },
+          {
+            "rank": 1,
+            "name": "Wanderer",
+            "id": 4362
+          },
+          {
+            "rank": 2,
+            "name": "Inspiration",
+            "id": 4344
+          },
+          {
+            "rank": 1,
+            "name": "Bandit",
+            "id": 4352
+          },
+          {
+            "rank": 1,
+            "name": "Strength of Spirit",
+            "id": 4323
+          },
+          {
+            "rank": 3,
+            "name": "Veteran's Scars",
+            "id": 4222
+          },
+          {
+            "rank": 1,
+            "name": "Scout",
+            "id": 4314
+          },
+          {
+            "rank": 1,
+            "name": "Unyielding",
+            "id": 4221
+          },
+          {
+            "rank": 3,
+            "name": "Greed",
+            "id": 4331
+          },
+          {
+            "rank": 3,
+            "name": "Fleet of Foot",
+            "id": 4312
+          },
+          {
+            "rank": 3,
+            "name": "Meditation",
+            "id": 4313
+          },
+          {
+            "rank": 1,
+            "name": "Juggernaut",
+            "id": 4232
+          },
+          {
+            "rank": 1,
+            "name": "Wealth",
+            "id": 4342
+          },
+          {
+            "rank": 1,
+            "name": "Scavenger",
+            "id": 4341
+          }
+        ],
+        "current": false,
+        "name": "Support",
+        "id": 34170144
+      },
+      {
+        "talents": [
+          {
+            "rank": 3,
+            "name": "Hardiness",
+            "id": 4233
+          },
+          {
+            "rank": 2,
+            "name": "Block",
+            "id": 4211
+          },
+          {
+            "rank": 1,
+            "name": "Reinforced Armor",
+            "id": 4243
+          },
+          {
+            "rank": 2,
+            "name": "Enchanted Armor",
+            "id": 4213
+          },
+          {
+            "rank": 1,
+            "name": "Culinary Master",
+            "id": 4334
+          },
+          {
+            "rank": 1,
+            "name": "Strength of Spirit",
+            "id": 4323
+          },
+          {
+            "rank": 3,
+            "name": "Veteran's Scars",
+            "id": 4222
+          },
+          {
+            "rank": 1,
+            "name": "Unyielding",
+            "id": 4221
+          },
+          {
+            "rank": 1,
+            "name": "Alchemist",
+            "id": 4324
+          },
+          {
+            "rank": 4,
+            "name": "Legendary Guardian",
+            "id": 4252
+          },
+          {
+            "rank": 1,
+            "name": "Tenacious",
+            "id": 4262
+          },
+          {
+            "rank": 3,
+            "name": "Fleet of Foot",
+            "id": 4312
+          },
+          {
+            "rank": 3,
+            "name": "Meditation",
+            "id": 4313
+          },
+          {
+            "rank": 3,
+            "name": "Perseverance",
+            "id": 4241
+          },
+          {
+            "rank": 1,
+            "name": "Juggernaut",
+            "id": 4232
+          }
+        ],
+        "current": false,
+        "name": "Tank Sup",
+        "id": 34170145
+      },
+      {
+        "talents": [
+          {
+            "rank": 2,
+            "name": "Recovery",
+            "id": 4212
+          },
+          {
+            "rank": 3,
+            "name": "Hardiness",
+            "id": 4233
+          },
+          {
+            "rank": 1,
+            "name": "Swiftness",
+            "id": 4242
+          },
+          {
+            "rank": 1,
+            "name": "Reinforced Armor",
+            "id": 4243
+          },
+          {
+            "rank": 2,
+            "name": "Tough Skin",
+            "id": 4214
+          },
+          {
+            "rank": 1,
+            "name": "Feast",
+            "id": 4124
+          },
+          {
+            "rank": 1,
+            "name": "Second Wind",
+            "id": 4251
+          },
+          {
+            "rank": 1,
+            "name": "Butcher",
+            "id": 4114
+          },
+          {
+            "rank": 2,
+            "name": "Legendary Guardian",
+            "id": 4252
+          },
+          {
+            "rank": 3,
+            "name": "Veteran's Scars",
+            "id": 4222
+          },
+          {
+            "rank": 3,
+            "name": "Mental Force",
+            "id": 4123
+          },
+          {
+            "rank": 1,
+            "name": "Tenacious",
+            "id": 4262
+          },
+          {
+            "rank": 1,
+            "name": "Bladed Armor",
+            "id": 4224
+          },
+          {
+            "rank": 1,
+            "name": "Arcane Mastery",
+            "id": 4133
+          },
+          {
+            "rank": 3,
+            "name": "Perseverance",
+            "id": 4241
+          },
+          {
+            "rank": 1,
+            "name": "Juggernaut",
+            "id": 4232
+          },
+          {
+            "rank": 3,
+            "name": "Fury",
+            "id": 4112
+          }
+        ],
+        "current": false,
+        "name": "Cho Gath",
+        "id": 34170146
+      },
+      {
+        "talents": [
+          {
+            "rank": 2,
+            "name": "Recovery",
+            "id": 4212
+          },
+          {
+            "rank": 2,
+            "name": "Block",
+            "id": 4211
+          },
+          {
+            "rank": 2,
+            "name": "Tough Skin",
+            "id": 4214
+          },
+          {
+            "rank": 1,
+            "name": "Expose Weakness",
+            "id": 4121
+          },
+          {
+            "rank": 2,
+            "name": "Enchanted Armor",
+            "id": 4213
+          },
+          {
+            "rank": 3,
+            "name": "Executioner",
+            "id": 4134
+          },
+          {
+            "rank": 1,
+            "name": "Feast",
+            "id": 4124
+          },
+          {
+            "rank": 1,
+            "name": "Butcher",
+            "id": 4114
+          },
+          {
+            "rank": 1,
+            "name": "Unyielding",
+            "id": 4221
+          },
+          {
+            "rank": 1,
+            "name": "Dangerous Game",
+            "id": 4144
+          },
+          {
+            "rank": 3,
+            "name": "Devastating Strikes",
+            "id": 4152
+          },
+          {
+            "rank": 3,
+            "name": "Mental Force",
+            "id": 4123
+          },
+          {
+            "rank": 1,
+            "name": "Arcane Mastery",
+            "id": 4133
+          },
+          {
+            "rank": 3,
+            "name": "Archmage",
+            "id": 4143
+          },
+          {
+            "rank": 1,
+            "name": "Havoc",
+            "id": 4162
+          },
+          {
+            "rank": 3,
+            "name": "Sorcery",
+            "id": 4113
+          }
+        ],
+        "current": true,
+        "name": "Jungle AP Gragas",
+        "id": 34170147
+      },
+      {
+        "talents": [
+          {
+            "rank": 2,
+            "name": "Block",
+            "id": 4211
+          },
+          {
+            "rank": 2,
+            "name": "Tough Skin",
+            "id": 4214
+          },
+          {
+            "rank": 3,
+            "name": "Executioner",
+            "id": 4134
+          },
+          {
+            "rank": 1,
+            "name": "Feast",
+            "id": 4124
+          },
+          {
+            "rank": 1,
+            "name": "Arcane Blade",
+            "id": 4154
+          },
+          {
+            "rank": 1,
+            "name": "Butcher",
+            "id": 4114
+          },
+          {
+            "rank": 1,
+            "name": "Unyielding",
+            "id": 4221
+          },
+          {
+            "rank": 3,
+            "name": "Devastating Strikes",
+            "id": 4152
+          },
+          {
+            "rank": 3,
+            "name": "Mental Force",
+            "id": 4123
+          },
+          {
+            "rank": 1,
+            "name": "Bladed Armor",
+            "id": 4224
+          },
+          {
+            "rank": 3,
+            "name": "Fleet of Foot",
+            "id": 4312
+          },
+          {
+            "rank": 1,
+            "name": "Double-Edged Sword",
+            "id": 4111
+          },
+          {
+            "rank": 1,
+            "name": "Arcane Mastery",
+            "id": 4133
+          },
+          {
+            "rank": 3,
+            "name": "Archmage",
+            "id": 4143
+          },
+          {
+            "rank": 1,
+            "name": "Havoc",
+            "id": 4162
+          },
+          {
+            "rank": 3,
+            "name": "Sorcery",
+            "id": 4113
+          }
+        ],
+        "current": false,
+        "name": "AP Jungle 21\/6\/3",
+        "id": 34170148
+      },
+      {
+        "talents": [
+          {
+            "rank": 2,
+            "name": "Recovery",
+            "id": 4212
+          },
+          {
+            "rank": 2,
+            "name": "Block",
+            "id": 4211
+          },
+          {
+            "rank": 3,
+            "name": "Executioner",
+            "id": 4134
+          },
+          {
+            "rank": 1,
+            "name": "Feast",
+            "id": 4124
+          },
+          {
+            "rank": 1,
+            "name": "Butcher",
+            "id": 4114
+          },
+          {
+            "rank": 3,
+            "name": "Veteran's Scars",
+            "id": 4222
+          },
+          {
+            "rank": 1,
+            "name": "Unyielding",
+            "id": 4221
+          },
+          {
+            "rank": 3,
+            "name": "Brute Force",
+            "id": 4122
+          },
+          {
+            "rank": 3,
+            "name": "Devastating Strikes",
+            "id": 4152
+          },
+          {
+            "rank": 2,
+            "name": "Fury",
+            "id": 4112
+          },
+          {
+            "rank": 1,
+            "name": "Blade Weaving",
+            "id": 4141
+          },
+          {
+            "rank": 1,
+            "name": "Double-Edged Sword",
+            "id": 4111
+          },
+          {
+            "rank": 1,
+            "name": "Martial Mastery",
+            "id": 4132
+          },
+          {
+            "rank": 3,
+            "name": "Warlord",
+            "id": 4142
+          },
+          {
+            "rank": 1,
+            "name": "Juggernaut",
+            "id": 4232
+          },
+          {
+            "rank": 1,
+            "name": "Havoc",
+            "id": 4162
+          },
+          {
+            "rank": 1,
+            "name": "Spell Weaving",
+            "id": 4131
+          }
+        ],
+        "current": false,
+        "name": "ADC",
+        "id": 34170149
+      },
+      {
+        "talents": [
+          {
+            "rank": 1,
+            "name": "Swiftness",
+            "id": 4242
+          },
+          {
+            "rank": 2,
+            "name": "Recovery",
+            "id": 4212
+          },
+          {
+            "rank": 2,
+            "name": "Block",
+            "id": 4211
+          },
+          {
+            "rank": 2,
+            "name": "Tough Skin",
+            "id": 4214
+          },
+          {
+            "rank": 1,
+            "name": "Runic Affinity",
+            "id": 4332
+          },
+          {
+            "rank": 1,
+            "name": "Strength of Spirit",
+            "id": 4323
+          },
+          {
+            "rank": 3,
+            "name": "Veteran's Scars",
+            "id": 4222
+          },
+          {
+            "rank": 1,
+            "name": "Unyielding",
+            "id": 4221
+          },
+          {
+            "rank": 4,
+            "name": "Legendary Guardian",
+            "id": 4252
+          },
+          {
+            "rank": 1,
+            "name": "Alchemist",
+            "id": 4324
+          },
+          {
+            "rank": 1,
+            "name": "Tenacious",
+            "id": 4262
+          },
+          {
+            "rank": 3,
+            "name": "Fleet of Foot",
+            "id": 4312
+          },
+          {
+            "rank": 1,
+            "name": "Oppression",
+            "id": 4231
+          },
+          {
+            "rank": 3,
+            "name": "Meditation",
+            "id": 4313
+          },
+          {
+            "rank": 3,
+            "name": "Perseverance",
+            "id": 4241
+          },
+          {
+            "rank": 1,
+            "name": "Juggernaut",
+            "id": 4232
+          }
+        ],
+        "current": false,
+        "name": "Random",
+        "id": 34170150
+      },
+      {
+        "talents": [
+          {
+            "rank": 2,
+            "name": "Recovery",
+            "id": 4212
+          },
+          {
+            "rank": 2,
+            "name": "Block",
+            "id": 4211
+          },
+          {
+            "rank": 3,
+            "name": "Executioner",
+            "id": 4134
+          },
+          {
+            "rank": 1,
+            "name": "Arcane Blade",
+            "id": 4154
+          },
+          {
+            "rank": 1,
+            "name": "Feast",
+            "id": 4124
+          },
+          {
+            "rank": 1,
+            "name": "Butcher",
+            "id": 4114
+          },
+          {
+            "rank": 3,
+            "name": "Veteran's Scars",
+            "id": 4222
+          },
+          {
+            "rank": 4,
+            "name": "Sorcery",
+            "id": 4113
+          },
+          {
+            "rank": 1,
+            "name": "Unyielding",
+            "id": 4221
+          },
+          {
+            "rank": 3,
+            "name": "Devastating Strikes",
+            "id": 4152
+          },
+          {
+            "rank": 3,
+            "name": "Mental Force",
+            "id": 4123
+          },
+          {
+            "rank": 1,
+            "name": "Arcane Mastery",
+            "id": 4133
+          },
+          {
+            "rank": 1,
+            "name": "Juggernaut",
+            "id": 4232
+          },
+          {
+            "rank": 3,
+            "name": "Archmage",
+            "id": 4143
+          },
+          {
+            "rank": 1,
+            "name": "Havoc",
+            "id": 4162
+          }
+        ],
+        "current": false,
+        "name": "Vlad",
+        "id": 34170151
+      },
+      {
+        "talents": [
+          {
+            "rank": 2,
+            "name": "Tough Skin",
+            "id": 4214
+          },
+          {
+            "rank": 2,
+            "name": "Fleet of Foot",
+            "id": 4312
+          },
+          {
+            "rank": 3,
+            "name": "Executioner",
+            "id": 4134
+          },
+          {
+            "rank": 1,
+            "name": "Arcane Blade",
+            "id": 4154
+          },
+          {
+            "rank": 4,
+            "name": "Sorcery",
+            "id": 4113
+          },
+          {
+            "rank": 1,
+            "name": "Dangerous Game",
+            "id": 4144
+          },
+          {
+            "rank": 3,
+            "name": "Brute Force",
+            "id": 4122
+          },
+          {
+            "rank": 3,
+            "name": "Devastating Strikes",
+            "id": 4152
+          },
+          {
+            "rank": 3,
+            "name": "Mental Force",
+            "id": 4123
+          },
+          {
+            "rank": 1,
+            "name": "Double-Edged Sword",
+            "id": 4111
+          },
+          {
+            "rank": 1,
+            "name": "Martial Mastery",
+            "id": 4132
+          },
+          {
+            "rank": 1,
+            "name": "Arcane Mastery",
+            "id": 4133
+          },
+          {
+            "rank": 3,
+            "name": "Archmage",
+            "id": 4143
+          },
+          {
+            "rank": 1,
+            "name": "Havoc",
+            "id": 4162
+          },
+          {
+            "rank": 1,
+            "name": "Spell Weaving",
+            "id": 4131
+          }
+        ],
+        "current": false,
+        "name": "Eve Jungle",
+        "id": 34170152
+      },
+      {
+        "talents": [
+          {
+            "rank": 2,
+            "name": "Recovery",
+            "id": 4212
+          },
+          {
+            "rank": 1,
+            "name": "Swiftness",
+            "id": 4242
+          },
+          {
+            "rank": 3,
+            "name": "Hardiness",
+            "id": 4233
+          },
+          {
+            "rank": 1,
+            "name": "Reinforced Armor",
+            "id": 4243
+          },
+          {
+            "rank": 2,
+            "name": "Block",
+            "id": 4211
+          },
+          {
+            "rank": 2,
+            "name": "Tough Skin",
+            "id": 4214
+          },
+          {
+            "rank": 1,
+            "name": "Butcher",
+            "id": 4114
+          },
+          {
+            "rank": 1,
+            "name": "Second Wind",
+            "id": 4251
+          },
+          {
+            "rank": 3,
+            "name": "Veteran's Scars",
+            "id": 4222
+          },
+          {
+            "rank": 1,
+            "name": "Unyielding",
+            "id": 4221
+          },
+          {
+            "rank": 4,
+            "name": "Legendary Guardian",
+            "id": 4252
+          },
+          {
+            "rank": 1,
+            "name": "Bladed Armor",
+            "id": 4224
+          },
+          {
+            "rank": 1,
+            "name": "Tenacious",
+            "id": 4262
+          },
+          {
+            "rank": 3,
+            "name": "Fleet of Foot",
+            "id": 4312
+          },
+          {
+            "rank": 3,
+            "name": "Perseverance",
+            "id": 4241
+          },
+          {
+            "rank": 1,
+            "name": "Juggernaut",
+            "id": 4232
+          }
+        ],
+        "current": false,
+        "name": "Mundo Giungla",
+        "id": 34170153
+      },
+      {
+        "talents": [
+          {
+            "rank": 2,
+            "name": "Recovery",
+            "id": 4212
+          },
+          {
+            "rank": 1,
+            "name": "Swiftness",
+            "id": 4242
+          },
+          {
+            "rank": 2,
+            "name": "Block",
+            "id": 4211
+          },
+          {
+            "rank": 2,
+            "name": "Tough Skin",
+            "id": 4214
+          },
+          {
+            "rank": 1,
+            "name": "Feast",
+            "id": 4124
+          },
+          {
+            "rank": 1,
+            "name": "Butcher",
+            "id": 4114
+          },
+          {
+            "rank": 3,
+            "name": "Veteran's Scars",
+            "id": 4222
+          },
+          {
+            "rank": 4,
+            "name": "Sorcery",
+            "id": 4113
+          },
+          {
+            "rank": 1,
+            "name": "Unyielding",
+            "id": 4221
+          },
+          {
+            "rank": 4,
+            "name": "Legendary Guardian",
+            "id": 4252
+          },
+          {
+            "rank": 3,
+            "name": "Mental Force",
+            "id": 4123
+          },
+          {
+            "rank": 1,
+            "name": "Tenacious",
+            "id": 4262
+          },
+          {
+            "rank": 1,
+            "name": "Oppression",
+            "id": 4231
+          },
+          {
+            "rank": 3,
+            "name": "Perseverance",
+            "id": 4241
+          },
+          {
+            "rank": 1,
+            "name": "Juggernaut",
+            "id": 4232
+          }
+        ],
+        "current": false,
+        "name": "9\/21 AP Jungle",
+        "id": 34170154
+      },
+      {
+        "talents": [
+          {
+            "rank": 2,
+            "name": "Recovery",
+            "id": 4212
+          },
+          {
+            "rank": 2,
+            "name": "Block",
+            "id": 4211
+          },
+          {
+            "rank": 3,
+            "name": "Executioner",
+            "id": 4134
+          },
+          {
+            "rank": 1,
+            "name": "Arcane Blade",
+            "id": 4154
+          },
+          {
+            "rank": 3,
+            "name": "Veteran's Scars",
+            "id": 4222
+          },
+          {
+            "rank": 4,
+            "name": "Sorcery",
+            "id": 4113
+          },
+          {
+            "rank": 1,
+            "name": "Dangerous Game",
+            "id": 4144
+          },
+          {
+            "rank": 1,
+            "name": "Unyielding",
+            "id": 4221
+          },
+          {
+            "rank": 3,
+            "name": "Devastating Strikes",
+            "id": 4152
+          },
+          {
+            "rank": 3,
+            "name": "Mental Force",
+            "id": 4123
+          },
+          {
+            "rank": 1,
+            "name": "Oppression",
+            "id": 4231
+          },
+          {
+            "rank": 1,
+            "name": "Double-Edged Sword",
+            "id": 4111
+          },
+          {
+            "rank": 1,
+            "name": "Arcane Mastery",
+            "id": 4133
+          },
+          {
+            "rank": 3,
+            "name": "Archmage",
+            "id": 4143
+          },
+          {
+            "rank": 1,
+            "name": "Havoc",
+            "id": 4162
+          }
+        ],
+        "current": false,
+        "name": "AP Support",
+        "id": 34170155
+      }
+    ],
+    "summonerId": 30743211
   }
 }

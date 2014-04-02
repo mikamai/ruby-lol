@@ -15,14 +15,14 @@ describe MasteryPage do
     end
   end
 
-  describe "#talents" do
-    let(:fixture) { load_fixture("summoner-masteries", "v1.3", "get") }
-    let(:talents) { fixture["30743211"]["pages"].first["talents"] }
+  describe "#masteries" do
+    let(:fixture) { load_fixture("summoner-masteries", SummonerRequest.api_version, "get") }
+    let(:masteries) { fixture["30743211"]["pages"].first["masteries"] }
 
     subject { MasteryPage.new fixture["30743211"]["pages"].first }
 
     it "is populated by talents" do
-      expect(subject.talents.size).to eq(talents.size)
+      expect(subject.masteries.size).to eq(masteries.size)
     end
   end
 

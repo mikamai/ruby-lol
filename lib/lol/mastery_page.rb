@@ -5,9 +5,9 @@ module Lol
     # @return [Fixnum] mastery page id
     attr_reader :id
 
-    # @!attribute [r] talents
-    # @return [Array] array of Lol::Talent
-    attr_reader :talents
+    # @!attribute [r] masteries
+    # @return [Array] array of Lol::Mastery
+    attr_reader :masteries
 
     # @!attribute [r] name
     # @return [String] name of mastery page
@@ -21,8 +21,8 @@ module Lol
 
     attr_writer :id, :name, :current
 
-    def talents= new_talents
-      @talents = new_talents.map {|t| Talent.new t}
+    def masteries= new_masteries
+      @masteries = new_masteries.map {|t| Mastery.new t}
     end
   end
 end
