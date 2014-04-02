@@ -3,7 +3,7 @@ module Lol
     # Returns the supported API Version
     # @return [String] the supported api version
     def self.api_version
-      "v1.2"
+      "v1.3"
     end
 
     # Retrieves player statistics summaries for the given summoner
