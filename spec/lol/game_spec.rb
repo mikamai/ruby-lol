@@ -8,7 +8,7 @@ describe Game do
     let(:valid_attributes) { { game_id: 1 } }
   end
 
-  %w(champion_id game_id game_mode game_type invalid level map_id spell1 spell2 sub_type team_id).each do |attribute|
+  %w(champion_id game_id game_mode game_type invalid ip_earned level map_id spell1 spell2 sub_type team_id).each do |attribute|
     describe "#{attribute} attribute" do
       it_behaves_like 'plain attribute' do
         let(:attribute) { attribute }
