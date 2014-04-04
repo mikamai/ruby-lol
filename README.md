@@ -27,12 +27,12 @@ Or install it yourself as:
 ```ruby
 require 'lol'
 
-client = Lol::Client.new "my_api_key", "euw"
-# => <Lol::Client:0x007fd09d1abb00 @api_key="my_api_key", @region="euw">
+client = Lol::Client.new "my_api_key", {region: "euw"}
+# => <Lol::Client:0x000000020c0b28 @api_key="my_api_key", @region="euw", @cached=false>
 
 # NEW! You can cache requests using Redis now
 # ttl defaults to 900
-client = Lol::Client.new "my_api_key", "euw", {redis: "redis://localhost:6379", ttl: 900}
+client = Lol::Client.new "my_api_key", {region: "euw", redis: "redis://localhost:6379", ttl: 900}
 
 # Available Requests
 client.champion
