@@ -55,10 +55,7 @@ module Lol
       raise NotFound.new("404 Not Found") if response.respond_to?(:code) && response.not_found?
       raise InvalidAPIResponse.new(response["status"]["message"]) if response.is_a?(Hash) && response["status"]
 
-      if cached?
-        store.set clean_url(url), response.to_json
-        store.expire url, ttl
-      end
+      store.setex clean_url(url), ttl, response.to_json if cached?
 
       response
     end

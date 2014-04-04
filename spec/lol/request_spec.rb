@@ -54,6 +54,8 @@ describe Request do
     context "caching" do
       before :all do
         class FakeRedis < Redis
+          attr_reader :store
+
           def initialize options = {}
             @store = {}
           end
@@ -62,11 +64,8 @@ describe Request do
             @store[key]
           end
 
-          def set key, val
+          def setex key, ttl, val
             @store[key] = val
-          end
-
-          def expire key, ttl
             @store["#{key}:ttl"] = ttl
           end
         end
@@ -82,7 +81,6 @@ describe Request do
       it "is cached" do
         expect(request.class).not_to receive(:get)
         request.perform_request "/foo"
-
       end
 
       it "serializes cached responses" do
