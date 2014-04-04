@@ -120,6 +120,7 @@ client.static.champion.get(champData: 'lore')
 5. Create new Pull Request
 
 ## Changelog
+ - 0.9.14 Fixed a caching bug
  - 0.9.13 Updated to latest API versions
  - 0.9.12 Fixed a caching bug
  - 0.9.11 Added caching support via REDIS
