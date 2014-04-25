@@ -1,0 +1,97 @@
+{
+   "data": {
+      "SummonerBoost": {
+         "id": 1,
+         "description": "Removes all disables and summoner spell debuffs affecting your champion and lowers the duration of incoming disables by 65% for 3 seconds.",
+         "name": "Cleanse",
+         "key": "SummonerBoost",
+         "summonerLevel": 2
+      },
+      "SummonerHeal": {
+         "id": 7,
+         "description": "Restores 95-475 Health (depending on champion level) and Grants 30% Movement Speed for 2 seconds to you and target allied champion. Additionally removes any healing reduction effects that afflict either champion.",
+         "name": "Heal",
+         "key": "SummonerHeal",
+         "summonerLevel": 1
+      },
+      "SummonerRevive": {
+         "id": 10,
+         "description": "Instantly revives your champion at your team's Summoner Platform and increases their Movement Speed for a short duration.",
+         "name": "Revive",
+         "key": "SummonerRevive",
+         "summonerLevel": 1
+      },
+      "SummonerSmite": {
+         "id": 11,
+         "description": "Deals 390-1000 true damage (depending on champion level) to target monster or enemy minion.",
+         "name": "Smite",
+         "key": "SummonerSmite",
+         "summonerLevel": 3
+      },
+      "SummonerExhaust": {
+         "id": 3,
+         "description": "Exhausts target enemy champion, reducing their Movement Speed and Attack Speed by 30% for 2.5 seconds and reduces their damage dealt by 50% for the duration.",
+         "name": "Exhaust",
+         "key": "SummonerExhaust",
+         "summonerLevel": 8
+      },
+      "SummonerTeleport": {
+         "id": 12,
+         "description": "After channeling for 3.5 seconds, teleports your champion to target allied minion, turret, or ward.",
+         "name": "Teleport",
+         "key": "SummonerTeleport",
+         "summonerLevel": 6
+      },
+      "SummonerMana": {
+         "id": 13,
+         "description": "Restores 40% of your champion's maximum Mana. Also restores allies for 40% of their maximum Mana",
+         "name": "Clarity",
+         "key": "SummonerMana",
+         "summonerLevel": 1
+      },
+      "SummonerClairvoyance": {
+         "id": 2,
+         "description": "Reveals a small area of the map for your team for 5 seconds.",
+         "name": "Clairvoyance",
+         "key": "SummonerClairvoyance",
+         "summonerLevel": 10
+      },
+      "SummonerBarrier": {
+         "id": 21,
+         "description": "Shields your champion for 115-455 (depending on champion level) for 2 seconds.",
+         "name": "Barrier",
+         "key": "SummonerBarrier",
+         "summonerLevel": 6
+      },
+      "SummonerFlash": {
+         "id": 4,
+         "description": "Teleports your champion a short distance toward your cursor's location.",
+         "name": "Flash",
+         "key": "SummonerFlash",
+         "summonerLevel": 12
+      },
+      "SummonerHaste": {
+         "id": 6,
+         "description": "Your champion can move through units and has 27% increased Movement Speed for 10 seconds",
+         "name": "Ghost",
+         "key": "SummonerHaste",
+         "summonerLevel": 1
+      },
+      "SummonerDot": {
+         "id": 14,
+         "description": "Ignites target enemy champion, dealing 70-410 true damage (depending on champion level) over 5 seconds, grants you vision of the target, and reduces healing effects on them for the duration.",
+         "name": "Ignite",
+         "key": "SummonerDot",
+         "summonerLevel": 8
+      },
+      "SummonerOdinGarrison": {
+         "id": 17,
+         "description": "Allied Turret: Grants massive regeneration for 8 seconds. Enemy Turret: Reduces damage dealt by 80% for 8 seconds.",
+         "name": "Garrison",
+         "key": "SummonerOdinGarrison",
+         "summonerLevel": 1
+      }
+   },
+   "type": "summoner",
+   "version": "4.6.3"
+}
