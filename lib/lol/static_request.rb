@@ -3,7 +3,7 @@ module Lol
     STANDARD_ENDPOINTS = %w(champion item mastery rune summoner_spell)
 
     def self.api_version
-      "v1"
+      "v1.2"
     end
 
     # Returns a full url for an API call

@@ -5,8 +5,8 @@ include Lol
 
 describe StaticRequest do
   describe "api_version" do
-    it "is v1" do
-      expect(StaticRequest.api_version).to eq("v1")
+    it "is v1.2" do
+      expect(StaticRequest.api_version).to eq("v1.2")
     end
   end
 
@@ -14,7 +14,7 @@ describe StaticRequest do
 
   describe "api_url" do
     it "contains a static-data path component" do
-      expect(request.api_url("foo")).to eq("http://prod.api.pvp.net/api/lol/static-data/euw/v1/foo?api_key=api_key")
+      expect(request.api_url("foo")).to eq("http://prod.api.pvp.net/api/lol/static-data/euw/v1.2/foo?api_key=api_key")
     end
   end
 
@@ -32,7 +32,10 @@ describe StaticRequest do
         end
 
         context "without_id" do
-          let(:fixtures) { load_fixture("#{endpoint.dasherize}", StaticRequest.api_version, "get") }
+          let(:fixtures) do
+            fixture = endpoint == 'champion' && 'static-champion' || endpoint.dasherize
+            load_fixture(fixture, StaticRequest.api_version, "get")
+          end
 
           subject do
             expect(request).to receive(:perform_request)
