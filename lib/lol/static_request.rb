@@ -22,7 +22,12 @@ module Lol
       Proxy.new self, 'realm'
     end
 
+    def versions
+      Proxy.new self, 'versions'
+    end
+
     def get(endpoint, id=nil, params={})
+      return perform_request(api_url("versions")).parsed_response if endpoint == "versions"
       id ? find(endpoint, id, params) : all(endpoint, params)
     end
 
@@ -34,7 +39,7 @@ module Lol
     end
 
     def all(endpoint, params={})
-      if endpoint == "realm"
+      if %w(realm).include? endpoint
         model_class(endpoint).new perform_request(api_url(endpoint.dasherize, params)).to_hash
       else
         perform_request(api_url(endpoint.dasherize, params))["data"].map do |id, values|

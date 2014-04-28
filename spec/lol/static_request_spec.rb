@@ -93,4 +93,21 @@ describe StaticRequest do
       expect(subject).to be_an(OpenStruct)
     end
   end
+
+  describe "versions" do
+    let(:fixtures) { load_fixture("versions", StaticRequest.api_version, "get") }
+
+    subject do
+      expect(request).to receive(:perform_request)
+        .with(request.api_url("versions"))
+        .and_return(fixtures)
+
+      request.send("versions").get
+    end
+
+    it "returns an Array" do
+      expect(subject).to be_an(Array)
+    end
+  end
+
 end
