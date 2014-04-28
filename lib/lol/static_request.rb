@@ -43,7 +43,7 @@ module Lol
         model_class(endpoint).new perform_request(api_url(endpoint.dasherize, params)).to_hash
       else
         perform_request(api_url(endpoint.dasherize, params))["data"].map do |id, values|
-          model_class(endpoint).new(values.merge(id: id))
+          model_class(endpoint).new(values.merge(id: values["id"] || id))
         end
       end
     end
