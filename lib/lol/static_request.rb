@@ -27,7 +27,7 @@ module Lol
     end
 
     def get(endpoint, id=nil, params={})
-      return perform_request(api_url("versions")).parsed_response if endpoint == "versions"
+      return perform_request(api_url("versions")).map {|x| x} if endpoint == "versions"
       id ? find(endpoint, id, params) : all(endpoint, params)
     end
 
