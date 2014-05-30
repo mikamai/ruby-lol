@@ -1,5 +1,4 @@
 require "uri"
-require "lol/invalid_api_response"
 
 module Lol
   class NotFound < StandardError; end

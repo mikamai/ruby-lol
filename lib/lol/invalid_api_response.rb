@@ -4,7 +4,7 @@ module Lol
 
     def initialize url, response
       super "#{response["status"]["message"]} calling #{url}"
-      @raw = raw
+      @raw = response
     end
   end
 end

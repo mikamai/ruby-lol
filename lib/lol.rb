@@ -14,3 +14,4 @@ module Lol
 end
 
 require 'lol/autoloader'
+require "lol/invalid_api_response"
