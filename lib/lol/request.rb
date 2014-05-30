@@ -1,7 +1,7 @@
 require "uri"
+require "lol/invalid_api_response"
 
 module Lol
-  class InvalidAPIResponse < StandardError; end
   class NotFound < StandardError; end
   class InvalidCacheStore < StandardError; end
 
@@ -53,7 +53,7 @@ module Lol
 
       response = self.class.get(url)
       raise NotFound.new("404 Not Found") if response.respond_to?(:code) && response.not_found?
-      raise InvalidAPIResponse.new(response["status"]["message"]) if response.is_a?(Hash) && response["status"]
+      raise InvalidAPIResponse.new(url, response) if response.is_a?(Hash) && response["status"]
 
       store.setex clean_url(url), ttl, response.to_json if cached?
 
