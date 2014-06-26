@@ -33,7 +33,7 @@ module Lol
     # @return [String] full fledged url
     def api_url path, params = {}
       query_string = URI.encode_www_form params.merge api_key: api_key
-      File.join "http://prod.api.pvp.net/api/lol/#{region}/#{self.class.api_version}/", "#{path}?#{query_string}"
+      File.join "http://#{region}.api.pvp.net/api/lol/#{region}/#{self.class.api_version}/", "#{path}?#{query_string}"
     end
 
     # Returns just a path from a full api url

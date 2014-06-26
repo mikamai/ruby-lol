@@ -11,7 +11,7 @@ module Lol
     # @param path [String] API path to call
     # @return [String] full fledged url
     def api_url path, params = {}
-      super(path,params).gsub(/api\/lol/, "api/lol/static-data")
+      super(path,params).gsub(/api\/lol/, "api/lol/static-data").gsub(/\/\/#{region}/, "//global")
     end
 
     STANDARD_ENDPOINTS.each do |endpoint|
