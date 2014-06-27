@@ -41,7 +41,12 @@ def expect_read_only_attribute subject, attribute
 end
 
 def error_401
-  {"status" => {"message" => "Foo", "status_code" => 401}}
+  response = {"status" => {"message" => "Foo", "status_code" => 401}}
+  response.send :instance_eval do
+    def code; 401; end
+    def not_found?; false; end
+  end
+  response
 end
 
 def summoners
