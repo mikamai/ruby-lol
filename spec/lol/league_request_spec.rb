@@ -17,8 +17,8 @@ describe LeagueRequest do
       request.get(123)
     end
 
-    it "returns an array of Leagues" do
-      expect(subject.map(&:class).uniq).to eq([League])
+    it "returns an hash of arrays of Leagues" do
+      expect(subject.map {|k,v| v.map(&:class).uniq}.flatten).to eq([League])
     end
   end
 end

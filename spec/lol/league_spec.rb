@@ -23,7 +23,8 @@ describe League do
     end
 
     it "fills entries with LeagueEntry objects" do
-      league = League.new(load_fixture("league", "v2.3", "get").first)
+      league_data = load_fixture("league", LeagueRequest.api_version, "get")
+      league = League.new(league_data[league_data.keys.first].first)
       expect(league.entries.map(&:class).uniq).to eq([LeagueEntry])
     end
   end

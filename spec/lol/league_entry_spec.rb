@@ -13,7 +13,7 @@ describe LeagueEntry do
       let(:valid_attributes) { { player_or_team_id: 123456 } }
     end
 
-    %w(player_or_team_id player_or_team_name league_name queue_type tier rank league_points wins is_hot_streak is_veteran is_fresh_blood is_inactive last_played time_until_decay).each do |attribute|
+    %w(player_or_team_id player_or_team_name league_points wins is_hot_streak is_veteran is_fresh_blood is_inactive last_played time_until_decay).each do |attribute|
       describe "#{attribute} attribute" do
         it_behaves_like 'plain attribute' do
           let(:attribute) { attribute }
@@ -27,10 +27,6 @@ describe LeagueEntry do
     {
       "playerOrTeamId" : "30247742",
       "playerOrTeamName" : "Danterno",
-      "leagueName" : "Annie's Blades",
-      "queueType" : "RANKED_SOLO_5x5",
-      "tier" : "SILVER",
-      "rank" : "II",
       "leaguePoints" : 84,
       "wins" : 35,
       "isHotStreak" : false,
