@@ -24,7 +24,7 @@ describe Client do
       let(:real_redis) { Client.new "foo", redis: "redis://localhost:6379" }
 
       it "sets caching if redis is specified in the options" do
-        expect(client.cached?).to be_true
+        expect(client.cached?).to be_truthy
       end
 
       it "sets a default ttl of 15 * 60s" do
@@ -50,12 +50,12 @@ describe Client do
   describe "#cached?" do
     it "is true if @cached is true" do
       subject.instance_variable_set(:@cached, true)
-      expect(subject.cached?).to be_true
+      expect(subject.cached?).to be_truthy
     end
 
     it "is false if @cached is false" do
       subject.instance_variable_set(:@cached, false)
-      expect(subject.cached?).to be_false
+      expect(subject.cached?).to be_falsy
     end
   end
 
