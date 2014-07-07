@@ -17,15 +17,4 @@ describe TeamStatistic do
     end
   end
 
-  describe 'team_id attribute' do
-    it_behaves_like 'plain attribute' do
-      let(:attribute) { 'team_id' }
-      let(:attribute_value) { 'asd' }
-    end
-
-    it 'parses the value if it is an Hash' do
-      model = Team.new team_id: { 'fullId' => 1 }
-      expect(model.team_id).to eq 1
-    end
-  end
 end

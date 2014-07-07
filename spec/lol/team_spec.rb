@@ -5,10 +5,10 @@ include Lol
 
 describe Team do
   it_behaves_like 'Lol model' do
-    let(:valid_attributes) { { timestamp: 1 } }
+    let(:valid_attributes) { {  } }
   end
 
-  %w(full_id message_of_day name status tag timestamp).each do |attribute|
+  %w(full_id name status tag).each do |attribute|
     describe "#{attribute} attribute" do
       it_behaves_like 'plain attribute' do
         let(:attribute) { attribute }
@@ -32,9 +32,9 @@ describe Team do
     end
   end
 
-  describe 'team_stat_summary attribute' do
+  describe 'team_stat_details attribute' do
     it_behaves_like 'collection attribute' do
-      let(:attribute) { 'team_stat_summary' }
+      let(:attribute) { 'team_stat_details' }
       let(:attribute_class) { TeamStatistic }
       let(:attribute_value) { { 'teamStatDetails' => [{}, {}] } }
     end
@@ -49,18 +49,6 @@ describe Team do
     it 'parses the value if it is an Hash' do
       model = Team.new roster: {}
       expect(model.roster).to be_a Roster
-    end
-  end
-
-  describe 'team_id attribute' do
-    it_behaves_like 'plain attribute' do
-      let(:attribute) { 'team_id' }
-      let(:attribute_value) { 'asd' }
-    end
-
-    it 'parses the value if it is an Hash' do
-      model = Team.new team_id: { 'fullId' => 1 }
-      expect(model.team_id).to eq 1
     end
   end
 end

@@ -19,16 +19,12 @@ describe TeamRequest do
       request.get 1
     end
 
-    it 'requires a summoner' do
-      expect { request.get }.to raise_error ArgumentError
-    end
-
-    it 'returns an array' do
-      expect(subject).to be_a Array
+    it 'returns an hash' do
+      expect(subject).to be_a Hash
     end
 
     it 'returns an array of Team' do
-      expect(subject.map(&:class).uniq).to eq [Team]
+      expect(subject[subject.keys.first].map(&:class).uniq).to eq [Team]
     end
 
     it 'fetches Team from the API' do
@@ -41,8 +37,8 @@ describe TeamRequest do
     let(:fixture) { load_fixture 'team', TeamRequest.api_version, 'getbyid' }
 
     subject do
-      expect(request.class).to receive(:get).with(request.api_url("team/TEAM-c80824c9-c568-42de-bdbb-271543b209e1")).and_return fixture
-      request.getbyid "TEAM-c80824c9-c568-42de-bdbb-271543b209e1"
+      expect(request.class).to receive(:get).with(request.api_url("team/TEAM-a9ad3db0-b377-11e3-b87d-782bcb4ce61a")).and_return fixture
+      request.getbyid "TEAM-a9ad3db0-b377-11e3-b87d-782bcb4ce61a"
     end
 
     it 'requires a summoner' do
@@ -54,7 +50,7 @@ describe TeamRequest do
     end
 
     it 'fetches Team from the API' do
-      expect(subject.full_id).to eq "TEAM-c80824c9-c568-42de-bdbb-271543b209e1"
+      expect(subject.full_id).to eq "TEAM-a9ad3db0-b377-11e3-b87d-782bcb4ce61a"
     end
   end
 
