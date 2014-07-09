@@ -1,4 +1,5 @@
 require "uri"
+require "active_support/core_ext/object/to_query"
 
 module Lol
   class NotFound < StandardError; end
@@ -39,7 +40,9 @@ module Lol
     # Returns just a path from a full api url
     # @return [String]
     def clean_url(url)
-      URI.parse(url).path
+      uri = URI.parse(url)
+      uri.query = CGI.parse(uri.query).reject { |k| k == 'api_key' }.to_query
+      uri.to_s
     end
 
     # Calls the API via HTTParty and handles errors
