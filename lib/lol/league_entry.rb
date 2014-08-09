@@ -56,11 +56,7 @@ module Lol
 
     attr_writer :player_or_team_id, :player_or_team_name, :division, :league_points, :wins,
                 :is_hot_streak, :is_veteran, :is_fresh_blood,
-                :is_inactive, :time_until_decay
-
-    def last_played= date
-      @last_played = date
-    end
+                :is_inactive, :time_until_decay, :last_played
 
     def mini_series= raw
       @mini_series = MiniSeries.new raw
