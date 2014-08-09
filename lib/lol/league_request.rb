@@ -10,11 +10,9 @@ module Lol
     # @param [String]
     # @return [Array]
     def get *summoner_ids
-      returns = {}
-      perform_request(api_url("league/by-summoner/#{summoner_ids.join(",")}")).each do |s, l|
+      perform_request(api_url("league/by-summoner/#{summoner_ids.join(",")}")).each_with_object({}) do |(s, l), returns|
         returns[s] = l.map {|data| League.new data}
       end
-      returns
     end
 
     # Retrieves leagues entry data for summoner, including league entries for all of summoner's teams
