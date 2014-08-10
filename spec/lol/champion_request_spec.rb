@@ -8,15 +8,14 @@ describe ChampionRequest do
     expect(ChampionRequest.ancestors[1]).to eq(Request)
   end
 
-  describe "get" do
-    let(:request) { ChampionRequest.new "api_key", "euw" }
+  let(:request) { ChampionRequest.new("api_key", "euw") }
+
+  describe "#get" do
 
     context "specifying an id" do
-      subject do
-        expect(request).to receive(:perform_request).with(request.api_url("champion/266", "freeToPlay" => false)).and_return(load_fixture("champion-266", ChampionRequest.api_version, "get"))
+      subject { request.get(:id => 266) }
 
-        request.get :id => 266
-      end
+      before(:each) { stub_request(request, 'champion-266', 'champion/266', 'freeToPlay' => false) }
 
       it "returns a champion" do
         expect(subject).to be_a(Champion)
@@ -24,11 +23,9 @@ describe ChampionRequest do
     end
 
     context "getting all" do
-      subject do
-        expect(request).to receive(:perform_request).with(request.api_url("champion", "freeToPlay" => false)).and_return(load_fixture("champion", ChampionRequest.api_version, "get"))
+      subject { request.get }
 
-        request.get
-      end
+      before(:each) { stub_request(request, 'champion', 'champion', 'freeToPlay' => false) }
 
       it "returns an array" do
         expect(subject).to be_a(Array)

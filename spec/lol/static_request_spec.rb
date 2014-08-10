@@ -10,9 +10,9 @@ describe StaticRequest do
     end
   end
 
-  let(:request) { StaticRequest.new "api_key", "euw" }
+  let(:request) { StaticRequest.new("api_key", "euw") }
 
-  describe "api_url" do
+  describe "#api_url" do
     it "contains a static-data path component" do
       expect(request.api_url("foo")).to eq("http://global.api.pvp.net/api/lol/static-data/euw/v1.2/foo?api_key=api_key")
     end
@@ -32,18 +32,13 @@ describe StaticRequest do
         end
 
         context "without_id" do
-          let(:fixtures) do
-            fixture = endpoint == 'champion' && 'static-champion' || endpoint.dasherize
-            load_fixture(fixture, StaticRequest.api_version, "get")
-          end
 
-          subject do
-            expect(request).to receive(:perform_request)
-              .with(request.api_url("#{endpoint.dasherize}"))
-              .and_return(fixtures)
+          let(:fixture_name) { endpoint == 'champion' ? 'static-champion' : endpoint.dasherize }
+          let(:fixture) { load_fixture(fixture_name, StaticRequest.api_version, 'get') }
 
-            request.send(endpoint).get
-          end
+          subject { request.public_send(endpoint).get }
+
+          before(:each) { stub_request(request, fixture_name, "#{endpoint.dasherize}") }
 
           it "returns an Array" do
             expect(subject).to be_an(Array)
@@ -54,21 +49,16 @@ describe StaticRequest do
           end
 
           it "fetches #{endpoint} from the API" do
-            expect(subject.size).to eq(fixtures["data"].size)
+            expect(subject.size).to eq(fixture["data"].size)
           end
         end
 
         context "with_id" do
           let(:id) { 1 }
-          let(:fixtures) { load_fixture("#{endpoint.dasherize}-by-id", StaticRequest.api_version, "get") }
 
-          subject do
-            expect(request).to receive(:perform_request)
-              .with(request.api_url("#{endpoint.dasherize}/#{id}"))
-              .and_return(fixtures)
+          before(:each) { stub_request(request, "#{endpoint.dasherize}-by-id", "#{endpoint.dasherize}/#{id}") }
 
-            request.send(endpoint).get(id)
-          end
+          subject { request.public_send(endpoint).get(id) }
 
           it "returns an OpenStruct" do
             expect(subject).to be_an(OpenStruct)
@@ -78,32 +68,20 @@ describe StaticRequest do
     end
   end
 
-  describe "realm" do
-    let(:fixtures) { load_fixture("realm", StaticRequest.api_version, "get") }
+  describe "#realm" do
+    subject { request.realm.get }
 
-    subject do
-      expect(request).to receive(:perform_request)
-        .with(request.api_url("realm"))
-        .and_return(fixtures)
-
-      request.send("realm").get
-    end
+    before(:each) { stub_request(request, 'realm', 'realm') }
 
     it "returns an OpenStruct" do
       expect(subject).to be_an(OpenStruct)
     end
   end
 
-  describe "versions" do
-    let(:fixtures) { load_fixture("versions", StaticRequest.api_version, "get") }
+  describe "#versions" do
+    subject { request.versions.get }
 
-    subject do
-      expect(request).to receive(:perform_request)
-        .with(request.api_url("versions"))
-        .and_return(fixtures)
-
-      request.send("versions").get
-    end
+    before(:each) { stub_request(request, 'versions', 'versions') }
 
     it "returns an Array" do
       expect(subject).to be_an(Array)
