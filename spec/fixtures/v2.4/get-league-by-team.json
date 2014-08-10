@@ -1,0 +1,421 @@
+{"TEAM-7d7013d0-b38b-11e3-9e38-782bcb497d6f": [{
+  "queue": "RANKED_TEAM_3x3",
+  "name": "Teemo's Privateers",
+  "entries": [
+    {
+      "leaguePoints": 0,
+      "isFreshBlood": false,
+      "isHotStreak": false,
+      "division": "I",
+      "isInactive": false,
+      "isVeteran": false,
+      "playerOrTeamName": "Dream Chil Thril Team",
+      "playerOrTeamId": "TEAM-7ead5f70-fd71-11e3-99ea-c81f66dba0e7",
+      "wins": 2
+    },
+    {
+      "leaguePoints": 20,
+      "isFreshBlood": false,
+      "isHotStreak": false,
+      "division": "V",
+      "isInactive": false,
+      "isVeteran": false,
+      "playerOrTeamName": "Victorious Dignitas V3",
+      "playerOrTeamId": "TEAM-86839ee0-efec-11e3-95a4-782bcb497d6f",
+      "wins": 1
+    },
+    {
+      "leaguePoints": 0,
+      "isFreshBlood": false,
+      "isHotStreak": false,
+      "division": "II",
+      "isInactive": false,
+      "isVeteran": false,
+      "playerOrTeamName": "We Like Dynamic",
+      "playerOrTeamId": "TEAM-a27cb2b0-05dd-11e4-938f-c81f66db920c",
+      "wins": 3
+    },
+    {
+      "leaguePoints": 0,
+      "isFreshBlood": false,
+      "isHotStreak": false,
+      "division": "III",
+      "isInactive": false,
+      "isVeteran": false,
+      "playerOrTeamName": "TripleNinjaTribe",
+      "playerOrTeamId": "TEAM-913055c6-f80a-45de-b318-a3e7446aa420",
+      "wins": 4
+    },
+    {
+      "leaguePoints": 11,
+      "isFreshBlood": false,
+      "isHotStreak": false,
+      "division": "III",
+      "isInactive": false,
+      "isVeteran": false,
+      "playerOrTeamName": "Les Kebabs Mobiles",
+      "playerOrTeamId": "TEAM-9568e9f0-faf1-11e3-9cd4-c81f66db96d8",
+      "wins": 5
+    },
+    {
+      "leaguePoints": 54,
+      "isFreshBlood": false,
+      "isHotStreak": false,
+      "division": "III",
+      "isInactive": false,
+      "isVeteran": false,
+      "playerOrTeamName": "Bada55Cupcake",
+      "playerOrTeamId": "TEAM-a7c49310-bf55-11e3-9be2-782bcb497d6f",
+      "wins": 4
+    },
+    {
+      "leaguePoints": 87,
+      "isFreshBlood": false,
+      "isHotStreak": false,
+      "division": "II",
+      "isInactive": false,
+      "miniSeries": {
+        "progress": "LNN",
+        "target": 2,
+        "losses": 1,
+        "wins": 0
+      },
+      "isVeteran": false,
+      "playerOrTeamName": "Musketiere",
+      "playerOrTeamId": "TEAM-7418c8f0-8de7-11e3-8d24-782bcb4ce61a",
+      "wins": 8
+    },
+    {
+      "leaguePoints": 75,
+      "isFreshBlood": false,
+      "isHotStreak": false,
+      "division": "II",
+      "isInactive": false,
+      "isVeteran": false,
+      "playerOrTeamName": "lateamporofx",
+      "playerOrTeamId": "TEAM-7dfbf6b0-076a-11e4-8767-c81f66db96d8",
+      "wins": 9
+    },
+    {
+      "leaguePoints": 38,
+      "isFreshBlood": false,
+      "isHotStreak": false,
+      "division": "I",
+      "isInactive": false,
+      "isVeteran": false,
+      "playerOrTeamName": "W5A",
+      "playerOrTeamId": "TEAM-e1c84ab0-bc7d-11e2-b9d3-782bcb4ce61a",
+      "wins": 30
+    },
+    {
+      "leaguePoints": 18,
+      "isFreshBlood": false,
+      "isHotStreak": false,
+      "division": "III",
+      "isInactive": false,
+      "isVeteran": false,
+      "playerOrTeamName": "salut les copains",
+      "playerOrTeamId": "TEAM-a24de7b0-0091-11e4-bee3-c81f66dba0e7",
+      "wins": 7
+    },
+    {
+      "leaguePoints": 60,
+      "isFreshBlood": false,
+      "isHotStreak": false,
+      "division": "III",
+      "isInactive": false,
+      "isVeteran": false,
+      "playerOrTeamName": "Blechdivision",
+      "playerOrTeamId": "TEAM-edf66c60-8acf-11e3-8d24-782bcb4ce61a",
+      "wins": 29
+    },
+    {
+      "leaguePoints": 25,
+      "isFreshBlood": false,
+      "isHotStreak": false,
+      "division": "II",
+      "isInactive": false,
+      "isVeteran": false,
+      "playerOrTeamName": "League of bronze plays",
+      "playerOrTeamId": "TEAM-d26634a0-e0db-11e3-aea5-782bcb4ce61a",
+      "wins": 3
+    },
+    {
+      "leaguePoints": 17,
+      "isFreshBlood": false,
+      "isHotStreak": false,
+      "division": "V",
+      "isInactive": false,
+      "isVeteran": false,
+      "playerOrTeamName": "I FUQ YOUR WIFE",
+      "playerOrTeamId": "TEAM-97f85130-f30b-11e3-9d1f-c81f66dba0e7",
+      "wins": 2
+    },
+    {
+      "leaguePoints": 0,
+      "isFreshBlood": false,
+      "isHotStreak": false,
+      "division": "III",
+      "isInactive": false,
+      "isVeteran": false,
+      "playerOrTeamName": "Fenoninhos",
+      "playerOrTeamId": "TEAM-1aed3670-fa53-11e3-b84b-c81f66db920c",
+      "wins": 3
+    },
+    {
+      "leaguePoints": 42,
+      "isFreshBlood": false,
+      "isHotStreak": false,
+      "division": "I",
+      "isInactive": false,
+      "isVeteran": false,
+      "playerOrTeamName": "Allez les Bleu",
+      "playerOrTeamId": "TEAM-5dbe1ec0-fbb5-11e3-9cd4-c81f66db96d8",
+      "wins": 19
+    },
+    {
+      "leaguePoints": 22,
+      "isFreshBlood": false,
+      "isHotStreak": false,
+      "division": "II",
+      "isInactive": false,
+      "isVeteran": false,
+      "playerOrTeamName": "Gameover for you",
+      "playerOrTeamId": "TEAM-87d3a730-2d9c-11e3-bded-782bcb497d6f",
+      "wins": 10
+    },
+    {
+      "leaguePoints": 0,
+      "isFreshBlood": false,
+      "isHotStreak": false,
+      "division": "I",
+      "isInactive": false,
+      "isVeteran": false,
+      "playerOrTeamName": "BroFOOOORCE",
+      "playerOrTeamId": "TEAM-6d941310-0554-11e4-bee3-c81f66dba0e7",
+      "wins": 3
+    },
+    {
+      "leaguePoints": 21,
+      "isFreshBlood": false,
+      "isHotStreak": false,
+      "division": "I",
+      "isInactive": false,
+      "isVeteran": false,
+      "playerOrTeamName": "Keep Calm And Feed Me",
+      "playerOrTeamId": "TEAM-4f4e8630-76c4-11e2-87cd-782bcb497d6f",
+      "wins": 18
+    },
+    {
+      "leaguePoints": 100,
+      "isFreshBlood": false,
+      "isHotStreak": false,
+      "division": "I",
+      "isInactive": false,
+      "miniSeries": {
+        "progress": "WLNNN",
+        "target": 3,
+        "losses": 1,
+        "wins": 1
+      },
+      "isVeteran": false,
+      "playerOrTeamName": "RebirthOfDestruction",
+      "playerOrTeamId": "TEAM-43803460-deb1-11e3-87cb-782bcb497d6f",
+      "wins": 14
+    },
+    {
+      "leaguePoints": 0,
+      "isFreshBlood": false,
+      "isHotStreak": false,
+      "division": "I",
+      "isInactive": false,
+      "isVeteran": false,
+      "playerOrTeamName": "Eestimaa Rohelised",
+      "playerOrTeamId": "TEAM-67909dc0-fd62-11e3-bee3-c81f66dba0e7",
+      "wins": 22
+    },
+    {
+      "leaguePoints": 0,
+      "isFreshBlood": false,
+      "isHotStreak": false,
+      "division": "V",
+      "isInactive": true,
+      "isVeteran": false,
+      "playerOrTeamName": "Faraoni del Piffero",
+      "playerOrTeamId": "TEAM-7d7013d0-b38b-11e3-9e38-782bcb497d6f",
+      "wins": 1
+    },
+    {
+      "leaguePoints": 0,
+      "isFreshBlood": false,
+      "isHotStreak": false,
+      "division": "II",
+      "isInactive": false,
+      "isVeteran": false,
+      "playerOrTeamName": "PowerGeek",
+      "playerOrTeamId": "TEAM-b85d72c0-dc3b-11e3-94d2-782bcb497d6f",
+      "wins": 4
+    },
+    {
+      "leaguePoints": 43,
+      "isFreshBlood": false,
+      "isHotStreak": false,
+      "division": "IV",
+      "isInactive": false,
+      "isVeteran": false,
+      "playerOrTeamName": "LeRetourDesBledards",
+      "playerOrTeamId": "TEAM-82fd1540-eef1-11e3-99aa-782bcb497d6f",
+      "wins": 5
+    },
+    {
+      "leaguePoints": 0,
+      "isFreshBlood": false,
+      "isHotStreak": false,
+      "division": "V",
+      "isInactive": false,
+      "isVeteran": false,
+      "playerOrTeamName": "Baabbad",
+      "playerOrTeamId": "TEAM-0df6d300-7a32-11e3-9495-782bcb497d6f",
+      "wins": 3
+    },
+    {
+      "leaguePoints": 0,
+      "isFreshBlood": false,
+      "isHotStreak": false,
+      "division": "I",
+      "isInactive": false,
+      "isVeteran": false,
+      "playerOrTeamName": "Nemesis57",
+      "playerOrTeamId": "TEAM-f4730d80-0f3d-11e4-9b1a-c81f66dba0e7",
+      "wins": 3
+    },
+    {
+      "leaguePoints": 84,
+      "isFreshBlood": false,
+      "isHotStreak": false,
+      "division": "II",
+      "isInactive": false,
+      "miniSeries": {
+        "progress": "LNN",
+        "target": 2,
+        "losses": 1,
+        "wins": 0
+      },
+      "isVeteran": false,
+      "playerOrTeamName": "BronzaForever",
+      "playerOrTeamId": "TEAM-39962030-d3b8-11e3-a0e3-782bcb497d6f",
+      "wins": 13
+    },
+    {
+      "leaguePoints": 35,
+      "isFreshBlood": false,
+      "isHotStreak": false,
+      "division": "III",
+      "isInactive": false,
+      "isVeteran": false,
+      "playerOrTeamName": "Bunch of Guys",
+      "playerOrTeamId": "TEAM-f4c6df60-02f3-11e4-b406-c81f66db8bc5",
+      "wins": 12
+    },
+    {
+      "leaguePoints": 0,
+      "isFreshBlood": true,
+      "isHotStreak": false,
+      "division": "III",
+      "isInactive": false,
+      "isVeteran": false,
+      "playerOrTeamName": "Ouainsleshurlus",
+      "playerOrTeamId": "TEAM-7fb14ee0-14ff-11e4-a4ce-c81f66dba0e7",
+      "wins": 3
+    },
+    {
+      "leaguePoints": 4,
+      "isFreshBlood": false,
+      "isHotStreak": false,
+      "division": "III",
+      "isInactive": false,
+      "isVeteran": false,
+      "playerOrTeamName": "PapyNoobs",
+      "playerOrTeamId": "TEAM-a5ba1210-f79c-11e2-aaa7-782bcb4ce61a",
+      "wins": 12
+    },
+    {
+      "leaguePoints": 54,
+      "isFreshBlood": false,
+      "isHotStreak": false,
+      "division": "IV",
+      "isInactive": false,
+      "isVeteran": false,
+      "playerOrTeamName": "PowawasaFR",
+      "playerOrTeamId": "TEAM-4409ce20-40ad-11e3-ba97-782bcb497d6f",
+      "wins": 15
+    },
+    {
+      "leaguePoints": 0,
+      "isFreshBlood": false,
+      "isHotStreak": false,
+      "division": "I",
+      "isInactive": false,
+      "isVeteran": false,
+      "playerOrTeamName": "NOOBY42",
+      "playerOrTeamId": "TEAM-ec610330-47cf-11e3-9ecd-782bcb4ce61a",
+      "wins": 16
+    },
+    {
+      "leaguePoints": 22,
+      "isFreshBlood": false,
+      "isHotStreak": false,
+      "division": "II",
+      "isInactive": false,
+      "isVeteran": false,
+      "playerOrTeamName": "team 2N",
+      "playerOrTeamId": "TEAM-5d767c90-ffd5-11e3-9755-c81f66dba0e7",
+      "wins": 42
+    },
+    {
+      "leaguePoints": 0,
+      "isFreshBlood": false,
+      "isHotStreak": false,
+      "division": "II",
+      "isInactive": false,
+      "isVeteran": false,
+      "playerOrTeamName": "XxGrimoire HeartsxX",
+      "playerOrTeamId": "TEAM-7dab6200-8e92-11e3-be7d-782bcb497d6f",
+      "wins": 3
+    },
+    {
+      "leaguePoints": 31,
+      "isFreshBlood": false,
+      "isHotStreak": false,
+      "division": "I",
+      "isInactive": false,
+      "isVeteran": false,
+      "playerOrTeamName": "Matteoplscarryus",
+      "playerOrTeamId": "TEAM-ec2f8124-faf3-11e3-aeba-c81f66db8bc5",
+      "wins": 9
+    },
+    {
+      "leaguePoints": 32,
+      "isFreshBlood": false,
+      "isHotStreak": false,
+      "division": "II",
+      "isInactive": false,
+      "isVeteran": false,
+      "playerOrTeamName": "DHL93",
+      "playerOrTeamId": "TEAM-8360fe80-0179-11e4-9e35-c81f66db920c",
+      "wins": 13
+    },
+    {
+      "leaguePoints": 0,
+      "isFreshBlood": false,
+      "isHotStreak": false,
+      "division": "III",
+      "isInactive": false,
+      "isVeteran": false,
+      "playerOrTeamName": "Legends of Aesthethics",
+      "playerOrTeamId": "TEAM-10070e10-fad6-11e3-ac04-c81f66db8bc5",
+      "wins": 2
+    }
+  ],
+  "tier": "BRONZE"
+}]}
