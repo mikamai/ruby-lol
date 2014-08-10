@@ -17,10 +17,13 @@ module Lol
 
     # Retrieves leagues entry data for summoner, including league entries for all of summoner's teams
     # @param [Array<String>]
-    # @return [Array]
+    # @return Hash{String => Array<League>}
     # TODO: Change name to entries?
-    def get_entries *summoner_ids
-      perform_request(api_url("league/by-summoner/#{summoner_ids.join(',')}/entry")).map { |e| LeagueEntry.new e }
+    def get_entries(*summoner_ids)
+      url = api_url("league/by-summoner/#{summoner_ids.join(',')}/entry")
+      perform_request(url).each_with_object({}) do |(summoner_id, leagues), entries_hash|
+        entries_hash[summoner_id] = leagues.map { |data| League.new(data) }
+      end
     end
 
     # Retrieves leagues data for team

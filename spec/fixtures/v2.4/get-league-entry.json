@@ -1,0 +1,72 @@
+{"30743211": [
+  {
+    "queue": "RANKED_SOLO_5x5",
+    "name": "Vayne's Ritualists",
+    "entries": [{
+      "leaguePoints": 0,
+      "isFreshBlood": false,
+      "isHotStreak": false,
+      "division": "III",
+      "isInactive": false,
+      "isVeteran": true,
+      "playerOrTeamName": "intinig",
+      "playerOrTeamId": "30743211",
+      "wins": 87
+    }],
+    "tier": "SILVER"
+  },
+  {
+    "queue": "RANKED_TEAM_3x3",
+    "name": "Teemo's Privateers",
+    "entries": [{
+      "leaguePoints": 0,
+      "isFreshBlood": false,
+      "isHotStreak": false,
+      "division": "V",
+      "isInactive": true,
+      "isVeteran": false,
+      "playerOrTeamName": "Faraoni del Piffero",
+      "playerOrTeamId": "TEAM-7d7013d0-b38b-11e3-9e38-782bcb497d6f",
+      "wins": 1
+    }],
+    "tier": "BRONZE"
+  },
+  {
+    "queue": "RANKED_TEAM_3x3",
+    "name": "LeBlanc's Zealots",
+    "entries": [{
+      "leaguePoints": 93,
+      "isFreshBlood": false,
+      "isHotStreak": false,
+      "division": "I",
+      "isInactive": false,
+      "miniSeries": {
+        "progress": "WLLNN",
+        "target": 3,
+        "losses": 2,
+        "wins": 1
+      },
+      "isVeteran": false,
+      "playerOrTeamName": "I Cantacessi",
+      "playerOrTeamId": "TEAM-4e9b84c0-cbde-11e3-b0bb-782bcb497d6f",
+      "wins": 13
+    }],
+    "tier": "BRONZE"
+  },
+  {
+    "queue": "RANKED_TEAM_5x5",
+    "name": "Lulu's Adventurers",
+    "entries": [{
+      "leaguePoints": 18,
+      "isFreshBlood": false,
+      "isHotStreak": false,
+      "division": "III",
+      "isInactive": false,
+      "isVeteran": false,
+      "playerOrTeamName": "I Cantacessi",
+      "playerOrTeamId": "TEAM-4e9b84c0-cbde-11e3-b0bb-782bcb497d6f",
+      "wins": 7
+    }],
+    "tier": "BRONZE"
+  }
+]}
