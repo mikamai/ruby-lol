@@ -25,9 +25,8 @@ module Lol
 
     attr_writer :timestamp, :name, :tier, :queue, :participant_id
 
-    def entries= list
-      @entries = []
-      list.each {|entry| @entries << LeagueEntry.new(entry)}
+    def entries=(entries)
+      @entries = entries.map(&LeagueEntry.method(:new))
     end
   end
 end
