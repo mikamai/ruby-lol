@@ -36,7 +36,7 @@ describe ChampionRequest do
       end
 
       it "fetches champions from the API" do
-        expect(subject.size).to eq(load_fixture("champion", ChampionRequest.api_version, "get")["champions"].size)
+        expect(subject.size).to eq(load_fixture("champion", ChampionRequest.api_version)["champions"].size)
       end
 
     end

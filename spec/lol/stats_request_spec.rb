@@ -24,7 +24,7 @@ describe StatsRequest do
       subject { request.summary(1) }
 
       context 'without season' do
-        let(:fixture) { load_fixture('stats', StatsRequest.api_version, 'get') }
+        let(:fixture) { load_fixture('stats', StatsRequest.api_version) }
 
         before(:each) { stub_request(request, 'stats', 'stats/by-summoner/1/summary') }
 
@@ -63,7 +63,7 @@ describe StatsRequest do
     end
 
     context 'with summoner' do
-      let(:fixture) { load_fixture 'ranked_stats', StatsRequest.api_version, 'get' }
+      let(:fixture) { load_fixture('ranked_stats', StatsRequest.api_version) }
 
       context 'without season' do
         subject { request.ranked(1) }

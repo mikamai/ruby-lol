@@ -24,7 +24,7 @@ describe GameRequest do
     end
 
     it 'fetches games from the API' do
-      fixture = load_fixture('game', GameRequest.api_version, 'get')
+      fixture = load_fixture('game', GameRequest.api_version)
       expect(subject.size).to eq(fixture['games'].size)
     end
   end

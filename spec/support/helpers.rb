@@ -7,7 +7,7 @@ module Helpers
     s[0] + s.to_s.split("_").each {|s| s.capitalize! }.join("")[1..-1]
   end
 
-  def load_fixture(subject, version, method)
+  def load_fixture(subject, version, method='get')
     fixture_file = File.join(SPEC_ROOT, 'fixtures', "#{version}", "#{method}-#{subject}.json")
     JSON.parse(File.read(fixture_file, :encoding => "utf-8"))
   end
