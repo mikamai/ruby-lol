@@ -8,25 +8,24 @@ describe GameRequest do
     expect(GameRequest.ancestors[1]).to eq(Request)
   end
 
+  let(:request) { GameRequest.new("api_key", "euw") }
+
   describe "#recent" do
-    let(:request) { GameRequest.new "api_key", "euw" }
+    subject { request.recent(1) }
 
-    subject do
-      expect(request.class).to receive(:get).with(request.api_url("game/by-summoner/1/recent")).and_return load_fixture('game', GameRequest.api_version, 'get')
-
-      request.recent 1
-    end
+    before(:each) { stub_request(request, 'game', 'game/by-summoner/1/recent') }
 
     it 'returns an array' do
-      expect(subject).to be_a Array
+      expect(subject).to be_a(Array)
     end
 
     it 'returns an array of Games' do
-      expect(subject.map(&:class).uniq).to eq [Game]
+      expect(subject.map(&:class).uniq).to eq([Game])
     end
 
     it 'fetches games from the API' do
-      expect(subject.size).to eq load_fixture('game', GameRequest.api_version, 'get')['games'].size
+      fixture = load_fixture('game', GameRequest.api_version, 'get')
+      expect(subject.size).to eq(fixture['games'].size)
     end
   end
 

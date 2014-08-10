@@ -8,14 +8,13 @@ describe LeagueRequest do
     expect(LeagueRequest.ancestors[1]).to eq(Request)
   end
 
+  let(:request) { LeagueRequest.new "api_key", "euw" }
+
   describe "#get" do
-    let(:request) { LeagueRequest.new "api_key", "euw" }
 
-    subject do
-      expect(request.class).to receive(:get).with(request.api_url("league/by-summoner/123")).and_return(load_fixture("league", LeagueRequest.api_version, "get"))
+    subject { request.get(123) }
 
-      request.get(123)
-    end
+    before(:each) { stub_request(request, 'league', 'league/by-summoner/123') }
 
     it "returns an hash of arrays of Leagues" do
       expect(subject.map {|k,v| v.map(&:class).uniq}.flatten).to eq([League])

@@ -8,50 +8,44 @@ describe SummonerRequest do
     expect(SummonerRequest.ancestors[1]).to eq(Request)
   end
 
-  let(:request)   { SummonerRequest.new "api_key", "euw" }
-  let(:by_name)   { load_fixture("summoner-by-name", SummonerRequest.api_version, "get") }
-  let(:name)      { load_fixture("summoner-name", SummonerRequest.api_version, "get") }
-  let(:summoner)  { load_fixture("summoner", SummonerRequest.api_version, "get") }
-  let(:runes)     { load_fixture("summoner-runes", SummonerRequest.api_version, "get") }
-  let(:masteries) { load_fixture("summoner-masteries", SummonerRequest.api_version, "get") }
+  let(:request) { SummonerRequest.new('api_key', 'euw') }
 
   describe "#by_name" do
-    subject do
-      expect(request.class).to receive(:get).with(request.api_url("summoner/by-name/foo,bar")).and_return(by_name)
 
-      request.by_name ["foo", "bar"]
-    end
+    context 'regular arguments' do
+      subject { request.by_name(['foo', 'bar']) }
 
-    it "returns an array" do
-      expect(subject).to be_a(Array)
-    end
+      before(:each) { stub_request(request, 'summoner-by-name', 'summoner/by-name/foo,bar') }
 
-    it "returns an array of summoners" do
-      expect(subject.map(&:class).uniq).to eq([Summoner])
+      it "returns an array" do
+        expect(subject).to be_a(Array)
+      end
+
+      it "returns an array of summoners" do
+        expect(subject.map(&:class).uniq).to eq([Summoner])
+      end
     end
 
     it 'escapes the given names' do
-      expect(request.class).to receive(:get).with(request.api_url("summoner/by-name/f%C3%B2%C3%A5,f%C3%B9%C3%AE")).and_return(by_name)
-      request.by_name ['fòå', 'fùî']
+      stub_request(request, 'summoner-by-name', "summoner/by-name/f%C3%B2%C3%A5,f%C3%B9%C3%AE")
+      request.by_name(['fòå', 'fùî'])
     end
 
     it 'downcase the given names' do
-      expect(request.class).to receive(:get).with(request.api_url("summoner/by-name/foo,bar")).and_return(by_name)
-      request.by_name 'FoO', 'BAR'
+      stub_request(request, 'summoner-by-name', 'summoner/by-name/foo,bar')
+      request.by_name('FoO', 'BAR')
     end
 
     it 'strips spaces from names' do
-      expect(request.class).to receive(:get).with(request.api_url("summoner/by-name/foo,bar")).and_return(by_name)
-      request.by_name 'Fo o', 'b a r'
+      stub_request(request, 'summoner-by-name', 'summoner/by-name/foo,bar')
+      request.by_name('Fo o', 'b a r')
     end
   end
 
   describe "#name" do
-    subject do
-      expect(request.class).to receive(:get).with(request.api_url("summoner/foo,bar/name")).and_return(name)
+    subject { request.name("foo", "bar") }
 
-      request.name "foo", "bar"
-    end
+    before(:each) { stub_request(request, 'summoner-name', 'summoner/foo,bar/name') }
 
     it "returns an hash" do
       expect(subject).to be_a(Hash)
@@ -59,11 +53,9 @@ describe SummonerRequest do
   end
 
   describe "#get" do
-    subject do
-      expect(request.class).to receive(:get).with(request.api_url("summoner/foo,bar")).and_return(summoner)
+    subject { request.get(["foo", "bar"]) }
 
-      request.get ["foo", "bar"]
-    end
+    before(:each) { stub_request(request, 'summoner', 'summoner/foo,bar') }
 
     it "returns an array summoners" do
       expect(subject.map(&:class).uniq).to eq([Summoner])
@@ -71,11 +63,9 @@ describe SummonerRequest do
   end
 
   describe "#runes" do
-    subject do
-      expect(request.class).to receive(:get).with(request.api_url("summoner/foo,bar/runes")).and_return(runes)
+    subject { request.runes(["foo", "bar"]) }
 
-      request.runes ["foo", "bar"]
-    end
+    before(:each) { stub_request(request, 'summoner-runes', 'summoner/foo,bar/runes') }
 
     it "returns an array of Hash" do
       expect(subject).to be_a(Hash)
@@ -87,11 +77,9 @@ describe SummonerRequest do
   end
 
   describe "#masteries" do
-    subject do
-      expect(request.class).to receive(:get).with(request.api_url("summoner/foo,bar/masteries")).and_return(masteries)
+    subject { request.masteries(["foo", "bar"]) }
 
-      request.masteries ["foo", "bar"]
-    end
+    before(:each) { stub_request(request, 'summoner-masteries', 'summoner/foo,bar/masteries') }
 
     it "returns an array of Hash" do
       expect(subject).to be_a(Hash)
