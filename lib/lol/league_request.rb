@@ -7,37 +7,35 @@ module Lol
     end
 
     # Retrieves leagues data for summoner, including leagues for all of summoner's teams
-    # @param [String]
-    # @return [Array]
+    # @param [Array<String>]
+    # @return Hash{String => Array<League>}
     def get *summoner_ids
-      returns = {}
-      perform_request(api_url("league/by-summoner/#{summoner_ids.join(",")}")).each do |s, l|
+      perform_request(api_url("league/by-summoner/#{summoner_ids.join(",")}")).each_with_object({}) do |(s, l), returns|
         returns[s] = l.map {|data| League.new data}
       end
-      returns
     end
 
     # Retrieves leagues entry data for summoner, including league entries for all of summoner's teams
-    # @param [String]
+    # @param [Array<String>]
     # @return [Array]
     # TODO: Change name to entries?
-    def get_entries summoner_id
-      perform_request(api_url("league/by-summoner/#{summoner_id}/entry")).map { |e| LeagueEntry.new e }
+    def get_entries *summoner_ids
+      perform_request(api_url("league/by-summoner/#{summoner_ids.join(',')}/entry")).map { |e| LeagueEntry.new e }
     end
 
     # Retrieves leagues data for team
-    # @param [String]
+    # @param [Array<String>]
     # @return [Array]
-    def by_team team_id
-      perform_request(api_url("league/by-team/#{team_id}")).map { |l| League.new l }
+    def by_team *team_ids
+      perform_request(api_url("league/by-team/#{team_ids.join(',')}")).map { |l| League.new l }
     end
 
     # Retrieves leagues entry data for team
-    # @param [String]
+    # @param [Array<String>]
     # @return [Array]
     # TODO: Change name to?
-    def entries_by_team team_id
-      perform_request(api_url("league/by-team/#{team_id}/entry")).map { |e| LeagueEntry.new e }
+    def entries_by_team *team_ids
+      perform_request(api_url("league/by-team/#{team_ids.join(',')}/entry")).map { |e| LeagueEntry.new e }
     end
 
     # Retrieves challenger tier leagues
