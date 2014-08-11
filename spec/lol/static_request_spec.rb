@@ -34,7 +34,7 @@ describe StaticRequest do
         context "without_id" do
 
           let(:fixture_name) { endpoint == 'champion' ? 'static-champion' : endpoint.dasherize }
-          let(:fixture) { load_fixture(fixture_name, StaticRequest.api_version, 'get') }
+          let(:fixture) { load_fixture(fixture_name, StaticRequest.api_version) }
 
           subject { request.public_send(endpoint).get }
 

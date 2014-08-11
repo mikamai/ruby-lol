@@ -11,7 +11,7 @@ describe TeamRequest do
   end
 
   describe "#get" do
-    let(:fixture) { load_fixture('team', TeamRequest.api_version, 'get') }
+    let(:fixture) { load_fixture('team', TeamRequest.api_version) }
 
     subject { request.get(1) }
 

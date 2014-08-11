@@ -16,7 +16,7 @@ describe MasteryPage do
   end
 
   describe "#masteries" do
-    let(:fixture) { load_fixture("summoner-masteries", SummonerRequest.api_version, "get") }
+    let(:fixture) { load_fixture("summoner-masteries", SummonerRequest.api_version) }
     let(:masteries) { fixture["30743211"]["pages"].first["masteries"] }
 
     subject { MasteryPage.new fixture["30743211"]["pages"].first }

@@ -16,7 +16,7 @@ describe RunePage do
   end
 
   describe "#slots" do
-    let(:fixture) { load_fixture("summoner-runes", SummonerRequest.api_version, "get") }
+    let(:fixture) { load_fixture("summoner-runes", SummonerRequest.api_version) }
     let(:slots) { fixture["30743211"]["pages"].first["slots"] }
 
     subject { RunePage.new fixture["30743211"]["pages"].first }
