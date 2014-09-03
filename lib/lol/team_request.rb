@@ -3,7 +3,7 @@ module Lol
     # Returns the supported API version
     # @return [String] supported api version
     def self.api_version
-      "v2.3"
+      "v2.4"
     end
 
     # Retrieves the list of Teams for the given summoner
