@@ -3,7 +3,7 @@ module Lol
     # Returns the supported API Version
     # @return [String] the supported api version
     def self.api_version
-      "v2.4"
+      "v2.5"
     end
 
     # Retrieves leagues data for summoner, including leagues for all of summoner's teams

@@ -10,32 +10,55 @@ describe "Live API testing", :remote => true do
     end
   end
 
-  subject    { Lol::Client.new ENV['RIOT_GAMES_API_KEY'] }
-  let(:na)   { Lol::Client.new ENV['RIOT_GAMES_API_KEY'], :region => "na" }
-  let(:eune) { Lol::Client.new ENV['RIOT_GAMES_API_KEY'], :region => "eune" }
-  let(:br)   { Lol::Client.new ENV['RIOT_GAMES_API_KEY'], :region => "br"}
-  let(:tr)   { Lol::Client.new ENV['RIOT_GAMES_API_KEY'], :region => "tr"}
+  let(:api_key) { ENV['RIOT_GAMES_NEW_KEY'] }
+  subject       { Lol::Client.new api_key }
+
+  # @TODO: Maybe have aliases with singular / plural names so I can do subject.champions?
+  let (:champions) { subject.champion.get }
+  let (:intinig) { subject.summoner.by_name("intinig").first }
 
   describe "champion" do
-    context "working realms" do
-      %w(euw na eune).each do |realm|
-        it "works on #{realm}" do
-          subject.region = realm
-          expect { subject.champion.get }.not_to raise_error
-        end
-      end
+    it "works on the collection" do
+      expect {champions}.not_to raise_error
+    end
+
+    it "works on the single champion" do
+      expect {subject.champion.get(:id => champions.first.id)}.not_to raise_error
     end
   end
 
   describe "game" do
-    context "working realms" do
-      %w(euw na eune).each do |realm|
-        it "works on #{realm}" do
-          subject.region = realm
-          expect { subject.game.recent(summoners[realm]) }.not_to raise_error
-        end
-      end
+    it "works on recent games for a summoner" do
+      expect {subject.game.recent intinig.id}.not_to raise_error
     end
+  end
+
+  describe "league" do
+
+  end
+
+  describe "lol-static-data" do
+    pending
+  end
+
+  describe "match" do
+    pending
+  end
+
+  describe "matchhistory" do
+    pending
+  end
+
+  describe "stats" do
+    pending
+  end
+
+  describe "summoner" do
+    pending
+  end
+
+  describe "team" do
+    pending
   end
 
   after(:all) do
