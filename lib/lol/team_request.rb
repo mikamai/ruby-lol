@@ -11,7 +11,10 @@ module Lol
     def by_summoner *summoner_ids
       returns = {}
       perform_request(api_url "team/by-summoner/#{summoner_ids.join(",")}").each do |s, t|
-        returns[s] = Team.new t
+        returns[s] = []
+        t.each do |team|
+          returns[s] << Team.new(team)
+        end
       end
       returns
     end

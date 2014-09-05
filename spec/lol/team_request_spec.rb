@@ -11,11 +11,11 @@ describe TeamRequest do
   end
 
   describe "#by_summoner" do
-    let(:fixture) { load_fixture('team', TeamRequest.api_version) }
+    let(:fixture) { load_fixture('by-summoner', TeamRequest.api_version) }
 
     subject { request.by_summoner(1) }
 
-    before(:each) { stub_request(request, 'team', 'team/by-summoner/1') }
+    before(:each) { stub_request(request, 'by-summoner', 'team/by-summoner/1') }
 
     it 'returns an hash' do
       expect(subject).to be_a(Hash)
@@ -35,7 +35,7 @@ describe TeamRequest do
     context 'with team id' do
       subject { request.get("TEAM-a9ad3db0-b377-11e3-b87d-782bcb4ce61a") }
 
-      before(:each) { stub_request(request, 'team-by-id', 'team/TEAM-a9ad3db0-b377-11e3-b87d-782bcb4ce61a') }
+      before(:each) { stub_request(request, 'team', 'team/TEAM-a9ad3db0-b377-11e3-b87d-782bcb4ce61a') }
 
       it 'returns an array of Teams' do
         subject.each {|k,v| expect(v).to be_a Lol::Team}
