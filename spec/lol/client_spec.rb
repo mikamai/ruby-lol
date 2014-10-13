@@ -83,6 +83,18 @@ describe Client do
     end
   end
 
+  describe '#match' do
+    it "returns an instance of MatchRequest" do
+      expect(subject.match).to be_a(MatchRequest)
+    end
+
+    it "initializes the MatchRequest with the current API key and region" do
+      expect(MatchRequest).to receive(:new).with(subject.api_key, subject.region, subject.cache_store)
+
+      subject.match
+    end
+  end
+
   describe '#stats' do
     it "returns an instance of StatsRequest" do
       expect(subject.stats).to be_a(StatsRequest)
