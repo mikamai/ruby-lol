@@ -75,9 +75,9 @@ describe LeagueRequest do
   end
 
   describe '#challenger' do
-    subject { request.challenger }
+    subject { request.challenger('RANKED_SOLO_5x5') }
 
-    before(:each) { stub_request(request, 'league-challenger', 'league/challenger') }
+    before(:each) { stub_request(request, 'league-challenger', 'league/challenger', { :type => 'RANKED_SOLO_5x5' }) }
 
     it 'returns League' do
       expect(subject.class).to eq(League)

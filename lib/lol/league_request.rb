@@ -37,9 +37,10 @@ module Lol
     end
 
     # Retrieves challenger tier leagues
+    # @param [String] game queue type
     # @return [League]
-    def challenger
-      league_json = perform_request(api_url('league/challenger'))
+    def challenger(game_queue_type="RANKED_SOLO_5x5")
+      league_json = perform_request(api_url('league/challenger', { :type => game_queue_type }))
       League.new(league_json)
     end
 
