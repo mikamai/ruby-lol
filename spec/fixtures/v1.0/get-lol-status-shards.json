@@ -1,0 +1,78 @@
+[
+   {
+      "region_tag": "na1",
+      "locales": ["en_US"],
+      "name": "North America",
+      "hostname": "prod.na1.lol.riotgames.com",
+      "slug": "na"
+   },
+   {
+      "region_tag": "eu",
+      "locales": [
+         "en_GB",
+         "de_DE",
+         "es_ES",
+         "fr_FR",
+         "it_IT"
+      ],
+      "name": "EU West",
+      "hostname": "prod.euw1.lol.riotgames.com",
+      "slug": "euw"
+   },
+   {
+      "region_tag": "eun1",
+      "locales": [
+         "en_PL",
+         "pl_PL",
+         "el_GR",
+         "ro_RO",
+         "cs_CZ",
+         "hu_HU"
+      ],
+      "name": "EU Nordic & East",
+      "hostname": "prod.eun1.lol.riotgames.com",
+      "slug": "eune"
+   },
+   {
+      "region_tag": "la1",
+      "locales": ["es_MX"],
+      "name": "Latin America North",
+      "hostname": "prod.la1.lol.riotgames.com",
+      "slug": "lan"
+   },
+   {
+      "region_tag": "la2",
+      "locales": ["es_AR"],
+      "name": "Latin America South",
+      "hostname": "prod.la2.lol.riotgames.com",
+      "slug": "las"
+   },
+   {
+      "region_tag": null,
+      "locales": ["pt_BR"],
+      "name": "Brazil",
+      "hostname": "prod.br.lol.riotgames.com",
+      "slug": "br"
+   },
+   {
+      "region_tag": null,
+      "locales": ["tr_TR"],
+      "name": "Turkey",
+      "hostname": "prod.tr.lol.riotgames.com",
+      "slug": "tr"
+   },
+   {
+      "region_tag": null,
+      "locales": ["ru_RU"],
+      "name": "Russia",
+      "hostname": "prod.ru.lol.riotgames.com",
+      "slug": "ru"
+   },
+   {
+      "region_tag": "oc1",
+      "locales": ["en_AU"],
+      "name": "Oceania",
+      "hostname": "prod.oc1.lol.riotgames.com",
+      "slug": "oce"
+   }
+]
