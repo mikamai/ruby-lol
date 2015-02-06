@@ -53,6 +53,10 @@ module Lol
       @static_request ||= StaticRequest.new(api_key, region, cache_store)
     end
 
+    def lol_status
+      @lol_status ||= LolStatusRequest.new(region, cache_store)
+    end
+
     # Initializes a Lol::Client
     # @param api_key [String]
     # @param options [Hash]

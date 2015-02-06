@@ -155,6 +155,12 @@ describe Client do
     end
   end
 
+  describe '#lol_status' do
+    it 'return an instance of LolStatusRequest' do
+      expect(subject.lol_status).to be_a(LolStatusRequest)
+    end
+  end
+
   describe "#api_key" do
     it "returns an api key" do
       expect(subject.api_key).to eq("foo")
