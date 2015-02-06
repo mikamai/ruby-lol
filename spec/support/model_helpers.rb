@@ -86,14 +86,6 @@ shared_examples 'collection attribute' do
     expect(model.send(attribute).size).to eq 2
   end
 
-  context 'if the value is not enumerable' do
-    it 'raises an error' do
-      expect {
-        subject_class.new({ attribute => 'asd' })
-      }.to raise_error NoMethodError
-    end
-  end
-
   context 'if the value is enumerable' do
     context 'and contains items as Hash' do
       it 'parses the item' do
