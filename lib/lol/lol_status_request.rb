@@ -7,8 +7,13 @@ module Lol
 
     def shards
       perform_request(api_url('shards')).map do |shard_data|
-        Shard.new shard_data
+        DynamicModel.new shard_data
       end
+    end
+
+    def current_shard
+      shard_data = perform_request(api_url('shards', region))
+      DynamicModel.new shard_data
     end
 
     def initialize region = nil, cache_store = {}

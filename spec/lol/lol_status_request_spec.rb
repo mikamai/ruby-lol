@@ -36,4 +36,20 @@ describe LolStatusRequest do
       expect(response.size).to eq(fixture.size)
     end
   end
+
+  describe '#current_shard' do
+    subject { LolStatusRequest.new 'euw'}
+    let(:response) { subject.current_shard }
+
+    before(:each) { stub_request(subject, 'lol-status-shard-by-region', 'shards', 'euw') }
+
+    it 'returns a Shard' do
+      expect(response).to be_a(DynamicModel)
+    end
+
+    it 'services returns an array of Services' do
+      expect(response.services.map(&:class).uniq).to eq([DynamicModel])
+    end
+  end
+
 end
