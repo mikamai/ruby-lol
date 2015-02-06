@@ -18,24 +18,22 @@ describe LolStatusRequest do
     end
   end
 
-  let(:request) { LolStatusRequest.new }
-
   describe "#shards" do
-    subject { request.shards }
+    let(:response) { subject.shards }
 
-    before(:each) { stub_request(request, 'lol-status-shards', 'shards') }
+    before(:each) { stub_request(subject, 'lol-status-shards', 'shards') }
 
     it 'returns an array' do
-      expect(subject).to be_a(Array)
+      expect(response).to be_a(Array)
     end
 
     it 'returns an array of Shard' do
-      expect(subject.map(&:class).uniq).to eq([Shard])
+      expect(response.map(&:class).uniq).to eq([DynamicModel])
     end
 
     it 'fetches shards from the API' do
       fixture = load_fixture('lol-status-shards', LolStatusRequest.api_version)
-      expect(subject.size).to eq(fixture.size)
+      expect(response.size).to eq(fixture.size)
     end
   end
 end
