@@ -14,7 +14,7 @@ describe StaticRequest do
 
   describe "#api_url" do
     it "contains a static-data path component" do
-      expect(request.api_url("foo")).to eq("http://global.api.pvp.net/api/lol/static-data/euw/v1.2/foo?api_key=api_key")
+      expect(request.api_url("foo")).to eq("https://global.api.pvp.net/api/lol/static-data/euw/v1.2/foo?api_key=api_key")
     end
   end
 
