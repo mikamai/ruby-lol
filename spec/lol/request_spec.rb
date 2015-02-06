@@ -113,11 +113,11 @@ describe Request do
       end
 
       it "returns a full fledged api url" do
-        expect(subject.api_url("bar")).to eq("http://euw.api.pvp.net/api/lol/euw/v1.1/bar?api_key=api_key")
+        expect(subject.api_url("bar")).to eq("https://euw.api.pvp.net/api/lol/euw/v1.1/bar?api_key=api_key")
       end
 
       it "optionally accept query string parameters" do
-        expect(subject.api_url("foo", a: 'b')).to eq("http://euw.api.pvp.net/api/lol/euw/v1.1/foo?a=b&api_key=api_key")
+        expect(subject.api_url("foo", a: 'b')).to eq("https://euw.api.pvp.net/api/lol/euw/v1.1/foo?a=b&api_key=api_key")
       end
     end
   end
