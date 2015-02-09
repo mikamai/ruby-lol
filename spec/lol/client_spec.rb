@@ -161,6 +161,22 @@ describe Client do
     end
   end
 
+  describe '#current_game' do
+    it 'returns an instance of CurrentGameRequest' do
+      expect(subject.current_game).to be_a CurrentGameRequest
+    end
+
+    it 'initializes the CurrentGameRequest with the current API key an region' do
+      expect(CurrentGameRequest).to receive(:new).with subject.api_key, subject.region, subject.cache_store
+      subject.current_game
+    end
+
+    it 'memoizes the result' do
+      expect(CurrentGameRequest).to receive(:new).and_return(double).exactly(:once)
+      2.times { subject.current_game }
+    end
+  end
+
   describe "#api_key" do
     it "returns an api key" do
       expect(subject.api_key).to eq("foo")

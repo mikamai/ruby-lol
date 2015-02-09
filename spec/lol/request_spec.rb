@@ -99,25 +99,51 @@ describe Request do
     end
   end
 
-    describe "api_url" do
-      it "defaults on Request#region" do
-        expect(subject.api_url("bar")).to match(/\/euw\//)
-      end
+  describe "api_url" do
+    it "defaults on Request#region" do
+      expect(subject.api_url("bar")).to match(/\/euw\//)
+    end
 
-      it "defaults on Reques.api_version" do
-        expect(subject.api_url("bar")).to match(/\/v1.1\//)
-      end
+    it "defaults on Reques.api_version" do
+      expect(subject.api_url("bar")).to match(/\/v1.1\//)
+    end
 
-      it "a path" do
-        expect { subject.api_url }.to raise_error(ArgumentError)
-      end
+    it "a path" do
+      expect { subject.api_url }.to raise_error(ArgumentError)
+    end
 
-      it "returns a full fledged api url" do
-        expect(subject.api_url("bar")).to eq("https://euw.api.pvp.net/api/lol/euw/v1.1/bar?api_key=api_key")
-      end
+    it "returns a full fledged api url" do
+      expect(subject.api_url("bar")).to eq("https://euw.api.pvp.net/api/lol/euw/v1.1/bar?api_key=api_key")
+    end
 
-      it "optionally accept query string parameters" do
-        expect(subject.api_url("foo", a: 'b')).to eq("https://euw.api.pvp.net/api/lol/euw/v1.1/foo?a=b&api_key=api_key")
-      end
+    it "optionally accept query string parameters" do
+      expect(subject.api_url("foo", a: 'b')).to eq("https://euw.api.pvp.net/api/lol/euw/v1.1/foo?a=b&api_key=api_key")
+    end
+
+    it "delegates the base url to #api_base_url" do
+      allow(subject).to receive(:api_base_url).and_return 'foo'
+      expect(subject.api_url 'bar').to match /^foo/
+    end
+
+    it "delegates the query string to #api_query_string" do
+      allow(subject).to receive(:api_query_string).and_return 'foo'
+      expect(subject.api_url 'bar').to match /\?foo$/
     end
   end
+
+  describe "#api_base_url" do
+    it "returns the base domain" do
+      expect(subject.api_base_url).to eq "https://euw.api.pvp.net"
+    end
+  end
+
+  describe "#api_query_string" do
+    it "returns the api key as query string" do
+      expect(subject.api_query_string).to eq "api_key=api_key"
+    end
+
+    it "optionally accept other params" do
+      expect(subject.api_query_string foo: 'bar').to eq "foo=bar&api_key=api_key"
+    end
+  end
+end
