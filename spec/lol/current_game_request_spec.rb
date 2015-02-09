@@ -40,7 +40,7 @@ describe Lol::CurrentGameRequest do
 
     it 'gives the response to DynamicModel' do
       allow(subject).to receive(:perform_request).with(instance_of(String)).and_return 'a'
-      expect(DynamicModel).to receive(:new).with('a').and_return 'foo'
+      expect(Lol::DynamicModel).to receive(:new).with('a').and_return 'foo'
       subject.spectator_game_info 1, '1'
     end
   end
