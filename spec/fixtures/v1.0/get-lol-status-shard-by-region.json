@@ -1,0 +1,39 @@
+{
+   "region_tag": "eu",
+   "services": [
+      {
+         "incidents": [],
+         "status": "online",
+         "name": "Forums",
+         "slug": "forums"
+      },
+      {
+         "incidents": [],
+         "status": "online",
+         "name": "Game",
+         "slug": "game"
+      },
+      {
+         "incidents": [],
+         "status": "online",
+         "name": "Store",
+         "slug": "store"
+      },
+      {
+         "incidents": [],
+         "status": "online",
+         "name": "Website",
+         "slug": "web"
+      }
+   ],
+   "locales": [
+      "en_GB",
+      "de_DE",
+      "es_ES",
+      "fr_FR",
+      "it_IT"
+   ],
+   "name": "EU West",
+   "hostname": "prod.euw1.lol.riotgames.com",
+   "slug": "euw"
+}
