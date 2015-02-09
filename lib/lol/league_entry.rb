@@ -42,6 +42,10 @@ module Lol
     # @return [String] wins
     attr_reader :wins
 
+    # @!attribute [r] losses
+    # @return [String] losses
+    attr_reader :losses
+
     # @!attribute [r] last_played
     # @return [DateTime] date of last played game
     #           at the time of writing this attributes is broken in the API
@@ -56,7 +60,7 @@ module Lol
 
     attr_writer :player_or_team_id, :player_or_team_name, :division, :league_points, :wins,
                 :is_hot_streak, :is_veteran, :is_fresh_blood,
-                :is_inactive, :time_until_decay, :last_played
+                :is_inactive, :time_until_decay, :last_played, :losses
 
     def mini_series= raw
       @mini_series = MiniSeries.new raw
