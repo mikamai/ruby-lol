@@ -166,7 +166,7 @@ describe Client do
       expect(subject.current_game).to be_a CurrentGameRequest
     end
 
-    it 'initializes the CurrentGameRequest with the current API key an region' do
+    it 'initializes CurrentGameRequest with the current API key an region' do
       expect(CurrentGameRequest).to receive(:new).with subject.api_key, subject.region, subject.cache_store
       subject.current_game
     end
@@ -174,6 +174,22 @@ describe Client do
     it 'memoizes the result' do
       expect(CurrentGameRequest).to receive(:new).and_return(double).exactly(:once)
       2.times { subject.current_game }
+    end
+  end
+
+  describe '#featured_games' do
+    it 'returns an instance of FeaturedGamesRequest' do
+      expect(subject.featured_games).to be_a FeaturedGamesRequest
+    end
+
+    it 'initializes FeaturedGamesRequest with the current API key an region' do
+      expect(FeaturedGamesRequest).to receive(:new).with subject.api_key, subject.region, subject.cache_store
+      subject.featured_games
+    end
+
+    it 'memoizes the result' do
+      expect(FeaturedGamesRequest).to receive(:new).and_return(double).exactly(:once)
+      2.times { subject.featured_games }
     end
   end
 
