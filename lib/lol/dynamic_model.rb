@@ -1,4 +1,5 @@
 require 'ostruct'
+require 'active_support/core_ext/string/inflections'
 
 class DynamicModel < OpenStruct
   def initialize(hash={})
