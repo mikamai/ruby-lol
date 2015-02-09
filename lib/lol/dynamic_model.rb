@@ -1,8 +1,12 @@
 require 'ostruct'
 require 'active_support/core_ext/string/inflections'
 
+# DynamicModel extends OpenStruct adding the following features:
+# - nested generation ({a: {}}) results in DynamicModel(a: DynamicModel)
+# - parsing of date/time when property name ends with _at or _date and the value is a number
 class DynamicModel < OpenStruct
   def initialize(hash={})
+    raise ArgumentError, 'An hash is required as parameter' unless hash.is_a? Hash
     @table = {}
     @hash_table = {}
 
