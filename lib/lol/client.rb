@@ -53,6 +53,7 @@ module Lol
       @static_request ||= StaticRequest.new(api_key, region, cache_store)
     end
 
+    # @return [LolStatusRequest]
     def lol_status
       @lol_status ||= LolStatusRequest.new(region, cache_store)
     end
