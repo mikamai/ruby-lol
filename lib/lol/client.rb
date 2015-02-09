@@ -58,6 +58,10 @@ module Lol
       @lol_status ||= LolStatusRequest.new(region, cache_store)
     end
 
+    def current_game
+      @current_game ||= CurrentGameRequest.new(api_key, region, cache_store)
+    end
+
     # Initializes a Lol::Client
     # @param api_key [String]
     # @param options [Hash]
