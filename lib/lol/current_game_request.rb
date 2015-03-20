@@ -9,7 +9,7 @@ module Lol
     end
 
     def spectator_game_info platform_id, summoner_id
-      url = api_url "getSpectatorGameInfo/#{region.upcase}#{platform_id}/#{summoner_id}"
+      url = api_url "getSpectatorGameInfo/#{platform_id}/#{summoner_id}"
       DynamicModel.new perform_request(url)
     end
   end
