@@ -35,13 +35,13 @@ describe Lol::CurrentGameRequest do
 
     it 'returns a DynamicModel' do
       stub_request subject, 'current-game', expected_url
-      expect(subject.spectator_game_info 1, '1').to be_a DynamicModel
+      expect(subject.spectator_game_info 'EUW1', '1').to be_a DynamicModel
     end
 
     it 'gives the response to DynamicModel' do
       allow(subject).to receive(:perform_request).with(instance_of(String)).and_return 'a'
       expect(Lol::DynamicModel).to receive(:new).with('a').and_return 'foo'
-      subject.spectator_game_info 1, '1'
+      subject.spectator_game_info 'EUW1', '1'
     end
   end
 end
