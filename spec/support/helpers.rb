@@ -29,6 +29,15 @@ module Helpers
     response
   end
 
+  def error_429
+    response = {"status" => {"message" => "Foo", "status_code" => 429}}
+    response.send :instance_eval do
+      def code; 429; end
+      def not_found?; false; end
+    end
+    response
+  end
+
   def summoners
     {
         "euw" => "30743211",

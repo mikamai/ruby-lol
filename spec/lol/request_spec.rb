@@ -33,6 +33,7 @@ describe Request do
   describe "#perform_request" do
 
     let(:error401) { error_401 }
+    let(:error429) { error_429 }
 
     it "calls HTTParty get" do
       expect(subject.class).to receive(:get).and_return(error401)
@@ -49,6 +50,12 @@ describe Request do
       expect(error401).to receive(:not_found?).and_return(true)
       expect(subject.class).to receive(:get).and_return(error401)
       expect { subject.perform_request "foo?api_key=asd"}.to raise_error(NotFound)
+    end
+
+    it 'handles 429' do
+      expect(error429).to receive(:respond_to?).and_return(true)
+      expect(subject.class).to receive(:get).and_return(error429)
+      expect { subject.perform_request "foo?api_key=asd"}.to raise_error(TooManyRequests)
     end
 
     context "caching" do
