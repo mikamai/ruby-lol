@@ -3,6 +3,7 @@ require "active_support/core_ext/object/to_query"
 
 module Lol
   class NotFound < StandardError; end
+  class TooManyRequests < StandardError; end
   class InvalidCacheStore < StandardError; end
 
   # Encapsulates common methods for all requests
@@ -64,6 +65,7 @@ module Lol
       response = self.class.get(url)
       if response.respond_to?(:code) && !(200...300).include?(response.code)
         raise NotFound.new("404 Not Found") if response.not_found?
+        raise TooManyRequests.new('429 Rate limit exceeded') if response.code == 429
         raise InvalidAPIResponse.new(url, response)
       end
 
