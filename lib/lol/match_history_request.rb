@@ -6,5 +6,10 @@ module Lol
       "v2.2"
     end
 
+    # Returns match history for a summoner
+    # @return []
+    def get summoner_id
+      perform_request(api_url("matchhistory/#{summoner_id}"))
+    end
   end
 end
