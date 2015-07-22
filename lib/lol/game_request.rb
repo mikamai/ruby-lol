@@ -3,7 +3,7 @@ module Lol
     # Returns the supported API Version
     # @return [String] the supported api version
     def self.api_version
-      "v1.3"
+      ENV['EXPERIMENTAL'] ? "v2.2" : "v1.3"
     end
 
     # Returns a list of the recent games played by a summoner
