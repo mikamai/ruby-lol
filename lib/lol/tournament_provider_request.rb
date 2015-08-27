@@ -17,19 +17,55 @@ module Lol
       url = "#{api_base_url}/tournament/public/#{self.class.api_version}/#{path}"
     end
 
-    def code
-    end
-
-    def provider region, url
-      body = {
-        region: region,
-        url: url
-      }
-      pau = post_api_url("provider")
+    def tournament_request path, body
+      pau = post_api_url path
       perform_request(pau[:url], :post, body, pau[:options]).body
     end
 
-    def tournament
+    # Returns a tournament code
+    # @param tournament_id [Integer] Tournament ID
+    # @param count [Integer] Number of tournament codes to generate
+    # @param options [Hash] Tournament Code options hash
+    # @option options [Integer] :team_size Team Size 1-5
+    # @option options [Array] :allowed_summoner_ids SummonerIds spec
+    # @option options [String] :game_lobby_name Not used for now
+    # @option options [String] :spectator_type NONE, LOBBYONLY, ALL
+    # @option options [String] :password Game Lobby password, mandatory
+    # @option options [String] :pick_type BLIND_PICK, DRAFT_MODE, ALL_RANDOM, TOURNAMENT_DRAFT
+    # @option options [String] :map_type SUMMONERS_RIFT, CRYSTAL_SCAR, HOWLING_ABYSS
+    # @option options [String] :metadata Optional metadata String
+    def code tournament_id, count = 1, options = {}
+      team_size = options.delete(:team_size) || 5
+      allowed_summoner_ids = options.delete(:allowed_summoner_ids)
+      game_lobby_name = options.delete(:game_lobby_name) || "Lobby"
+      spectator_type = options.delete(:spectator_type) || "ALL"
+      password = options.delete(:password)
+      pick_type = options.delete(:pick_type) || "TOURNAMENT_DRAFT"
+      map_type = options.delete(:map_type) || "SUMMONERS_RIFT"
+      metadata = options.delete(:metadata)
+
+      body = {
+        teamSize: team_size,
+        gameLobbyName: game_lobby_name,
+        spectatorType: spectator_type,
+        pickType: pick_type,
+        mapType: map_type
+      }
+
+      body.merge!({allowedSummonerIds: allowed_summoner_ids}) if allowed_summoner_ids
+      body.merge!({metadata: metadata}) if metadata
+      body.merge!({password: password}) if password
+
+      params = URI.encode_www_form({tournamentId: tournament_id, count: count})
+      JSON.parse(tournament_request "code?#{params}", body)
+    end
+
+    def provider region, url
+      tournament_request "provider", {region: region, url: url}
+    end
+
+    def tournament name, provider
+      tournament_request "tournament", {name: name, providerId: provider}
     end
 
     # Returns a list of the recent games played by a summoner
