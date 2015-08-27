@@ -38,6 +38,18 @@ module Lol
       "#{url}?#{api_query_string params}"
     end
 
+    def post_api_url path, params = {}
+      {
+        url: api_url(path, params),
+        options: {
+          headers: {
+            "X-Riot-Token" => api_key,
+            "Content-Type" => "application/json"
+          }
+        }
+      }
+    end
+
     def api_base_url
       "https://#{region}.api.pvp.net"
     end
@@ -56,20 +68,24 @@ module Lol
 
     # Calls the API via HTTParty and handles errors
     # @param url [String] the url to call
+    # @param verb [Symbol] HTTP verb to use. Defaults to :get
+    # @param body [Hash] Body for POST request
+    # @param options [Hash] Options passed to HTTParty
     # @return [String] raw response of the call
-    def perform_request url
-      if cached? && result = store.get(clean_url(url))
+    def perform_request url, verb = :get, body = {}, options = {}
+      if cached? && result = store.get("#{clean_url(url)}#{options.inspect}")
         return JSON.parse(result)
       end
 
-      response = self.class.get(url)
+      params = verb == :post ? [url, options.merge({body: body.to_json})] : url
+      response = self.class.send(verb, *params)
       if response.respond_to?(:code) && !(200...300).include?(response.code)
         raise NotFound.new("404 Not Found") if response.not_found?
         raise TooManyRequests.new('429 Rate limit exceeded') if response.code == 429
         raise InvalidAPIResponse.new(url, response)
       end
 
-      store.setex clean_url(url), ttl, response.to_json if cached?
+      store.setex "#{clean_url(url)}#{options.inspect}", ttl, response.to_json if cached?
 
       response
     end

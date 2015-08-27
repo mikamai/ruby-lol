@@ -34,6 +34,8 @@ module Lol
     def extract_raw_status response
       if response.is_a?(Hash) && response['status']
         response['status']['message']
+      elsif response.respond_to?(:response)
+        "#{response.response.code} #{response.response.message}"
       else
         "Unknown Error"
       end

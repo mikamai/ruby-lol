@@ -58,6 +58,13 @@ describe Request do
       expect { subject.perform_request "foo?api_key=asd"}.to raise_error(TooManyRequests)
     end
 
+    context "post requests" do
+      it "supports post" do
+        expect(subject.class).to receive(:post).and_return(true)
+        expect { subject.perform_request "http://foo.com", :post }.not_to raise_error
+      end
+    end
+
     context "caching" do
       before :all do
         class FakeRedis < Redis
@@ -96,7 +103,7 @@ describe Request do
       end
 
       it "sets ttl" do
-        expect(fake_redis.get("/foo?:ttl")).to eq(60)
+        expect(fake_redis.get("/foo?{}:ttl")).to eq(60)
       end
 
       it "uses clean urls" do
@@ -135,6 +142,39 @@ describe Request do
     it "delegates the query string to #api_query_string" do
       allow(subject).to receive(:api_query_string).and_return 'foo'
       expect(subject.api_url 'bar').to match /\?foo$/
+    end
+  end
+
+  describe "post_api_url" do
+    let(:pau) { subject.post_api_url "/foo" }
+
+    it "returns an hash" do
+      expect(pau).to be_a(Hash)
+    end
+
+    it "contains an url key" do
+      expect(pau).to have_key(:url)
+    end
+
+    it "contains an options key" do
+      expect(pau).to have_key(:options)
+    end
+
+    it "contains a header key in options" do
+      expect(pau[:options]).to have_key(:headers)
+    end
+
+    it "returns the api key in an header" do
+      expect(pau[:options][:headers]).to have_key("X-Riot-Token")
+      expect(pau[:options][:headers]["X-Riot-Token"]).to eq(subject.api_key)
+    end
+
+    it "includes a content-type header" do
+      expect(pau[:options][:headers]["Content-Type"]).to eq("application/json")
+    end
+
+    it "uses api_url for the url part" do
+      expect(pau[:url]).to eq(subject.api_url "/foo")
     end
   end
 
