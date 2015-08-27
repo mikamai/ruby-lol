@@ -14,16 +14,13 @@ describe TournamentProviderRequest do
     subject { request.api_url "foo/bar"}
 
     it "matches the tournament api paths" do
-      expect(subject).to eq("https://euw.api.pvp.net/tournament/public/#{TournamentProviderRequest.api_version}/foo/bar?api_key=api_key")
+      expect(subject).to eq("https://global.api.pvp.net/tournament/public/#{TournamentProviderRequest.api_version}/foo/bar")
     end
   end
 
   describe "#provider" do
-    subject { request.provider("https://foo.com") }
+    subject { request.provider("EUW", "https://foo.com") }
 
-    it "amazazing" do
-      subject
-    end
     # before(:each) { stub_request(request, 'tournament', "tournament/public/#/recent") }
 
     # it 'returns an array' do
