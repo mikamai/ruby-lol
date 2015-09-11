@@ -44,6 +44,11 @@ module Lol
       League.new(league_json)
     end
 
+    def master(game_queue_type="RANKED_SOLO_5x5")
+      league_json = perform_request(api_url('league/master', { :type => game_queue_type }))
+      League.new(league_json)
+    end
+
   private
 
     def perform_league_request(partial_url)

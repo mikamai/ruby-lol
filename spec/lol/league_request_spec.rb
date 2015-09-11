@@ -84,4 +84,14 @@ describe LeagueRequest do
     end
   end
 
+  describe '#master' do 
+    subject { request.master('RANKED_SOLO_5x5')}
+
+    before(:each) { stub_request(request, 'league-master', 'league/master', { :type => 'RANKED_SOLO_5x5'})}
+
+    it 'returns League' do 
+      expect(subject.class).to eq(League)
+    end
+  end
+
 end
