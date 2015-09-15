@@ -97,6 +97,12 @@ describe Request do
         request.perform_request "/foo?api_key=asd"
       end
 
+      it "is not cached if post" do
+        expect(request.class).to receive(:post).twice
+        request.perform_request "/foo?api_key=asd", :post
+        request.perform_request "/foo?api_key=asd", :post
+      end
+
       it "serializes cached responses" do
         expect(JSON).to receive(:parse)
         request.perform_request "/foo?api_key=asd"

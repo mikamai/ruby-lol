@@ -73,7 +73,8 @@ module Lol
     # @param options [Hash] Options passed to HTTParty
     # @return [String] raw response of the call
     def perform_request url, verb = :get, body = {}, options = {}
-      if cached? && result = store.get("#{clean_url(url)}#{options.inspect}")
+      can_cache = verb == :post ? false : cached?
+      if can_cache && result = store.get("#{clean_url(url)}#{options.inspect}")
         return JSON.parse(result)
       end
 
@@ -85,7 +86,7 @@ module Lol
         raise InvalidAPIResponse.new(url, response)
       end
 
-      store.setex "#{clean_url(url)}#{options.inspect}", ttl, response.to_json if cached?
+      store.setex "#{clean_url(url)}#{options.inspect}", ttl, response.to_json if can_cache
 
       response
     end
