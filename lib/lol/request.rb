@@ -62,7 +62,7 @@ module Lol
     # @return [String]
     def clean_url(url)
       uri = URI.parse(url)
-      uri.query = CGI.parse(uri.query).reject { |k| k == 'api_key' }.to_query
+      uri.query = CGI.parse(uri.query || '').reject { |k| k == 'api_key' }.to_query
       uri.to_s
     end
 

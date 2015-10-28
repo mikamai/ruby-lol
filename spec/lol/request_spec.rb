@@ -119,6 +119,12 @@ describe Request do
     end
   end
 
+  describe "clean_url" do
+    it "works when url does not have a query string" do
+      expect { subject.clean_url 'http://www.leagueoflegends.com' }.not_to raise_error
+    end
+  end
+
   describe "api_url" do
     it "defaults on Request#region" do
       expect(subject.api_url("bar")).to match(/\/euw\//)
