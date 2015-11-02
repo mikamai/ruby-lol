@@ -28,9 +28,9 @@ module Lol
       @match_request ||= MatchRequest.new(api_key, region, cache_store)
     end
 
-    # @return [MatchHistoryRequest]
-    def match_history
-      @match_history_request ||= MatchHistoryRequest.new(api_key, region, cache_store)
+    # @return [MatchListRequest]
+    def match_list
+      @match_history_request ||= MatchListRequest.new(api_key, region, cache_store)
     end
 
     # @return [StatsRequest]
