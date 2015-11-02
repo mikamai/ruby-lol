@@ -60,6 +60,12 @@ module Lol
       JSON.parse(tournament_request "code?#{params}", body)
     end
 
+    # Returns the details of the tournament code
+    # @param tournament_code [String] Tournament code
+    def get_code tournament_code
+      TournamentCode.new perform_request api_url("code/#{tournament_code}")
+    end
+
     def provider region, url
       tournament_request "provider", {region: region, url: url}
     end

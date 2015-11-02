@@ -37,4 +37,12 @@ describe TournamentProviderRequest do
     # end
   end
 
+  describe "#get_code" do
+    before(:each) { stub_request(request, 'get-code', 'code/CODE-FOR-TEST') }
+    subject { request.get_code "CODE-FOR-TEST" }
+
+    it 'returns an Hash' do
+      expect(subject).to be_a(Lol::TournamentCode)
+    end
+  end
 end
