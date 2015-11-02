@@ -63,7 +63,26 @@ module Lol
     # Returns the details of the tournament code
     # @param tournament_code [String] Tournament code
     def get_code tournament_code
-      TournamentCode.new perform_request api_url("code/#{tournament_code}")
+      TournamentCode.new perform_request(api_url("code/#{tournament_code}"))
+    end
+
+    def update_code tournament_code, options = {}
+      allowed_participants = options.delete(:allowed_participants) || nil
+      allowed_participants = allowed_participants.join(",") unless allowed_participants.nil?
+      pick_type = options.delete(:pick_type) || nil
+      map_type = options.delete(:map_type) || nil
+      spectator_type = options.delete(:spectator_type) || nil
+
+      body = {
+        allowedParticipants: allowed_participants ,
+        spectatorType: spectator_type,
+        pickType: pick_type,
+        mapType: map_type
+      }.reject{ |k,v| v.nil? }
+
+      pau = post_api_url "code/#{tournament_code}"
+      perform_request(pau[:url], :put, body, pau[:options])
+      get_code tournament_code
     end
 
     def provider region, url

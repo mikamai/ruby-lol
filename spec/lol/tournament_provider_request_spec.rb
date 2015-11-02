@@ -45,4 +45,19 @@ describe TournamentProviderRequest do
       expect(subject).to be_a(Lol::TournamentCode)
     end
   end
+
+  describe "#update_code" do
+    let(:fixture) { load_fixture('get-code', TournamentProviderRequest.api_version) }
+
+    it 'exclude nil options' do
+      expect(request).to receive(:perform_request).once.ordered.with(
+        instance_of(String),
+        :put,
+        { allowedParticipants: "1,2,3" },
+        instance_of(Hash)
+      )
+      expect(request).to receive(:perform_request).once.ordered.with(instance_of(String)).and_return(fixture)
+      request.update_code "CODE-FOR-TEST", { allowed_participants: [1,2,3] }
+    end
+  end
 end
