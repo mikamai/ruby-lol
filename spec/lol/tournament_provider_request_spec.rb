@@ -47,7 +47,7 @@ describe TournamentProviderRequest do
     end
     subject { request.get_code "CODE-FOR-TEST" }
 
-    it 'returns an Hash' do
+    it 'returns a TournamentCode' do
       expect(subject).to be_a(Lol::TournamentCode)
     end
   end
