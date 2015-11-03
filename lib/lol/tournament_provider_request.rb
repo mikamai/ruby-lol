@@ -69,7 +69,7 @@ module Lol
     # Returns the updated tournament code
     # @param tournament_code [String] Tournament Code
     # @param options [Hash] Tournament Code options hash
-    # @option options [Array] :allowed_participants Array of allowed summoner ids
+    # @option options [Array] :allowed_participants Array of allowed summoner ids (minimum 10)
     # @option options [String] :pick_type BLIND_PICK, DRAFT_MODE, ALL_RANDOM, TOURNAMENT_DRAFT
     # @option options [String] :map_type SUMMONERS_RIFT, CRYSTAL_SCAR, HOWLING_ABYSS
     # @option options [String] :spectator_type NONE, LOBBYONLY, ALL
