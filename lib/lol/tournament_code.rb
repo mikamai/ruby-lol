@@ -48,5 +48,11 @@ module Lol
 
     attr_writer :id, :provider_id, :tournament_id, :code, :region, :map, :team_size,
                 :spectators, :pick_type, :lobby_name, :password, :participants
+
+    def initialize options = {}
+      super
+      @participants = [] if @participants.nil?
+    end
+
   end
 end
