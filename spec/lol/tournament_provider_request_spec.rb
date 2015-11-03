@@ -59,7 +59,7 @@ describe TournamentProviderRequest do
       expect(request).to receive(:perform_request).once.ordered.with(
         instance_of(String),
         :put,
-        { allowedParticipants: "1,2,3" },
+        { allowedParticipants: "1,2,3,4,5,6,7,8,9,10" },
         instance_of(Hash)
       )
       expect(request).to receive(:perform_request).once.ordered.with(instance_of(String)).and_return(fixture)
