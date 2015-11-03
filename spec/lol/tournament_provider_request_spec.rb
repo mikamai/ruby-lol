@@ -38,7 +38,13 @@ describe TournamentProviderRequest do
   end
 
   describe "#get_code" do
-    before(:each) { stub_request(request, 'get-code', 'code/CODE-FOR-TEST') }
+    # Can't use stub_request for different api_url
+    before(:each) do
+      full_url = request.api_url "code/CODE-FOR-TEST?#{request.api_query_string}"
+      fixture_json = load_fixture('get-code', TournamentProviderRequest.api_version)
+
+      expect(TournamentProviderRequest).to receive(:get).with(full_url).and_return(fixture_json)
+    end
     subject { request.get_code "CODE-FOR-TEST" }
 
     it 'returns an Hash' do

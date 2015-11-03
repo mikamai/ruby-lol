@@ -63,7 +63,7 @@ module Lol
     # Returns the details of the tournament code
     # @param tournament_code [String] Tournament code
     def get_code tournament_code
-      TournamentCode.new perform_request(api_url("code/#{tournament_code}"))
+      TournamentCode.new perform_request(api_url("code/#{tournament_code}?#{api_query_string}"))
     end
 
     # Returns the updated tournament code
