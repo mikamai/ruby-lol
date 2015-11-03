@@ -73,12 +73,12 @@ module Lol
     # @param options [Hash] Options passed to HTTParty
     # @return [String] raw response of the call
     def perform_request url, verb = :get, body = {}, options = {}
-      can_cache = verb == :post ? false : cached?
+      can_cache = [:post, :put].include?(verb) ? false : cached?
       if can_cache && result = store.get("#{clean_url(url)}#{options.inspect}")
         return JSON.parse(result)
       end
 
-      params = verb == :post ? [url, options.merge({body: body.to_json})] : url
+      params = [:post, :put].include?(verb) ? [url, options.merge({body: body.to_json})] : url
       response = self.class.send(verb, *params)
       if response.respond_to?(:code) && !(200...300).include?(response.code)
         raise NotFound.new("404 Not Found") if response.not_found?

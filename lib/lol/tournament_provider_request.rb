@@ -60,6 +60,38 @@ module Lol
       JSON.parse(tournament_request "code?#{params}", body)
     end
 
+    # Returns the details of the tournament code
+    # @param tournament_code [String] Tournament code
+    def get_code tournament_code
+      TournamentCode.new perform_request(api_url("code/#{tournament_code}?#{api_query_string}"))
+    end
+
+    # Returns the updated tournament code
+    # @param tournament_code [String] Tournament Code
+    # @param options [Hash] Tournament Code options hash
+    # @option options [Array] :allowed_participants Array of allowed summoner ids (minimum 10)
+    # @option options [String] :pick_type BLIND_PICK, DRAFT_MODE, ALL_RANDOM, TOURNAMENT_DRAFT
+    # @option options [String] :map_type SUMMONERS_RIFT, CRYSTAL_SCAR, HOWLING_ABYSS
+    # @option options [String] :spectator_type NONE, LOBBYONLY, ALL
+    def update_code tournament_code, options = {}
+      allowed_participants = options.delete(:allowed_participants) || nil
+      allowed_participants = allowed_participants.join(",") unless allowed_participants.nil?
+      pick_type = options.delete(:pick_type) || nil
+      map_type = options.delete(:map_type) || nil
+      spectator_type = options.delete(:spectator_type) || nil
+
+      body = {
+        allowedParticipants: allowed_participants ,
+        spectatorType: spectator_type,
+        pickType: pick_type,
+        mapType: map_type
+      }.reject{ |k,v| v.nil? }
+
+      pau = post_api_url "code/#{tournament_code}"
+      perform_request(pau[:url], :put, body, pau[:options])
+      get_code tournament_code
+    end
+
     def provider region, url
       tournament_request "provider", {region: region, url: url}
     end

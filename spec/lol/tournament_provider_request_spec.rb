@@ -37,4 +37,33 @@ describe TournamentProviderRequest do
     # end
   end
 
+  describe "#get_code" do
+    # Can't use stub_request for different api_url
+    before(:each) do
+      full_url = request.api_url "code/CODE-FOR-TEST?#{request.api_query_string}"
+      fixture_json = load_fixture('get-code', TournamentProviderRequest.api_version)
+
+      expect(TournamentProviderRequest).to receive(:get).with(full_url).and_return(fixture_json)
+    end
+    subject { request.get_code "CODE-FOR-TEST" }
+
+    it 'returns a TournamentCode' do
+      expect(subject).to be_a(Lol::TournamentCode)
+    end
+  end
+
+  describe "#update_code" do
+    let(:fixture) { load_fixture('get-code', TournamentProviderRequest.api_version) }
+
+    it 'exclude nil options' do
+      expect(request).to receive(:perform_request).once.ordered.with(
+        instance_of(String),
+        :put,
+        { allowedParticipants: "1,2,3,4,5,6,7,8,9,10" },
+        instance_of(Hash)
+      )
+      expect(request).to receive(:perform_request).once.ordered.with(instance_of(String)).and_return(fixture)
+      request.update_code "CODE-FOR-TEST", { allowed_participants: [1,2,3,4,5,6,7,8,9,10] }
+    end
+  end
 end
