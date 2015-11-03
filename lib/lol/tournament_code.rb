@@ -38,11 +38,15 @@ module Lol
     # @return [String] Lobby Name
     attr_reader :lobby_name
 
+    # @!attribute [r] participants
+    # @return [Array] Summoner IDS of Allowed participants
+    attr_reader :participants
+
     attr_reader :password
 
     private
 
     attr_writer :id, :provider_id, :tournament_id, :code, :region, :map, :team_size,
-                :spectators, :pick_type, :lobby_name, :password
+                :spectators, :pick_type, :lobby_name, :password, :participants
   end
 end
