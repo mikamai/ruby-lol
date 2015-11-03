@@ -66,6 +66,13 @@ module Lol
       TournamentCode.new perform_request(api_url("code/#{tournament_code}"))
     end
 
+    # Returns the updated tournament code
+    # @param tournament_code [String] Tournament Code
+    # @param options [Hash] Tournament Code options hash
+    # @option options [Array] :allowed_participants Array of allowed summoner ids
+    # @option options [String] :pick_type BLIND_PICK, DRAFT_MODE, ALL_RANDOM, TOURNAMENT_DRAFT
+    # @option options [String] :map_type SUMMONERS_RIFT, CRYSTAL_SCAR, HOWLING_ABYSS
+    # @option options [String] :spectator_type NONE, LOBBYONLY, ALL
     def update_code tournament_code, options = {}
       allowed_participants = options.delete(:allowed_participants) || nil
       allowed_participants = allowed_participants.join(",") unless allowed_participants.nil?
