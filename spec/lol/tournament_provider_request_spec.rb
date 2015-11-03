@@ -63,7 +63,7 @@ describe TournamentProviderRequest do
         instance_of(Hash)
       )
       expect(request).to receive(:perform_request).once.ordered.with(instance_of(String)).and_return(fixture)
-      request.update_code "CODE-FOR-TEST", { allowed_participants: [1,2,3] }
+      request.update_code "CODE-FOR-TEST", { allowed_participants: [1,2,3,4,5,6,7,8,9,10] }
     end
   end
 end
