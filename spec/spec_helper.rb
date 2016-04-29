@@ -8,9 +8,9 @@ SPEC_ROOT = __dir__
 
 Dir[File.expand_path(File.join(File.dirname(__FILE__),'support','**','*.rb'))].each {|f| require f}
 
-SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new [
   Coveralls::SimpleCov::Formatter,
-  SimpleCov::Formatter::HTMLFormatter,
+  SimpleCov::Formatter::HTMLFormatter
 ]
 
 SimpleCov.start

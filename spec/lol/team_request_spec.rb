@@ -29,7 +29,7 @@ describe TeamRequest do
   describe "#get" do
 
     it 'requires a team id' do
-      expect { request.get }.to raise_error
+      expect { request.get }.to raise_error(VCR::Errors::UnhandledHTTPRequestError)
     end
 
     context 'with team id' do

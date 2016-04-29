@@ -23,6 +23,17 @@ describe MatchListRequest do
       fixture = load_fixture('match_list', MatchListRequest.api_version)
       expect(subject.keys).to match_array fixture.keys
     end
+
+      end
+
+  describe "#get with params" do
+    subject { request.get(1, {foobar: "baz"}) }
+
+    before { stub_request(request, 'match_list', 'matchlist/by-summoner/1', { foobar: "baz"}) }
+
+    it "supports parameters" do
+      expect {subject}.not_to raise_error
+    end
   end
 
 end

@@ -46,7 +46,7 @@ describe Request do
     end
 
     it "handles 404" do
-      expect(error401).to receive(:respond_to?).and_return(true)
+      expect(error401).to receive(:respond_to?).at_least(:once).and_return(true)
       expect(error401).to receive(:not_found?).and_return(true)
       expect(subject.class).to receive(:get).and_return(error401)
       expect { subject.perform_request "foo?api_key=asd"}.to raise_error(NotFound)
