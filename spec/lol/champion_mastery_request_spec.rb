@@ -1,6 +1,5 @@
 require "spec_helper"
 require "lol"
-require 'webmock'
 include Lol
 
 describe ChampionMasteryRequest do

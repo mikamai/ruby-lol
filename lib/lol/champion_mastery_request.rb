@@ -1,7 +1,7 @@
 module Lol
   class ChampionMasteryRequest < Request
     # Returns the supported API Version. ChampionMastery end point is not
-    # versioned, so returns nil
+    # versioned, so just return v1.0 anyway
     # @return [String] v1.0 (ChampionMastery end point is not versioned)
     def self.api_version
       'v1.0'
