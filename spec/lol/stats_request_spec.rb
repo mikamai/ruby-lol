@@ -7,7 +7,7 @@ describe StatsRequest do
   let(:request) { StatsRequest.new("api_key", "euw") }
 
   it "inherits from Request" do
-    expect(GameRequest.ancestors[1]).to eq(Request)
+    expect(StatsRequest.ancestors[1]).to eq(Request)
   end
 
   describe "#summary" do

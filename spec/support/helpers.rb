@@ -53,4 +53,11 @@ module Helpers
 
     expect(request_class).to receive(:get).with(full_url).and_return(fixture_json)
   end
+
+  def stub_request_raw(request_object, raw_response, url, params={})
+    request_class = request_object.class
+    full_url = request_object.api_url(url, params)
+
+    expect(request_class).to receive(:get).with(full_url).and_return(raw_response)
+  end
 end

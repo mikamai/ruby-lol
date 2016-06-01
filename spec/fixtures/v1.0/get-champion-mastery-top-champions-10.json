@@ -1,0 +1,121 @@
+[
+  {
+    "highestGrade": "S+",
+    "championPoints": 34356,
+    "playerId": 496402,
+    "championPointsUntilNextLevel": 0,
+    "chestGranted": true,
+    "championLevel": 5,
+    "tokensEarned": 2,
+    "championId": 40,
+    "championPointsSinceLastLevel": 12756,
+    "lastPlayTime": 1464499894000
+  },
+  {
+    "highestGrade": "A-",
+    "championPoints": 8972,
+    "playerId": 496402,
+    "championPointsUntilNextLevel": 3628,
+    "chestGranted": false,
+    "championLevel": 3,
+    "tokensEarned": 0,
+    "championId": 429,
+    "championPointsSinceLastLevel": 2972,
+    "lastPlayTime": 1463373502000
+  },
+  {
+    "highestGrade": "A-",
+    "championPoints": 7355,
+    "playerId": 496402,
+    "championPointsUntilNextLevel": 5245,
+    "chestGranted": false,
+    "championLevel": 3,
+    "tokensEarned": 0,
+    "championId": 15,
+    "championPointsSinceLastLevel": 1355,
+    "lastPlayTime": 1462509127000
+  },
+  {
+    "highestGrade": "A+",
+    "championPoints": 6581,
+    "playerId": 496402,
+    "championPointsUntilNextLevel": 6019,
+    "chestGranted": true,
+    "championLevel": 3,
+    "tokensEarned": 0,
+    "championId": 236,
+    "championPointsSinceLastLevel": 581,
+    "lastPlayTime": 1463462873000
+  },
+  {
+    "highestGrade": "S+",
+    "championPoints": 6555,
+    "playerId": 496402,
+    "championPointsUntilNextLevel": 6045,
+    "chestGranted": false,
+    "championLevel": 3,
+    "tokensEarned": 0,
+    "championId": 267,
+    "championPointsSinceLastLevel": 555,
+    "lastPlayTime": 1463983471000
+  },
+  {
+    "highestGrade": "A+",
+    "championPoints": 4478,
+    "playerId": 496402,
+    "championPointsUntilNextLevel": 1522,
+    "chestGranted": false,
+    "championLevel": 2,
+    "tokensEarned": 0,
+    "championId": 56,
+    "championPointsSinceLastLevel": 2678,
+    "lastPlayTime": 1463723059000
+  },
+  {
+    "highestGrade": "A+",
+    "championPoints": 4285,
+    "playerId": 496402,
+    "championPointsUntilNextLevel": 1715,
+    "chestGranted": false,
+    "championLevel": 2,
+    "tokensEarned": 0,
+    "championId": 245,
+    "championPointsSinceLastLevel": 2485,
+    "lastPlayTime": 1462688704000
+  },
+  {
+    "championPoints": 3162,
+    "playerId": 496402,
+    "championPointsUntilNextLevel": 2838,
+    "chestGranted": false,
+    "championLevel": 2,
+    "tokensEarned": 0,
+    "championId": 67,
+    "championPointsSinceLastLevel": 1362,
+    "lastPlayTime": 1437768811000
+  },
+  {
+    "highestGrade": "S",
+    "championPoints": 2686,
+    "playerId": 496402,
+    "championPointsUntilNextLevel": 3314,
+    "chestGranted": false,
+    "championLevel": 2,
+    "tokensEarned": 0,
+    "championId": 81,
+    "championPointsSinceLastLevel": 886,
+    "lastPlayTime": 1464415184000
+  },
+  {
+    "highestGrade": "S-",
+    "championPoints": 2589,
+    "playerId": 496402,
+    "championPointsUntilNextLevel": 3411,
+    "chestGranted": true,
+    "championLevel": 2,
+    "tokensEarned": 0,
+    "championId": 53,
+    "championPointsSinceLastLevel": 789,
+    "lastPlayTime": 1463114828000
+  }
+]
