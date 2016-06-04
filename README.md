@@ -20,63 +20,73 @@ Or install it yourself as:
 
     $ gem install ruby-lol
 
+## <a name="versions"></a>Supported API Versions
+
+The following endpoints are supported.
+
+| Endpoint            | Supported Version | Object                  |
+|---------------------|-------------------|-------------------------|
+| champion            | 1.2               | client.champion         |
+| championmastery     | not versioned     | client.champion_mastery |
+| current-game        | 1.0               | client.current_game     |
+| featured-games      | 1.0               | client.featured_games   |
+| game                | 1.3               | client.game             |
+| league              | 2.5               | client.league           |
+| lol-static-data     | 1.2               | client.static           |
+| match               | 2.2               | client.match            |
+| matchlist           | 2.2               | client.match_list       |
+| stats               | 1.3               | client.stats            |
+| summoner            | 1.4               | client.summoner         |
+| team                | 2.4               | client.team             |
+| tournament-provider | 1                 | client.tournament       |
+
 ## Usage
 
-[ Outdated, anyone who wants to contribute to this please do it :) ]
+### Create a client
+
+Create a client by passing in your API Key and region (defaults to 'euw').
 
 ```ruby
-require 'lol'
-
-client = Lol::Client.new "my_api_key", {region: "euw"}
-# => <Lol::Client:0x000000020c0b28 @api_key="my_api_key", @region="euw", @cached=false>
-
-# NEW! You can cache requests using Redis now
-# ttl defaults to 900
-client = Lol::Client.new "my_api_key", {region: "euw", redis: "redis://localhost:6379", ttl: 900}
-
-# Available Requests
-client.champion
-# => Lol::ChampionRequest
-client.game
-# => Lol::GameRequest
-client.league
-# => Lol::LeagueRequest
-client.stats
-# => Lol::StatsRequest
-client.summoner
-# => Lol::SummonerRequest
-client.team
-# => Lol::TeamRequest
-
-# Available methods for each request type
-client.champion.get
-# => Lol::Champion
-
-client.game.recent(summoner_id)
-# => Lol::Game
-
-client.league.get(summoner_id)
-# => Lol::League
-
-client.stats.summary(summoner_id)
-# => Lol::SummaryStats
-client.stats.ranked(summoner_id)
-# => Lol::RankedStats
-
-client.summoner.masteries(summoner_id)
-# => [Lol::Masterypage]
-client.summoner.runes(summoner_id)
-# => [Lol::Runepage]
-client.summoner.by_name(name)
-# => Lol::Summoner
-client.summoner.get(summoner_id)
-# => Lol::Summoner
-client.summoner.name(summoner_ids)
-# => [Hash]
-
-client.team.get(summoner_id)
-# => Array
+client = LoL::Client.new "my_key", region: 'na'
+=> #<Lol::Client:0x007ffd218c57a0 @api_key="my_key", @region="na", @cached=false, @rate_limited=false>
 ```
+
+Caching and rate limiting can optionally be enabled when creating a client
+
+##### Caching
+
+Caching via Redis is supported. To enable caching, pass the url of the redis server as the `:redis` option, and optionally include the `:ttl` option.
+```ruby
+Lol::Client.new "my key", region: 'na', redis: "redis://localhost:6379"
+```
+
+##### Rate Limiting
+
+When creating a client, rate limiting can be enabled to automatically manage your rate limit, blocking requests until they can be performed.
+For example, to enable rate limiting with a limit of 500 requests in 10 minutes
+```ruby
+Client.new "api key", region: 'na', rate_limit_requests: 500, rate_limit_seconds: 600
+```
+
+### Making requests
+
+Each API has a request object, that is accessed from the client (see the [supported API versions](#versions) for a list)
+```ruby
+summoner_requests = client.summoner
+=> #<Lol::SummonerRequest:0x007ffd218adf60 @cache_store={:redis=>nil, :ttl=>nil, :cached=>false}, @rate_limiter=nil, @api_key="my_key", @region="na">
+
+```
+
+Request objects have methods to access each endpoint in the API
+
+```ruby
+player = summoner_requests.by_name('rakalakalili')
+=> [<Lol::Summoner: @id=496402, @name="rakalakalili", @profile_icon_id=561, @summoner_level=30, @revision_date=2016-05-31 23:21:40 -0600>]
+summoner_requests.runes(player.id)
+=> {"496402"=>[<Lol::RunePage: @id=1254232, @name="Thresh", @current=false, @slots=[<Lol::RuneSlot: @rune_slot_id=1, @rune_id=5245>, <Lol::RuneSlot: @rune_slot_id=2, @rune_id=5245>, <Lol::RuneSlot: @rune_slot_id=3, @rune_id=5245>, <Lol::RuneSlot: @rune_slot_id=4, @rune_id=5245>, <Lol::RuneSlot: @rune_slot_id=5, @rune_id=5245>, <Lol::RuneSlot: @rune_slot_id=6, @rune_id=5245>, <Lol::RuneSlot: @rune_slot_id=7, @rune_id=5245>, <Lol::RuneSlot: @rune_slot_id=8, @rune_id=5245>, <Lol::RuneSlot: @rune_slot_id=9, @rune_id=5245>, <Lol::RuneSlot: @rune_slot_id=10, @rune_id=5315>, <Lol::RuneSlot: @rune_slot_id=11, @rune_id=5315>, <Lol::RuneSlot: @rune_slot_id=12, @rune_id=5315>, <Lol::RuneSlot: @rune_slot_id=13, @rune_id=5315>, <Lol::RuneSlot: @rune_slot_id=14, @rune_id=5315>, <Lol::RuneSlot: @rune_slot_id=15, @rune_id=5315>, <Lol::RuneSlot: @rune_slot_id=16, @rune_id=5315>, <Lol::RuneSlot: @rune_slot_id=17, @rune_id=5315>, <Lol::RuneSlot: @rune_slot_id=18, @rune_id=5315>, <Lol::RuneSlot: @rune_slot_id=19, @rune_id=5289>, <Lol::RuneSlot: @rune_slot_id=20, @rune_id=5289>, <Lol::RuneSlot: @rune_slot_id=21, @rune_id=5289>, <Lol::RuneSlot: @rune_slot_id=22, @rune_id=5289>, <Lol::RuneSlot: @rune_slot_id=23, @rune_id=5289>, <Lol::RuneSlot: @rune_slot_id=24, @rune_id=5289>, <Lol::RuneSlot: @rune_slot_id=25, @rune_id=5289>, <Lol::RuneSlot: @rune_slot_id=26, @rune_id=5289>, <Lol::RuneSlot: @rune_slot_id=27, @rune_id=5289>, <Lol::RuneSlot: @rune_slot_id=28, @rune_id=5347>, <Lol::RuneSlot: @rune_slot_id=29, @rune_id=5347>, <Lol::RuneSlot: @rune_slot_id=30, @rune_id=5347>]>, <Lol::RunePage: @id=1254233, @name="Nami", @current=false, @slots=[<Lol::RuneSlot: @rune_slot_id=1, @rune_id=5402>, <Lol::RuneSlot: @rune_slot_id=2, @rune_id=5402>, <Lol::RuneSlot: @rune_slot_id=3, @rune_id=5402>, <Lol::RuneSlot: @rune_slot_id=4, @rune_id=5402>, <Lol::RuneSlot: @rune_slot_id=5, @rune_id=5402>, <Lol::RuneSlot: @rune_slot_id=6, @rune_id=5402>, <Lol::RuneSlot: @rune_slot_id=7, @rune_id=5402>, <Lol::RuneSlot: @rune_slot_id=8, @rune_id=5402>, <Lol::RuneSlot: @rune_slot_id=9, @rune_id=5402>, <Lol::RuneSlot: @rune_slot_id=10, @rune_id=5315>, <Lol::RuneSlot: @rune_slot_id=11, @rune_id=5315>, <Lol::RuneSlot: @rune_slot_id=12, @rune_id=5315>, <Lol::RuneSlot: @rune_slot_id=13, @rune_id=5315>, <Lol::RuneSlot: @rune_slot_id=14, @rune_id=5315>, <Lol::RuneSlot: @rune_slot_id=15, @rune_id=5315>, <Lol::RuneSlot: @rune_slot_id=16, @rune_id=5315>, <Lol::RuneSlot: @rune_slot_id=17, @rune_id=5315>, <Lol::RuneSlot: @rune_slot_id=18, @rune_id=5315>, <Lol::RuneSlot: @rune_slot_id=19, @rune_id=5289>, <Lol::RuneSlot: @rune_slot_id=20, @rune_id=5289>, <Lol::RuneSlot: @rune_slot_id=21, @rune_id=5289>, <Lol::RuneSlot: @rune_slot_id=22, @rune_id=5289>, <Lol::RuneSlot: @rune_slot_id=23, @rune_id=5289>, <Lol::RuneSlot: @rune_slot_id=24, @rune_id=5289>, <Lol::RuneSlot: @rune_slot_id=25, @rune_id=5289>, <Lol::RuneSlot: @rune_slot_id=26, @rune_id=5289>, <Lol::RuneSlot: @rune_slot_id=27, @rune_id=5289>, <Lol::RuneSlot: @rune_slot_id=28, @rune_id=5347>, <Lol::RuneSlot: @rune_slot_id=29, @rune_id=5347>, <Lol::RuneSlot: @rune_slot_id=30, @rune_id=5351>]>, <Lol::RunePage: @id=5935378, @name="Nid JG", @current=false, @slots=[<Lol::RuneSlot: @rune_slot_id=1, @rune_id=5245>, <Lol::RuneSlot: @rune_slot_id=2, @rune_id=5245>, <Lol::RuneSlot: @rune_slot_id=3, @rune_id=5245>, <Lol::RuneSlot: @rune_slot_id=4, @rune_id=5245>, <Lol::RuneSlot: @rune_slot_id=5, @rune_id=5245>, <Lol::RuneSlot: @rune_slot_id=6, @rune_id=5245>, <Lol::RuneSlot: @rune_slot_id=7, @rune_id=5245>, <Lol::RuneSlot: @rune_slot_id=8, @rune_id=5245>, <Lol::RuneSlot: @rune_slot_id=9, @rune_id=5245>, <Lol::RuneSlot: @rune_slot_id=10, @rune_id=5317>, <Lol::RuneSlot: @rune_slot_id=11, @rune_id=5317>, <Lol::RuneSlot: @rune_slot_id=12, @rune_id=5317>, <Lol::RuneSlot: @rune_slot_id=13, @rune_id=5317>, <Lol::RuneSlot: @rune_slot_id=14, @rune_id=5316>, <Lol::RuneSlot: @rune_slot_id=15, @rune_id=5316>, <Lol::RuneSlot: @rune_slot_id=16, @rune_id=5316>, <Lol::RuneSlot: @rune_slot_id=17, @rune_id=5316>, <Lol::RuneSlot: @rune_slot_id=18, @rune_id=5316>, <Lol::RuneSlot: @rune_slot_id=19, @rune_id=5296>, <Lol::RuneSlot: @rune_slot_id=20, @rune_id=5296>, <Lol::RuneSlot: @rune_slot_id=21, @rune_id=5296>, <Lol::RuneSlot: @rune_slot_id=22, @rune_id=5296>, <Lol::RuneSlot: @rune_slot_id=23, @rune_id=5296>, <Lol::RuneSlot: @rune_slot_id=24, @rune_id=5296>, <Lol::RuneSlot: @rune_slot_id=25, @rune_id=5296>, <Lol::RuneSlot: @rune_slot_id=26, @rune_id=5296>, <Lol::RuneSlot: @rune_slot_id=27, @rune_id=5296>, <Lol::RuneSlot: @rune_slot_id=28, @rune_id=5357>, <Lol::RuneSlot: @rune_slot_id=29, @rune_id=5357>, <Lol::RuneSlot: @rune_slot_id=30, @rune_id=5357>]>, <Lol::RunePage: @id=9904741, @name="AP/PEN", @current=false, @slots=[<Lol::RuneSlot: @rune_slot_id=1, @rune_id=5273>, <Lol::RuneSlot: @rune_slot_id=2, @rune_id=5273>, <Lol::RuneSlot: @rune_slot_id=3, @rune_id=5273>, <Lol::RuneSlot: @rune_slot_id=4, @rune_id=5273>, <Lol::RuneSlot: @rune_slot_id=5, @rune_id=5273>, <Lol::RuneSlot: @rune_slot_id=6, @rune_id=5273>, <Lol::RuneSlot: @rune_slot_id=7, @rune_id=5273>, <Lol::RuneSlot: @rune_slot_id=8, @rune_id=5273>, <Lol::RuneSlot: @rune_slot_id=9, @rune_id=5273>, <Lol::RuneSlot: @rune_slot_id=10, @rune_id=5317>, <Lol::RuneSlot: @rune_slot_id=11, @rune_id=5317>, <Lol::RuneSlot: @rune_slot_id=12, @rune_id=5317>, <Lol::RuneSlot: @rune_slot_id=13, @rune_id=5317>, <Lol::RuneSlot: @rune_slot_id=14, @rune_id=5317>, <Lol::RuneSlot: @rune_slot_id=15, @rune_id=5317>, <Lol::RuneSlot: @rune_slot_id=16, @rune_id=5317>, <Lol::RuneSlot: @rune_slot_id=17, @rune_id=5317>, <Lol::RuneSlot: @rune_slot_id=18, @rune_id=5317>, <Lol::RuneSlot: @rune_slot_id=19, @rune_id=5295>, <Lol::RuneSlot: @rune_slot_id=20, @rune_id=5295>, <Lol::RuneSlot: @rune_slot_id=21, @rune_id=5295>, <Lol::RuneSlot: @rune_slot_id=22, @rune_id=5295>, <Lol::RuneSlot: @rune_slot_id=23, @rune_id=5295>, <Lol::RuneSlot: @rune_slot_id=24, @rune_id=5295>, <Lol::RuneSlot: @rune_slot_id=25, @rune_id=5297>, <Lol::RuneSlot: @rune_slot_id=26, @rune_id=5297>, <Lol::RuneSlot: @rune_slot_id=27, @rune_id=5297>, <Lol::RuneSlot: @rune_slot_id=28, @rune_id=5357>, <Lol::RuneSlot: @rune_slot_id=29, @rune_id=5357>, <Lol::RuneSlot: @rune_slot_id=30, @rune_id=5357>]>, <Lol::RunePage: @id=9904742, @name="spider", @current=false, @slots=[<Lol::RuneSlot: @rune_slot_id=1, @rune_id=5402>, <Lol::RuneSlot: @rune_slot_id=2, @rune_id=5402>, <Lol::RuneSlot: @rune_slot_id=3, @rune_id=5402>, <Lol::RuneSlot: @rune_slot_id=4, @rune_id=5402>, <Lol::RuneSlot: @rune_slot_id=5, @rune_id=5402>, <Lol::RuneSlot: @rune_slot_id=6, @rune_id=5402>, <Lol::RuneSlot: @rune_slot_id=7, @rune_id=5402>, <Lol::RuneSlot: @rune_slot_id=8, @rune_id=5402>, <Lol::RuneSlot: @rune_slot_id=9, @rune_id=5402>, <Lol::RuneSlot: @rune_slot_id=10, @rune_id=5316>, <Lol::RuneSlot: @rune_slot_id=11, @rune_id=5316>, <Lol::RuneSlot: @rune_slot_id=12, @rune_id=5316>, <Lol::RuneSlot: @rune_slot_id=13, @rune_id=5316>, <Lol::RuneSlot: @rune_slot_id=14, @rune_id=5316>, <Lol::RuneSlot: @rune_slot_id=15, @rune_id=5316>, <Lol::RuneSlot: @rune_slot_id=16, @rune_id=5316>, <Lol::RuneSlot: @rune_slot_id=17, @rune_id=5316>, <Lol::RuneSlot: @rune_slot_id=18, @rune_id=5316>, <Lol::RuneSlot: @rune_slot_id=19, @rune_id=5297>, <Lol::RuneSlot: @rune_slot_id=20, @rune_id=5297>, <Lol::RuneSlot: @rune_slot_id=21, @rune_id=5297>, <Lol::RuneSlot: @rune_slot_id=22, @rune_id=5297>, <Lol::RuneSlot: @rune_slot_id=23, @rune_id=5297>, <Lol::RuneSlot: @rune_slot_id=24, @rune_id=5297>, <Lol::RuneSlot: @rune_slot_id=25, @rune_id=5297>, <Lol::RuneSlot: @rune_slot_id=26, @rune_id=5297>, <Lol::RuneSlot: @rune_slot_id=27, @rune_id=5297>, <Lol::RuneSlot: @rune_slot_id=28, @rune_id=5347>, <Lol::RuneSlot: @rune_slot_id=29, @rune_id=5365>, <Lol::RuneSlot: @rune_slot_id=30, @rune_id=5365>]>, <Lol::RunePage: @id=9904743, @name="YAS", @current=false, @slots=[<Lol::RuneSlot: @rune_slot_id=1, @rune_id=5251>, <Lol::RuneSlot: @rune_slot_id=2, @rune_id=5251>, <Lol::RuneSlot: @rune_slot_id=3, @rune_id=5251>, <Lol::RuneSlot: @rune_slot_id=4, @rune_id=5251>, <Lol::RuneSlot: @rune_slot_id=5, @rune_id=5251>, <Lol::RuneSlot: @rune_slot_id=6, @rune_id=5245>, <Lol::RuneSlot: @rune_slot_id=7, @rune_id=5245>, <Lol::RuneSlot: @rune_slot_id=8, @rune_id=5245>, <Lol::RuneSlot: @rune_slot_id=9, @rune_id=5245>, <Lol::RuneSlot: @rune_slot_id=10, @rune_id=5316>, <Lol::RuneSlot: @rune_slot_id=11, @rune_id=5316>, <Lol::RuneSlot: @rune_slot_id=12, @rune_id=5316>, <Lol::RuneSlot: @rune_slot_id=13, @rune_id=5316>, <Lol::RuneSlot: @rune_slot_id=14, @rune_id=5316>, <Lol::RuneSlot: @rune_slot_id=15, @rune_id=5316>, <Lol::RuneSlot: @rune_slot_id=16, @rune_id=5316>, <Lol::RuneSlot: @rune_slot_id=17, @rune_id=5316>, <Lol::RuneSlot: @rune_slot_id=18, @rune_id=5311>, <Lol::RuneSlot: @rune_slot_id=19, @rune_id=5289>, <Lol::RuneSlot: @rune_slot_id=20, @rune_id=5289>, <Lol::RuneSlot: @rune_slot_id=21, @rune_id=5289>, <Lol::RuneSlot: @rune_slot_id=22, @rune_id=5289>, <Lol::RuneSlot: @rune_slot_id=23, @rune_id=5289>, <Lol::RuneSlot: @rune_slot_id=24, @rune_id=5289>, <Lol::RuneSlot: @rune_slot_id=25, @rune_id=5289>, <Lol::RuneSlot: @rune_slot_id=26, @rune_id=5289>, <Lol::RuneSlot: @rune_slot_id=27, @rune_id=5289>, <Lol::RuneSlot: @rune_slot_id=28, @rune_id=5335>, <Lol::RuneSlot: @rune_slot_id=29, @rune_id=5337>, <Lol::RuneSlot: @rune_slot_id=30, @rune_id=5337>]>, <Lol::RunePage: @id=9904744, @name="MID", @current=false, @slots=[<Lol::RuneSlot: @rune_slot_id=1, @rune_id=5402>, <Lol::RuneSlot: @rune_slot_id=2, @rune_id=5402>, <Lol::RuneSlot: @rune_slot_id=3, @rune_id=5402>, <Lol::RuneSlot: @rune_slot_id=4, @rune_id=5402>, <Lol::RuneSlot: @rune_slot_id=5, @rune_id=5402>, <Lol::RuneSlot: @rune_slot_id=6, @rune_id=5402>, <Lol::RuneSlot: @rune_slot_id=7, @rune_id=5402>, <Lol::RuneSlot: @rune_slot_id=8, @rune_id=5402>, <Lol::RuneSlot: @rune_slot_id=9, @rune_id=5402>, <Lol::RuneSlot: @rune_slot_id=10, @rune_id=5316>, <Lol::RuneSlot: @rune_slot_id=11, @rune_id=5316>, <Lol::RuneSlot: @rune_slot_id=12, @rune_id=5316>, <Lol::RuneSlot: @rune_slot_id=13, @rune_id=5316>, <Lol::RuneSlot: @rune_slot_id=14, @rune_id=5316>, <Lol::RuneSlot: @rune_slot_id=15, @rune_id=5316>, <Lol::RuneSlot: @rune_slot_id=16, @rune_id=5316>, <Lol::RuneSlot: @rune_slot_id=17, @rune_id=5316>, <Lol::RuneSlot: @rune_slot_id=18, @rune_id=5316>, <Lol::RuneSlot: @rune_slot_id=19, @rune_id=5298>, <Lol::RuneSlot: @rune_slot_id=20, @rune_id=5298>, <Lol::RuneSlot: @rune_slot_id=21, @rune_id=5298>, <Lol::RuneSlot: @rune_slot_id=22, @rune_id=5298>, <Lol::RuneSlot: @rune_slot_id=23, @rune_id=5298>, <Lol::RuneSlot: @rune_slot_id=24, @rune_id=5298>, <Lol::RuneSlot: @rune_slot_id=25, @rune_id=5298>, <Lol::RuneSlot: @rune_slot_id=26, @rune_id=5298>, <Lol::RuneSlot: @rune_slot_id=27, @rune_id=5298>, <Lol::RuneSlot: @rune_slot_id=28, @rune_id=5357>, <Lol::RuneSlot: @rune_slot_id=29, @rune_id=5357>, <Lol::RuneSlot: @rune_slot_id=30, @rune_id=5357>]>, <Lol::RunePage: @id=9904745, @name="AS/MPEN", @current=false, @slots=[<Lol::RuneSlot: @rune_slot_id=1, @rune_id=5273>, <Lol::RuneSlot: @rune_slot_id=2, @rune_id=5273>, <Lol::RuneSlot: @rune_slot_id=3, @rune_id=5273>, <Lol::RuneSlot: @rune_slot_id=4, @rune_id=5273>, <Lol::RuneSlot: @rune_slot_id=5, @rune_id=5273>, <Lol::RuneSlot: @rune_slot_id=6, @rune_id=5273>, <Lol::RuneSlot: @rune_slot_id=7, @rune_id=5273>, <Lol::RuneSlot: @rune_slot_id=8, @rune_id=5273>, <Lol::RuneSlot: @rune_slot_id=9, @rune_id=5273>, <Lol::RuneSlot: @rune_slot_id=10, @rune_id=5317>, <Lol::RuneSlot: @rune_slot_id=11, @rune_id=5317>, <Lol::RuneSlot: @rune_slot_id=12, @rune_id=5317>, <Lol::RuneSlot: @rune_slot_id=13, @rune_id=5317>, <Lol::RuneSlot: @rune_slot_id=14, @rune_id=5317>, <Lol::RuneSlot: @rune_slot_id=15, @rune_id=5317>, <Lol::RuneSlot: @rune_slot_id=16, @rune_id=5317>, <Lol::RuneSlot: @rune_slot_id=17, @rune_id=5317>, <Lol::RuneSlot: @rune_slot_id=18, @rune_id=5317>, <Lol::RuneSlot: @rune_slot_id=19, @rune_id=5297>, <Lol::RuneSlot: @rune_slot_id=20, @rune_id=5297>, <Lol::RuneSlot: @rune_slot_id=21, @rune_id=5297>, <Lol::RuneSlot: @rune_slot_id=22, @rune_id=5297>, <Lol::RuneSlot: @rune_slot_id=23, @rune_id=5297>, <Lol::RuneSlot: @rune_slot_id=24, @rune_id=5297>, <Lol::RuneSlot: @rune_slot_id=25, @rune_id=5297>, <Lol::RuneSlot: @rune_slot_id=26, @rune_id=5297>, <Lol::RuneSlot: @rune_slot_id=27, @rune_id=5297>, <Lol::RuneSlot: @rune_slot_id=28, @rune_id=5337>, <Lol::RuneSlot: @rune_slot_id=29, @rune_id=5337>, <Lol::RuneSlot: @rune_slot_id=30, @rune_id=5337>]>, <Lol::RunePage: @id=9904746, @name="Hybrid AD", @current=false, @slots=[<Lol::RuneSlot: @rune_slot_id=1, @rune_id=5402>, <Lol::RuneSlot: @rune_slot_id=2, @rune_id=5402>, <Lol::RuneSlot: @rune_slot_id=3, @rune_id=5402>, <Lol::RuneSlot: @rune_slot_id=4, @rune_id=5402>, <Lol::RuneSlot: @rune_slot_id=5, @rune_id=5402>, <Lol::RuneSlot: @rune_slot_id=6, @rune_id=5402>, <Lol::RuneSlot: @rune_slot_id=7, @rune_id=5402>, <Lol::RuneSlot: @rune_slot_id=8, @rune_id=5402>, <Lol::RuneSlot: @rune_slot_id=9, @rune_id=5402>, <Lol::RuneSlot: @rune_slot_id=10, @rune_id=5317>, <Lol::RuneSlot: @rune_slot_id=11, @rune_id=5317>, <Lol::RuneSlot: @rune_slot_id=12, @rune_id=5317>, <Lol::RuneSlot: @rune_slot_id=13, @rune_id=5317>, <Lol::RuneSlot: @rune_slot_id=14, @rune_id=5317>, <Lol::RuneSlot: @rune_slot_id=15, @rune_id=5317>, <Lol::RuneSlot: @rune_slot_id=16, @rune_id=5317>, <Lol::RuneSlot: @rune_slot_id=17, @rune_id=5317>, <Lol::RuneSlot: @rune_slot_id=18, @rune_id=5317>, <Lol::RuneSlot: @rune_slot_id=19, @rune_id=5289>, <Lol::RuneSlot: @rune_slot_id=20, @rune_id=5289>, <Lol::RuneSlot: @rune_slot_id=21, @rune_id=5289>, <Lol::RuneSlot: @rune_slot_id=22, @rune_id=5289>, <Lol::RuneSlot: @rune_slot_id=23, @rune_id=5289>, <Lol::RuneSlot: @rune_slot_id=24, @rune_id=5289>, <Lol::RuneSlot: @rune_slot_id=25, @rune_id=5289>, <Lol::RuneSlot: @rune_slot_id=26, @rune_id=5289>, <Lol::RuneSlot: @rune_slot_id=27, @rune_id=5289>, <Lol::RuneSlot: @rune_slot_id=28, @rune_id=5335>, <Lol::RuneSlot: @rune_slot_id=29, @rune_id=5335>, <Lol::RuneSlot: @rune_slot_id=30, @rune_id=5335>]>, <Lol::RunePage: @id=9904747, @name="ADlol", @current=false, @slots=[<Lol::RuneSlot: @rune_slot_id=1, @rune_id=5245>, <Lol::RuneSlot: @rune_slot_id=2, @rune_id=5245>, <Lol::RuneSlot: @rune_slot_id=3, @rune_id=5245>, <Lol::RuneSlot: @rune_slot_id=4, @rune_id=5245>, <Lol::RuneSlot: @rune_slot_id=5, @rune_id=5245>, <Lol::RuneSlot: @rune_slot_id=6, @rune_id=5245>, <Lol::RuneSlot: @rune_slot_id=7, @rune_id=5245>, <Lol::RuneSlot: @rune_slot_id=8, @rune_id=5245>, <Lol::RuneSlot: @rune_slot_id=9, @rune_id=5245>, <Lol::RuneSlot: @rune_slot_id=10, @rune_id=5317>, <Lol::RuneSlot: @rune_slot_id=11, @rune_id=5317>, <Lol::RuneSlot: @rune_slot_id=12, @rune_id=5317>, <Lol::RuneSlot: @rune_slot_id=13, @rune_id=5317>, <Lol::RuneSlot: @rune_slot_id=14, @rune_id=5317>, <Lol::RuneSlot: @rune_slot_id=15, @rune_id=5317>, <Lol::RuneSlot: @rune_slot_id=16, @rune_id=5317>, <Lol::RuneSlot: @rune_slot_id=17, @rune_id=5317>, <Lol::RuneSlot: @rune_slot_id=18, @rune_id=5317>, <Lol::RuneSlot: @rune_slot_id=19, @rune_id=5289>, <Lol::RuneSlot: @rune_slot_id=20, @rune_id=5289>, <Lol::RuneSlot: @rune_slot_id=21, @rune_id=5289>, <Lol::RuneSlot: @rune_slot_id=22, @rune_id=5289>, <Lol::RuneSlot: @rune_slot_id=23, @rune_id=5289>, <Lol::RuneSlot: @rune_slot_id=24, @rune_id=5289>, <Lol::RuneSlot: @rune_slot_id=25, @rune_id=5289>, <Lol::RuneSlot: @rune_slot_id=26, @rune_id=5289>, <Lol::RuneSlot: @rune_slot_id=27, @rune_id=5289>, <Lol::RuneSlot: @rune_slot_id=28, @rune_id=5335>, <Lol::RuneSlot: @rune_slot_id=29, @rune_id=5335>, <Lol::RuneSlot: @rune_slot_id=30, @rune_id=5335>]>, <Lol::RunePage: @id=60039590, @name="Janna Tanky", @current=false, @slots=[<Lol::RuneSlot: @rune_slot_id=1, @rune_id=5402>, <Lol::RuneSlot: @rune_slot_id=2, @rune_id=5402>, <Lol::RuneSlot: @rune_slot_id=3, @rune_id=5402>, <Lol::RuneSlot: @rune_slot_id=4, @rune_id=5402>, <Lol::RuneSlot: @rune_slot_id=5, @rune_id=5402>, <Lol::RuneSlot: @rune_slot_id=6, @rune_id=5402>, <Lol::RuneSlot: @rune_slot_id=7, @rune_id=5402>, <Lol::RuneSlot: @rune_slot_id=8, @rune_id=5402>, <Lol::RuneSlot: @rune_slot_id=9, @rune_id=5402>, <Lol::RuneSlot: @rune_slot_id=10, @rune_id=5315>, <Lol::RuneSlot: @rune_slot_id=11, @rune_id=5315>, <Lol::RuneSlot: @rune_slot_id=12, @rune_id=5315>, <Lol::RuneSlot: @rune_slot_id=13, @rune_id=5315>, <Lol::RuneSlot: @rune_slot_id=14, @rune_id=5315>, <Lol::RuneSlot: @rune_slot_id=15, @rune_id=5315>, <Lol::RuneSlot: @rune_slot_id=16, @rune_id=5315>, <Lol::RuneSlot: @rune_slot_id=17, @rune_id=5315>, <Lol::RuneSlot: @rune_slot_id=18, @rune_id=5315>, <Lol::RuneSlot: @rune_slot_id=19, @rune_id=5289>, <Lol::RuneSlot: @rune_slot_id=20, @rune_id=5289>, <Lol::RuneSlot: @rune_slot_id=21, @rune_id=5289>, <Lol::RuneSlot: @rune_slot_id=22, @rune_id=5289>, <Lol::RuneSlot: @rune_slot_id=23, @rune_id=5289>, <Lol::RuneSlot: @rune_slot_id=24, @rune_id=5289>, <Lol::RuneSlot: @rune_slot_id=25, @rune_id=5289>, <Lol::RuneSlot: @rune_slot_id=26, @rune_id=5289>, <Lol::RuneSlot: @rune_slot_id=27, @rune_id=5289>, <Lol::RuneSlot: @rune_slot_id=28, @rune_id=5347>, <Lol::RuneSlot: @rune_slot_id=29, @rune_id=5347>, <Lol::RuneSlot: @rune_slot_id=30, @rune_id=5347>]>, <Lol::RunePage: @id=60219808, @name="Nocturne", @current=true, @slots=[<Lol::RuneSlot: @rune_slot_id=1, @rune_id=5245>, <Lol::RuneSlot: @rune_slot_id=2, @rune_id=5245>, <Lol::RuneSlot: @rune_slot_id=3, @rune_id=5245>, <Lol::RuneSlot: @rune_slot_id=4, @rune_id=5245>, <Lol::RuneSlot: @rune_slot_id=5, @rune_id=5245>, <Lol::RuneSlot: @rune_slot_id=6, @rune_id=5245>, <Lol::RuneSlot: @rune_slot_id=7, @rune_id=5245>, <Lol::RuneSlot: @rune_slot_id=8, @rune_id=5245>, <Lol::RuneSlot: @rune_slot_id=9, @rune_id=5245>, <Lol::RuneSlot: @rune_slot_id=10, @rune_id=5317>, <Lol::RuneSlot: @rune_slot_id=11, @rune_id=5317>, <Lol::RuneSlot: @rune_slot_id=12, @rune_id=5317>, <Lol::RuneSlot: @rune_slot_id=13, @rune_id=5317>, <Lol::RuneSlot: @rune_slot_id=14, @rune_id=5317>, <Lol::RuneSlot: @rune_slot_id=15, @rune_id=5317>, <Lol::RuneSlot: @rune_slot_id=16, @rune_id=5317>, <Lol::RuneSlot: @rune_slot_id=17, @rune_id=5317>, <Lol::RuneSlot: @rune_slot_id=18, @rune_id=5317>, <Lol::RuneSlot: @rune_slot_id=19, @rune_id=5289>, <Lol::RuneSlot: @rune_slot_id=20, @rune_id=5289>, <Lol::RuneSlot: @rune_slot_id=21, @rune_id=5289>, <Lol::RuneSlot: @rune_slot_id=22, @rune_id=5289>, <Lol::RuneSlot: @rune_slot_id=23, @rune_id=5289>, <Lol::RuneSlot: @rune_slot_id=24, @rune_id=5289>, <Lol::RuneSlot: @rune_slot_id=25, @rune_id=5289>, <Lol::RuneSlot: @rune_slot_id=26, @rune_id=5289>, <Lol::RuneSlot: @rune_slot_id=27, @rune_id=5289>, <Lol::RuneSlot: @rune_slot_id=28, @rune_id=5337>, <Lol::RuneSlot: @rune_slot_id=29, @rune_id=5337>, <Lol::RuneSlot: @rune_slot_id=30, @rune_id=5337>]>]}
+
+```
+
 
 # Making Static Requests
 The Riot API has a [section](http://developer.riotgames.com/api/methods#!/378) carved out for static-data. These requests don't count against your rate limit. The mechanism for using them is similar to the standard requests above.
@@ -111,6 +121,7 @@ client.static.champion.get(champData: 'lore')
 
 **NOTE**: The realm endpoint is not implemented. Let us know if you need it, but it seemed somewhat unnecessary.
 
+
 ## Contributing
 
 1. Fork it
@@ -120,6 +131,9 @@ client.static.champion.get(champData: 'lore')
 5. Create new Pull Request
 
 ## Changelog
+ - 0.13.0 Added rate limiting support
+ - 0.12.0 Added championmastery endpoint
+ - ...
  - 0.9.14 Fixed a caching bug
  - 0.9.13 Updated to latest API versions
  - 0.9.12 Fixed a caching bug
