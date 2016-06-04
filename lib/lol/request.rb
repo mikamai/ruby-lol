@@ -15,7 +15,6 @@ module Lol
     # @return [String] api_key
     attr_reader :api_key
 
-
     # @!attribute [rw] region
     # @return [String] region
     attr_accessor :region
@@ -23,6 +22,10 @@ module Lol
     # @!attribute[r] cache_store
     # @return [Object] the cache_store
     attr_reader :cache_store
+
+    # @!attribute[r] rate_limiter
+    # @return [Object] the rate limiter, if one exists (else nil)
+    attr_reader :rate_limiter
 
     # Stub method. Each subclass should have its own api version
     # @return [String] api version
@@ -66,7 +69,8 @@ module Lol
       uri.to_s
     end
 
-    # Calls the API via HTTParty and handles errors
+    # Calls the API via HTTParty and handles errors, caching it if a cache is
+    # enabled and rate limiting it if a rate limiter is configured
     # @param url [String] the url to call
     # @param verb [Symbol] HTTP verb to use. Defaults to :get
     # @param body [Hash] Body for POST request
@@ -78,6 +82,27 @@ module Lol
         return JSON.parse(result)
       end
 
+      response = nil
+      if @rate_limiter
+        @rate_limiter.times(1) do
+          response = perform_request_raw(url, verb, body, options)
+        end
+      else
+        response = perform_request_raw(url, verb, body, options)
+      end
+
+      store.setex "#{clean_url(url)}#{options.inspect}", ttl, response.to_json if can_cache
+
+      response
+    end
+
+    # Calls the API via HTTParty and handles errors
+    # @param url [String] the url to call
+    # @param verb [Symbol] HTTP verb to use. Defaults to :get
+    # @param body [Hash] Body for POST request
+    # @param options [Hash] Options passed to HTTParty
+    # @return [String] raw response of the call
+    def perform_request_raw url, verb = :get, body = {}, options = {}
       params = [:post, :put].include?(verb) ? [url, options.merge({body: body.to_json})] : url
       response = self.class.send(verb, *params)
       if response.respond_to?(:code) && !(200...300).include?(response.code)
@@ -85,9 +110,6 @@ module Lol
         raise TooManyRequests.new('429 Rate limit exceeded') if response.code == 429
         raise InvalidAPIResponse.new(url, response)
       end
-
-      store.setex "#{clean_url(url)}#{options.inspect}", ttl, response.to_json if can_cache
-
       response
     end
 
@@ -114,8 +136,9 @@ module Lol
     # @option cache_store [Boolean] :cached should the request be cached
     # @option cacche_store [Fixnum] :ttl ttl for cache keys
     # @return [Request]
-    def initialize api_key, region, cache_store = {}
+    def initialize api_key, region, cache_store = {}, rate_limiter = nil
       @cache_store = cache_store
+      @rate_limiter = rate_limiter
       raise InvalidCacheStore if cached? && !store.is_a?(Redis)
       @api_key = api_key
       @region = region

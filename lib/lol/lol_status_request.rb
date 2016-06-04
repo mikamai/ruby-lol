@@ -5,8 +5,8 @@ module Lol
       "v1.0"
     end
 
-    def initialize region = nil, cache_store = {}
-      super nil, region, cache_store
+    def initialize region = nil, cache_store = {}, rate_limiter = nil
+      super nil, region, cache_store, rate_limiter
     end
 
     # Returns a list of each shard status
