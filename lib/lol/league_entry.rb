@@ -56,10 +56,14 @@ module Lol
     # @return [Boolean] time until league decay
     attr_reader :time_until_decay
 
+    # @!attribute [r] playstyle
+    # @return [String] participant playstyle (NONE, SOLO, SQUAD, TEAM)
+    attr_reader :playstyle
+
     private
 
     attr_writer :player_or_team_id, :player_or_team_name, :division, :league_points, :wins,
-                :is_hot_streak, :is_veteran, :is_fresh_blood,
+                :is_hot_streak, :is_veteran, :is_fresh_blood, :playstyle,
                 :is_inactive, :time_until_decay, :last_played, :losses
 
     def mini_series= raw
