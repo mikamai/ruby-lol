@@ -45,6 +45,23 @@ describe Client do
         expect(champion_request.cache_store).to eq(real_redis.cache_store)
       end
     end
+
+    context "rate_limiting" do
+      let(:client) { Client.new "foo", rate_limit_requests: 10, rate_limit_requests: 10 }
+
+      it "sets rate limiting if specified in the options" do
+        expect(client.rate_limited?).to be_truthy
+      end
+
+      it "instantiates a rate limiter if it is in the options" do
+        expect(client.rate_limiter).not_to be_nil
+      end
+
+      it "passes the rate limiter to the request" do
+        champion_request = client.champion
+        expect(champion_request.rate_limiter).to eq(client.rate_limiter)
+      end
+    end
   end
 
   describe "#cached?" do
@@ -65,7 +82,7 @@ describe Client do
     end
 
     it "initializes the ChampionRequest with the current API key and region" do
-      expect(ChampionRequest).to receive(:new).with(subject.api_key, subject.region, subject.cache_store)
+      expect(ChampionRequest).to receive(:new).with(subject.api_key, subject.region, subject.cache_store, subject.rate_limiter)
 
       subject.champion
     end
@@ -77,7 +94,7 @@ describe Client do
     end
 
     it "initializes the GameRequest with the current API key and region" do
-      expect(GameRequest).to receive(:new).with(subject.api_key, subject.region, subject.cache_store)
+      expect(GameRequest).to receive(:new).with(subject.api_key, subject.region, subject.cache_store, subject.rate_limiter)
 
       subject.game
     end
@@ -89,7 +106,7 @@ describe Client do
     end
 
     it "initializes the MatchRequest with the current API key and region" do
-      expect(MatchRequest).to receive(:new).with(subject.api_key, subject.region, subject.cache_store)
+      expect(MatchRequest).to receive(:new).with(subject.api_key, subject.region, subject.cache_store, subject.rate_limiter)
 
       subject.match
     end
@@ -101,7 +118,7 @@ describe Client do
     end
 
     it "initializes the StatsRequest with the current API key and region" do
-      expect(StatsRequest).to receive(:new).with(subject.api_key, subject.region, subject.cache_store)
+      expect(StatsRequest).to receive(:new).with(subject.api_key, subject.region, subject.cache_store, subject.rate_limiter)
 
       subject.stats
     end
@@ -113,7 +130,7 @@ describe Client do
     end
 
     it "initializes the TeamRequest with the current API key and region" do
-      expect(TeamRequest).to receive(:new).with(subject.api_key, subject.region, subject.cache_store)
+      expect(TeamRequest).to receive(:new).with(subject.api_key, subject.region, subject.cache_store, subject.rate_limiter)
 
       subject.team
     end
@@ -125,7 +142,7 @@ describe Client do
     end
 
     it "initializes the LeagueRequest with the current API key and region" do
-      expect(LeagueRequest).to receive(:new).with(subject.api_key, subject.region, subject.cache_store)
+      expect(LeagueRequest).to receive(:new).with(subject.api_key, subject.region, subject.cache_store, subject.rate_limiter)
 
       subject.league
     end
@@ -137,7 +154,7 @@ describe Client do
     end
 
     it "initializes the SummonerRequest with the current API key and region" do
-      expect(SummonerRequest).to receive(:new).with(subject.api_key, subject.region, subject.cache_store)
+      expect(SummonerRequest).to receive(:new).with(subject.api_key, subject.region, subject.cache_store, subject.rate_limiter)
 
       subject.summoner
     end
@@ -167,7 +184,7 @@ describe Client do
     end
 
     it 'initializes CurrentGameRequest with the current API key an region' do
-      expect(CurrentGameRequest).to receive(:new).with subject.api_key, subject.region, subject.cache_store
+      expect(CurrentGameRequest).to receive(:new).with subject.api_key, subject.region, subject.cache_store, subject.rate_limiter
       subject.current_game
     end
 
@@ -183,7 +200,7 @@ describe Client do
     end
 
     it 'initializes FeaturedGamesRequest with the current API key an region' do
-      expect(FeaturedGamesRequest).to receive(:new).with subject.api_key, subject.region, subject.cache_store
+      expect(FeaturedGamesRequest).to receive(:new).with subject.api_key, subject.region, subject.cache_store, subject.rate_limiter
       subject.featured_games
     end
 
