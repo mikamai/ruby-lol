@@ -86,6 +86,8 @@ module Lol
         raise InvalidAPIResponse.new(url, response)
       end
 
+      response = response.parsed_response if response.respond_to?(:parsed_response)
+
       store.setex "#{clean_url(url)}#{options.inspect}", ttl, response.to_json if can_cache
 
       response
