@@ -26,8 +26,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "guard-rspec"
   spec.add_development_dependency "ZenTest"
   spec.add_development_dependency "autotest-growl"
-  spec.add_development_dependency "autotest-fsevent"
-  spec.add_development_dependency "codeclimate-test-reporter"
+  spec.add_development_dependency "codeclimate-test-reporter", '~> 0.5.0'
   spec.add_development_dependency "coveralls"
   spec.add_development_dependency "vcr"
   spec.add_development_dependency "webmock", ">= 1.8.0", "< 1.16"
