@@ -19,7 +19,7 @@ module Lol
 
     def tournament_request path, body
       pau = post_api_url path
-      perform_request(pau[:url], :post, body, pau[:options]).body
+      perform_request(pau[:url], :post, body, pau[:options])
     end
 
     # Returns a tournament code
