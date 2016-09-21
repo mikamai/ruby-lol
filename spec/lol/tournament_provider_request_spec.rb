@@ -21,20 +21,25 @@ describe TournamentProviderRequest do
   describe "#provider" do
     subject { request.provider("EUW", "https://foo.com") }
 
-    # before(:each) { stub_request(request, 'tournament', "tournament/public/#/recent") }
+    before(:each) do
+      expect(TournamentProviderRequest).to receive(:perform_request).and_return 10
+    end
 
-    # it 'returns an array' do
-    #   expect(subject).to be_a(Array)
-    # end
-    #
-    # it 'returns an array of Games' do
-    #   expect(subject.map(&:class).uniq).to eq([Game])
-    # end
-    #
-    # it 'fetches games from the API' do
-    #   fixture = load_fixture('game', GameRequest.api_version)
-    #   expect(subject.size).to eq(fixture['games'].size)
-    # end
+    it 'return the provider id' do
+      expect(subject).to eq 10
+    end
+  end
+
+  describe "#tournament" do
+    subject { request.provider("test", 10) }
+
+    before(:each) do
+      expect(TournamentProviderRequest).to receive(:perform_request).and_return 20
+    end
+
+    it 'return the tournament provider id' do
+      expect(subject).to eq 20
+    end
   end
 
   describe "#get_code" do
