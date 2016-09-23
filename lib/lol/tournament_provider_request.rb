@@ -57,7 +57,7 @@ module Lol
       body.merge!({password: password}) if password
 
       params = URI.encode_www_form({tournamentId: tournament_id, count: count})
-      JSON.parse(tournament_request "code?#{params}", body)
+      tournament_request "code?#{params}", body
     end
 
     # Returns the details of the tournament code
