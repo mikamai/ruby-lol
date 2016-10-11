@@ -44,7 +44,8 @@ module Lol
         options: {
           headers: {
             "X-Riot-Token" => api_key,
-            "Content-Type" => "application/json"
+            "Content-Type" => "application/json",
+            "Accept"       => "application/json"
           }
         }
       }
@@ -78,8 +79,7 @@ module Lol
         return JSON.parse(result)
       end
 
-      headers = { 'Content-Type' => 'application/json', 'Accept' => 'application/json' }
-      params = [:post, :put].include?(verb) ? [url, options.merge({body: body.to_json, headers: headers})] : url
+      params = [:post, :put].include?(verb) ? [url, options.merge({body: body.to_json})] : url
       response = self.class.send(verb, *params)
       if response.respond_to?(:code) && !(200...300).include?(response.code)
         raise NotFound.new("404 Not Found") if response.not_found?
