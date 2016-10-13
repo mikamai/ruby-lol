@@ -38,19 +38,6 @@ module Lol
       "#{url}?#{api_query_string params}"
     end
 
-    def post_api_url path, params = {}
-      {
-        url: api_url(path, params),
-        options: {
-          headers: {
-            "X-Riot-Token" => api_key,
-            "Content-Type" => "application/json",
-            "Accept"       => "application/json"
-          }
-        }
-      }
-    end
-
     def api_base_url
       "https://#{region}.api.pvp.net"
     end
@@ -73,25 +60,39 @@ module Lol
     # @param body [Hash] Body for POST request
     # @param options [Hash] Options passed to HTTParty
     # @return [String] raw response of the call
-    def perform_request url, verb = :get, body = {}, options = {}
+    def perform_request url, verb = :get, body = nil, options = {}
+      options_id = options.inspect
       can_cache = [:post, :put].include?(verb) ? false : cached?
-      if can_cache && result = store.get("#{clean_url(url)}#{options.inspect}")
+      if can_cache && result = store.get("#{clean_url(url)}#{options_id}")
         return JSON.parse(result)
       end
+      response = perform_uncached_request url, verb, body, options
+      store.setex "#{clean_url(url)}#{options_id}", ttl, response.to_json if can_cache
+      response
+    end
 
-      params = [:post, :put].include?(verb) ? [url, options.merge({body: body.to_json})] : url
-      response = self.class.send(verb, *params)
+    def perform_uncached_request url, verb = :get, body = nil, options = {}
+      options[:headers] ||= {}
+      options[:headers].merge!({
+        "Content-Type" => "application/json",
+        "Accept"       => "application/json"
+      })
+      if [:post, :put].include?(verb)
+        options[:body] = body.to_json if body
+        options[:headers]['X-Riot-Token'] = api_key
+      end
+      response = self.class.send(verb, url, options)
       if response.respond_to?(:code) && !(200...300).include?(response.code)
         raise NotFound.new("404 Not Found") if response.not_found?
         raise TooManyRequests.new('429 Rate limit exceeded') if response.code == 429
         raise InvalidAPIResponse.new(url, response)
       end
 
-      response = response.parsed_response if response.respond_to?(:parsed_response)
-
-      store.setex "#{clean_url(url)}#{options.inspect}", ttl, response.to_json if can_cache
-
-      response
+      if response.respond_to?(:parsed_response)
+        response.parsed_response
+      else
+        response
+      end
     end
 
     # @return [Redis] returns the cache store

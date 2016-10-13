@@ -14,12 +14,11 @@ module Lol
     # @param path [String] API path to call
     # @return [String] full fledged url
     def api_url path, params = {}
-      url = "#{api_base_url}/tournament/public/#{self.class.api_version}/#{path}"
+      "#{api_base_url}/tournament/public/#{self.class.api_version}/#{path}"
     end
 
     def tournament_request path, body
-      pau = post_api_url path
-      perform_request(pau[:url], :post, body, pau[:options])
+      perform_request(api_url(path), :post, body)
     end
 
     # Returns a tournament code
@@ -87,8 +86,7 @@ module Lol
         mapType: map_type
       }.reject{ |k,v| v.nil? }
 
-      pau = post_api_url "code/#{tournament_code}"
-      perform_request(pau[:url], :put, body, pau[:options])
+      perform_request(api_url("code/#{tournament_code}"), :put, body)
       get_code tournament_code
     end
 
