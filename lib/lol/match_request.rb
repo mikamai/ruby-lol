@@ -25,7 +25,7 @@ module Lol
     # @param tournament_code [String] Tournament code
     # @return [Hash] match object
     def for_tournament match_id, tournament_code
-      perform_request(api_url("match/for-tournament/#{match_id}?tournamentCode=#{tournament_code}"))
+      perform_request(api_url("match/for-tournament/#{match_id}", { "tournamentCode" => tournament_code }))
     end
   end
 end

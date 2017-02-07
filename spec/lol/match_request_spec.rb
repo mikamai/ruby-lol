@@ -38,12 +38,12 @@ describe MatchRequest do
   describe '#for_tournament' do
     subject { request.for_tournament 1, 'CODE-FOR-TEST' }
 
-    before { stub_request(request, 'match', 'match/for-tournament/1?tournamentCode=CODE-FOR-TEST') }
+    before { stub_request(request, 'match', 'match/for-tournament/1',{"tournamentCode" => 'CODE-FOR-TEST'}) }
 
     it 'returns an hash' do
       expect(subject).to be_a(Hash)
     end
-    
+
     it 'fetches matches from the API' do
       fixture = load_fixture('match', MatchRequest.api_version)
       expect(subject.keys).to match_array fixture.keys
