@@ -18,6 +18,10 @@ module Lol
       define_method(endpoint) { Proxy.new self, endpoint }
     end
 
+    def map
+      Proxy.new self, 'map'
+    end
+
     def realm
       Proxy.new self, 'realm'
     end

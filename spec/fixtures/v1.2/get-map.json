@@ -1,0 +1,71 @@
+{
+  "type": "map",
+  "version": "7.4.1",
+  "data": {
+    "11": {
+      "mapName": "Summoner's Rift",
+      "mapId": 11,
+      "image": {
+        "full": "map11.png",
+        "sprite": "map0.png",
+        "group": "map",
+        "x": 96,
+        "y": 0,
+        "w": 48,
+        "h": 48
+      }
+    },
+    "12": {
+      "mapName": "Howling Abyss",
+      "mapId": 12,
+      "image": {
+        "full": "map12.png",
+        "sprite": "map0.png",
+        "group": "map",
+        "x": 144,
+        "y": 0,
+        "w": 48,
+        "h": 48
+      }
+    },
+    "14": {
+      "mapName": "Butcher's Bridge",
+      "mapId": 14,
+      "image": {
+        "full": "map14.png",
+        "sprite": "map0.png",
+        "group": "map",
+        "x": 192,
+        "y": 0,
+        "w": 48,
+        "h": 48
+      }
+    },
+    "8": {
+      "mapName": "The Crystal Scar",
+      "mapId": 8,
+      "image": {
+        "full": "map8.png",
+        "sprite": "map0.png",
+        "group": "map",
+        "x": 0,
+        "y": 0,
+        "w": 48,
+        "h": 48
+      }
+    },
+    "10": {
+      "mapName": "The Twisted Treeline",
+      "mapId": 10,
+      "image": {
+        "full": "map10.png",
+        "sprite": "map0.png",
+        "group": "map",
+        "x": 48,
+        "y": 0,
+        "w": 48,
+        "h": 48
+      }
+    }
+  }
+}

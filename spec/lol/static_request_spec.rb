@@ -68,6 +68,20 @@ describe StaticRequest do
     end
   end
 
+  describe "#map" do
+    subject { request.map.get }
+
+    before(:each) { stub_request(request, 'map', 'map') }
+
+    it "returns an Array" do
+      expect(subject).to be_an(Array)
+    end
+
+    it "returns an Array of OpenStructs" do
+      expect(subject.map(&:class).uniq).to eq([OpenStruct])
+    end
+  end
+
   describe "#realm" do
     subject { request.realm.get }
 
