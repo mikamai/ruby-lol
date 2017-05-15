@@ -26,6 +26,12 @@ module Lol
       @table.as_json
     end
 
+    protected
+
+    def class_for_property property
+      self.class
+    end
+
     private
 
     def date_key? key
@@ -36,7 +42,7 @@ module Lol
       if date_key?(key) && v.is_a?(Fixnum)
         @table[key.to_sym] = @hash_table[key.to_sym] = value_to_date v
       else
-        @table[key.to_sym] = convert_object v
+        @table[key.to_sym] = convert_object v, property: key.to_sym
         @hash_table[key.to_sym] = v
       end
     end
@@ -45,11 +51,11 @@ module Lol
       Time.at(v / 1000)
     end
 
-    def convert_object obj
+    def convert_object obj, property:
       if obj.is_a? Hash
-        self.class.new obj
+        class_for_property(property).new obj
       elsif obj.respond_to?(:map)
-        obj.map { |o| convert_object o }
+        obj.map { |o| convert_object o, property: property }
       else
         obj
       end

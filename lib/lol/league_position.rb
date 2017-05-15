@@ -1,11 +1,14 @@
 module Lol
-  # This object exposes LeagueItemDTO properties, returned by league-related requests,
+  # This object exposes LeaguePositionDTO properties, returned by league-related requests,
   # as accessors.
   #
   # See: https://developer.riotgames.com/api-methods/#league-v3
-  class LeagueEntry < DynamicModel
+  class LeaguePosition < DynamicModel
     # @!attribute rank
     #   @return [String] Rank identifier
+
+    # @!attribute queue_type
+    #   @return [String] Queue type
 
     # @!attribute hot_streak
     #   @return [true|false] Whether Hot Streak promotions are active
@@ -25,6 +28,9 @@ module Lol
     # @!attribute player_or_team_id
     #   @return [String] Player or team identifier
 
+    # @!attribute league_name
+    #   @return [String] League Name
+
     # @!attribute player_or_team_name
     #   @return [String] Player or team name
 
@@ -33,6 +39,9 @@ module Lol
 
     # @!attribute fresh_blood
     #   @return [true|false] if the player or team is fresh blood in this league
+
+    # @!attribute tier
+    #   @return [String] Tier name
 
     # @!attribute league_points
     #   @return [Fixnum] number of league points

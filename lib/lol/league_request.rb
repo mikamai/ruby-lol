@@ -1,62 +1,89 @@
 module Lol
-  class LeagueRequest < Request
-    # Returns the supported API Version
-    # @return [String] the supported api version
-    def self.api_version
-      "v2.5"
+  # Bindings for the League API.
+  #
+  # See: https://developer.riotgames.com/api-methods/#league-v3
+  class LeagueRequest < V3Request
+    # @!visibility private
+    def api_base_path
+      "/lol/league/#{api_version}"
+    end
+
+    # Get the challenger league for a given queue
+    # @param [String] queue Queue identifier. See the list of game constants (developer.riotgames.com/game-constants.html) for the available queue identifiers
+    # @return [LeagueList] Challenger league
+    def find_challenger queue: 'RANKED_SOLO_5x5'
+      LeagueList.new perform_request api_url "challengerleagues/by-queue/#{queue}"
+    end
+
+    # Get the master league for a given queue
+    # @param [String] queue Queue identifier. See the list of game constants (developer.riotgames.com/game-constants.html) for the available queue identifiers
+    # @return [LeagueList] lMaster league
+    def find_master queue: 'RANKED_SOLO_5x5'
+      LeagueList.new perform_request api_url "masterleagues/by-queue/#{queue}"
+    end
+
+    # Get leagues in all queues for a given summoner ID
+    # @param [Fixnum] summoner_id Summoner ID associated with the player
+    # @return [Array<LeagueList>] List of leagues summoner is participating in
+    def summoner_leagues summoner_id:
+      result = perform_request api_url "leagues/by-summoner/#{summoner_id}"
+      result.map { |c| LeagueList.new c }
+    end
+
+    # Get league positions in all queues for a given summoner ID
+    # @param [Fixnum] summoner_id Summoner ID associated with the player
+    # @return [Array<LeaguePosition>] list of league positions
+    def summoner_positions summoner_id:
+      result = perform_request api_url "positions/by-summoner/#{summoner_id}"
+      result.map { |c| LeaguePosition.new c }
     end
 
     # Retrieves leagues data for summoner, including leagues for all of summoner's teams
+    # @deprecated Please use {LeagueRequest#summoner_leagues} instead
     # @param [Array<String>]
     # @return Hash{String => Array<League>}
     def get(*summoner_ids)
-      perform_league_request("league/by-summoner/#{summoner_ids.join(",")}")
+      if summoner_ids.size == 1
+        warn_for_deprecation "LeagueRequest#get(#{summoner_ids[0]}) has been deprecated. Use LeagueRequest#summoner_leagues(summoner_id: #{summoner_ids[0]}) instead"
+      else
+        warn_for_deprecation "LeagueRequest#get(#{summoner_ids.inspect}) has been deprecated. Use LeagueRequest#summoner_leagues with each summoner id"
+      end
+      summoner_ids.inject({}) do |memo, summoner_id|
+        memo.update summoner_id.to_s => summoner_leagues(summoner_id: summoner_id)
+      end
     end
 
     # Retrieves leagues entry data for summoner, including league entries for all of summoner's teams
+    # @deprecated Please use {LeagueRequest#summoner_leagues} instead
     # @param [Array<String>]
     # @return Hash{String => Array<League>}
     # TODO: Change name to entries?
     def get_entries(*summoner_ids)
-      perform_league_request("league/by-summoner/#{summoner_ids.join(',')}/entry")
-    end
-
-    # Retrieves leagues data for team
-    # @param [Array<String>]
-    # @return Hash{String => Array<League>}
-    def by_team(*team_ids)
-      perform_league_request("league/by-team/#{team_ids.join(',')}")
-    end
-
-    # Retrieves leagues entry data for team
-    # @param [Array<String>]
-    # @return Hash{String => Array<League>}
-    # TODO: Change name to?
-    def entries_by_team(*team_ids)
-      perform_league_request("league/by-team/#{team_ids.join(',')}/entry")
+      get(*summoner_ids)
     end
 
     # Retrieves challenger tier leagues
+    # @deprecated Please use {LeagueRequest#find_challenger} instead
     # @param [String] game queue type
     # @return [League]
     def challenger(game_queue_type="RANKED_SOLO_5x5")
-      league_json = perform_request(api_url('league/challenger', { :type => game_queue_type }))
-      League.new(league_json)
+      warn_for_deprecation "LeagueRequest#challenger(#{game_queue_type}) has been deprecated. Use LeagueRequest#find_challenger(queue: #{game_queue_type}) instead"
+      find_challenger queue: game_queue_type
     end
 
+    # Retrieves master tier leagues
+    # @deprecated Please use {LeagueRequest#find_master} instead
+    # @param [String] game queue type
+    # @return [League]
     def master(game_queue_type="RANKED_SOLO_5x5")
-      league_json = perform_request(api_url('league/master', { :type => game_queue_type }))
-      League.new(league_json)
+      warn_for_deprecation "LeagueRequest#master(#{game_queue_type}) has been deprecated. Use LeagueRequest#find_master(queue: #{game_queue_type}) instead"
+      find_master queue: game_queue_type
     end
 
-  private
+    private
 
-    def perform_league_request(partial_url)
-      url = api_url(partial_url)
-      perform_request(url).each_with_object({}) do |(summoner_id, leagues), entries_hash|
-        entries_hash[summoner_id] = leagues.map(&League.method(:new))
-      end
+    def warn_for_deprecation message
+      ActiveSupport::Deprecation.warn message
     end
-
   end
 end
