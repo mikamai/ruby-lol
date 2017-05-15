@@ -1,7 +1,7 @@
 module Lol
-  # This object will expose properties returned by champion-mastery-related requests
+  # This object exposes ChampionMasteryDTO properties, returned by champion-mastery-related requests,
   # as accessors.
-  # 
+  #
   # See: https://developer.riotgames.com/api-methods/#champion-mastery-v3
   class ChampionMastery < DynamicModel
     # @!attribute chest_granted

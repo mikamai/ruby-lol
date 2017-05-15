@@ -1,7 +1,7 @@
 module Lol
-  # This object will expose properties returned by champion-related requests
+  # This object exposes ChampionDto properties, returned by champion-related requests,
   # as accessors.
-  # 
+  #
   # See: https://developer.riotgames.com/api-methods/#champion-v3
   class Champion < DynamicModel
     # @!attribute ranked_play_enabled
