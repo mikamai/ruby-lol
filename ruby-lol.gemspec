@@ -32,7 +32,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "webmock", ">= 1.8.0", "< 1.16"
   spec.add_development_dependency "awesome_print"
 
-  spec.add_runtime_dependency "httparty"
+  spec.add_runtime_dependency "httparty", "< 0.15.2" # due to https://github.com/jnunemaker/httparty/issues/533
   spec.add_runtime_dependency "activesupport"
   spec.add_runtime_dependency "redis"
 end
