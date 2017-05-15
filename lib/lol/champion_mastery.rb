@@ -1,50 +1,24 @@
 module Lol
-  class ChampionMastery < Lol::Model
-    # @!attribute [r] champion_id
-    # @return [Fixnum] id of Champion
-    attr_reader :champion_id
-
-    # @!attribute [r] champion_level
-    # @return [Fixnum] Level of mastery for this champion
-    attr_reader :champion_level
-
-    # @!attribute [r] champion_points
-    # @return [Fixnum] Number of mastery points for this champion
-    attr_reader :champion_points
-
-    # @!attribute [r] champion_points_since_last_level
-    # @return [Fixnum] Number of mastery points since the last level for this champion
-    attr_reader :champion_points_since_last_level
-
-    # @!attribute [r] champion_points_until_next_level
-    # @return [Fixnum] Number of mastery points until the next level for this champion
-    attr_reader :champion_points_until_next_level
-
-    # @!attribute [r] chest_granted
-    # @return [true] if the chest for this champion has been granted
-    # @return [false] if the chest for this champion has been granted or not in current season
-    attr_reader :chest_granted
-
-    # @!attribute [r] highest_grade
-    # @return [String] The highest grade of this champion of current season
-    attr_reader :highest_grade
-
-    # @!attribute [r] last_play_time
-    # @return [Fixnum] Last time this champion was played by this player - in Unix milliseconds time format
-    attr_reader :last_play_time
-
-    # @!attribute [r] player_id
-    # @return [Fixnum] Player ID for this entry
-    attr_reader :player_id
-
-    # @!attribute [r] player_id
-    # @return [Fixnum] Number of tokens earned
-    attr_reader :tokens_earned
-
-    private
-
-    attr_writer :champion_id, :champion_level, :champion_points, :champion_points_since_last_level,
-                :champion_points_until_next_level, :chest_granted, :highest_grade, :last_play_time, :player_id,
-                :tokens_earned
+  # This object will expose properties returned by champion-mastery-related requests
+  # as accessors.
+  # 
+  # See: https://developer.riotgames.com/api-methods/#champion-mastery-v3
+  class ChampionMastery < DynamicModel
+    # @!attribute chest_granted
+    #	  @return [true|false] Is chest granted for this champion or not in current season
+    # @!attribute champion_level
+    #	  @return [Fixnum] Champion level for specified player and champion combination.
+    # @!attribute champion_points
+    #	  @return [Fixnum] Total number of champion points for this player and champion combination - they are used to determine championLevel.
+    # @!attribute champion_id
+    #	  @return [Fixnum] Champion ID for this entry.
+    # @!attribute player_id
+    #	  @return [Fixnum] Player ID for this entry.
+    # @!attribute champion_points_until_next_level
+    #	  @return [Fixnum] Number of points needed to achieve next level. Zero if player reached maximum champion level for this champion.
+    # @!attribute champion_points_since_last_level
+    #	  @return [Fixnum] Number of points earned since current level has been achieved. Zero if player reached maximum champion level for this champion.
+    # @!attribute last_play_time
+    #	  @return [Fixnum] Last time this champion was played by this player - in Unix milliseconds time format.
   end
 end
