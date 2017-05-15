@@ -1,5 +1,5 @@
 module Lol
-  class ChampionMasteryRequest < Request
+  class ChampionMasteryRequest < V3Request
     # Returns the supported API Version. ChampionMastery end point is not
     # versioned, so just return v1.0 anyway
     # @return [String] v1.0 (ChampionMastery end point is not versioned)
@@ -53,16 +53,8 @@ module Lol
     # @param path [String] API path to call
     # @return [String] full fledged url
     def api_url path, params = {}
-      url = "#{api_base_url}/championmastery/location/#{region_to_platform(region)}/#{path}"
+      url = "#{api_base_url}/championmastery/location/#{platform}/#{path}"
       "#{url}?#{api_query_string params}"
-    end
-
-    private
-
-    #A hash mapping a region to the platform, since the ChampionMastery endpoint uses a platform and not a region
-    def region_to_platform(region)
-      { br: 'BR1', eune: 'EUN1', euw: 'EUW1', jp: 'JP1', kr: 'KR1', lan: 'LA1', las: 'LA2',
-        na: 'NA1', oce: 'OC1', ru: 'RU', tr: 'TR1' }[region.to_sym]
     end
   end
 end

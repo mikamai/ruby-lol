@@ -13,7 +13,7 @@ def check_api_version(klass, version)
 end
 
 describe "API Versions" do
-  check_api_version(ChampionRequest, "v1.2")
+  check_api_version(ChampionRequest, "v3")
   check_api_version(GameRequest, "v1.3")
   check_api_version(LeagueRequest, "v2.5")
   check_api_version(StaticRequest, "v1.2")
