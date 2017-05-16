@@ -33,11 +33,6 @@ module Lol
       @match_request ||= MatchRequest.new(api_key, region, cache_store)
     end
 
-    # @return [MatchListRequest]
-    def match_list
-      @match_history_request ||= MatchListRequest.new(api_key, region, cache_store)
-    end
-
     # @return [StatsRequest]
     def stats
       @stats_request ||= StatsRequest.new(api_key, region, cache_store)
