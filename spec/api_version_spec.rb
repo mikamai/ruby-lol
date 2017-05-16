@@ -17,6 +17,7 @@ describe "API Versions" do
   check_api_version(ChampionMasteryRequest, "v3")
   check_api_version(LeagueRequest, "v3")
   check_api_version(StaticRequest, "v3")
+  check_api_version(LolStatusRequest, "v3")
   check_api_version(GameRequest, "v1.3")
   check_api_version(MatchRequest, "v2.2")
   check_api_version(MatchListRequest, "v2.2")

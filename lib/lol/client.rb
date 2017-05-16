@@ -65,7 +65,7 @@ module Lol
 
     # @return [LolStatusRequest]
     def lol_status
-      @lol_status ||= LolStatusRequest.new(region, cache_store)
+      @lol_status ||= LolStatusRequest.new(api_key, region, cache_store)
     end
 
     # @return [CurrentGameRequest]

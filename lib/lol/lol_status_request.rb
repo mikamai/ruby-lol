@@ -1,34 +1,25 @@
 module Lol
-  class LolStatusRequest < Request
-
-    def self.api_version
-      "v1.0"
+  # Bindings for the Status API.
+  #
+  # See: https://developer.riotgames.com/api-methods/#lol-status-v3
+  class LolStatusRequest < V3Request
+    # @!visibility private
+    def api_base_path
+      "/lol/status/#{self.class.api_version}"
     end
 
-    def initialize region = nil, cache_store = {}
-      super nil, region, cache_store
-    end
-
-    # Returns a list of each shard status
-    # This special call works against all regions
-    # @return [Array] an array of DynamicModel representing the response
-    def shards
-      perform_request(api_url('shards')).map do |shard_data|
-        DynamicModel.new shard_data
-      end
+    # Get League of Legends status for the given shard
+    # @return [DynamicModel]
+    def shard_data
+      DynamicModel.new perform_request api_url "shard-data"
     end
 
     # Returns a detailed status of the current shard
+    # @deprecated Please use {LolStatusRequest#shard_data} instead
     # @return [DynamicModel]
     def current_shard
-      shard_data = perform_request(api_url('shards', region))
-      DynamicModel.new shard_data
-    end
-
-    def api_url path, params = {}
-      "http://status.leagueoflegends.com/#{path}".tap do |url|
-        url << "/#{params}" unless params.empty?
-      end
+      warn_for_deprecation "LolStatusRequest#current_shard has been deprecated. Use LolStatusRequest#shard_data instead"
+      shard_data
     end
   end
 end
