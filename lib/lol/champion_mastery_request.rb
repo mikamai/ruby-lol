@@ -26,7 +26,7 @@ module Lol
       result = perform_request api_url "champion-masteries/by-summoner/#{summoner_id}"
       result.map { |c| ChampionMastery.new c }
     end
-    
+
     # Get a champion mastery by player ID and champion ID
     #
     # See: https://developer.riotgames.com/api-methods/#champion-mastery-v3/GET_getChampionMastery
@@ -77,12 +77,6 @@ module Lol
       count = options.fetch :count, 3
       warn_for_deprecation "ChampionMasteryRequest#top_champions(#{player_id}, count: #{count}) has been deprecated. Use ChampionMasteryRequest#all(summoner_id: #{player_id})[0, #{count}] instead"
       all(summoner_id: player_id)[0, count]
-    end
-
-    private
-
-    def warn_for_deprecation message
-      ActiveSupport::Deprecation.warn message
     end
   end
 end

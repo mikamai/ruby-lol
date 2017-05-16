@@ -79,11 +79,5 @@ module Lol
       warn_for_deprecation "LeagueRequest#master(#{game_queue_type}) has been deprecated. Use LeagueRequest#find_master(queue: #{game_queue_type}) instead"
       find_master queue: game_queue_type
     end
-
-    private
-
-    def warn_for_deprecation message
-      ActiveSupport::Deprecation.warn message
-    end
   end
 end

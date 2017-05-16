@@ -1,3 +1,5 @@
+require 'active_support/deprecation'
+
 module Lol
   class V3Request < Request
     # Returns the supported API Version.
@@ -35,21 +37,27 @@ module Lol
     def self.platforms
       {
         :br   => 'br1',
-        :eune => 'eun1', 
-        :euw  => 'euw1', 
-        :jp   => 'jp1', 
-        :kr   => 'kr1', 
-        :lan  => 'la1', 
+        :eune => 'eun1',
+        :euw  => 'euw1',
+        :jp   => 'jp1',
+        :kr   => 'kr1',
+        :lan  => 'la1',
         :las  => 'la2',
-        :na   => 'na1', 
-        :oce  => 'oc1', 
-        :ru   => 'ru', 
+        :na   => 'na1',
+        :oce  => 'oc1',
+        :ru   => 'ru',
         :tr   => 'tr1',
       }
     end
 
     def platform
       self.class.platforms[region.to_sym]
+    end
+
+    protected
+
+    def warn_for_deprecation message
+      ActiveSupport::Deprecation.warn message
     end
   end
 end

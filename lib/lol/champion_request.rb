@@ -1,5 +1,3 @@
-require 'active_support/deprecation'
-
 module Lol
   # Bindings for the Champion API.
   #
@@ -24,7 +22,7 @@ module Lol
       result = perform_request api_url "champions/#{id}"
       Champion.new result
     end
-  
+
     # Retrieve all champions
     # @deprecated Please use {ChampionRequest#find} and {ChampionRequest#all} instead.
     # @param [Hash] options the options to pass to the call
@@ -41,12 +39,6 @@ module Lol
         warn_for_deprecation "ChampionRequest#get(free_to_play: #{free_to_play}) has been deprecated. Use ChampionRequest#all(free_to_play: #{free_to_play} instead"
         all free_to_play: free_to_play
       end
-    end
-
-    private
-
-    def warn_for_deprecation message
-      ActiveSupport::Deprecation.warn message
     end
   end
 end
