@@ -7,7 +7,7 @@ module Lol
     attr_reader :aggregated_stats
 
     # @!attribute [r] losses
-    # @return [Fixnum] Number of losses for this queue type. It's presed only for ranked queue types
+    # @return [Integer] Number of losses for this queue type. It's presed only for ranked queue types
     attr_reader :losses
 
     # @!attribute [r] modify_date
@@ -23,7 +23,7 @@ module Lol
     attr_reader :player_stat_summary_type
 
     # @!attribute [r] wins
-    # @return [Fixnum] Number of wins for this queue type
+    # @return [Integer] Number of wins for this queue type
     attr_reader :wins
 
     private

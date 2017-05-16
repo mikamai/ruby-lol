@@ -15,7 +15,7 @@ module Lol
     attr_reader :modify_date_str
 
     # @!attribute [r] summoner_id
-    # @return [Fixnum] Summoner Id
+    # @return [Integer] Summoner Id
     attr_reader :summoner_id
 
     private

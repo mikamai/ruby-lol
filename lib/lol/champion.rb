@@ -20,6 +20,6 @@ module Lol
     #   @return [true|false] Indicated if the champion is free to play. Free to play champions are rotated periodically
 
     # @!attribute id
-    #   @return [Fixnum] Champion ID. For static information correlating to champion IDs, please refer to the LoL Static Data API
+    #   @return [Integer] Champion ID. For static information correlating to champion IDs, please refer to the LoL Static Data API
   end
 end

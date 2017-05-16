@@ -99,7 +99,7 @@ module Lol
     end
 
     # Returns a list of the recent games played by a summoner
-    # @param summoner_id [Fixnum] Summoner id
+    # @param summoner_id [Integer] Summoner id
     # @return [Array] an array of games
     def recent summoner_id
       summoner_api_path = "game/by-summoner/#{summoner_id}/recent"

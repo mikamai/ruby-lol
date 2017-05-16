@@ -3,7 +3,7 @@ require 'lol/model'
 module Lol
   class MatchSummary < Lol::Model
     # @!attribute [r] assists
-    # @return [Fixnum] Number of assists
+    # @return [Integer] Number of assists
     attr_reader :assists
 
     # @!attribute [r] date
@@ -11,11 +11,11 @@ module Lol
     attr_reader :date
 
     # @!attribute [r] deaths
-    # @return [Fixnum] Number of deaths
+    # @return [Integer] Number of deaths
     attr_reader :deaths
 
     # @!attribute [r] game_id
-    # @return [Fixnum] Game Id
+    # @return [Integer] Game Id
     attr_reader :game_id
 
     # @!attribute [r] game_mode
@@ -28,15 +28,15 @@ module Lol
     attr_reader :invalid
 
     # @!attribute [r] kills
-    # @return [Fixnum] Number of kills
+    # @return [Integer] Number of kills
     attr_reader :kills
 
     # @!attribute [r] map_id
-    # @return [Fixnum] Map Id
+    # @return [Integer] Map Id
     attr_reader :map_id
 
     # @!attribute [r] opposing_team_kills
-    # @return [Fixnum] Opposing Team Kills
+    # @return [Integer] Opposing Team Kills
     attr_reader :opposing_team_kills
 
     # @!attribute [r] opposing_team_name

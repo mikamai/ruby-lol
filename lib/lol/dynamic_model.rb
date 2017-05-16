@@ -39,7 +39,7 @@ module Lol
     end
 
     def set_property key, v
-      if date_key?(key) && v.is_a?(Fixnum)
+      if date_key?(key) && v.is_a?(Integer)
         @table[key.to_sym] = @hash_table[key.to_sym] = value_to_date v
       else
         @table[key.to_sym] = convert_object v, property: key.to_sym

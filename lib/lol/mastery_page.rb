@@ -2,7 +2,7 @@ module Lol
   class MasteryPage < Model
 
     # @!attribute [r] id
-    # @return [Fixnum] mastery page id
+    # @return [Integer] mastery page id
     attr_reader :id
 
     # @!attribute [r] masteries

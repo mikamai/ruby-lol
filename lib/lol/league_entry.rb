@@ -14,13 +14,13 @@ module Lol
     #   @return [MiniSeries] if player or team is in a mini_series, returns the MiniSeries representation
 
     # @!attribute wins
-    #   @return [Fixnum] Number of wins
+    #   @return [Integer] Number of wins
 
     # @!attribute veteran
     #   @return [true|false] if the player or team is veteran in this league
 
     # @!attribute losses
-    #   @return [Fixnum] Number of losses
+    #   @return [Integer] Number of losses
 
     # @!attribute player_or_team_id
     #   @return [String] Player or team identifier
@@ -35,7 +35,7 @@ module Lol
     #   @return [true|false] if the player or team is fresh blood in this league
 
     # @!attribute league_points
-    #   @return [Fixnum] number of league points
+    #   @return [Integer] number of league points
 
     protected
 

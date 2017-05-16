@@ -105,7 +105,7 @@ module Lol
       cache_store[:cached]
     end
 
-    # @return [Fixnum] the ttl to apply to cached keys
+    # @return [Integer] the ttl to apply to cached keys
     def ttl
       cache_store[:ttl]
     end
@@ -116,7 +116,7 @@ module Lol
     # @param cache_store [Hash]
     # @option cache_store [Redis] :redis Redis instance to use
     # @option cache_store [Boolean] :cached should the request be cached
-    # @option cacche_store [Fixnum] :ttl ttl for cache keys
+    # @option cacche_store [Integer] :ttl ttl for cache keys
     # @return [Request]
     def initialize api_key, region, cache_store = {}
       @cache_store = cache_store

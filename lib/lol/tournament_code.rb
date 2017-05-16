@@ -7,7 +7,7 @@ module Lol
     attr_reader :provider_id
 
     # @!attribute [r] tournament_id
-    # @return [Fixnum] Tournament ID
+    # @return [Integer] Tournament ID
     attr_reader :tournament_id
 
     # @!attribute [r] code
@@ -23,7 +23,7 @@ module Lol
     attr_reader :map
 
     # @!attribute [r] team_size
-    # @return [Fixnum] Team Size
+    # @return [Integer] Team Size
     attr_reader :team_size
 
     # @!attribute [r] spectators

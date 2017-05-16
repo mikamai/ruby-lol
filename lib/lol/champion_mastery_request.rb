@@ -11,8 +11,8 @@ module Lol
     # Get a player's total champion mastery score, which is the sum of individual champion mastery levels
     #
     # See: https://developer.riotgames.com/api-methods/#champion-mastery-v3/GET_getChampionMasteryScore
-    # @param [Fixnum] summoner_id Summoner ID associated with the player
-    # @return [Fixnum] Player's total champion master score
+    # @param [Integer] summoner_id Summoner ID associated with the player
+    # @return [Integer] Player's total champion master score
     def total_score summoner_id:
       perform_request api_url "scores/by-summoner/#{summoner_id}"
     end
@@ -20,7 +20,7 @@ module Lol
     # Get all champion mastery entries sorted by number of champion points descending
     #
     # See: https://developer.riotgames.com/api-methods/#champion-mastery-v3/GET_getAllChampionMasteries
-    # @param [Fixnum] summoner_id Summoner ID associated with the player
+    # @param [Integer] summoner_id Summoner ID associated with the player
     # @return [Array<Lol::ChampionMastery>] Champion Masteries
     def all summoner_id:
       result = perform_request api_url "champion-masteries/by-summoner/#{summoner_id}"
@@ -30,7 +30,7 @@ module Lol
     # Get a champion mastery by player ID and champion ID
     #
     # See: https://developer.riotgames.com/api-methods/#champion-mastery-v3/GET_getChampionMastery
-    # @param [Fixnum] summoner_id Summoner ID associated with the player
+    # @param [Integer] summoner_id Summoner ID associated with the player
     # @return [Lol::ChampionMastery] Champion Mastery
     def find champion_id, summoner_id:
       result = perform_request api_url "champion-masteries/by-summoner/#{summoner_id}/by-champion/#{champion_id}"
@@ -39,8 +39,8 @@ module Lol
 
     # Retrieve champion mastery information for a specific champion
     # @deprecated Please use {ChampionMasteryRequest#find} instead.
-    # @param [Fixnum] player_id id of player
-    # @param [Fixnum] champion_id id of champion
+    # @param [Integer] player_id id of player
+    # @param [Integer] champion_id id of champion
     # @return [ChampionMastery] champion mastery information
     def champion player_id, champion_id
       warn_for_deprecation "ChampionMasteryRequest#champion(#{player_id}, #{champion_id}) has been deprecated. Use ChampionMasteryRequest#find(#{champion_id}, summoner_id: #{player_id}) instead"
@@ -49,7 +49,7 @@ module Lol
 
     # Retrieve champion mastery information for all champion
     # @deprecated Please use {ChampionMasteryRequest#all} instead.
-    # @param [Fixnum] player_id id of player
+    # @param [Integer] player_id id of player
     # @return [Array] array of champion mastery information
     def champions player_id
       warn_for_deprecation "ChampionMasteryRequest#champions(#{player_id}) has been deprecated. Use ChampionMasteryRequest#all(summoner_id: #{player_id}) instead"
@@ -58,8 +58,8 @@ module Lol
 
     # Get a player's total champion mastery score, which is sum of individual champion mastery levels
     # @deprecated Please use {ChampionMasteryRequest#score} instead.
-    # @param [FixNum] player_id id of player
-    # @return [FixNum] Players mastery score
+    # @param [Integer] player_id id of player
+    # @return [Integer] Players mastery score
     def score player_id
       warn_for_deprecation "ChampionMasteryRequest#score(#{player_id}) has been deprecated. Use ChampionMasteryRequest#total_score(summoner_id: #{player_id})"
       total_score summoner_id: player_id
@@ -67,8 +67,8 @@ module Lol
 
     # Get specified number of top champion mastery entries sorted by number of champion points descending
     # @deprecated Please use {ChampionMasteryRequest#all} instead, manually limiting the amount of results
-    # @param [FixNum] player_id id of player
-    # @option options [Fixnum] :count the number of mastery scores to get. Defaults to 3
+    # @param [Integer] player_id id of player
+    # @option options [Integer] :count the number of mastery scores to get. Defaults to 3
     # @return [Array] array of champion mastery information, sorted by number of champion points descending
     def top_champions player_id, options = {}
       if options.keys.select { |k| k.to_sym != :count }.any?

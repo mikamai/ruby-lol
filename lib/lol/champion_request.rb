@@ -16,7 +16,7 @@ module Lol
     # Retrieve champion by ID
     #
     # See: https://developer.riotgames.com/api-methods/#champion-v3/GET_getChampionsById
-    # @param id [Fixnum] id of the champion to get
+    # @param id [Integer] id of the champion to get
     # @return [Champion] the found champion
     def find id
       result = perform_request api_url "champions/#{id}"
@@ -26,7 +26,7 @@ module Lol
     # Retrieve all champions
     # @deprecated Please use {ChampionRequest#find} and {ChampionRequest#all} instead.
     # @param [Hash] options the options to pass to the call
-    # @option options [Fixnum] :id the champion to get. If nil gets all champions
+    # @option options [Integer] :id the champion to get. If nil gets all champions
     # @option options [Boolean] :free_to_play filters for free to play champions
     # @return [Array] an array of champions
     def get options = {}

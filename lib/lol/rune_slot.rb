@@ -1,13 +1,13 @@
 module Lol
   class RuneSlot < Model
     # @!attribute [r] id
-    # @return [Fixnum] id of RuneSlot
+    # @return [Integer] id of RuneSlot
     def id
       @rune_slot_id
     end
 
     # @!attribute [r] rune_id
-    # @return [Fixnum] id of Rune
+    # @return [Integer] id of Rune
     def rune_id
       @rune_id
     end

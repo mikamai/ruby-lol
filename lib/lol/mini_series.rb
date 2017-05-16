@@ -5,13 +5,13 @@ module Lol
   # See: https://developer.riotgames.com/api-methods/#league-v3
   class MiniSeries < DynamicModel
     # @!attribute wins
-    #   @return [Fixnum] Number of wins
+    #   @return [Integer] Number of wins
 
     # @!attribute losses
-    #   @return [Fixnum] Number of losses
+    #   @return [Integer] Number of losses
 
     # @!attribute target
-    #   @return [Fixnum] Number of games required to advance
+    #   @return [Integer] Number of games required to advance
 
     # @!attribute progress
     #   @return [String] string representation of the miniseries progress.

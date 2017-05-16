@@ -11,7 +11,7 @@ module Lol
     attr_reader :join_date
 
     # @!attribute [r] player_id
-    # @return [Fixnum] Player Id
+    # @return [Integer] Player Id
     attr_reader :player_id
 
     # @!attribute [r] status

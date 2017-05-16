@@ -1,7 +1,7 @@
 module Lol
   class RunePage < Model
     # @!attribute [r] id
-    # @return [Fixnum] id of Runepage
+    # @return [Integer] id of Runepage
     attr_reader :id
 
     # @!attribute [r] name

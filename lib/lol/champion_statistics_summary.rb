@@ -3,7 +3,7 @@ require 'lol/model'
 module Lol
   class ChampionStatisticsSummary < Lol::Model
     # @!attribute [r] id
-    # @return [Fixnum] Champion Id
+    # @return [Integer] Champion Id
     attr_reader :id
 
     # @!attribute [r] name

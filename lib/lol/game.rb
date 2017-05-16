@@ -3,7 +3,7 @@ require 'lol/model'
 module Lol
   class Game < Lol::Model
     # @!attribute [r] champion_id
-    # @return [Fixnum] Champion Id associated with this game
+    # @return [Integer] Champion Id associated with this game
     attr_reader :champion_id
 
     # @!attribute [r] create_date
@@ -15,7 +15,7 @@ module Lol
     attr_reader :fellow_players
 
     # @!attribute [r] id
-    # @return [Fixnum] Game Id
+    # @return [Integer] Game Id
     attr_reader :game_id
 
     # @!attribute [r] game_mode
@@ -32,23 +32,23 @@ module Lol
     attr_reader :invalid
 
     # @!attribute [r] ip_earned
-    # @return [Fixnum] IP Earned
+    # @return [Integer] IP Earned
     attr_reader :ip_earned
-    
+
     # @!attribute [r] level
-    # @return [Fixnum] Level
+    # @return [Integer] Level
     attr_reader :level
 
     # @!attribute [r] map_id
-    # @return [Fixnum] Map Id
+    # @return [Integer] Map Id
     attr_reader :map_id
 
     # @!attribute [r] spell1
-    # @return [Fixnum] Summoner first spell id
+    # @return [Integer] Summoner first spell id
     attr_reader :spell1
 
     # @!attribute [r] spell2
-    # @return [Fixnum] Summoner second spell id
+    # @return [Integer] Summoner second spell id
     attr_reader :spell2
 
     # @!attribute [r] statistics
@@ -60,7 +60,7 @@ module Lol
     attr_reader :sub_type
 
     # @!attribute [r] team_id
-    # @return [Fixnum] Team Id associated with game
+    # @return [Integer] Team Id associated with game
     attr_reader :team_id
 
     private
