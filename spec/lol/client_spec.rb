@@ -107,30 +107,6 @@ describe Client do
     end
   end
 
-  describe '#stats' do
-    it "returns an instance of StatsRequest" do
-      expect(subject.stats).to be_a(StatsRequest)
-    end
-
-    it "initializes the StatsRequest with the current API key and region" do
-      expect(StatsRequest).to receive(:new).with(subject.api_key, subject.region, subject.cache_store)
-
-      subject.stats
-    end
-  end
-
-  describe '#team' do
-    it "returns an instance of TeamRequest" do
-      expect(subject.team).to be_a(TeamRequest)
-    end
-
-    it "initializes the TeamRequest with the current API key and region" do
-      expect(TeamRequest).to receive(:new).with(subject.api_key, subject.region, subject.cache_store)
-
-      subject.team
-    end
-  end
-
   describe "#league" do
     it "returns an instance of LeagueRequest" do
       expect(subject.league).to be_a(LeagueRequest)
@@ -170,38 +146,6 @@ describe Client do
   describe '#lol_status' do
     it 'return an instance of LolStatusRequest' do
       expect(subject.lol_status).to be_a(LolStatusRequest)
-    end
-  end
-
-  describe '#current_game' do
-    it 'returns an instance of CurrentGameRequest' do
-      expect(subject.current_game).to be_a CurrentGameRequest
-    end
-
-    it 'initializes CurrentGameRequest with the current API key an region' do
-      expect(CurrentGameRequest).to receive(:new).with subject.api_key, subject.region, subject.cache_store
-      subject.current_game
-    end
-
-    it 'memoizes the result' do
-      expect(CurrentGameRequest).to receive(:new).and_return(double).exactly(:once)
-      2.times { subject.current_game }
-    end
-  end
-
-  describe '#featured_games' do
-    it 'returns an instance of FeaturedGamesRequest' do
-      expect(subject.featured_games).to be_a FeaturedGamesRequest
-    end
-
-    it 'initializes FeaturedGamesRequest with the current API key an region' do
-      expect(FeaturedGamesRequest).to receive(:new).with subject.api_key, subject.region, subject.cache_store
-      subject.featured_games
-    end
-
-    it 'memoizes the result' do
-      expect(FeaturedGamesRequest).to receive(:new).and_return(double).exactly(:once)
-      2.times { subject.featured_games }
     end
   end
 

@@ -28,11 +28,6 @@ module Lol
       @match_request ||= MatchRequest.new(api_key, region, cache_store)
     end
 
-    # @return [StatsRequest]
-    def stats
-      @stats_request ||= StatsRequest.new(api_key, region, cache_store)
-    end
-
     # @return [LeagueRequest]
     def league
       @league_request ||= LeagueRequest.new(api_key, region, cache_store)
