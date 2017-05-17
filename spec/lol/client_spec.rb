@@ -83,6 +83,30 @@ describe Client do
     end
   end
 
+  describe '#runes' do
+    it "returns an instance of RunesRequest" do
+      expect(subject.runes).to be_a(RunesRequest)
+    end
+
+    it "initializes the RunesRequest with the current API key and region" do
+      expect(RunesRequest).to receive(:new).with(subject.api_key, subject.region, subject.cache_store)
+
+      subject.runes
+    end
+  end
+
+  describe '#masteries' do
+    it "returns an instance of MasteriesRequest" do
+      expect(subject.masteries).to be_a(MasteriesRequest)
+    end
+
+    it "initializes the MasteriesRequest with the current API key and region" do
+      expect(MasteriesRequest).to receive(:new).with(subject.api_key, subject.region, subject.cache_store)
+
+      subject.masteries
+    end
+  end
+
   describe '#stats' do
     it "returns an instance of StatsRequest" do
       expect(subject.stats).to be_a(StatsRequest)

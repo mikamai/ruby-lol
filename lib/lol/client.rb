@@ -43,6 +43,16 @@ module Lol
       @team_request ||= TeamRequest.new(api_key, region, cache_store)
     end
 
+    # @return [RunesRequest]
+    def runes
+      @runes_request ||= RunesRequest.new(api_key, region, cache_store)
+    end
+
+    # @return [masteriesRequest]
+    def masteries
+      @masteries_request ||= MasteriesRequest.new(api_key, region, cache_store)
+    end
+
     # @return [SummonerRequest]
     def summoner
       @summoner_request ||= SummonerRequest.new(api_key, region, cache_store)
