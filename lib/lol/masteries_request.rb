@@ -4,7 +4,7 @@ module Lol
   # See: https://developer.riotgames.com/api-methods/#masteries-v3
   class MasteriesRequest < V3Request
     # Get mastery pages for a given summoner ID
-    # @param [Fixnum] summoner_id Summoner ID
+    # @param [Integer] summoner_id Summoner ID
     # @return [Array<DynamicModel>] Mastery pages
     def by_summoner_id summoner_id
       result = perform_request api_url "masteries/by-summoner/#{summoner_id}"

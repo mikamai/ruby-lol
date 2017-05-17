@@ -9,7 +9,7 @@ module Lol
     end
 
     # Get a summoner by summoner ID.
-    # @param [Fixnum] id Summoner ID
+    # @param [Integer] id Summoner ID
     # @return [DynamicModel] Summoner representation
     def find id
       DynamicModel.new perform_request api_url "summoners/#{id}"
@@ -24,7 +24,7 @@ module Lol
     end
 
     # Get a summoner by account ID.
-    # @param [Fixnum] account_id Account ID
+    # @param [Integer] account_id Account ID
     # @return [DynamicModel] Summoner representation
     def find_by_account_id account_id
       DynamicModel.new perform_request api_url "summoners/by-account/#{account_id}"

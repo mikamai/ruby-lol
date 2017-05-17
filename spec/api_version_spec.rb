@@ -22,6 +22,7 @@ describe "API Versions" do
   check_api_version(SummonerRequest, "v3")
   check_api_version(RunesRequest, "v3")
   check_api_version(MasteriesRequest, "v3")
+  check_api_version(SpectatorRequest, "v3")
   check_api_version(StatsRequest, "v1.3")
   check_api_version(TeamRequest, "v2.4")
 end
