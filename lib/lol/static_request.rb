@@ -15,10 +15,6 @@ module Lol
       define_method new_endpoint do
         Proxy.new self, new_endpoint
       end
-      define_method old_endpoint do
-        warn_for_deprecation "StaticRequest##{old_endpoint} has been deprecated. Use StaticRequest##{new_endpoint} instead"
-        send(new_endpoint)
-      end
     end
 
     def language_strings params={}
@@ -33,22 +29,12 @@ module Lol
       Proxy.new self, "maps"
     end
 
-    def map params={}
-      warn_for_deprecation "StaticRequest#map has been deprecated. Use StaticRequest#maps instead"
-      maps params
-    end
-
     def profile_icons params={}
       all "profile_icons", params
     end
 
     def realms
       Proxy.new self, "realms"
-    end
-
-    def realm
-      warn_for_deprecation "StaticRequest#realm has been deprecated. Use StaticRequest#realms instead"
-      realms
     end
 
     def versions

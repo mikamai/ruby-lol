@@ -54,33 +54,5 @@ module Lol
     def recent account_id:
       DynamicModel.new perform_request api_url "matchlists/by-account/#{account_id}/recent"
     end
-
-    # Returns a match with the given id
-    # @deprecated Please use {MatchRequest#find} instead
-    # @param match_id [Integer] Match ID
-    # @return [Hash] match object
-    def get match_id
-      warn_for_deprecation "MatchRequest#get has been deprecated. Use MatchRequest#get instead"
-      find(match_id).to_h
-    end
-
-    # Returns a match list for the give tournament code
-    # @deprecated Please use {MatchRequest#ids_by_tournament_code} instead
-    # @param tournament_code [String] Tournament code
-    # @return [Array] match ids for the given tournament code
-    def by_tournament tournament_code
-      warn_for_deprecation "MatchRequest#by_tournament has been deprecated. Use MatchRequest#ids_by_tournament_code instead"
-      ids_by_tournament_code tournament_code
-    end
-
-    # Returns a match with the given id if is part of the given tournament code
-    # @deprecated Please use {MatchRequest#get} instead
-    # @param match_id [Integer] Match ID
-    # @param tournament_code [String] Tournament code
-    # @return [Hash] match object
-    def for_tournament match_id, tournament_code
-      warn_for_deprecation "MatchRequest#for_tournament(#{match_id}, #{tournament_code}) has been deprecated. Use MatchRequest#find(#{match_id}, tournament_code: #{tournament_code}"
-      find(match_id, tournament_code: tournament_code).to_h
-    end
   end
 end

@@ -13,13 +13,5 @@ module Lol
     def shard_data
       DynamicModel.new perform_request api_url "shard-data"
     end
-
-    # Returns a detailed status of the current shard
-    # @deprecated Please use {LolStatusRequest#shard_data} instead
-    # @return [DynamicModel]
-    def current_shard
-      warn_for_deprecation "LolStatusRequest#current_shard has been deprecated. Use LolStatusRequest#shard_data instead"
-      shard_data
-    end
   end
 end

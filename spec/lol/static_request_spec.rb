@@ -5,9 +5,6 @@ include Lol
 
 describe StaticRequest do
   let(:subject) { StaticRequest.new("api_key", "euw") }
-  before do
-    allow(subject).to receive(:warn_for_deprecation)
-  end
 
   {
     "champion"       => "champions",
@@ -68,7 +65,7 @@ describe StaticRequest do
   end
 
   describe "#realms" do
-    let(:result) { subject.realm.get }
+    let(:result) { subject.realms.get }
 
     before(:each) { stub_request(subject, 'static-realms', 'realms') }
 

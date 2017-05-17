@@ -4,9 +4,6 @@ include Lol
 
 describe ChampionMasteryRequest do
   subject { ChampionMasteryRequest.new("api_key", "euw") }
-  before do
-    allow(subject).to receive(:warn_for_deprecation).and_return nil
-  end
 
   it "inherits from Request" do
     expect(ChampionMasteryRequest.ancestors[1]).to eq V3Request
@@ -16,19 +13,6 @@ describe ChampionMasteryRequest do
     it "returns the total score" do
       stub_request_raw subject, 60, 'scores/by-summoner/1'
       expect(subject.total_score summoner_id: 1).to eq 60
-    end
-  end
-
-  describe "#score" do
-    it "calls #total_score" do
-      expect(subject).to receive(:total_score).with summoner_id: 1
-      subject.score 1
-    end
-
-    it "shows a deprecation warning" do
-      stub_request_raw subject, 60, 'scores/by-summoner/1'
-      expect(subject).to receive(:warn_for_deprecation)
-      subject.score 1
     end
   end
 
@@ -53,19 +37,6 @@ describe ChampionMasteryRequest do
     end
   end
 
-  describe "#champion" do
-    it "calls #find" do
-      expect(subject).to receive(:find).with 40, summoner_id: 1
-      subject.champion 1, 40
-    end
-
-    it "shows a deprecation warning" do
-      stub_request(subject, 'champion-mastery', 'champion-masteries/by-summoner/1/by-champion/40')
-      expect(subject).to receive(:warn_for_deprecation)
-      subject.champion 1, 40
-    end
-  end
-
   describe "#all" do
     before { stub_request(subject, 'champion-masteries', 'champion-masteries/by-summoner/1') }
     let(:result) { subject.all summoner_id: 1 }
@@ -78,42 +49,6 @@ describe ChampionMasteryRequest do
     it "fetches ChampionMastery properties from the API" do
       fixture = load_fixture('champion-masteries', described_class.api_version)
       expect(result.count).to eq fixture.count
-    end
-  end
-
-  describe "#champions" do
-    it "calls #all" do
-      expect(subject).to receive(:all).with summoner_id: 1
-      subject.champions(1)
-    end
-
-    it "shows a deprecation warning" do
-      stub_request(subject, 'champion-masteries', 'champion-masteries/by-summoner/1')
-      expect(subject).to receive(:warn_for_deprecation)
-      subject.champions 1
-    end
-  end
-
-  describe "#top_champions" do
-    it "calls #all" do
-      expect(subject).to receive(:all).with(summoner_id: 1).and_return []
-      subject.top_champions 1
-    end
-
-    it "limits the result of #all by 3" do
-      stub_request(subject, 'champion-masteries', 'champion-masteries/by-summoner/1')
-      expect(subject.top_champions(1).count).to eq 3
-    end
-
-    it "allows to customize the limit with :count" do
-      stub_request(subject, 'champion-masteries', 'champion-masteries/by-summoner/1')
-      expect(subject.top_champions(1, count: 5).count).to eq 5
-    end
-
-    it "shows a deprecation warning" do
-      stub_request(subject, 'champion-masteries', 'champion-masteries/by-summoner/1')
-      expect(subject).to receive(:warn_for_deprecation)
-      subject.top_champions 1
     end
   end
 end

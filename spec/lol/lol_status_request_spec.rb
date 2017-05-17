@@ -5,7 +5,6 @@ include Lol
 
 describe LolStatusRequest do
   subject { LolStatusRequest.new "api_key", "euw" }
-  before { allow(subject).to receive(:warn_for_deprecation) }
 
   it 'inherits from V3Request' do
     expect(LolStatusRequest).to be < V3Request

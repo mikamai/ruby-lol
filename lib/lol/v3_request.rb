@@ -53,11 +53,5 @@ module Lol
     def platform
       self.class.platforms[region.to_sym]
     end
-
-    protected
-
-    def warn_for_deprecation message
-      ActiveSupport::Deprecation.warn message
-    end
   end
 end

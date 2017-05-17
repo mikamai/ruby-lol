@@ -37,47 +37,5 @@ module Lol
       result = perform_request api_url "positions/by-summoner/#{summoner_id}"
       result.map { |c| LeaguePosition.new c }
     end
-
-    # Retrieves leagues data for summoner, including leagues for all of summoner's teams
-    # @deprecated Please use {LeagueRequest#summoner_leagues} instead
-    # @param [Array<String>]
-    # @return Hash{String => Array<League>}
-    def get(*summoner_ids)
-      if summoner_ids.size == 1
-        warn_for_deprecation "LeagueRequest#get(#{summoner_ids[0]}) has been deprecated. Use LeagueRequest#summoner_leagues(summoner_id: #{summoner_ids[0]}) instead"
-      else
-        warn_for_deprecation "LeagueRequest#get(#{summoner_ids.inspect}) has been deprecated. Use LeagueRequest#summoner_leagues with each summoner id"
-      end
-      summoner_ids.inject({}) do |memo, summoner_id|
-        memo.update summoner_id.to_s => summoner_leagues(summoner_id: summoner_id)
-      end
-    end
-
-    # Retrieves leagues entry data for summoner, including league entries for all of summoner's teams
-    # @deprecated Please use {LeagueRequest#summoner_leagues} instead
-    # @param [Array<String>]
-    # @return Hash{String => Array<League>}
-    # TODO: Change name to entries?
-    def get_entries(*summoner_ids)
-      get(*summoner_ids)
-    end
-
-    # Retrieves challenger tier leagues
-    # @deprecated Please use {LeagueRequest#find_challenger} instead
-    # @param [String] game queue type
-    # @return [League]
-    def challenger(game_queue_type="RANKED_SOLO_5x5")
-      warn_for_deprecation "LeagueRequest#challenger(#{game_queue_type}) has been deprecated. Use LeagueRequest#find_challenger(queue: #{game_queue_type}) instead"
-      find_challenger queue: game_queue_type
-    end
-
-    # Retrieves master tier leagues
-    # @deprecated Please use {LeagueRequest#find_master} instead
-    # @param [String] game queue type
-    # @return [League]
-    def master(game_queue_type="RANKED_SOLO_5x5")
-      warn_for_deprecation "LeagueRequest#master(#{game_queue_type}) has been deprecated. Use LeagueRequest#find_master(queue: #{game_queue_type}) instead"
-      find_master queue: game_queue_type
-    end
   end
 end
