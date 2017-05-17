@@ -71,18 +71,6 @@ describe Client do
     end
   end
 
-  describe '#game' do
-    it "returns an instance of GameRequest" do
-      expect(subject.game).to be_a(GameRequest)
-    end
-
-    it "initializes the GameRequest with the current API key and region" do
-      expect(GameRequest).to receive(:new).with(subject.api_key, subject.region, subject.cache_store)
-
-      subject.game
-    end
-  end
-
   describe '#match' do
     it "returns an instance of MatchRequest" do
       expect(subject.match).to be_a(MatchRequest)

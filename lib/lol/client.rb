@@ -23,11 +23,6 @@ module Lol
       @champion_mastery_request ||= ChampionMasteryRequest.new(api_key, region, cache_store)
     end
 
-    # @return [GameRequest]
-    def game
-      @game_request ||= GameRequest.new(api_key, region, cache_store)
-    end
-
     # @return [MatchRequest]
     def match
       @match_request ||= MatchRequest.new(api_key, region, cache_store)
