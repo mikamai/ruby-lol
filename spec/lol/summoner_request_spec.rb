@@ -4,89 +4,113 @@ require "lol"
 include Lol
 
 describe SummonerRequest do
-  it "inherits from Request" do
-    expect(SummonerRequest.ancestors[1]).to eq(Request)
+  subject { SummonerRequest.new "api_key", "euw" }
+  before { allow(subject).to receive(:warn_for_deprecation) }
+
+  it "inherits from V3Request" do
+    expect(SummonerRequest).to be < V3Request
   end
 
-  let(:request) { SummonerRequest.new('api_key', 'euw') }
-
-  describe "#by_name" do
-
-    context 'regular arguments' do
-      subject { request.by_name(['foo', 'bar']) }
-
-      before(:each) { stub_request(request, 'summoner-by-name', 'summoner/by-name/foo,bar') }
-
-      it "returns an array" do
-        expect(subject).to be_a(Array)
-      end
-
-      it "returns an array of summoners" do
-        expect(subject.map(&:class).uniq).to eq([Summoner])
-      end
-    end
-
-    it 'escapes the given names' do
-      stub_request(request, 'summoner-by-name', "summoner/by-name/f%C3%B2%C3%A5,f%C3%B9%C3%AE")
-      request.by_name(['fòå', 'fùî'])
-    end
-
-    it 'downcase the given names' do
-      stub_request(request, 'summoner-by-name', 'summoner/by-name/foo,bar')
-      request.by_name('FoO', 'BAR')
-    end
-
-    it 'strips spaces from names' do
-      stub_request(request, 'summoner-by-name', 'summoner/by-name/foo,bar')
-      request.by_name('Fo o', 'b a r')
-    end
-  end
-
-  describe "#name" do
-    subject { request.name("foo", "bar") }
-
-    before(:each) { stub_request(request, 'summoner-name', 'summoner/foo,bar/name') }
-
-    it "returns an hash" do
-      expect(subject).to be_a(Hash)
+  describe "#find" do
+    it "returns a DynamicModel" do
+      stub_request subject, "summoner", "summoners/23"
+      expect(subject.find 23).to be_a DynamicModel
     end
   end
 
   describe "#get" do
-    subject { request.get(["foo", "bar"]) }
+    it "returns an Array" do
+      stub_request subject, "summoner", "summoners/23"
+      expect(subject.get 23).to be_a Array
+    end
 
-    before(:each) { stub_request(request, 'summoner', 'summoner/foo,bar') }
+    it "calls #find" do
+      expect(subject).to receive(:find).with 23
+      subject.get 23
+    end
 
-    it "returns an array summoners" do
-      expect(subject.map(&:class).uniq).to eq([Summoner])
+    it "calls #find with each given id" do
+      expect(subject).to receive(:find).with 22
+      expect(subject).to receive(:find).with 23
+      subject.get 22, 23
+    end
+
+    it "shows a deprecation warning" do
+      expect(subject).to receive(:warn_for_deprecation)
+      stub_request subject, "summoner", "summoners/23"
+      subject.get 23
     end
   end
 
-  describe "#runes" do
-    subject { request.runes(["foo", "bar"]) }
-
-    before(:each) { stub_request(request, 'summoner-runes', 'summoner/foo,bar/runes') }
-
-    it "returns an array of Hash" do
-      expect(subject).to be_a(Hash)
+  describe "#name" do
+    it "returns an Hash" do
+      stub_request subject, "summoner", "summoners/23"
+      result = subject.name(23)
+      expect(result).to be_a Hash
+      expect(result[23]).to be_a String
     end
 
-    it "returns an array of RunePages for each summoner in the hash" do
-      expect(subject.map {|k,v| v}.flatten.map(&:class).uniq).to eq([RunePage])
+    it "calls #find" do
+      expect(subject).to receive(:find).with(23).and_return OpenStruct.new(name: 'foo')
+      subject.name 23
+    end
+
+    it "calls #find with each given id" do
+      expect(subject).to receive(:find).with(22).and_return OpenStruct.new(name: 'bar')
+      expect(subject).to receive(:find).with(23).and_return OpenStruct.new(name: 'baz')
+      subject.name 22, 23
+    end
+
+    it "shows a deprecation warning" do
+      expect(subject).to receive(:warn_for_deprecation)
+      stub_request subject, "summoner", "summoners/23"
+      subject.name 23
     end
   end
 
-  describe "#masteries" do
-    subject { request.masteries(["foo", "bar"]) }
-
-    before(:each) { stub_request(request, 'summoner-masteries', 'summoner/foo,bar/masteries') }
-
-    it "returns an array of Hash" do
-      expect(subject).to be_a(Hash)
+  describe "#find_by_name" do
+    it "returns a DynamicModel" do
+      stub_request subject, 'summoner-by-name', 'summoners/by-name/foo'
+      expect(subject.find_by_name 'foo').to be_a DynamicModel
     end
 
-    it "returns an array of MasteryPage for each summoner in the hash" do
-      expect(subject.map {|k,v| v}.flatten.map(&:class).uniq).to eq([MasteryPage])
+    it "escapes the given name" do
+      stub_request subject, 'summoner-by-name', 'summoners/by-name/f%C3%B2%C3%A5'
+      subject.find_by_name 'fòå'
+    end
+
+    it "downcases the given name" do
+      stub_request subject, 'summoner-by-name', 'summoners/by-name/arg'
+      subject.find_by_name 'ARG'
+    end
+
+    it 'strips spaces from names' do
+      stub_request(subject, 'summoner-by-name', 'summoners/by-name/foo')
+      subject.find_by_name('fo o')
+    end
+  end
+
+  describe "#by_name" do
+    it "returns an Array" do
+      stub_request(subject, 'summoner-by-name', 'summoners/by-name/foo')
+      expect(subject.by_name 'foo').to be_a Array
+    end
+
+    it "calls #find_by_name" do
+      expect(subject).to receive(:find_by_name).with 'foo'
+      subject.by_name 'foo'
+    end
+
+    it "calls #find_by_name with each given name" do
+      expect(subject).to receive(:find_by_name).with 'foo'
+      expect(subject).to receive(:find_by_name).with 'bar'
+      subject.by_name 'foo', 'bar'
+    end
+
+    it "shows a deprecation warning" do
+      expect(subject).to receive(:warn_for_deprecation)
+      stub_request(subject, 'summoner-by-name', 'summoners/by-name/foo')
+      subject.by_name 'foo'
     end
   end
 end
