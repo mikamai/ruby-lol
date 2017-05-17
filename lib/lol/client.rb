@@ -80,7 +80,7 @@ module Lol
 
     # @return [TournamentProviderRequest]
     def tournament
-      @tournament ||= TournamentProviderRequest.new(api_key, region, cache_store)
+      @tournament ||= TournamentRequest.new(api_key, region, cache_store)
     end
 
     # Initializes a Lol::Client
