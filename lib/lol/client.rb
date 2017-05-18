@@ -33,11 +33,6 @@ module Lol
       @league_request ||= LeagueRequest.new(api_key, region, cache_store)
     end
 
-    # @return [TeamRequest]
-    def team
-      @team_request ||= TeamRequest.new(api_key, region, cache_store)
-    end
-
     # @return [RunesRequest]
     def runes
       @runes_request ||= RunesRequest.new(api_key, region, cache_store)
