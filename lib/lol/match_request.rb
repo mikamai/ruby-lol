@@ -2,7 +2,7 @@ module Lol
   # Bindings for the Match API.
   #
   # See: https://developer.riotgames.com/api-methods/#match-v3
-  class MatchRequest < V3Request
+  class MatchRequest < Request
     # @!visibility private
     def api_base_path
       "/lol/match/#{self.class.api_version}"

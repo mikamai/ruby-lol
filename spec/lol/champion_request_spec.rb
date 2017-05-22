@@ -6,8 +6,8 @@ include Lol
 describe ChampionRequest do
   subject { described_class.new("api_key", "euw") }
 
-  it "inherits from V3Request" do
-    expect(described_class.ancestors[1]).to eq(V3Request)
+  it "inherits from Request" do
+    expect(described_class.ancestors[1]).to eq(Request)
   end
 
   describe "#find" do

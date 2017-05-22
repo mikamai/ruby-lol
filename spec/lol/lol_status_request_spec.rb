@@ -6,8 +6,8 @@ include Lol
 describe LolStatusRequest do
   subject { LolStatusRequest.new "api_key", "euw" }
 
-  it 'inherits from V3Request' do
-    expect(LolStatusRequest).to be < V3Request
+  it 'inherits from Request' do
+    expect(LolStatusRequest).to be < Request
   end
 
   describe '#shard_data' do

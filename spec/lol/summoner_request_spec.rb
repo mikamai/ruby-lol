@@ -6,8 +6,8 @@ include Lol
 describe SummonerRequest do
   subject { SummonerRequest.new "api_key", "euw" }
 
-  it "inherits from V3Request" do
-    expect(SummonerRequest).to be < V3Request
+  it "inherits from Request" do
+    expect(SummonerRequest).to be < Request
   end
 
   describe "#find" do

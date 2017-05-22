@@ -1,5 +1,5 @@
 module Lol
-  class StaticRequest < V3Request
+  class StaticRequest < Request
     # @!visibility private
     def api_base_path
       "/lol/static-data/#{self.class.api_version}"

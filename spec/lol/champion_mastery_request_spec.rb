@@ -6,7 +6,7 @@ describe ChampionMasteryRequest do
   subject { ChampionMasteryRequest.new("api_key", "euw") }
 
   it "inherits from Request" do
-    expect(ChampionMasteryRequest.ancestors[1]).to eq V3Request
+    expect(ChampionMasteryRequest.ancestors[1]).to eq Request
   end
 
   describe "#total_score" do

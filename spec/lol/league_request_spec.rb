@@ -7,7 +7,7 @@ describe LeagueRequest do
   subject { LeagueRequest.new 'api_key', 'euw' }
 
   it 'inherits from V3 Request' do
-    expect(LeagueRequest).to be < V3Request
+    expect(LeagueRequest).to be < Request
   end
 
   describe '#find_challenger' do

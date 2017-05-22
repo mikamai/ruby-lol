@@ -6,8 +6,8 @@ include Lol
 describe TournamentRequest do
   subject { described_class.new "api_key", "euw" }
 
-  it "inherits from V3Request" do
-    expect(TournamentRequest).to be < V3Request
+  it "inherits from Request" do
+    expect(TournamentRequest).to be < Request
   end
 
   describe "#create_provider" do

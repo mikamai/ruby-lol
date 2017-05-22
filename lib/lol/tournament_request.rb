@@ -1,5 +1,5 @@
 module Lol
-  class TournamentRequest < V3Request
+  class TournamentRequest < Request
     # @!visibility private
     def api_base_path
       "/lol/tournament/#{self.class.api_version}"

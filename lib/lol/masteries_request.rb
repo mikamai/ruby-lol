@@ -2,7 +2,7 @@ module Lol
   # Bindings for the Masteries API.
   #
   # See: https://developer.riotgames.com/api-methods/#masteries-v3
-  class MasteriesRequest < V3Request
+  class MasteriesRequest < Request
     # Get mastery pages for a given summoner ID
     # @param [Integer] summoner_id Summoner ID
     # @return [Array<DynamicModel>] Mastery pages

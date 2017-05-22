@@ -6,8 +6,8 @@ include Lol
 describe MatchRequest do
   subject { MatchRequest.new "api_key", "euw" }
 
-  it "inherits from V3Request" do
-    expect(MatchRequest).to be < V3Request
+  it "inherits from Request" do
+    expect(MatchRequest).to be < Request
   end
 
   describe "#find" do

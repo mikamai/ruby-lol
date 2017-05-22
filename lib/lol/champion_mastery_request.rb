@@ -2,7 +2,7 @@ module Lol
   # Bindings for the Champion Mastery API.
   #
   # See: https://developer.riotgames.com/api-methods/#champion-mastery-v3
-  class ChampionMasteryRequest < V3Request
+  class ChampionMasteryRequest < Request
     # @!visibility private
     def api_base_path
       "/lol/champion-mastery/#{api_version}"

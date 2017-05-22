@@ -2,7 +2,7 @@ module Lol
   # Bindings for the Champion API.
   #
   # See: https://developer.riotgames.com/api-methods/#champion-v3
-  class ChampionRequest < V3Request
+  class ChampionRequest < Request
     # Retrieve all champions
     #
     # See: https://developer.riotgames.com/api-methods/#champion-v3/GET_getChampions

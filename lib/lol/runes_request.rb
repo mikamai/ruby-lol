@@ -2,7 +2,7 @@ module Lol
   # Bindings for the Runes API.
   #
   # See: https://developer.riotgames.com/api-methods/#runes-v3
-  class RunesRequest < V3Request
+  class RunesRequest < Request
     # Get rune pages for a given summoner ID
     # @param [Integer] summoner_id Summoner ID
     # @return [Array<DynamicModel>] Rune pages

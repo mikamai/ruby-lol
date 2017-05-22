@@ -24,22 +24,71 @@ module Lol
     # @return [Object] the cache_store
     attr_reader :cache_store
 
-    # Stub method. Each subclass should have its own api version
-    # @return [String] api version
+    # Returns the supported API Version.
+    # @return [String] v3
     def self.api_version
-      "v1.1"
+      "v3"
+    end
+
+    def self.platforms
+      {
+        :br   => 'br1',
+        :eune => 'eun1',
+        :euw  => 'euw1',
+        :jp   => 'jp1',
+        :kr   => 'kr1',
+        :lan  => 'la1',
+        :las  => 'la2',
+        :na   => 'na1',
+        :oce  => 'oc1',
+        :ru   => 'ru',
+        :tr   => 'tr1',
+      }
+    end
+
+    # Initializes a new Request
+    # @param api_key [String] the Riot Games API key
+    # @param region [String] the region you want to use in API calls
+    # @param cache_store [Hash]
+    # @option cache_store [Redis] :redis Redis instance to use
+    # @option cache_store [Boolean] :cached should the request be cached
+    # @option cacche_store [Integer] :ttl ttl for cache keys
+    # @return [Request]
+    def initialize api_key, region, cache_store = {}
+      @cache_store = cache_store
+      raise InvalidCacheStore if cached? && !store.is_a?(Redis)
+      @api_key = api_key
+      @region = region
+    end
+
+    def platform
+      self.class.platforms[region.to_sym]
+    end
+
+    # Returns the supported API Version.
+    # @return [String] v3
+    def api_version
+      self.class.api_version
     end
 
     # Returns a full url for an API call
     # @param path [String] API path to call
     # @return [String] full fledged url
     def api_url path, params = {}
-      url = "#{api_base_url}/api/lol/#{region}/#{self.class.api_version}/#{path}"
+      url = File.join File.join(api_base_url, api_base_path), path
       "#{url}?#{api_query_string params}"
     end
 
+    # Returns the API base domain
+    # @return [String] path domain
     def api_base_url
-      "https://#{region}.api.pvp.net"
+      "https://#{platform}.api.riotgames.com"
+    end
+
+    # Returns the API base path, which is everything between the domain and the request-specific path
+    # @return [String] API path
+    def api_base_path
+      "/lol/platform/#{api_version}"
     end
 
     def api_query_string params = {}
@@ -108,21 +157,6 @@ module Lol
     # @return [Integer] the ttl to apply to cached keys
     def ttl
       cache_store[:ttl]
-    end
-
-    # Initializes a new Request
-    # @param api_key [String] the Riot Games API key
-    # @param region [String] the region you want to use in API calls
-    # @param cache_store [Hash]
-    # @option cache_store [Redis] :redis Redis instance to use
-    # @option cache_store [Boolean] :cached should the request be cached
-    # @option cacche_store [Integer] :ttl ttl for cache keys
-    # @return [Request]
-    def initialize api_key, region, cache_store = {}
-      @cache_store = cache_store
-      raise InvalidCacheStore if cached? && !store.is_a?(Redis)
-      @api_key = api_key
-      @region = region
     end
   end
 end
