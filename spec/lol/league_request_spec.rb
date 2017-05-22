@@ -11,9 +11,9 @@ describe LeagueRequest do
   end
 
   describe '#find_challenger' do
-    it 'returns a LeagueList' do
+    it 'returns a DynamicModel' do
       stub_request subject, 'league-challenger', 'challengerleagues/by-queue/RANKED_SOLO_5x5'
-      expect(subject.find_challenger).to be_a LeagueList
+      expect(subject.find_challenger).to be_a DynamicModel
     end
 
     it 'finds the challenger league for the given queue' do
@@ -25,7 +25,7 @@ describe LeagueRequest do
   describe '#find_master' do
     it 'returns a LeagueList' do
       stub_request subject, 'league-master', 'masterleagues/by-queue/RANKED_SOLO_5x5'
-      expect(subject.find_master).to be_a LeagueList
+      expect(subject.find_master).to be_a DynamicModel
     end
 
     it 'finds the master league for the given queue' do
@@ -39,16 +39,16 @@ describe LeagueRequest do
       stub_request subject, 'league-summoner', 'leagues/by-summoner/1'
       result = subject.summoner_leagues summoner_id: 1
       expect(result).to be_a Array
-      expect(result.map(&:class).uniq).to eq [LeagueList]
+      expect(result.map(&:class).uniq).to eq [DynamicModel]
     end
   end
 
   describe '#summoner_positions' do
-    it 'returns an array of LeaguePosition objects' do
+    it 'returns an array of DynamicModel objects' do
       stub_request subject, 'league-positions', 'positions/by-summoner/1'
       result = subject.summoner_positions summoner_id: 1
       expect(result).to be_a Array
-      expect(result.map(&:class).uniq).to eq [LeaguePosition]
+      expect(result.map(&:class).uniq).to eq [DynamicModel]
     end
   end
 end

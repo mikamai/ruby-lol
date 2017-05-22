@@ -10,7 +10,7 @@ module Lol
 
     # Get a player's total champion mastery score, which is the sum of individual champion mastery levels
     #
-    # See: https://developer.riotgames.com/api-methods/#champion-mastery-v3/GET_getChampionMasteryScore
+    # See: https://developer.riotgames.com/api-methods/#champion-mastery-v3/GET_getDynamicModelScore
     # @param [Integer] summoner_id Summoner ID associated with the player
     # @return [Integer] Player's total champion master score
     def total_score summoner_id:
@@ -21,20 +21,20 @@ module Lol
     #
     # See: https://developer.riotgames.com/api-methods/#champion-mastery-v3/GET_getAllChampionMasteries
     # @param [Integer] summoner_id Summoner ID associated with the player
-    # @return [Array<Lol::ChampionMastery>] Champion Masteries
+    # @return [Array<Lol::DynamicModel>] Champion Masteries
     def all summoner_id:
       result = perform_request api_url "champion-masteries/by-summoner/#{summoner_id}"
-      result.map { |c| ChampionMastery.new c }
+      result.map { |c| DynamicModel.new c }
     end
 
     # Get a champion mastery by player ID and champion ID
     #
-    # See: https://developer.riotgames.com/api-methods/#champion-mastery-v3/GET_getChampionMastery
+    # See: https://developer.riotgames.com/api-methods/#champion-mastery-v3/GET_getDynamicModel
     # @param [Integer] summoner_id Summoner ID associated with the player
-    # @return [Lol::ChampionMastery] Champion Mastery
+    # @return [Lol::DynamicModel] Champion Mastery
     def find champion_id, summoner_id:
       result = perform_request api_url "champion-masteries/by-summoner/#{summoner_id}/by-champion/#{champion_id}"
-      ChampionMastery.new result
+      DynamicModel.new result
     end
   end
 end

@@ -19,7 +19,7 @@ describe ChampionMasteryRequest do
   describe "#find" do
     it "returns a ChampionMastery" do
       stub_request(subject, 'champion-mastery', 'champion-masteries/by-summoner/1/by-champion/40')
-      expect(subject.find 40, summoner_id: 1).to be_a ChampionMastery
+      expect(subject.find 40, summoner_id: 1).to be_a DynamicModel
     end
 
     it "fetches ChampionMastery from the API" do
@@ -43,7 +43,7 @@ describe ChampionMasteryRequest do
 
     it "returns an Array of ChampionMastery" do
       expect(result).to be_a Array
-      expect(result.map(&:class).uniq).to eq [ChampionMastery]
+      expect(result.map(&:class).uniq).to eq [DynamicModel]
     end
 
     it "fetches ChampionMastery properties from the API" do

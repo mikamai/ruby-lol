@@ -13,7 +13,7 @@ describe ChampionRequest do
   describe "#find" do
     it "returns a champion" do
       stub_request subject, 'champion-266', 'champions/266'
-      expect(subject.find 266).to be_a Champion
+      expect(subject.find 266).to be_a DynamicModel
     end
   end
 
@@ -23,7 +23,7 @@ describe ChampionRequest do
 
     it "returns an array of champions" do
       expect(result).to be_a Array
-      expect(result.map(&:class).uniq).to eq [Champion]
+      expect(result.map(&:class).uniq).to eq [DynamicModel]
     end
 
     it "fetches champions from the API" do
