@@ -62,7 +62,7 @@ module Lol
     end
 
     def platform
-      self.class.platforms[region.to_sym]
+      self.class.platforms[region.downcase.to_sym]
     end
 
     # Returns the supported API Version.
