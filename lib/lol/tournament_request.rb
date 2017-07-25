@@ -7,7 +7,7 @@ module Lol
 
     # @!visibility private
     def api_base_url
-      "https://global.api.riotgames.com"
+      "https://americas.api.riotgames.com"
     end
 
     # Creates a tournament provider and returns its ID.
