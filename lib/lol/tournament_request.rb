@@ -26,10 +26,9 @@ module Lol
     # @param [String] name Name of the tournament
     # @return [Integer] Tournament ID
     def create_tournament provider_id:, name: nil
-      body = {
-        "providerId" => provider_id,
-        "name"       => name
-      }.compact
+      body = { "providerId" => provider_id, "name" => name }.delete_if do |k, v|
+         v.nil?
+      end
       perform_request api_url("tournaments"), :post, body
     end
 
