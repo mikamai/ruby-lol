@@ -42,7 +42,7 @@ describe MatchRequest do
       stub_request subject, 'ids-by-tc', "matches/by-tournament-code/1/ids"
       result = subject.ids_by_tournament_code '1'
       expect(result).to be_a Array
-      expect(result.map(&:class).uniq).to eq [Integer]
+      expect(result.map(&:class).uniq).to eq [Fixnum]
     end
   end
 
