@@ -24,6 +24,10 @@ module Lol
     # @return [Object] the cache_store
     attr_reader :cache_store
 
+    # @!attribute[r] rate_limiter
+    # @return [Object] the rate limiter, if one exists (else nil)
+    attr_reader :rate_limiter
+
     # Returns the supported API Version.
     # @return [String] v3
     def self.api_version
@@ -54,11 +58,12 @@ module Lol
     # @option cache_store [Boolean] :cached should the request be cached
     # @option cacche_store [Integer] :ttl ttl for cache keys
     # @return [Request]
-    def initialize api_key, region, cache_store = {}
-      @cache_store = cache_store
+    def initialize api_key, region, cache_store = {}, rate_limiter = nil
+      @cache_store  = cache_store
+      @rate_limiter = rate_limiter
       raise InvalidCacheStore if cached? && !store.is_a?(Redis)
       @api_key = api_key
-      @region = region
+      @region  = region
     end
 
     def platform
@@ -103,7 +108,8 @@ module Lol
       uri.to_s
     end
 
-    # Calls the API via HTTParty and handles errors
+    # Calls the API via HTTParty and handles errors caching it if a cache is
+    # enabled and rate limiting it if a rate limiter is configured
     # @param url [String] the url to call
     # @param verb [Symbol] HTTP verb to use. Defaults to :get
     # @param body [Hash] Body for POST request
@@ -115,7 +121,16 @@ module Lol
       if can_cache && result = store.get("#{clean_url(url)}#{options_id}")
         return JSON.parse(result)
       end
-      response = perform_uncached_request url, verb, body, options
+
+      response = nil
+      if @rate_limiter
+        @rate_limiter.times(1) do
+          response = perform_uncached_request(url, verb, body, options)
+        end
+      else
+        response = perform_uncached_request(url, verb, body, options)
+      end
+
       store.setex "#{clean_url(url)}#{options_id}", ttl, response.to_json if can_cache
       response
     end
