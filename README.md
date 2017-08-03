@@ -27,12 +27,15 @@ Or install it yourself as:
 ```ruby
 require 'lol'
 
-client = Lol::Client.new "my_api_key", {region: "euw"}
+client = Lol::Client.new "my_api_key", region: "euw"
 # => <Lol::Client:0x000000020c0b28 @api_key="my_api_key", @region="euw", @cached=false>
 
-# NEW! You can cache requests using Redis now
+# You can cache requests using Redis now
 # ttl defaults to 900
-client = Lol::Client.new "my_api_key", {region: "euw", redis: "redis://localhost:6379", ttl: 900}
+client = Lol::Client.new "my_api_key", region: "euw", redis: "redis://localhost:6379", ttl: 900
+
+# You can specify your rate limits so that the library will throttle requests to avoid errors
+client = Lol::Client.new "new_api_key", region: "euw", rate_limit_requests: 1, rate_limit_seconds: 10
 
 # Available Requests
 client.champion
