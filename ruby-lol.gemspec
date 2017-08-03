@@ -35,4 +35,5 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "httparty", "0.14.0" # due to https://github.com/jnunemaker/httparty/issues/533
   spec.add_runtime_dependency "activesupport"
   spec.add_runtime_dependency "redis"
+  spec.add_runtime_dependency "glutton_ratelimit"
 end
