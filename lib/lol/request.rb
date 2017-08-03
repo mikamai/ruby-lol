@@ -121,18 +121,16 @@ module Lol
       if can_cache && result = store.get("#{clean_url(url)}#{options_id}")
         return JSON.parse(result)
       end
-
-      response = nil
-      if @rate_limiter
-        @rate_limiter.times(1) do
-          response = perform_uncached_request(url, verb, body, options)
-        end
-      else
-        response = perform_uncached_request(url, verb, body, options)
-      end
-
+      response = perform_rate_limited_request(url, verb, body, options)
       store.setex "#{clean_url(url)}#{options_id}", ttl, response.to_json if can_cache
       response
+    end
+
+    def perform_rate_limited_request url, verb = :get, body = nil, options = {}
+      return perform_uncached_request(url, verb, body, options) unless rate_limiter
+      @rate_limiter.times 1 do
+        perform_uncached_request(url, verb, body, options)
+      end
     end
 
     def perform_uncached_request url, verb = :get, body = nil, options = {}
