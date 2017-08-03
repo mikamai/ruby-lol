@@ -2,6 +2,7 @@ require 'active_support/core_ext/string/inflections'
 require 'httparty'
 require 'uri'
 require 'redis'
+require 'glutton_ratelimit'
 
 module Lol
   # Takes a hash and returns a copy of it with the keys that have been underscored
