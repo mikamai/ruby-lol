@@ -13,7 +13,7 @@ module Lol
     # @option options [Integer] forAccountId Optional used to identify the participant to be unobfuscated
     # @option options [Integer] forPlatformId Optional used to identify the participant to be unobfuscated (for when user have changed regions)
     # @return [DynamicModel] Match representation
-    def find options={}, match_id
+    def find options={}, match_id:
       DynamicModel.new perform_request api_url "matches/#{match_id}", options
     end
 
