@@ -10,13 +10,11 @@ module Lol
 
     # Get match by match ID.
     # @param [Integer] match_id Match ID
-    # @param [String] tournament_code Optional tournament code the match belongs to
+    # @option options [Integer] forAccountId Optional used to identify the participant to be unobfuscated
+    # @option options [Integer] forPlatformId Optional used to identify the participant to be unobfuscated (for when user have changed regions)
     # @return [DynamicModel] Match representation
-    def find match_id, tournament_code: nil
-      url = "matches/#{match_id}".tap do |u|
-        u << "/by-tournament-code/#{tournament_code}" if tournament_code
-      end
-      DynamicModel.new perform_request api_url url
+    def find options={}, match_id:
+      DynamicModel.new perform_request api_url "matches/#{match_id}", options
     end
 
     # Get match timeline by match ID.
@@ -31,6 +29,14 @@ module Lol
     # @return [Array<Integer>] List of match IDs
     def ids_by_tournament_code tournament_code
       perform_request api_url "matches/by-tournament-code/#{tournament_code}/ids"
+    end
+
+    # Get match by match ID and tournament code.
+    # @param [Integer] match_id Match ID
+    # @param [String] tournament_code Tournament code the match belongs to
+    # @return [DynamicModel] Match representation
+    def find_by_tournament match_id, tournament_code
+      DynamicModel.new perform_request api_url "matches/#{match_id}/by-tournament-code/#{tournament_code}"
     end
 
     # Get matchlist for ranked games played on given account ID and platform ID and filtered using given filter parameters, if any.

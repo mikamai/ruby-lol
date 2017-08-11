@@ -11,22 +11,9 @@ describe MatchRequest do
   end
 
   describe "#find" do
-    context "without a tournament code" do
-      let(:result) { subject.find 1 }
-      before { stub_request subject, 'match', "matches/1" }
-
-      it "returns a DynamicModel" do
-        expect(result).to be_a DynamicModel
-      end
-    end
-
-    context "with a tournament code" do
-      let(:result) { subject.find 1, tournament_code: 2 }
-      before { stub_request subject, 'match-with-tc', "matches/1/by-tournament-code/2" }
-
-      it "returns a DynamicModel" do
-        expect(result).to be_a DynamicModel
-      end
+    it "returns a DynamicModel" do
+      stub_request subject, 'match', "matches/1"
+      expect(subject.find match_id: 1).to be_a DynamicModel
     end
   end
 
@@ -43,6 +30,13 @@ describe MatchRequest do
       result = subject.ids_by_tournament_code '1'
       expect(result).to be_a Array
       expect(result.map(&:class).uniq).to eq [Fixnum]
+    end
+  end
+
+  describe "#find_by_tournament" do
+    it "returns a DynamicModel" do
+      stub_request subject, 'match-with-tc', "matches/1/by-tournament-code/2"
+      expect(subject.find_by_tournament 1, 2).to be_a DynamicModel
     end
   end
 
