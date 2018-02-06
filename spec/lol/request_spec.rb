@@ -19,8 +19,8 @@ describe Request do
 
     it "sets the cache store" do
       redis_store = Redis.new
-      c = ChampionRequest.new("api_key", "euw", redis_store)
-      expect(c.cache_store).to eq(redis_store)
+      c = ChampionRequest.new("api_key", "euw", {redis: redis_store})
+      expect(c.store).to eq(redis_store)
     end
 
     it "returns an error if the cache store is not supported" do

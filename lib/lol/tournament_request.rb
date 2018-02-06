@@ -46,12 +46,12 @@ module Lol
                        map_type: "SUMMONERS_RIFT", metadata: nil, team_size: 5,
                        pick_type: "TOURNAMENT_DRAFT", spectator_type: "ALL"
       body = {
-        "allowedParticipants" => allowed_participants,
-        "mapType"             => map_type,
-        "metadata"            => metadata,
-        "pickType"            => pick_type,
-        "spectatorType"       => spectator_type,
-        "teamSize"            => team_size
+        "allowedSummonerIds" => allowed_participants,
+        "mapType"            => map_type,
+        "metadata"           => metadata,
+        "pickType"           => pick_type,
+        "spectatorType"      => spectator_type,
+        "teamSize"           => team_size
       }.compact
       uri_params = {
         "tournamentId" => tournament_id,
@@ -68,10 +68,10 @@ module Lol
     # @param [String] spectator_type The spectator type of the game. Valid values are NONE, LOBBYONLY, ALL.
     def update_code tournament_code, allowed_participants: nil, map_type: nil, pick_type: nil, spectator_type: nil
       body = {
-        "allowedParticipants" => allowed_participants,
-        "mapType"             => map_type,
-        "pickType"            => pick_type,
-        "spectatorType"       => spectator_type
+        "allowedSummonerIds" => allowed_participants,
+        "mapType"            => map_type,
+        "pickType"           => pick_type,
+        "spectatorType"      => spectator_type
       }.compact
       perform_request api_url("codes/#{tournament_code}"), :put, body
     end
