@@ -12,7 +12,7 @@ module Lol
     # @param [Integer] id Summoner ID
     # @return [string] Verification code set in User's LoLClient
     def find summoner_id
-      perform_request api_url "third-party-code/by-summoner/#{summoner_id}"
+      perform_uncached_request api_url "third-party-code/by-summoner/#{summoner_id}"
     end
   end
 end
