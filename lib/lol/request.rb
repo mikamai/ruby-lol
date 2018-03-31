@@ -115,7 +115,7 @@ module Lol
     # @param body [Hash] Body for POST request
     # @param options [Hash] Options passed to HTTParty
     # @return [String] raw response of the call
-    def perform_request url, verb = :get, body = nil, options = {}
+    def perform_request (url, verb = :get, body = nil, options = {})
       options_id = options.inspect
       can_cache = [:post, :put].include?(verb) ? false : cached?
       if can_cache && result = store.get("#{clean_url(url)}#{options_id}")
@@ -126,14 +126,14 @@ module Lol
       response
     end
 
-    def perform_rate_limited_request url, verb = :get, body = nil, options = {}
+    def perform_rate_limited_request (url, verb = :get, body = nil, options = {})
       return perform_uncached_request(url, verb, body, options) unless rate_limiter
       @rate_limiter.times 1 do
         perform_uncached_request(url, verb, body, options)
       end
     end
 
-    def perform_uncached_request url, verb = :get, body = nil, options = {}
+    def perform_uncached_request (url, verb = :get, body = nil, options = {})
       options[:headers] ||= {}
       options[:headers].merge!({
         "Content-Type" => "application/json",
