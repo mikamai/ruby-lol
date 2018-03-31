@@ -58,7 +58,7 @@ module Lol
     # @option cache_store [Boolean] :cached should the request be cached
     # @option cacche_store [Integer] :ttl ttl for cache keys
     # @return [Request]
-    def initialize api_key, region, cache_store = {}, rate_limiter = nil
+    def initialize (api_key, region, cache_store = {}, rate_limiter = nil)
       @cache_store  = cache_store
       @rate_limiter = rate_limiter
       raise InvalidCacheStore if cached? && !store.is_a?(Redis)
