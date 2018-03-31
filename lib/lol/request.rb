@@ -129,7 +129,7 @@ module Lol
     def perform_rate_limited_request (url, verb = :get, body = nil, options = {})
       return perform_uncached_request(url, verb, body, options) unless rate_limiter
       @rate_limiter.times 1 do
-        perform_uncached_request(url, verb, body, options)
+        return perform_uncached_request(url, verb, body, options)
       end
     end
 
