@@ -79,7 +79,7 @@ module Lol
     # Returns a full url for an API call
     # @param path [String] API path to call
     # @return [String] full fledged url
-    def api_url path, params = {}
+    def api_url (path, params = {})
       url = File.join File.join(api_base_url, api_base_path), path
       "#{url}?#{api_query_string params}"
     end
@@ -96,7 +96,7 @@ module Lol
       "/lol/platform/#{api_version}"
     end
 
-    def api_query_string params = {}
+    def api_query_string (params = {})
       URI.encode_www_form params.merge api_key: api_key
     end
 
