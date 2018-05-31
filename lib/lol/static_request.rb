@@ -37,6 +37,10 @@ module Lol
       Proxy.new self, "realms"
     end
 
+    def reforged_runes
+      Proxy.new self, "reforged_runes"
+    end
+
     def versions
       Proxy.new self, "versions"
     end
@@ -56,6 +60,10 @@ module Lol
     def all(endpoint, params={})
       if %w(realms).include? endpoint
         OpenStruct.new perform_request(api_url(endpoint.dasherize, params)).to_hash
+      elsif %w(reforged_runes).include? endpoint
+        perform_request(api_url(endpoint.dasherize, params)).map do |hash|
+          OpenStruct.new(hash)
+        end
       else
         perform_request(api_url(endpoint.dasherize, params))["data"].map do |id, values|
           OpenStruct.new(values.merge(id: values["id"] || id))

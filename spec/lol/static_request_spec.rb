@@ -53,6 +53,45 @@ describe StaticRequest do
     end
   end
 
+  describe "#reforged_runes" do
+    it "returns a Proxy" do
+      expect(subject.reforged_runes.class).to eq(StaticRequest::Proxy)
+    end
+
+    describe "#get" do
+      let(:fixture_name) { "static-reforged-runes" }
+
+      it "proxies get to StaticRequest with the correct endpoint" do
+        expect(subject).to receive(:get).with('reforged_runes', anything, anything)
+        subject.reforged_runes.get
+      end
+
+      context "without an id" do
+        let(:fixture) { load_fixture(fixture_name, StaticRequest.api_version) }
+
+        let(:result) { subject.reforged_runes.get }
+
+        before { stub_request(subject, fixture_name, "reforged-runes") }
+
+        it "returns an Array of OpenStruct" do
+          expect(result).to be_a Array
+          expect(result.map(&:class).uniq).to eq([OpenStruct])
+        end
+
+        it "fetches reforged_runes from the API" do
+          expect(result.size).to eq(fixture.size)
+        end
+      end
+
+      context "with an id" do
+        it "returns an OpenStruct" do
+          stub_request(subject, "#{fixture_name}-by-id", "reforged-runes/1")
+          expect(subject.reforged_runes.get 1).to be_a OpenStruct
+        end
+      end
+    end
+  end
+
   describe "#maps" do
     let(:result) { subject.maps.get }
 
