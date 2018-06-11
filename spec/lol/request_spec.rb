@@ -28,7 +28,8 @@ describe Request do
     end
   end
 
-  subject { Request.new "api_key", "euw"}
+  subject { Request.new "api_key", "euw", {}, rate_limiter }
+  let(:rate_limiter) { nil }
 
   describe "#perform_request" do
 
@@ -150,6 +151,16 @@ describe Request do
       it "uses clean urls" do
         expect(request).to receive(:clean_url).at_least(:once)
         request.perform_request "/foo?api_key=asd"
+      end
+    end
+
+    context 'with rate limits' do
+      let(:rate_limiter) { Lol::Client.new('api_key').set_up_rate_limiter(1, 20) }
+      before { stub_request subject, 'champion-all', 'champions' }
+
+      it 'uses rate limiter' do
+        expect(subject.rate_limiter).to receive(:times).and_call_original
+        subject.perform_request subject.api_url('champions')
       end
     end
   end
