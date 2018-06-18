@@ -57,6 +57,11 @@ module Lol
       @summoner_request ||= SummonerRequest.new(api_key, region, cache_store, rate_limiter)
     end
 
+    # @return [ThirdPartyCodeRequest]
+    def third_party_code
+      @third_party_code ||= ThirdPartyCodeRequest.new(api_key, region, cache_store, rate_limiter)
+    end
+
     # @return [StaticRequest]
     def static
       @static_request ||= StaticRequest.new(api_key, region, cache_store, rate_limiter)
