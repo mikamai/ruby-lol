@@ -10,6 +10,10 @@ describe ChampionRequest do
     expect(described_class.ancestors[1]).to eq(Request)
   end
 
+  it "still has only the v3" do
+    expect(described_class.api_version).to eq('v3')
+  end
+
   describe "#find" do
     it "returns a champion" do
       stub_request subject, 'champion-266', 'champions/266'

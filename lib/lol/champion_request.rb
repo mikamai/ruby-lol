@@ -3,6 +3,12 @@ module Lol
   #
   # See: https://developer.riotgames.com/api-methods/#champion-v3
   class ChampionRequest < Request
+    # Returns the supported API Version.
+    # @return [String] v3
+    def self.api_version
+      "v3"
+    end
+
     # Retrieve all champions
     #
     # See: https://developer.riotgames.com/api-methods/#champion-v3/GET_getChampions
