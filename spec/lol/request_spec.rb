@@ -177,7 +177,7 @@ describe Request do
     end
 
     it "defaults on Reques.api_version" do
-      expect(subject.api_url("bar")).to match(/\/v3\//)
+      expect(subject.api_url("bar")).to match(/\/v4\//)
     end
 
     it "a path" do
@@ -185,11 +185,11 @@ describe Request do
     end
 
     it "returns a full fledged api url" do
-      expect(subject.api_url("bar")).to eq("https://euw1.api.riotgames.com/lol/platform/v3/bar?api_key=api_key")
+      expect(subject.api_url("bar")).to eq("https://euw1.api.riotgames.com/lol/platform/v4/bar?api_key=api_key")
     end
 
     it "optionally accept query string parameters" do
-      expect(subject.api_url("foo", a: 'b')).to eq("https://euw1.api.riotgames.com/lol/platform/v3/foo?a=b&api_key=api_key")
+      expect(subject.api_url("foo", a: 'b')).to eq("https://euw1.api.riotgames.com/lol/platform/v4/foo?a=b&api_key=api_key")
     end
 
     it "delegates the base url to #api_base_url" do
