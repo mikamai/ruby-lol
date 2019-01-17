@@ -10,24 +10,20 @@ describe ChampionRequest do
     expect(described_class.ancestors[1]).to eq(Request)
   end
 
-  describe "#find" do
-    it "returns a champion" do
-      stub_request subject, 'champion-266', 'champions/266'
-      expect(subject.find 266).to be_a DynamicModel
-    end
+  it "still has only the v3" do
+    expect(described_class.api_version).to eq('v3')
   end
 
-  describe "#all" do
-    before { stub_request subject, 'champion-all', 'champions', 'freeToPlay' => false }
-    let(:result) { subject.all }
-
-    it "returns an array of champions" do
-      expect(result).to be_a Array
-      expect(result.map(&:class).uniq).to eq [DynamicModel]
+  describe "#champion_rotation" do
+    before do
+      stub_request subject, 'champion-rotations', 'champion-rotations'
     end
 
-    it "fetches champions from the API" do
-      expect(result.size).to eq load_fixture('champion-all', described_class.api_version)['champions'].size
+    it "returns the current champion rotation" do
+      expect(subject.champion_rotations).to be_a DynamicModel
     end
+
+    it { expect(subject.champion_rotations.free_champion_ids).to be_a Array }
+    it { expect(subject.champion_rotations.max_new_player_level).to be_a Integer }
   end
 end

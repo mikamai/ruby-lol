@@ -1,0 +1,31 @@
+{
+  "freeChampionIds": [
+      2,
+      4,
+      8,
+      22,
+      32,
+      53,
+      78,
+      89,
+      102,
+      113,
+      133,
+      141,
+      157,
+      222
+  ],
+  "freeChampionIdsForNewPlayers": [
+      18,
+      81,
+      92,
+      141,
+      37,
+      238,
+      19,
+      45,
+      25,
+      64
+  ],
+  "maxNewPlayerLevel": 10
+}
