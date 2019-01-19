@@ -5,6 +5,7 @@ include Lol
 
 describe LeagueRequest do
   subject { LeagueRequest.new 'api_key', 'euw' }
+  let(:dummy_encrypted_summoner_id) { 'qHn0uNkpA1T-NqQ0zHTEqNh1BhH5SAsGWwkZsacbeKBqSdkUEaYOcYNjDomm60vMrLWHu4ulYg1C5Q' }
 
   it 'inherits from V3 Request' do
     expect(LeagueRequest).to be < Request
@@ -34,10 +35,11 @@ describe LeagueRequest do
     end
   end
 
+  # FIXME: I can't find this API neither in v3 nor in v4 :(
   describe '#summoner_leagues' do
     it 'returns an array of LeagueList objects' do
-      stub_request subject, 'league-summoner', 'leagues/by-summoner/1'
-      result = subject.summoner_leagues summoner_id: 1
+      stub_request subject, 'league-summoner', "leagues/by-summoner/#{dummy_encrypted_summoner_id}"
+      result = subject.summoner_leagues encrypted_summoner_id: dummy_encrypted_summoner_id
       expect(result).to be_a Array
       expect(result.map(&:class).uniq).to eq [DynamicModel]
     end
@@ -45,8 +47,8 @@ describe LeagueRequest do
 
   describe '#summoner_positions' do
     it 'returns an array of DynamicModel objects' do
-      stub_request subject, 'league-positions', 'positions/by-summoner/1'
-      result = subject.summoner_positions summoner_id: 1
+      stub_request subject, 'league-positions', "positions/by-summoner/#{dummy_encrypted_summoner_id}"
+      result = subject.summoner_positions encrypted_summoner_id: dummy_encrypted_summoner_id
       expect(result).to be_a Array
       expect(result.map(&:class).uniq).to eq [DynamicModel]
     end

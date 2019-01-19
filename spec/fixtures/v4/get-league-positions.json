@@ -1,0 +1,15 @@
+[
+  {
+    "queueType": "RANKED_SOLO_5x5",
+    "rank": "I",
+    "playerOrTeamName": "Riot intinig",
+    "leaguePoints": 40,
+    "wins": 11,
+    "losses": 14,
+    "veteran": false,
+    "inactive": false,
+    "freshBlood": false,
+    "hotStreak": false,
+    "summonerId":	"29311441"
+  }
+]
