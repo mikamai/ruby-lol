@@ -2,7 +2,7 @@
   {
     "highestGrade": "S+",
     "championPoints": 34356,
-    "playerId": 496402,
+    "summonerId": 496402,
     "championPointsUntilNextLevel": 0,
     "chestGranted": true,
     "championLevel": 5,
@@ -14,7 +14,7 @@
   {
     "highestGrade": "A-",
     "championPoints": 8972,
-    "playerId": 496402,
+    "summonerId": 496402,
     "championPointsUntilNextLevel": 3628,
     "chestGranted": false,
     "championLevel": 3,
@@ -26,7 +26,7 @@
   {
     "highestGrade": "A-",
     "championPoints": 7355,
-    "playerId": 496402,
+    "summonerId": 496402,
     "championPointsUntilNextLevel": 5245,
     "chestGranted": false,
     "championLevel": 3,
@@ -38,7 +38,7 @@
   {
     "highestGrade": "A+",
     "championPoints": 6581,
-    "playerId": 496402,
+    "summonerId": 496402,
     "championPointsUntilNextLevel": 6019,
     "chestGranted": true,
     "championLevel": 3,
@@ -50,7 +50,7 @@
   {
     "highestGrade": "S+",
     "championPoints": 6555,
-    "playerId": 496402,
+    "summonerId": 496402,
     "championPointsUntilNextLevel": 6045,
     "chestGranted": false,
     "championLevel": 3,
@@ -62,7 +62,7 @@
   {
     "highestGrade": "A+",
     "championPoints": 4478,
-    "playerId": 496402,
+    "summonerId": 496402,
     "championPointsUntilNextLevel": 1522,
     "chestGranted": false,
     "championLevel": 2,
@@ -74,7 +74,7 @@
   {
     "highestGrade": "A+",
     "championPoints": 4285,
-    "playerId": 496402,
+    "summonerId": 496402,
     "championPointsUntilNextLevel": 1715,
     "chestGranted": false,
     "championLevel": 2,
@@ -85,7 +85,7 @@
   },
   {
     "championPoints": 3162,
-    "playerId": 496402,
+    "summonerId": 496402,
     "championPointsUntilNextLevel": 2838,
     "chestGranted": false,
     "championLevel": 2,
@@ -97,7 +97,7 @@
   {
     "highestGrade": "S",
     "championPoints": 2686,
-    "playerId": 496402,
+    "summonerId": 496402,
     "championPointsUntilNextLevel": 3314,
     "chestGranted": false,
     "championLevel": 2,
@@ -109,7 +109,7 @@
   {
     "highestGrade": "S-",
     "championPoints": 2589,
-    "playerId": 496402,
+    "summonerId": 496402,
     "championPointsUntilNextLevel": 3411,
     "chestGranted": true,
     "championLevel": 2,
@@ -120,7 +120,7 @@
   },
   {
     "championPoints": 2567,
-    "playerId": 496402,
+    "summonerId": 496402,
     "championPointsUntilNextLevel": 3433,
     "chestGranted": false,
     "championLevel": 2,
@@ -131,7 +131,7 @@
   },
   {
     "championPoints": 2556,
-    "playerId": 496402,
+    "summonerId": 496402,
     "championPointsUntilNextLevel": 3444,
     "chestGranted": false,
     "championLevel": 2,
@@ -143,7 +143,7 @@
   {
     "highestGrade": "S-",
     "championPoints": 2332,
-    "playerId": 496402,
+    "summonerId": 496402,
     "championPointsUntilNextLevel": 3668,
     "chestGranted": false,
     "championLevel": 2,
@@ -155,7 +155,7 @@
   {
     "highestGrade": "A-",
     "championPoints": 2164,
-    "playerId": 496402,
+    "summonerId": 496402,
     "championPointsUntilNextLevel": 3836,
     "chestGranted": false,
     "championLevel": 2,
@@ -166,7 +166,7 @@
   },
   {
     "championPoints": 1561,
-    "playerId": 496402,
+    "summonerId": 496402,
     "championPointsUntilNextLevel": 239,
     "chestGranted": false,
     "championLevel": 1,
@@ -178,7 +178,7 @@
   {
     "highestGrade": "A-",
     "championPoints": 1435,
-    "playerId": 496402,
+    "summonerId": 496402,
     "championPointsUntilNextLevel": 365,
     "chestGranted": false,
     "championLevel": 1,
@@ -190,7 +190,7 @@
   {
     "highestGrade": "S",
     "championPoints": 1226,
-    "playerId": 496402,
+    "summonerId": 496402,
     "championPointsUntilNextLevel": 574,
     "chestGranted": true,
     "championLevel": 1,
@@ -202,7 +202,7 @@
   {
     "highestGrade": "A-",
     "championPoints": 1198,
-    "playerId": 496402,
+    "summonerId": 496402,
     "championPointsUntilNextLevel": 602,
     "chestGranted": false,
     "championLevel": 1,
@@ -214,7 +214,7 @@
   {
     "highestGrade": "A+",
     "championPoints": 1159,
-    "playerId": 496402,
+    "summonerId": 496402,
     "championPointsUntilNextLevel": 641,
     "chestGranted": false,
     "championLevel": 1,
@@ -226,7 +226,7 @@
   {
     "highestGrade": "S-",
     "championPoints": 1143,
-    "playerId": 496402,
+    "summonerId": 496402,
     "championPointsUntilNextLevel": 657,
     "chestGranted": true,
     "championLevel": 1,
@@ -238,7 +238,7 @@
   {
     "highestGrade": "A+",
     "championPoints": 1136,
-    "playerId": 496402,
+    "summonerId": 496402,
     "championPointsUntilNextLevel": 664,
     "chestGranted": true,
     "championLevel": 1,
@@ -250,7 +250,7 @@
   {
     "highestGrade": "A-",
     "championPoints": 1055,
-    "playerId": 496402,
+    "summonerId": 496402,
     "championPointsUntilNextLevel": 745,
     "chestGranted": false,
     "championLevel": 1,
@@ -262,7 +262,7 @@
   {
     "highestGrade": "B",
     "championPoints": 1012,
-    "playerId": 496402,
+    "summonerId": 496402,
     "championPointsUntilNextLevel": 788,
     "chestGranted": false,
     "championLevel": 1,
@@ -273,7 +273,7 @@
   },
   {
     "championPoints": 942,
-    "playerId": 496402,
+    "summonerId": 496402,
     "championPointsUntilNextLevel": 858,
     "chestGranted": false,
     "championLevel": 1,
@@ -285,7 +285,7 @@
   {
     "highestGrade": "A+",
     "championPoints": 933,
-    "playerId": 496402,
+    "summonerId": 496402,
     "championPointsUntilNextLevel": 867,
     "chestGranted": false,
     "championLevel": 1,
@@ -296,7 +296,7 @@
   },
   {
     "championPoints": 930,
-    "playerId": 496402,
+    "summonerId": 496402,
     "championPointsUntilNextLevel": 870,
     "chestGranted": false,
     "championLevel": 1,
@@ -308,7 +308,7 @@
   {
     "highestGrade": "C-",
     "championPoints": 353,
-    "playerId": 496402,
+    "summonerId": 496402,
     "championPointsUntilNextLevel": 1447,
     "chestGranted": false,
     "championLevel": 1,
@@ -320,7 +320,7 @@
   {
     "highestGrade": "S-",
     "championPoints": 284,
-    "playerId": 496402,
+    "summonerId": 496402,
     "championPointsUntilNextLevel": 1516,
     "chestGranted": true,
     "championLevel": 1,
@@ -332,7 +332,7 @@
   {
     "highestGrade": "B",
     "championPoints": 229,
-    "playerId": 496402,
+    "summonerId": 496402,
     "championPointsUntilNextLevel": 1571,
     "chestGranted": false,
     "championLevel": 1,
@@ -344,7 +344,7 @@
   {
     "highestGrade": "B",
     "championPoints": 219,
-    "playerId": 496402,
+    "summonerId": 496402,
     "championPointsUntilNextLevel": 1581,
     "chestGranted": false,
     "championLevel": 1,
@@ -356,7 +356,7 @@
   {
     "highestGrade": "A-",
     "championPoints": 204,
-    "playerId": 496402,
+    "summonerId": 496402,
     "championPointsUntilNextLevel": 1596,
     "chestGranted": false,
     "championLevel": 1,
@@ -367,7 +367,7 @@
   },
   {
     "championPoints": 199,
-    "playerId": 496402,
+    "summonerId": 496402,
     "championPointsUntilNextLevel": 1601,
     "chestGranted": false,
     "championLevel": 1,
@@ -379,7 +379,7 @@
   {
     "highestGrade": "A",
     "championPoints": 181,
-    "playerId": 496402,
+    "summonerId": 496402,
     "championPointsUntilNextLevel": 1619,
     "chestGranted": false,
     "championLevel": 1,
@@ -390,7 +390,7 @@
   },
   {
     "championPoints": 176,
-    "playerId": 496402,
+    "summonerId": 496402,
     "championPointsUntilNextLevel": 1624,
     "chestGranted": false,
     "championLevel": 1,
@@ -402,7 +402,7 @@
   {
     "highestGrade": "B-",
     "championPoints": 174,
-    "playerId": 496402,
+    "summonerId": 496402,
     "championPointsUntilNextLevel": 1626,
     "chestGranted": false,
     "championLevel": 1,
@@ -413,7 +413,7 @@
   },
   {
     "championPoints": 161,
-    "playerId": 496402,
+    "summonerId": 496402,
     "championPointsUntilNextLevel": 1639,
     "chestGranted": false,
     "championLevel": 1,
@@ -425,7 +425,7 @@
   {
     "highestGrade": "C",
     "championPoints": 159,
-    "playerId": 496402,
+    "summonerId": 496402,
     "championPointsUntilNextLevel": 1641,
     "chestGranted": false,
     "championLevel": 1,
@@ -436,7 +436,7 @@
   },
   {
     "championPoints": 158,
-    "playerId": 496402,
+    "summonerId": 496402,
     "championPointsUntilNextLevel": 1642,
     "chestGranted": false,
     "championLevel": 1,
@@ -448,7 +448,7 @@
   {
     "highestGrade": "B-",
     "championPoints": 124,
-    "playerId": 496402,
+    "summonerId": 496402,
     "championPointsUntilNextLevel": 1676,
     "chestGranted": false,
     "championLevel": 1,

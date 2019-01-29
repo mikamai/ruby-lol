@@ -23,18 +23,18 @@ module Lol
     end
 
     # Get leagues in all queues for a given summoner ID
-    # @param [Integer] summoner_id Summoner ID associated with the player
+    # @param [Integer] encrypted_summoner_id Encrypted summoner ID associated with the player
     # @return [Array<DynamicModel>] List of leagues summoner is participating in
-    def summoner_leagues summoner_id:
-      result = perform_request api_url "leagues/by-summoner/#{summoner_id}"
+    def summoner_leagues encrypted_summoner_id:
+      result = perform_request api_url "leagues/by-summoner/#{encrypted_summoner_id}"
       result.map { |c| DynamicModel.new c }
     end
 
     # Get league positions in all queues for a given summoner ID
-    # @param [Integer] summoner_id Summoner ID associated with the player
+    # @param [Integer] encrypted_summoner_id Encrypted summoner ID associated with the player
     # @return [Array<DynamicModel>] list of league positions
-    def summoner_positions summoner_id:
-      result = perform_request api_url "positions/by-summoner/#{summoner_id}"
+    def summoner_positions encrypted_summoner_id:
+      result = perform_request api_url "positions/by-summoner/#{encrypted_summoner_id}"
       result.map { |c| DynamicModel.new c }
     end
   end

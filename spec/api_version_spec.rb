@@ -14,13 +14,10 @@ end
 
 describe "API Versions" do
   check_api_version(ChampionRequest, "v3")
-  check_api_version(ChampionMasteryRequest, "v3")
-  check_api_version(LeagueRequest, "v3")
-  check_api_version(StaticRequest, "v3")
+  check_api_version(ChampionMasteryRequest, "v4")
+  check_api_version(LeagueRequest, "v4")
   check_api_version(LolStatusRequest, "v3")
-  check_api_version(MatchRequest, "v3")
-  check_api_version(SummonerRequest, "v3")
-  check_api_version(RunesRequest, "v3")
-  check_api_version(MasteriesRequest, "v3")
-  check_api_version(SpectatorRequest, "v3")
+  check_api_version(MatchRequest, "v4")
+  check_api_version(SummonerRequest, "v4")
+  check_api_version(SpectatorRequest, "v4")
 end

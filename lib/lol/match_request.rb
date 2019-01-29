@@ -1,7 +1,7 @@
 module Lol
   # Bindings for the Match API.
   #
-  # See: https://developer.riotgames.com/api-methods/#match-v3
+  # See: https://developer.riotgames.com/api-methods/#match-v4
   class MatchRequest < Request
     # @!visibility private
     def api_base_path
@@ -39,8 +39,8 @@ module Lol
       DynamicModel.new perform_request api_url "matches/#{match_id}/by-tournament-code/#{tournament_code}"
     end
 
-    # Get matchlist for ranked games played on given account ID and platform ID and filtered using given filter parameters, if any.
-    # @param [Integer] account_id Account ID
+    # Get matchlist for ranked games played on given encrypted account ID and platform ID and filtered using given filter parameters, if any.
+    # @param [Integer] encrypted_account_id Encrypted Account ID
     # @param [Hash] options the options to pass to the call
     # @option options [Array<Integer>] queue Set of queue IDs for which to filtering matchlist.
     # @option options [Integer] beginTime The begin time to use for filtering matchlist specified as epoch milliseconds.
@@ -50,15 +50,15 @@ module Lol
     # @option options [Array<Integer>] season Set of season IDs for which to filtering matchlist.
     # @option options [Array<Integer>] champion Set of champion IDs for which to filtering matchlist.
     # @return [DynamicModel] MatchList represantion
-    def all options={}, account_id:
-      DynamicModel.new perform_request api_url "matchlists/by-account/#{account_id}", options
+    def all options={}, encrypted_account_id:
+      DynamicModel.new perform_request api_url "matchlists/by-account/#{encrypted_account_id}", options
     end
 
-    # Get matchlist for last 20 matches played on given account ID and platform ID.
-    # @param [Integer] account_id Account ID
+    # Get matchlist for last 20 matches played on given encrypted account ID and platform ID.
+    # @param [Integer] encrypted_account_id Encrypted Account ID
     # @return [DynamicModel] MatchList represantion
-    def recent account_id:
-      DynamicModel.new perform_request api_url "matchlists/by-account/#{account_id}/recent"
+    def recent encrypted_account_id:
+      DynamicModel.new perform_request api_url "matchlists/by-account/#{encrypted_account_id}/recent"
     end
   end
 end
