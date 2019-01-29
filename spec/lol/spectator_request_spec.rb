@@ -3,11 +3,12 @@ require "lol"
 
 describe Lol::SpectatorRequest do
   subject { described_class.new "api_key", "euw" }
+  let(:encrypted_id) { 'qHn0uNkpA1T-NqQ0zHTEqNh1BhH5SAsGWwkZsacbeKBqSdkUEaYOcYNjDomm60vMrLWHu4ulYg1C5Q' }
 
   describe "#current_game" do
     it "returns a DynamicModel" do
-      stub_request subject, "current-game", "active-games/by-summoner/23"
-      expect(subject.current_game summoner_id: 23).to be_a Lol::DynamicModel
+      stub_request subject, "current-game", "active-games/by-summoner/#{encrypted_id}"
+      expect(subject.current_game encrypted_summoner_id: encrypted_id).to be_a Lol::DynamicModel
     end
   end
 
