@@ -19,6 +19,5 @@ describe "API Versions" do
   check_api_version(LolStatusRequest, "v3")
   check_api_version(MatchRequest, "v4")
   check_api_version(SummonerRequest, "v4")
-  check_api_version(RunesRequest, "v4")
   check_api_version(SpectatorRequest, "v4")
 end
