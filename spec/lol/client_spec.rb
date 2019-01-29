@@ -148,18 +148,6 @@ describe Client do
     end
   end
 
-  describe "#static" do
-    it "returns an instance of StaticRequest" do
-      expect(subject.static).to be_a(StaticRequest)
-    end
-
-    it "initializes the StaticRequest with the current API key and region" do
-      expect(StaticRequest).to receive(:new).with(subject.api_key, subject.region, subject.cache_store, subject.rate_limiter)
-
-      subject.static
-    end
-  end
-
   describe '#lol_status' do
     it 'return an instance of LolStatusRequest' do
       expect(subject.lol_status).to be_a(LolStatusRequest)
