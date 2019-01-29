@@ -5,6 +5,8 @@ include Lol
 
 describe MatchRequest do
   subject { MatchRequest.new "api_key", "euw" }
+  let(:encrypted_id) { 'qHn0uNkpA1T-NqQ0zHTEqNh1BhH5SAsGWwkZsacbeKBqSdkUEaYOcYNjDomm60vMrLWHu4ulYg1C5Q' }
+
 
   it "inherits from Request" do
     expect(MatchRequest).to be < Request
@@ -42,15 +44,15 @@ describe MatchRequest do
 
   describe "#all" do
     it "returns a DynamicModel" do
-      stub_request subject, 'matches', "matchlists/by-account/1"
-      expect(subject.all account_id: 1).to be_a DynamicModel
+      stub_request subject, 'matches', "matchlists/by-account/#{encrypted_id}"
+      expect(subject.all encrypted_account_id: encrypted_id).to be_a DynamicModel
     end
   end
 
   describe "#recent" do
     it "returns a DynamicModel" do
-      stub_request subject, 'matches-recent', "matchlists/by-account/1/recent"
-      expect(subject.recent account_id: 1).to be_a DynamicModel
+      stub_request subject, 'matches-recent', "matchlists/by-account/#{encrypted_id}/recent"
+      expect(subject.recent encrypted_account_id: encrypted_id).to be_a DynamicModel
     end
   end
 end
